@@ -2,7 +2,7 @@
 
 This is a Home Assistant integration for the BOOKOO Bluetooth scale. It provides sensors for weight, flow rate and the timer along with buttons for tare, timer start, stop, reset and "tare and start timer".
 
-Based on the documentation at https://github.com/BooKooCode/OpenSource/
+Optimized for the Ultra-Protokoll via die Bibliothek `aiobookoo-ultra`.
 
 ## Installation
 

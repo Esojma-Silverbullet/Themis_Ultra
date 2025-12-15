@@ -3,7 +3,7 @@
 from collections.abc import Callable
 from dataclasses import dataclass
 
-from aiobookoo.bookooscale import BookooScale
+from aiobookoo_ultra.bookooscale import BookooScale
 
 from homeassistant.components.binary_sensor import (
     BinarySensorDeviceClass,
