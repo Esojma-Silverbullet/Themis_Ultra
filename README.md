@@ -1,4 +1,4 @@
-# Bookoo Scale Integration
+# Bookoo Themis Ultra scale Integration
 
 This is a Home Assistant integration for the BOOKOO Bluetooth scale. It provides sensors for weight, flow rate and the timer along with buttons for tare, timer start, stop, reset and "tare and start timer".
 
