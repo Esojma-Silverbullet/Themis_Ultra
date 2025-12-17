@@ -5,8 +5,8 @@ from __future__ import annotations
 from datetime import timedelta
 import logging
 
-from aiobookoo_ultra.bookooscale import BookooScale
-from aiobookoo_ultra.exceptions import BookooDeviceNotFound, BookooError
+from aiobookoo.bookooscale import BookooScale
+from aiobookoo.exceptions import BookooDeviceNotFound, BookooError
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_ADDRESS
