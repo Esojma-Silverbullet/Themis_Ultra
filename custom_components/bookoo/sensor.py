@@ -3,8 +3,8 @@
 from collections.abc import Callable  # noqa: I001
 from dataclasses import dataclass
 
-from aiobookoo_ultra.bookooscale import BookooDeviceState, BookooScale
-from aiobookoo_ultra.const import UnitMass as BookooUnitOfMass
+from aiobookoo.bookooscale import BookooDeviceState, BookooScale
+from aiobookoo.const import UnitMass as BookooUnitOfMass
 from homeassistant.components.sensor import (
     RestoreSensor,
     SensorDeviceClass,
