@@ -23,6 +23,22 @@ from .entity import BookooEntity
 # Coordinator is used to centralize the data updates
 PARALLEL_UPDATES = 0
 
+BOOKOO_UNIT_TO_HA_UNIT_OF_MASS = {
+    unit: ha_unit
+    for unit, ha_unit in (
+        (getattr(BookooUnitOfMass, "G", None), UnitOfMass.GRAMS),
+        (getattr(BookooUnitOfMass, "GRAM", None), UnitOfMass.GRAMS),
+        (getattr(BookooUnitOfMass, "GRAMS", None), UnitOfMass.GRAMS),
+        (getattr(BookooUnitOfMass, "KG", None), UnitOfMass.KILOGRAMS),
+        (getattr(BookooUnitOfMass, "KILOGRAM", None), UnitOfMass.KILOGRAMS),
+        (getattr(BookooUnitOfMass, "OZ", None), UnitOfMass.OUNCES),
+        (getattr(BookooUnitOfMass, "OUNCE", None), UnitOfMass.OUNCES),
+        (getattr(BookooUnitOfMass, "LB", None), UnitOfMass.POUNDS),
+        (getattr(BookooUnitOfMass, "POUND", None), UnitOfMass.POUNDS),
+    )
+    if unit is not None
+}
+
 
 @dataclass(kw_only=True, frozen=True)
 class BookooSensorEntityDescription(SensorEntityDescription):
@@ -45,6 +61,9 @@ SENSORS: tuple[BookooSensorEntityDescription, ...] = (
         native_unit_of_measurement=UnitOfMass.GRAMS,
         state_class=SensorStateClass.MEASUREMENT,
         value_fn=lambda scale: scale.weight,
+        unit_fn=lambda device_state: BOOKOO_UNIT_TO_HA_UNIT_OF_MASS.get(
+            device_state.weight_unit
+        ),
     ),
     BookooDynamicUnitSensorEntityDescription(
         key="flow_rate",
@@ -102,11 +121,10 @@ class BookooSensor(BookooEntity, SensorEntity):
     @property
     def native_unit_of_measurement(self) -> str | None:
         """Return the unit of measurement of this entity."""
-        if (
-            self._scale.device_state is not None
-            and self.entity_description.unit_fn is not None
-        ):
-            return self.entity_description.unit_fn(self._scale.device_state)
+        if self._scale.device_state is not None and self.entity_description.unit_fn:
+            unit = self.entity_description.unit_fn(self._scale.device_state)
+            if unit is not None:
+                return unit
         return self.entity_description.native_unit_of_measurement
 
     @property
