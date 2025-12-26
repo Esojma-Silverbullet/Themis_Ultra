@@ -7,12 +7,6 @@
     },
     {
       "service_uuid": "00000ffe-0000-1000-8000-00805f9b34fb"
-    },
-    {
-      "characteristic_uuid_weight": "0000ff11-0000-1000-8000-00805f9b34fb"
-    },
-    {
-      "characteristic_uuid_command": "0000ff12-0000-1000-8000-00805f9b34fb"
     }
   ],
   "codeowners": ["@makerwolf"],
@@ -22,6 +16,6 @@
   "integration_type": "device",
   "iot_class": "local_push",
   "loggers": ["aiobookoo_ultra"],
-  "requirements": ["aiobookoo-ultra @ https://github.com/Esojma-Silverbullet/aiobookoo-Ultra/archive/refs/tags/0.1.2.zip"],
-  "version": "1.0.1"
+  "requirements": ["aiobookoo @ https://github.com/Esojma-Silverbullet/aiobookoo-Ultra/archive/refs/tags/0.1.2.zip"],
+  "version": "0.0.5"
 }
