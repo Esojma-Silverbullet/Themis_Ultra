@@ -47,6 +47,24 @@
       "tare_and_start": {
         "name": "Tare and start timer"
       }
+    },
+    "number": {
+      "auto_off_seconds": {
+        "name": "Auto-off"
+      }
+    },
+    "select": {
+      "beeper_level": {
+        "name": "Beeper level"
+      },
+      "flow_smoothing": {
+        "name": "Flow smoothing"
+      }
+    },
+    "switch": {
+      "flow_smoothing_enabled": {
+        "name": "Flow smoothing (toggle)"
+      }
     }
   }
 }
