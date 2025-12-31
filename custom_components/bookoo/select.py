@@ -7,11 +7,7 @@ from collections.abc import Callable
 from dataclasses import dataclass
 
 from aiobookoo_ultra.bookooscale import BookooScale
-from homeassistant.components.select import (
-    SelectEntity,
-    SelectEntityDescription,
-    SelectEntityFeature,
-)
+from homeassistant.components.select import SelectEntity, SelectEntityDescription
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.entity import EntityCategory
@@ -117,7 +113,6 @@ async def async_setup_entry(
 class BookooSelect(BookooEntity, SelectEntity):
     """Representation of a Bookoo select."""
 
-    _attr_supported_features = SelectEntityFeature(0)
     entity_description: BookooSelectEntityDescription
 
     @property
