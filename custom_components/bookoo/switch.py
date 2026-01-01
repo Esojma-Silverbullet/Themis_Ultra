@@ -50,6 +50,13 @@ def _get_first_available_bool(
     return None
 
 
+def _has_supported_setter(
+    scale: BookooScale, setter_methods: tuple[str, ...]
+) -> bool:
+    """Check if any setter exists on the scale."""
+    return any(callable(getattr(scale, method, None)) for method in setter_methods)
+
+
 @dataclass(kw_only=True, frozen=True)
 class BookooSwitchEntityDescription(SwitchEntityDescription):
     """Description for Bookoo switch entities."""
@@ -79,10 +86,13 @@ async def async_setup_entry(
     """Set up switch entities."""
 
     coordinator = entry.runtime_data
-    async_add_entities(
+    entities = [
         BookooFlowSmoothingSwitch(coordinator, description)
         for description in SWITCHES
-    )
+        if _has_supported_setter(coordinator.scale, description.setter_methods)
+    ]
+    if entities:
+        async_add_entities(entities)
 
 
 class BookooFlowSmoothingSwitch(BookooEntity, SwitchEntity):

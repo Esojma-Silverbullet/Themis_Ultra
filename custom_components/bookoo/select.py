@@ -50,12 +50,28 @@ async def _async_call_first_available(
 
 
 def _beeper_options(scale: BookooScale) -> list[str]:
-    """Return supported beeper levels, fallback to three levels."""
+    """Return supported beeper levels, fallback to six levels (0-5)."""
     if scale.device_state is not None:
         supported = getattr(scale.device_state, "supported_beeper_levels", None)
         if supported:
-            return [str(level) for level in supported]
-    return ["0", "1", "2", "3"]
+            levels: list[str] = []
+            for level in supported:
+                try:
+                    numeric_level = int(level)
+                except (TypeError, ValueError):
+                    continue
+                if 0 <= numeric_level <= 5:
+                    levels.append(str(numeric_level))
+            if levels:
+                return levels
+    return [str(level) for level in range(0, 6)]
+
+
+def _has_supported_setter(
+    scale: BookooScale, setter_methods: tuple[str, ...]
+) -> bool:
+    """Check if any setter exists on the scale."""
+    return any(callable(getattr(scale, method, None)) for method in setter_methods)
 
 
 @dataclass(kw_only=True, frozen=True)
@@ -105,9 +121,13 @@ async def async_setup_entry(
     """Set up select entities."""
 
     coordinator = entry.runtime_data
-    async_add_entities(
-        BookooSelect(coordinator, description) for description in SELECTS
-    )
+    entities = [
+        BookooSelect(coordinator, description)
+        for description in SELECTS
+        if _has_supported_setter(coordinator.scale, description.setter_methods)
+    ]
+    if entities:
+        async_add_entities(entities)
 
 
 class BookooSelect(BookooEntity, SelectEntity):
