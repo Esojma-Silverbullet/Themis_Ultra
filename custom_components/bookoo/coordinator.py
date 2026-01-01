@@ -8,9 +8,11 @@ import logging
 from aiobookoo_ultra.bookooscale import BookooScale
 from aiobookoo_ultra.exceptions import BookooDeviceNotFound, BookooError
 
+from homeassistant.components.bluetooth import async_ble_device_from_address
+from homeassistant.components.bluetooth.util import async_register_bleak_retry_connector
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_ADDRESS
-from homeassistant.core import HomeAssistant
+from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 
 from .const import CONF_IS_VALID_SCALE
@@ -37,12 +39,14 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
             config_entry=entry,
         )
 
+        self._address = entry.data[CONF_ADDRESS]
         self._scale = BookooScale(
-            address_or_ble_device=entry.data[CONF_ADDRESS],
+            address_or_ble_device=self._address,
             name=entry.title,
             is_valid_scale=entry.data[CONF_IS_VALID_SCALE],
             notify_callback=self.async_update_listeners,
         )
+        self._async_register_bleak_connector(entry)
 
     @property
     def scale(self) -> BookooScale:
@@ -55,6 +59,11 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
         # scale is already connected, return
         if self._scale.connected:
             return
+
+        if ble_device := async_ble_device_from_address(
+            self.hass, self._address, connectable=True
+        ):
+            self._scale.address_or_ble_device = ble_device
 
         # scale is not connected, try to connect
         try:
@@ -76,5 +85,32 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
                     hass=self.hass,
                     target=self._scale.process_queue(),
                     name="bookoo_process_queue_task",
+                )
+            )
+
+    @callback
+    def _async_handle_disconnect(self) -> None:
+        """Handle disconnects triggered by the retry connector."""
+        self._scale.device_disconnected_handler(notify=False)
+
+    def _async_register_bleak_connector(self, entry: BookooConfigEntry) -> None:
+        """Ensure bleak connections are routed through the retry connector."""
+        try:
+            entry.async_on_unload(
+                async_register_bleak_retry_connector(
+                    self.hass,
+                    entry,
+                    self._address,
+                    self._async_handle_disconnect,
+                    connectable=True,
+                )
+            )
+        except TypeError:
+            entry.async_on_unload(
+                async_register_bleak_retry_connector(  # type: ignore[call-arg]
+                    self.hass,
+                    entry,
+                    self._address,
+                    self._async_handle_disconnect,
                 )
             )
