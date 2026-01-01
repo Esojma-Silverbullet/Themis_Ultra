@@ -8,8 +8,10 @@ import logging
 from aiobookoo_ultra.bookooscale import BookooScale
 from aiobookoo_ultra.exceptions import BookooDeviceNotFound, BookooError
 
-from homeassistant.components.bluetooth import async_ble_device_from_address
-from homeassistant.components.bluetooth.util import async_register_bleak_retry_connector
+from homeassistant.components.bluetooth import (
+    async_ble_device_from_address,
+    async_register_bleak_retry_connector,
+)
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_ADDRESS
 from homeassistant.core import HomeAssistant, callback
