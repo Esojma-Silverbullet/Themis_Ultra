@@ -8,10 +8,14 @@ import logging
 from aiobookoo_ultra.bookooscale import BookooScale
 from aiobookoo_ultra.exceptions import BookooDeviceNotFound, BookooError
 
-from homeassistant.components.bluetooth import (
-    async_ble_device_from_address,
-    async_register_bleak_retry_connector,
-)
+from homeassistant.components.bluetooth import async_ble_device_from_address
+try:
+    from homeassistant.components.bluetooth import (
+        async_register_bleak_retry_connector,
+    )
+except ImportError:
+    async_register_bleak_retry_connector = None
+
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_ADDRESS
 from homeassistant.core import HomeAssistant, callback
@@ -97,6 +101,12 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
 
     def _async_register_bleak_connector(self, entry: BookooConfigEntry) -> None:
         """Ensure bleak connections are routed through the retry connector."""
+        if not async_register_bleak_retry_connector:
+            _LOGGER.debug(
+                "BLE retry connector helper is unavailable; skipping connector registration"
+            )
+            return
+
         try:
             entry.async_on_unload(
                 async_register_bleak_retry_connector(
