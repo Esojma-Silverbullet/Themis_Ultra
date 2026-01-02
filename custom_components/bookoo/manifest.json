@@ -18,5 +18,5 @@
   "iot_class": "local_push",
   "loggers": ["aiobookoo_ultra"],
   "requirements": ["aiobookoo-ultra @ https://github.com/Esojma-Silverbullet/aiobookoo-Ultra/archive/refs/tags/0.1.3.zip"],
-  "version": "0.0.15"
+  "version": "0.0.16"
 }
