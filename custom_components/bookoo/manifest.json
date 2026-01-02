@@ -1,8 +1,7 @@
-"license": "MIT"
-
 {
   "domain": "bookoo",
   "name": "Bookoo",
+  "license": "MIT",
   "bluetooth": [
     {
       "local_name": "BOOKOO*"
