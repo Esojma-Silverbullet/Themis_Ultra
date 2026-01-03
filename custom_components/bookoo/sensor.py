@@ -16,6 +16,7 @@ from homeassistant.components.sensor import (
 from homeassistant.const import (
     PERCENTAGE,
     UnitOfMass,
+    UnitOfMassFlowRate,
     UnitOfTime,
 )
 from homeassistant.core import HomeAssistant, callback
@@ -71,7 +72,7 @@ SENSORS: tuple[BookooSensorEntityDescription, ...] = (
     ),
     BookooDynamicUnitSensorEntityDescription(
         key="flow_rate",
-        native_unit_of_measurement="g/s",
+        native_unit_of_measurement=UnitOfMassFlowRate.GRAMS_PER_SECOND,
         suggested_display_precision=1,
         state_class=SensorStateClass.MEASUREMENT,
         value_fn=lambda scale: scale.flow_rate,
