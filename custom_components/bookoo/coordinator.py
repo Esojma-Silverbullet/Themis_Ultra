@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 from datetime import timedelta
+import inspect
 import logging
+from typing import Any
 
 from aiobookoo_ultra.bookooscale import BookooScale
 from aiobookoo_ultra.exceptions import BookooDeviceNotFound, BookooError
@@ -72,8 +74,18 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
             self._scale.address_or_ble_device = ble_device
 
         # scale is not connected, try to connect
+        connect_kwargs: dict[str, Any] = {"setup_tasks": False}
+        parameters = inspect.signature(self._scale.connect).parameters
+
+        if "ble_device" in parameters and ble_device:
+            connect_kwargs["ble_device"] = ble_device
+        if "use_bleak_retry_connector" in parameters:
+            connect_kwargs["use_bleak_retry_connector"] = True
+        if "disconnected_callback" in parameters:
+            connect_kwargs["disconnected_callback"] = self._async_handle_disconnect
+
         try:
-            await self._scale.connect(setup_tasks=False)
+            await self._scale.connect(**connect_kwargs)
         except (BookooDeviceNotFound, BookooError, TimeoutError) as ex:
             _LOGGER.debug(
                 "Could not connect to scale: %s, Error: %s",
