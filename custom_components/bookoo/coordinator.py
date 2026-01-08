@@ -75,7 +75,12 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
             self._scale.address_or_ble_device = ble_device
 
         if not ble_device:
-            raise BookooDeviceNotFound(self._address)
+            _LOGGER.debug(
+                "BLE device not found for address %s",
+                self.config_entry.data[CONF_ADDRESS],
+            )
+            self._scale.device_disconnected_handler(notify=False)
+            return
 
         try:
             client = await establish_connection(
