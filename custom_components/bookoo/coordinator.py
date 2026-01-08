@@ -9,7 +9,12 @@ from typing import Any, Iterable
 
 from aiobookoo_ultra.bookooscale import BookooScale
 from aiobookoo_ultra.exceptions import BookooDeviceNotFound, BookooError
-from bleak_retry_connector import BleakClientWithServiceCache, establish_connection
+from bleak.exc import BleakError
+from bleak_retry_connector import (
+    BleakClientWithServiceCache,
+    BleakOutOfConnectionSlotsError,
+    establish_connection,
+)
 
 from homeassistant.components.bluetooth import async_ble_device_from_address
 try:
@@ -83,15 +88,27 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
             return
 
         try:
-            client = await establish_connection(
-                BleakClientWithServiceCache,
-                ble_device,
-                self._address,
-                disconnected_callback=self._async_handle_disconnect,
-            )
-            self._attach_ble_client(client)
-            await self._async_setup_scale_connection(client, ble_device)
-        except (BookooDeviceNotFound, BookooError, TimeoutError) as ex:
+            if connect_method:
+                result = connect_method(**connect_kwargs)
+                if inspect.isawaitable(result):
+                    await result
+            else:
+                client = await establish_connection(
+                    BleakClientWithServiceCache,
+                    ble_device,
+                    self._address,
+                    disconnected_callback=self._async_handle_disconnect,
+                )
+            if client:
+                self._attach_ble_client(client)
+                await self._async_setup_scale_connection(client, ble_device)
+        except (
+            BookooDeviceNotFound,
+            BookooError,
+            TimeoutError,
+            BleakError,
+            BleakOutOfConnectionSlotsError,
+        ) as ex:
             _LOGGER.debug(
                 "Could not connect to scale: %s, Error: %s",
                 self.config_entry.data[CONF_ADDRESS],
