@@ -5,7 +5,7 @@ from __future__ import annotations
 from datetime import timedelta
 import inspect
 import logging
-from typing import Any
+from typing import Any, Iterable
 
 from aiobookoo_ultra.bookooscale import BookooScale
 from aiobookoo_ultra.exceptions import BookooDeviceNotFound, BookooError
@@ -97,7 +97,14 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
             connect_kwargs["disconnected_callback"] = self._async_handle_disconnect
 
         try:
-            await self._scale.connect(**connect_kwargs)
+            client = await establish_connection(
+                BleakClientWithServiceCache,
+                ble_device,
+                self._address,
+                disconnected_callback=self._async_handle_disconnect,
+            )
+            self._attach_ble_client(client)
+            await self._async_setup_scale_connection(client, ble_device)
         except (BookooDeviceNotFound, BookooError, TimeoutError) as ex:
             _LOGGER.debug(
                 "Could not connect to scale: %s, Error: %s",
@@ -150,3 +157,48 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
                     self._async_handle_disconnect,
                 )
             )
+
+    def _attach_ble_client(self, client: BleakClientWithServiceCache) -> None:
+        """Attach an established BLE client to the scale if supported."""
+        for attr_name in ("bleak_client", "client", "_client"):
+            if hasattr(self._scale, attr_name):
+                setattr(self._scale, attr_name, client)
+                return
+
+    async def _async_setup_scale_connection(
+        self, client: BleakClientWithServiceCache, ble_device: Any
+    ) -> None:
+        """Run any optional scale setup hooks without direct client connect calls."""
+        await self._async_call_optional(
+            self._scale,
+            (
+                "setup_connection",
+                "setup_notifications",
+                "start_notifications",
+                "start_notify",
+                "initialize",
+                "async_initialize",
+                "setup",
+                "async_setup",
+                "setup_tasks",
+            ),
+            bleak_client=client,
+            client=client,
+            ble_device=ble_device,
+            disconnected_callback=self._async_handle_disconnect,
+        )
+
+    async def _async_call_optional(
+        self, obj: Any, method_names: Iterable[str], **kwargs: Any
+    ) -> None:
+        """Call the first available method from a list, awaiting if needed."""
+        for method_name in method_names:
+            method = getattr(obj, method_name, None)
+            if not method:
+                continue
+            parameters = inspect.signature(method).parameters
+            call_kwargs = {key: value for key, value in kwargs.items() if key in parameters}
+            result = method(**call_kwargs)
+            if inspect.isawaitable(result):
+                await result
+            return
