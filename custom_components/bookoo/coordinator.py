@@ -87,44 +87,6 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
             self._scale.device_disconnected_handler(notify=False)
             return
 
-        connect_method = getattr(self._scale, "connect", None)
-        connect_kwargs: dict[str, Any] = {"setup_tasks": False}
-        parameters = inspect.signature(connect_method).parameters if connect_method else {}
-        client: BleakClientWithServiceCache | None = None
-
-        if "ble_device" in parameters:
-            connect_kwargs["ble_device"] = ble_device
-        if "use_bleak_retry_connector" in parameters:
-            connect_kwargs["use_bleak_retry_connector"] = True
-        elif {"bleak_client", "client"} & parameters.keys():
-            try:
-                client = await establish_connection(
-                    BleakClientWithServiceCache,
-                    ble_device,
-                    self._address,
-                    disconnected_callback=self._async_handle_disconnect,
-                )
-            except (
-                BookooDeviceNotFound,
-                BookooError,
-                TimeoutError,
-                BleakError,
-                BleakOutOfConnectionSlotsError,
-            ) as ex:
-                _LOGGER.debug(
-                    "Could not connect to scale: %s, Error: %s",
-                    self.config_entry.data[CONF_ADDRESS],
-                    ex,
-                )
-                self._scale.device_disconnected_handler(notify=False)
-                return
-            if "bleak_client" in parameters:
-                connect_kwargs["bleak_client"] = client
-            else:
-                connect_kwargs["client"] = client
-        if "disconnected_callback" in parameters:
-            connect_kwargs["disconnected_callback"] = self._async_handle_disconnect
-
         try:
             if connect_method:
                 result = connect_method(**connect_kwargs)
