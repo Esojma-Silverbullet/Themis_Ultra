@@ -74,27 +74,13 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
         ):
             self._scale.address_or_ble_device = ble_device
 
-        # scale is not connected, try to connect
-        connect_kwargs: dict[str, Any] = {"setup_tasks": False}
-        parameters = inspect.signature(self._scale.connect).parameters
-
-        if "ble_device" in parameters and ble_device:
-            connect_kwargs["ble_device"] = ble_device
-        if "use_bleak_retry_connector" in parameters:
-            connect_kwargs["use_bleak_retry_connector"] = True
-        elif ble_device and {"bleak_client", "client"} & parameters.keys():
-            client = await establish_connection(
-                BleakClientWithServiceCache,
-                ble_device,
-                self._address,
-                disconnected_callback=self._async_handle_disconnect,
+        if not ble_device:
+            _LOGGER.debug(
+                "BLE device not found for address %s",
+                self.config_entry.data[CONF_ADDRESS],
             )
-            if "bleak_client" in parameters:
-                connect_kwargs["bleak_client"] = client
-            else:
-                connect_kwargs["client"] = client
-        if "disconnected_callback" in parameters:
-            connect_kwargs["disconnected_callback"] = self._async_handle_disconnect
+            self._scale.device_disconnected_handler(notify=False)
+            return
 
         try:
             client = await establish_connection(
