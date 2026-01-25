@@ -89,15 +89,14 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
         try:
             try:
                 self._client = await establish_connection(
+                    BleakClientWithServiceCache,
                     ble_device,
                     disconnected_callback=self._async_handle_link_loss,
                     name="bookoo",
                     timeout=20.0,
                 )
             except TypeError:
-                client = BleakClientWithServiceCache(ble_device)
                 self._client = await establish_connection(
-                    client,
                     ble_device,
                     disconnected_callback=self._async_handle_link_loss,
                     name="bookoo",
