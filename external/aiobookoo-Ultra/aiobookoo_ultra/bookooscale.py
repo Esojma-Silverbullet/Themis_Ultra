@@ -244,15 +244,14 @@ class BookooScale:
             ble_device = self.address_or_ble_device
             try:
                 self._client = await establish_connection(
+                    BleakClientWithServiceCache,
                     ble_device,
                     disconnected_callback=self.device_disconnected_handler,
                     name="bookoo",
                     timeout=20.0,
                 )
             except TypeError:
-                client = BleakClientWithServiceCache(ble_device)
                 self._client = await establish_connection(
-                    client,
                     ble_device,
                     disconnected_callback=self.device_disconnected_handler,
                     name="bookoo",
