@@ -244,15 +244,14 @@ class BookooScale:
             ble_device = self.address_or_ble_device
             try:
                 self._client = await establish_connection(
+                    BleakClientWithServiceCache,
                     ble_device,
                     disconnected_callback=self.device_disconnected_handler,
                     name="bookoo",
                     timeout=20.0,
                 )
             except TypeError:
-                client = BleakClientWithServiceCache(ble_device)
                 self._client = await establish_connection(
-                    client,
                     ble_device,
                     disconnected_callback=self.device_disconnected_handler,
                     name="bookoo",
@@ -273,6 +272,48 @@ class BookooScale:
 
         self.connected = True
         _LOGGER.debug("Connected to Bookoo scale")
+
+        if callback is None:
+            callback = self.on_bluetooth_data_received
+        try:
+            await self._client.start_notify(
+                char_specifier=self._weight_char_id,
+                callback=(
+                    self.on_bluetooth_data_received if callback is None else callback
+                ),
+            )
+            await asyncio.sleep(0.1)
+        except BleakError as ex:
+            msg = "Error subscribing to notifications"
+            _LOGGER.debug("%s: %s", msg, ex)
+            raise BookooError(msg) from ex
+
+        if setup_tasks:
+            self._setup_tasks()
+
+    async def attach_client(
+        self,
+        client: BleakClient,
+        callback: (
+            Callable[[BleakGATTCharacteristic, bytearray], Awaitable[None] | None]
+            | None
+        ) = None,
+        setup_tasks: bool = True,
+    ) -> None:
+        """Attach to an already established BLE client connection."""
+        if self.connected and self._client is client:
+            return
+
+        self._client = client
+        try:
+            if hasattr(self._client, "is_connected") and not self._client.is_connected:
+                await self._client.connect()
+        except BleakError as ex:
+            msg = "Error during connecting to device"
+            _LOGGER.debug("%s: %s", msg, ex)
+            raise BookooError(msg) from ex
+
+        self.connected = True
 
         if callback is None:
             callback = self.on_bluetooth_data_received
