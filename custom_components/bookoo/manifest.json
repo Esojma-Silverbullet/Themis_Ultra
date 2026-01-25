@@ -18,5 +18,5 @@
   "iot_class": "local_push",
   "loggers": ["aiobookoo_ultra"],
   "requirements": [],
-  "version": "0.0.50"
+  "version": "0.0.60"
 }
