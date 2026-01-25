@@ -10,7 +10,7 @@ The integration provides:
 - Control buttons (tare, start timer, stop timer, tare & start)
 
 The integration is optimized for the **Ultra BLE protocol** and uses the
-`aiobookoo-ultra` Python library.
+`aiobookoo-ultra` Python library, bundled in this repository.
 
 ---
 
@@ -22,7 +22,7 @@ The integration is optimized for the **Ultra BLE protocol** and uses the
 4. Install **Bookoo Themis Ultra**
 5. Restart Home Assistant
 
-The required Python dependency (`aiobookoo-ultra`) is installed automatically.
+The required Python dependency (`aiobookoo-ultra`) is included in this repository.
 
 ---
 
@@ -31,6 +31,27 @@ The required Python dependency (`aiobookoo-ultra`) is installed automatically.
 - Home Assistant with Bluetooth support
 - Bluetooth Proxy (ESPHome recommended)
 - Bookoo Themis Ultra scale
+
+---
+
+## Dokumentation (Deutsch)
+
+### Installation (HACS)
+
+1. **HACS** öffnen
+2. **Integrationen** auswählen
+3. Dieses Repository als **Custom Repository** hinzufügen
+4. **Bookoo Themis Ultra** installieren
+5. Home Assistant neu starten
+
+Die Python-Bibliothek **aiobookoo-ultra** ist im Repository enthalten und wird
+automatisch genutzt.
+
+### Voraussetzungen
+
+- Home Assistant mit Bluetooth-Unterstützung
+- Bluetooth Proxy (ESPHome empfohlen)
+- Bookoo Themis Ultra Waage
 
 ---
 

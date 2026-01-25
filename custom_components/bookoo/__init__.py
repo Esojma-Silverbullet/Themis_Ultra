@@ -1,5 +1,12 @@
 """Initialize the Bookoo component."""
 
+from pathlib import Path
+import sys
+
+_EXTERNAL_LIB_DIR = Path(__file__).resolve().parents[2] / "external" / "aiobookoo-Ultra"
+if _EXTERNAL_LIB_DIR.exists() and str(_EXTERNAL_LIB_DIR) not in sys.path:
+    sys.path.insert(0, str(_EXTERNAL_LIB_DIR))
+
 from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 
