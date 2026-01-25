@@ -1,0 +1,1690 @@
+
+
+
+
+<!doctype html>
+  <!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Automation Trigger - Home Assistant</title>
+    <meta name="author" content="Home Assistant">
+    <meta name="description" content="All the different ways how automations can be triggered.">
+    
+    <meta name="viewport" content="width=device-width">
+    <link rel="canonical" href="trigger/index.html">
+
+    <meta property="fb:app_id" content="338291289691179">
+    <meta property="og:title" content="Automation Trigger">
+    <meta property="og:site_name" content="Home Assistant">
+    <meta property="og:url" content="https://www.home-assistant.io/docs/automation/trigger/">
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="All the different ways how automations can be triggered.">
+    <meta property="og:image" content="https://www.home-assistant.io/images/default-social.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@home_assistant">
+    
+    <meta name="twitter:title" content="Automation Trigger">
+    <meta name="twitter:description" content="All the different ways how automations can be triggered.">
+    <meta name="twitter:image" content="https://www.home-assistant.io/images/default-social.png">
+    <link rel="me" href="https://fosstodon.org/@homeassistant">
+
+    <link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3/dist/style.min.css" rel="stylesheet" />
+    <link href="../../stylesheets/prism.css@8acb84bc0387c9548a63998fcfea0139.css" rel="stylesheet">
+    <link href="../../stylesheets/screen.css@cef1bc5aeba0a8ce6d170a9aa21e8dd6.css" media="screen, projection, print" rel="stylesheet">
+    <link href="https://www.home-assistant.io/atom.xml" rel="alternate" title="Home Assistant" type="application/atom+xml">
+    <link rel='shortcut icon' href='../../images/favicon.ico' />
+    <link rel='icon' type='image/png' href='../../images/favicon-192x192.png' sizes='192x192' />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&amp;family=Instrument+Sans:ital,wdth,wght@0,99,400..700;1,99,400..700&amp;" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" integrity="sha384-GPb5RlngihS9H0z1D137JsvzmeZ7tCpWEF4t5YDoTZyMsPP8S7h7vFDh4XhheU83" crossorigin="anonymous"></script>
+  </head>
+
+  <body  class="documentation-page   ">
+    <header class='site-header '>
+      
+
+
+
+<div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item three-tenths lap-two-sixths palm-one-whole ha-title">
+      <a href="https://www.home-assistant.io/" class="site-title">
+        <div class="logo"></div>
+      </a>
+      <a class="release-date" href="https://www.home-assistant.io/blog/2026/01/07/release-20261/" title="Latest version 2026.1.2 released January 16, 2026">
+        2026.1.2
+      </a>
+    </div>
+
+    <div class="grid__item seven-tenths lap-four-sixths palm-one-whole">
+      <nav>
+        <input type="checkbox" id="toggle" />
+        <label
+          for="toggle"
+          class="toggle"
+          data-open="Main Menu"
+          data-close="⨉"
+        ></label>
+        <ul class="menu pull-right">
+          <li><a  href="https://www.home-assistant.io/installation/">Getting started</a></li>
+          <li>
+            <a class="active" href="../index.html">Documentation <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/installation/"><iconify-icon inline icon='simple-icons:homeassistant' title='Homeassistant'></iconify-icon> Installation</a></li>
+              <li><a href="index.html"><iconify-icon inline icon='mdi:robot-happy' title='Robot happy'></iconify-icon> Automations</a></li>
+              <li><a href="https://www.home-assistant.io/dashboards/"><iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> Dashboards</a></li>
+              <li><a href="https://www.home-assistant.io/voice_control/"><iconify-icon inline icon='mdi:comment-processing-outline' title='Comment processing outline'></iconify-icon> Voice assistants</a></li>
+              <li><a href="../organizing/index.html"><iconify-icon inline icon='mdi:view-grid' title='View grid'></iconify-icon> Device organization</a></li>
+              <li><a href="../energy/index.html"><iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> Energy management</a></li>
+              <li><a href="../configuration/index.html"><iconify-icon inline icon='mdi:cog' title='Cog'></iconify-icon> Advanced configuration</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="trigger.1.html#">Our hardware <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/green/">Home Assistant Green</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zbt-2/">Connect ZBT-2</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zwa-2/">Connect ZWA-2</a></li>
+              <li><a href="https://www.home-assistant.io/voice-pe/">Voice Preview Edition</a></li>
+            </ul>
+          </li>
+          <li><a  href="https://www.home-assistant.io/integrations/">Integrations</a></li>
+          <li><a  href="https://www.home-assistant.io/blog/">Blog</a></li>
+          <li><a  href="https://www.home-assistant.io/help/">Need help?</a></li>
+          <li>
+            <div class="docsearch" id="docsearch"></div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    </header>
+
+    <div class="page-content">
+
+      
+
+      <div class="grid-wrapper">
+        <div class="grid grid-center">
+
+          <aside id="toc-bar" class="grid__item desk-wide-one-sixth">
+                <section class="aside-module grid__item one-whole">
+                  <div class='section'>
+                    <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+                    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="trigger.1.html#trigger-id">Trigger ID</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#video-tutorial">Video tutorial</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#trigger-variables">Trigger variables</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#event-trigger">Event trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#home-assistant-trigger">Home Assistant trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#mqtt-trigger">MQTT trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#numeric-state-trigger">Numeric state trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#state-trigger">State trigger</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#examples">Examples</a></li>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#triggering-on-attribute-changes">Triggering on attribute changes</a></li>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#holding-a-state-or-attribute">Holding a state or attribute</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#sun-trigger">Sun trigger</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#sunset--sunrise-trigger">Sunset / Sunrise trigger</a></li>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#sun-elevation-trigger">Sun elevation trigger</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#tag-trigger">Tag trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#template-trigger">Template trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#time-trigger">Time trigger</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#time-string">Time string</a></li>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#input-datetime">Input datetime</a></li>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#sensors-of-datetime-device-class">Sensors of datetime device class</a></li>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#sensors-of-datetime-device-class-with-offsets">Sensors of datetime device class with offsets</a></li>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#multiple-times">Multiple times</a></li>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#limited-templates">Limited templates</a></li>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#weekday-filtering">Weekday filtering</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#time-pattern-trigger">Time pattern trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#persistent-notification-trigger">Persistent notification trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#webhook-trigger">Webhook trigger</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#webhook-data">Webhook data</a></li>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#webhook-security">Webhook security</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#zone-trigger">Zone trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#geolocation-trigger">Geolocation trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#device-triggers">Device triggers</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#calendar-trigger">Calendar trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#sentence-trigger">Sentence trigger</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#related-topic">Related topic</a></li>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#sentence-wildcards">Sentence wildcards</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#multiple-triggers">Multiple triggers</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#multiple-entity-ids-for-the-same-trigger">Multiple entity IDs for the same trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#disabling-a-trigger">Disabling a trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#merging-lists-of-triggers">Merging lists of triggers</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#related-topics">Related topics</a></li>
+</ul>
+                  </div>
+                </section>
+              </aside> 
+
+          
+          <div class="grid__item two-thirds desk-wide-seven-twelfths lap-one-whole palm-one-whole">
+          
+
+            
+              <article class="page">
+  
+  <header>
+    
+    
+      <div class="breadcrumbs">
+        <a href="https://www.home-assistant.io/">Home</a>
+        
+          
+            
+            ▸ <a href="../index.html">Documentation</a>
+          
+        
+          
+            
+            ▸ <a href="index.html">Automation</a>
+          
+        
+          
+            ▸ 
+          
+        
+      </div>
+    
+    <h1 class="title indent">
+      
+        Automation Trigger
+      
+    </h1>
+  </header>
+  
+  
+  <p>Triggers are what starts the processing of an <span class="terminology">automation<span class="terminology-tooltip">Automations in Home Assistant allow you to automatically respond to things that happen in and around your home.<a class="terminology-link" href="index.html"> [Learn more]</a></span></span> rule. When <em>any</em> of the automation’s triggers becomes true (trigger <em>fires</em>), Home Assistant will validate the <a href="condition/index.html">conditions</a>, if any, and call the <a href="action/index.html">action</a>.</p>
+<p>An <span class="terminology">automation<span class="terminology-tooltip">Automations in Home Assistant allow you to automatically respond to things that happen in and around your home.<a class="terminology-link" href="index.html"> [Learn more]</a></span></span> can be triggered by an <span class="terminology">event<span class="terminology-tooltip">Every time something happens in Home Assistant, an event is fired. There are different types of events, such as state change events, when an action was triggered, or the time changed. All entities produce state change events. Every time a state changes, a state change event is produced. Events can be used to trigger automations or scripts. For example, you can trigger an automation when a light is turned on, then a speaker turns on in that room. Events can also be used to trigger actions in the frontend. For example, you can trigger an action when a button is pressed.<a class="terminology-link" href="../configuration/events/index.html"> [Learn more]</a></span></span>, a certain <span class="terminology">entity<span class="terminology-tooltip">An entity represents a sensor, actor, or function in Home Assistant. Entities are used to monitor physical properties or to control other entities. An entity is usually part of a device or a service.<a class="terminology-link" href="../configuration/entities_domains/index.html"> [Learn more]</a></span></span> <span class="terminology">state<span class="terminology-tooltip">The state holds the information of interest of an entity, for example, if a light is on or off. Each entity has exactly one state and the state only holds one value at a time. However, entities can store attributes related to that state such as brightness, color, or a unit of measurement.<a class="terminology-link" href="../configuration/state_object/index.html"> [Learn more]</a></span></span>, at a given time, and more. These can be specified directly or more flexible via templates. It is also possible to specify multiple triggers for one automation.</p>
+<ul>
+<li><a href="trigger.1.html#trigger-id">Trigger ID</a></li>
+<li><a href="trigger.1.html#trigger-variables">Trigger variables</a></li>
+<li><a href="trigger.1.html#event-trigger">Event trigger</a></li>
+<li><a href="trigger.1.html#home-assistant-trigger">Home Assistant trigger</a></li>
+<li><a href="trigger.1.html#mqtt-trigger">MQTT trigger</a></li>
+<li><a href="trigger.1.html#numeric-state-trigger">Numeric state trigger</a></li>
+<li><a href="trigger.1.html#state-trigger">State trigger</a></li>
+<li><a href="trigger.1.html#sun-trigger">Sun trigger</a></li>
+<li><a href="trigger.1.html#tag-trigger">Tag trigger</a></li>
+<li><a href="trigger.1.html#template-trigger">Template trigger</a></li>
+<li><a href="trigger.1.html#time-trigger">Time trigger</a></li>
+<li><a href="trigger.1.html#time-pattern-trigger">Time pattern trigger</a></li>
+<li><a href="trigger.1.html#persistent-notification-trigger">Persistent notification trigger</a></li>
+<li><a href="trigger.1.html#webhook-trigger">Webhook trigger</a></li>
+<li><a href="trigger.1.html#zone-trigger">Zone trigger</a></li>
+<li><a href="trigger.1.html#geolocation-trigger">Geolocation trigger</a></li>
+<li><a href="trigger.1.html#device-triggers">Device triggers</a></li>
+<li><a href="trigger.1.html#calendar-trigger">Calendar trigger</a></li>
+<li><a href="trigger.1.html#sentence-trigger">Sentence trigger</a></li>
+<li><a href="trigger.1.html#multiple-triggers">Multiple triggers</a></li>
+<li><a href="trigger.1.html#multiple-entity-ids-for-the-same-trigger">Multiple Entity IDs for the same Trigger</a></li>
+<li><a href="trigger.1.html#disabling-a-trigger">Disabling a trigger</a></li>
+<li><a href="trigger.1.html#merging-lists-of-triggers">Merging lists of triggers</a></li>
+</ul>
+<h2>Trigger ID <a class="title-link" name="trigger-id" href="trigger.1.html#trigger-id"></a>
+</h2>
+<p>All triggers can be assigned an optional <code>id</code>. If the ID is omitted, it will instead be set to the index of the trigger. The <code>id</code> can be referenced from <a href="../scripts/conditions/index.html#trigger-condition">trigger conditions and actions</a>. The <code>id</code> does not have to be unique for each trigger, and it can be used to group similar triggers for use later in the automation (i.e., several triggers of different types that should all turn some entity on).</p>
+<h3>Video tutorial <a class="title-link" name="video-tutorial" href="trigger.1.html#video-tutorial"></a>
+</h3>
+<p>This video tutorial explains how trigger IDs work.</p>
+<p><lite-youtube videoid="fE_MYcXYwMI" videotitle="How to use Trigger IDs in Home Assistant - Tutorial" posterquality="maxresdefault"></lite-youtube></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">event</span>
+      <span class="na">event_type</span><span class="pi">:</span> <span class="s2">"</span><span class="s">MY_CUSTOM_EVENT"</span>
+      <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">custom_event"</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">mqtt</span>
+      <span class="na">topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">living_room/switch/ac"</span>
+      <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">ac_on"</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>  <span class="c1"># This trigger will be assigned id="2"</span>
+      <span class="na">entity_id</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">device_tracker.paulus</span>
+        <span class="pi">-</span> <span class="s">device_tracker.anne_therese</span>
+      <span class="na">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home"</span>
+</code></pre></div></div>
+<h2>Trigger variables <a class="title-link" name="trigger-variables" href="trigger.1.html#trigger-variables"></a>
+</h2>
+<p>There are two different types of variables available for triggers. Both work like <a href="https://www.home-assistant.io/integrations/script/#variables">script level variables</a>.</p>
+<p>The first variant allows you to define variables that will be set when the trigger fires. The variables will be able to use templates and have access to <a href="templating.1.html#available-trigger-data">the <code>trigger</code> variable</a>.</p>
+<p>The second variant is setting variables that are available when attaching a trigger when the trigger can contain templated values. These are defined using the <code>trigger_variables</code> key at an automation level. These variables can only contain <a href="../configuration/templating/index.html#limited-templates">limited templates</a>. The triggers will not re-apply if the value of the template changes. Trigger variables are a feature meant to support using blueprint inputs in triggers.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">trigger_variables</span><span class="pi">:</span>
+    <span class="na">my_event</span><span class="pi">:</span> <span class="s">example_event</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">event</span>
+      <span class="c1"># Able to use `trigger_variables`</span>
+      <span class="na">event_type</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">my_event</span><span class="nv"> </span><span class="s">}}"</span>
+      <span class="c1"># These variables are evaluated and set when this trigger is triggered</span>
+      <span class="na">variables</span><span class="pi">:</span>
+        <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">trigger.event.data.name</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div></div>
+<h2>Event trigger <a class="title-link" name="event-trigger" href="trigger.1.html#event-trigger"></a>
+</h2>
+<p>An event trigger fires when an <a href="../configuration/events/index.html">event</a> is being received. Events are the raw building blocks of Home Assistant. You can match events on just the event name or also require specific event data or context to be present.</p>
+<p>Events can be fired by integrations or via the API. There is no limitation to the types. A list of built-in events can be found <a href="../configuration/events/index.html">here</a>.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">event</span>
+      <span class="na">event_type</span><span class="pi">:</span> <span class="s2">"</span><span class="s">MY_CUSTOM_EVENT"</span>
+      <span class="c1"># optional</span>
+      <span class="na">event_data</span><span class="pi">:</span>
+        <span class="na">mood</span><span class="pi">:</span> <span class="s">happy</span>
+      <span class="na">context</span><span class="pi">:</span>
+        <span class="na">user_id</span><span class="pi">:</span>
+        <span class="c1"># any of these will match</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">MY_USER_ID"</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">ANOTHER_USER_ID"</span>
+</code></pre></div></div>
+<p>It is also possible to listen for multiple events at once. This is useful for
+event that contain no, or similar, data and contexts.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">event</span>
+      <span class="na">event_type</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">automation_reloaded</span>
+        <span class="pi">-</span> <span class="s">scene_reloaded</span>
+</code></pre></div></div>
+<p>It’s also possible to use <a href="../configuration/templating/index.html#limited-templates">limited templates</a> in the <code>event_type</code>, <code>event_data</code> and <code>context</code> options.</p>
+<div class="alert alert-important">
+  <p class="alert-title"><iconify-icon inline icon="mdi:message-alert-outline"></iconify-icon> Important</p>
+  <div class="alert-content">
+<p>The <code>event_type</code>, <code>event_data</code> and <code>context</code> templates are only evaluated when setting up the trigger, they will not be reevaluated for every event.</p>
+  </div>
+</div>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">trigger_variables</span><span class="pi">:</span>
+    <span class="na">sub_event</span><span class="pi">:</span> <span class="s">ABC</span>
+    <span class="na">node</span><span class="pi">:</span> <span class="s">ac</span>
+    <span class="na">value</span><span class="pi">:</span> <span class="s">on</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">event</span>
+      <span class="na">event_type</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">'MY_CUSTOM_EVENT_'</span><span class="nv"> </span><span class="s">~</span><span class="nv"> </span><span class="s">sub_event</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div></div>
+<h2>Home Assistant trigger <a class="title-link" name="home-assistant-trigger" href="trigger.1.html#home-assistant-trigger"></a>
+</h2>
+<p>Fires when Home Assistant starts up or shuts down.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">homeassistant</span>
+      <span class="c1"># Event can also be 'shutdown'</span>
+      <span class="na">event</span><span class="pi">:</span> <span class="s">start</span>
+</code></pre></div></div>
+<div class="alert alert-note">
+  <p class="alert-title"><iconify-icon inline icon="mdi:information-outline"></iconify-icon> Note</p>
+  <div class="alert-content">
+<p>Automations triggered by the <code>shutdown</code> event have 20 seconds to run, after which they are stopped to continue with the shutdown.</p>
+  </div>
+</div>
+<h2>MQTT trigger <a class="title-link" name="mqtt-trigger" href="trigger.1.html#mqtt-trigger"></a>
+</h2>
+<p>Fires when a specific message is received on given MQTT topic. Optionally can match on the payload being sent over the topic. The default payload encoding is ‘utf-8’. For images and other byte payloads use <code>encoding: ''</code> to disable payload decoding completely.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">mqtt</span>
+      <span class="na">topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">living_room/switch/ac"</span>
+      <span class="c1"># Optional</span>
+      <span class="na">payload</span><span class="pi">:</span> <span class="s2">"</span><span class="s">on"</span>
+      <span class="na">encoding</span><span class="pi">:</span> <span class="s2">"</span><span class="s">utf-8"</span>
+</code></pre></div></div>
+<p>The <code>payload</code> option can be combined with a <code>value_template</code> to process the message received on the given MQTT topic before matching it with the payload.
+The trigger in the example below will trigger only when the message received on <code>living_room/switch/ac</code> is valid JSON, with a key <code>state</code> which has the value <code>"on"</code>.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">mqtt</span>
+      <span class="na">topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">living_room/switch/ac"</span>
+      <span class="na">payload</span><span class="pi">:</span> <span class="s2">"</span><span class="s">on"</span>
+      <span class="na">value_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">value_json.state</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div></div>
+<p>It’s also possible to use <a href="../configuration/templating/index.html#limited-templates">limited templates</a> in the <code>topic</code> and <code>payload</code> options.</p>
+<div class="alert alert-note">
+  <p class="alert-title"><iconify-icon inline icon="mdi:information-outline"></iconify-icon> Note</p>
+  <div class="alert-content">
+<p>The <code>topic</code> and <code>payload</code> templates are only evaluated when setting up the trigger, they will not be re-evaluated for every incoming MQTT message.</p>
+  </div>
+</div>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">trigger_variables</span><span class="pi">:</span>
+    <span class="na">room</span><span class="pi">:</span> <span class="s2">"</span><span class="s">living_room"</span>
+    <span class="na">node</span><span class="pi">:</span> <span class="s2">"</span><span class="s">ac"</span>
+    <span class="na">value</span><span class="pi">:</span> <span class="s2">"</span><span class="s">on"</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">mqtt</span>
+      <span class="na">topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">room</span><span class="nv"> </span><span class="s">~</span><span class="nv"> </span><span class="s">'/switch/'</span><span class="nv"> </span><span class="s">~</span><span class="nv"> </span><span class="s">node}}"</span>
+      <span class="c1"># Optional</span>
+      <span class="na">payload</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">'state:'</span><span class="nv"> </span><span class="s">~</span><span class="nv"> </span><span class="s">value</span><span class="nv"> </span><span class="s">}}"</span>
+      <span class="na">encoding</span><span class="pi">:</span> <span class="s2">"</span><span class="s">utf-8"</span>
+</code></pre></div></div>
+<h2>Numeric state trigger <a class="title-link" name="numeric-state-trigger" href="trigger.1.html#numeric-state-trigger"></a>
+</h2>
+<p>Fires when the numeric value of an entity’s state (or attribute’s value if using the <code>attribute</code> property, or the calculated value if using the <code>value_template</code> property) <strong>crosses</strong> a given threshold (equal excluded). On state change of a specified entity, attempts to parse the state as a number and fires if the value is changing from above to below or from below to above the given threshold (equal excluded).</p>
+<div class="alert alert-note">
+  <p class="alert-title"><iconify-icon inline icon="mdi:information-outline"></iconify-icon> Note</p>
+  <div class="alert-content">
+<p>Crossing the threshold means that the trigger only fires if the state wasn’t previously within the threshold.
+If the current state of your entity is <code>50</code> and you set the threshold to <code>below: 75</code>, the trigger would not fire if the state changed to e.g. <code>49</code> or <code>72</code> because the threshold was never crossed. The state would first have to change to e.g. <code>76</code> and then to e.g. <code>74</code> for the trigger to fire.</p>
+  </div>
+</div>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">numeric_state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">sensor.temperature</span>
+      <span class="c1"># If given, will trigger when the value of the given attribute for the given entity changes..</span>
+      <span class="na">attribute</span><span class="pi">:</span> <span class="s">attribute_name</span>
+      <span class="c1"># ..or alternatively, will trigger when the value given by this evaluated template changes.</span>
+      <span class="na">value_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">state.attributes.value</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">5</span><span class="nv"> </span><span class="s">}}"</span>
+      <span class="c1"># At least one of the following required</span>
+      <span class="na">above</span><span class="pi">:</span> <span class="m">17</span>
+      <span class="na">below</span><span class="pi">:</span> <span class="m">25</span>
+      <span class="c1"># If given, will trigger when the condition has been true for X time; you can also use days and milliseconds.</span>
+      <span class="na">for</span><span class="pi">:</span>
+        <span class="na">hours</span><span class="pi">:</span> <span class="m">1</span>
+        <span class="na">minutes</span><span class="pi">:</span> <span class="m">10</span>
+        <span class="na">seconds</span><span class="pi">:</span> <span class="m">5</span>
+</code></pre></div></div>
+<div class="alert alert-note">
+  <p class="alert-title"><iconify-icon inline icon="mdi:information-outline"></iconify-icon> Note</p>
+  <div class="alert-content">
+<p>Listing above and below together means the numeric_state has to be between the two values.
+In the example above, the trigger would fire a single time if a numeric_state goes into the 17.1-24.9 range (above 17 and below 25). It will only fire again, once it has left the defined range and enters it again.</p>
+  </div>
+</div>
+<p>When the <code>attribute</code> option is specified the trigger is compared to the given <code>attribute</code> instead of the state of the entity.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">numeric_state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">climate.kitchen</span>
+      <span class="na">attribute</span><span class="pi">:</span> <span class="s">current_temperature</span>
+      <span class="na">above</span><span class="pi">:</span> <span class="m">23</span>
+</code></pre></div></div>
+<p>More dynamic and complex calculations can be done with <code>value_template</code>. The variable ‘state’ is the <a href="../configuration/state_object.1.html">state object</a> of the entity specified by <code>entity_id</code>.</p>
+<p>The state of the entity can be referenced like this:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">numeric_state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">sensor.temperature</span>
+      <span class="na">value_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">state.state</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">float</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">9</span><span class="nv"> </span><span class="s">/</span><span class="nv"> </span><span class="s">5</span><span class="nv"> </span><span class="s">+</span><span class="nv"> </span><span class="s">32</span><span class="nv"> </span><span class="s">}}"</span>
+      <span class="na">above</span><span class="pi">:</span> <span class="m">70</span>
+</code></pre></div></div>
+<p>Attributes of the entity can be referenced like this:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">numeric_state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">climate.kitchen</span>
+      <span class="na">value_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">state.attributes.current_temperature</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">state.attributes.temperature_set_point</span><span class="nv"> </span><span class="s">}}"</span>
+      <span class="na">above</span><span class="pi">:</span> <span class="m">3</span>
+</code></pre></div></div>
+<p>Number helpers (<code>input_number</code> entities), <code>number</code>, <code>sensor</code>, and <code>zone</code> entities
+that contain a numeric value, can be used in the <code>above</code> and <code>below</code> thresholds.
+However, the comparison will only be made when the entity specified in the trigger is updated. This would look like:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">numeric_state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">sensor.outside_temperature</span>
+      <span class="c1"># Other entity ids can be specified for above and/or below thresholds</span>
+      <span class="na">above</span><span class="pi">:</span> <span class="s">sensor.inside_temperature</span>
+</code></pre></div></div>
+<p>The <code>for:</code> can also be specified as <code>HH:MM:SS</code> like this:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">numeric_state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">sensor.temperature</span>
+      <span class="c1"># At least one of the following required</span>
+      <span class="na">above</span><span class="pi">:</span> <span class="m">17</span>
+      <span class="na">below</span><span class="pi">:</span> <span class="m">25</span>
+
+      <span class="c1"># If given, will trigger when condition has been for X time.</span>
+      <span class="na">for</span><span class="pi">:</span> <span class="s2">"</span><span class="s">01:10:05"</span>
+</code></pre></div></div>
+<p>You can also use templates in the <code>for</code> option.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">numeric_state</span>
+      <span class="na">entity_id</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">sensor.temperature_1</span>
+        <span class="pi">-</span> <span class="s">sensor.temperature_2</span>
+      <span class="na">above</span><span class="pi">:</span> <span class="m">80</span>
+      <span class="na">for</span><span class="pi">:</span>
+        <span class="na">minutes</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">states('input_number.high_temp_min')|int</span><span class="nv"> </span><span class="s">}}"</span>
+        <span class="na">seconds</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">states('input_number.high_temp_sec')|int</span><span class="nv"> </span><span class="s">}}"</span>
+  <span class="na">actions</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">persistent_notification.create</span>
+      <span class="na">data</span><span class="pi">:</span>
+        <span class="na">message</span><span class="pi">:</span> <span class="pi">&gt;</span>
+          <span class="s">{{ trigger.to_state.name }} too high for {{ trigger.for }}!</span>
+</code></pre></div></div>
+<p>The <code>for</code> template(s) will be evaluated when an entity changes as specified.</p>
+<div class="alert alert-important">
+  <p class="alert-title"><iconify-icon inline icon="mdi:message-alert-outline"></iconify-icon> Important</p>
+  <div class="alert-content">
+<p>Use of the <code>for</code> option will not survive Home Assistant restart or the reload of automations. During restart or reload, automations that were awaiting <code>for</code> the trigger to pass, are reset.</p>
+<p>If for your use case this is undesired, you could consider using the automation to set an <a href="https://www.home-assistant.io/integrations/input_datetime"><code>input_datetime</code></a> to the desired time and then use that <a href="https://www.home-assistant.io/integrations/input_datetime"><code>input_datetime</code></a> as an automation trigger to perform the desired actions at the set time.</p>
+  </div>
+</div>
+<h2>State trigger <a class="title-link" name="state-trigger" href="trigger.1.html#state-trigger"></a>
+</h2>
+<p>In general, the state trigger fires when the state of any of given entities <strong>changes</strong>. The behavior is as follows:</p>
+<ul>
+<li>If only the <code>entity_id</code> is given, the trigger fires for <strong>all</strong> state changes, even if only a state attribute changed.</li>
+<li>If at least one of <code>from</code>, <code>to</code>, <code>not_from</code>, or <code>not_to</code> are given, the trigger fires on any matching state change, but not if only an attribute changed.
+<ul>
+<li>To trigger on all state changes, but not on changed attributes, set at least one of <code>from</code>, <code>to</code>, <code>not_from</code>, or <code>not_to</code> to <code>null</code>.</li>
+</ul>
+</li>
+<li>Use of the <code>for</code> option doesn’t survive a Home Assistant restart or the reload of automations.
+<ul>
+<li>During restart or reload, automations that were awaiting <code>for</code> the trigger to pass, are reset.</li>
+<li>If for your use case this is undesired, you could consider using the automation to set an <a href="https://www.home-assistant.io/integrations/input_datetime"><code>input_datetime</code></a> to the desired time and then use that <a href="https://www.home-assistant.io/integrations/input_datetime"><code>input_datetime</code></a> as an automation trigger to perform the desired actions at the set time.</li>
+</ul>
+</li>
+</ul>
+<div class="alert alert-tip">
+  <p class="alert-title"><iconify-icon inline icon="mdi:lightbulb-outline"></iconify-icon> Tip</p>
+  <div class="alert-content">
+<p>The values you see in your overview will often not be the same as the actual state of the entity. For instance, the overview may show <code>Connected</code> when the underlying entity is actually <code>on</code>. You should check the state of the entity by checking the states in the developer tool, under <a href="https://my.home-assistant.io/redirect/developer_states" class="my" target="_blank"><strong>Developer tools</strong> &gt; <strong>States</strong></a>.</p>
+  </div>
+</div>
+<h3>Examples <a class="title-link" name="examples" href="trigger.1.html#examples"></a>
+</h3>
+<p>This automation triggers if either Paulus or Anne-Therese are home for one minute.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">device_tracker.paulus</span>
+        <span class="pi">-</span> <span class="s">device_tracker.anne_therese</span>
+      <span class="c1"># Optional</span>
+      <span class="na">from</span><span class="pi">:</span> <span class="s2">"</span><span class="s">not_home"</span>
+      <span class="c1"># Optional</span>
+      <span class="na">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home"</span>
+      <span class="c1"># If given, will trigger when the condition has been true for X time; you can also use days and milliseconds.</span>
+      <span class="na">for</span><span class="pi">:</span>
+        <span class="na">hours</span><span class="pi">:</span> <span class="m">0</span>
+        <span class="na">minutes</span><span class="pi">:</span> <span class="m">1</span>
+        <span class="na">seconds</span><span class="pi">:</span> <span class="m">0</span>
+</code></pre></div></div>
+<p>It’s possible to give a list of <code>from</code> states or <code>to</code> states:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">vacuum.test</span>
+      <span class="na">from</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s2">"</span><span class="s">cleaning"</span>
+        <span class="pi">-</span> <span class="s2">"</span><span class="s">returning"</span>
+      <span class="na">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">error"</span>
+</code></pre></div></div>
+<p>If you want to trigger on all state changes, but not on attribute changes, you can <code>to</code> to <code>null</code> (this would also work by setting <code>from</code>, <code>not_from</code>, or <code>not_to</code> to <code>null</code>):</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">vacuum.test</span>
+      <span class="na">to</span><span class="pi">:</span>
+</code></pre></div></div>
+<p>If you want to trigger on all state changes <em>except</em> specific ones, use <code>not_from</code> or <code>not_to</code>  The <code>not_from</code> and <code>not_to</code> options are the counter parts of <code>from</code> and <code>to</code>. They can be used to trigger on state changes that are <strong>not</strong> the specified state.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">vacuum.test</span>
+      <span class="na">not_from</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s2">"</span><span class="s">unknown"</span>
+        <span class="pi">-</span> <span class="s2">"</span><span class="s">unavailable"</span>
+      <span class="na">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">on"</span>
+</code></pre></div></div>
+<p>You cannot use <code>from</code> and <code>not_from</code> at the same time. The same applies to <code>to</code> and <code>not_to</code>.</p>
+<h3>Triggering on attribute changes <a class="title-link" name="triggering-on-attribute-changes" href="trigger.1.html#triggering-on-attribute-changes"></a>
+</h3>
+<p>When the <code>attribute</code> option is specified, the trigger only fires
+when the specified attribute <strong>changes</strong>. Changes to other attributes or
+state changes are ignored.</p>
+<p>For example, this trigger only fires when the boiler has been heating for 10 minutes:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">climate.living_room</span>
+      <span class="na">attribute</span><span class="pi">:</span> <span class="s">hvac_action</span>
+      <span class="na">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">heating"</span>
+      <span class="na">for</span><span class="pi">:</span> <span class="s2">"</span><span class="s">00:10:00"</span>
+</code></pre></div></div>
+<p>This trigger fires whenever the boiler’s <code>hvac_action</code> attribute changes:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">climate.living_room</span>
+      <span class="na">attribute</span><span class="pi">:</span> <span class="s">hvac_action</span>
+</code></pre></div></div>
+<h3>Holding a state or attribute <a class="title-link" name="holding-a-state-or-attribute" href="trigger.1.html#holding-a-state-or-attribute"></a>
+</h3>
+<p>You can use <code>for</code> to have the state trigger only fire if the state holds for some time.</p>
+<p>This example fires, when the entity state changed to <code>"on"</code> and holds that
+state for 30 seconds:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">light.office</span>
+      <span class="c1"># Must stay "on" for 30 seconds</span>
+      <span class="na">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">on"</span>
+      <span class="na">for</span><span class="pi">:</span> <span class="s2">"</span><span class="s">00:00:30"</span>
+</code></pre></div></div>
+<p>When holding a state, changes to attributes are ignored. Changes to attributes
+don’t cancel the hold time.</p>
+<p>You can also fire the trigger when the state value changed from a specific
+state, but hasn’t returned to that state value for the specified time.</p>
+<p>This can be useful, e.g., checking if a media player hasn’t turned “off” for
+the time specified, but doesn’t care about “playing” or “paused”.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">media_player.kitchen</span>
+      <span class="c1"># Not "off" for 30 minutes</span>
+      <span class="na">from</span><span class="pi">:</span> <span class="s2">"</span><span class="s">off"</span>
+      <span class="na">for</span><span class="pi">:</span> <span class="s2">"</span><span class="s">00:30:00"</span>
+</code></pre></div></div>
+<p>Please note, that when using <code>from</code>, <code>to</code> and <code>for</code>, only the value of the
+<code>to</code> option is considered for the time specified.</p>
+<p>In this example, the trigger fires if the state value of the entity remains the
+same for <code>for</code> the time specified, regardless of the current state value.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">media_player.kitchen</span>
+      <span class="c1"># The media player remained in its current state for 1 hour</span>
+      <span class="na">for</span><span class="pi">:</span> <span class="s2">"</span><span class="s">01:00:00"</span>
+</code></pre></div></div>
+<p>You can also use templates in the <code>for</code> option.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">device_tracker.paulus</span>
+        <span class="pi">-</span> <span class="s">device_tracker.anne_therese</span>
+      <span class="na">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home"</span>
+      <span class="na">for</span><span class="pi">:</span>
+        <span class="na">minutes</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">states('input_number.lock_min')|int</span><span class="nv"> </span><span class="s">}}"</span>
+        <span class="na">seconds</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">states('input_number.lock_sec')|int</span><span class="nv"> </span><span class="s">}}"</span>
+  <span class="na">actions</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">lock.lock</span>
+      <span class="na">target</span><span class="pi">:</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s">lock.my_place</span>
+</code></pre></div></div>
+<p>The <code>for</code> template(s) will be evaluated when an entity changes as specified.</p>
+<div class="alert alert-tip">
+  <p class="alert-title"><iconify-icon inline icon="mdi:lightbulb-outline"></iconify-icon> Tip</p>
+  <div class="alert-content">
+<p>Use quotes around your values for <code>from</code> and <code>to</code> to avoid the YAML parser from interpreting values as booleans.</p>
+  </div>
+</div>
+<h2>Sun trigger <a class="title-link" name="sun-trigger" href="trigger.1.html#sun-trigger"></a>
+</h2>
+<h3>Sunset / Sunrise trigger <a class="title-link" name="sunset--sunrise-trigger" href="trigger.1.html#sunset--sunrise-trigger"></a>
+</h3>
+<p>Fires when the sun is setting or rising, i.e., when the sun elevation reaches 0°.</p>
+<p>An optional time offset can be given to have it fire a set time before or after the sun event (e.g.,  45 minutes before sunset). A negative value makes it fire before sunrise or sunset, a positive value afterwards. The offset needs to be specified in number of seconds, or in a hh:mm:ss format.</p>
+<div class="alert alert-tip">
+  <p class="alert-title"><iconify-icon inline icon="mdi:lightbulb-outline"></iconify-icon> Tip</p>
+  <div class="alert-content">
+<p>Since the duration of twilight is different throughout the year, it is recommended to use <a href="trigger/index.html#sun-elevation-trigger">sun elevation triggers</a> instead of <code>sunset</code> or <code>sunrise</code> with a time offset to trigger automations during dusk or dawn.</p>
+  </div>
+</div>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">sun</span>
+      <span class="c1"># Possible values: sunset, sunrise</span>
+      <span class="na">event</span><span class="pi">:</span> <span class="s">sunset</span>
+      <span class="c1"># Optional time offset. This example will trigger 45 minutes before sunset.</span>
+      <span class="na">offset</span><span class="pi">:</span> <span class="s2">"</span><span class="s">-00:45:00"</span>
+</code></pre></div></div>
+<h3>Sun elevation trigger <a class="title-link" name="sun-elevation-trigger" href="trigger.1.html#sun-elevation-trigger"></a>
+</h3>
+<p>Sometimes you may want more granular control over an automation than simply sunset or sunrise and specify an exact elevation of the sun. This can be used to layer automations to occur as the sun lowers on the horizon or even after it is below the horizon. This is also useful when the “sunset” event is not dark enough outside and you would like the automation to run later at a precise solar angle instead of the time offset such as turning on exterior lighting. For most automations intended to run during dusk or dawn, a number between 0° and -6° is suitable; -4° is used in this example:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Exterior</span><span class="nv"> </span><span class="s">Lighting</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">when</span><span class="nv"> </span><span class="s">dark</span><span class="nv"> </span><span class="s">outside"</span>
+    <span class="na">triggers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">numeric_state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s">sun.sun</span>
+        <span class="na">attribute</span><span class="pi">:</span> <span class="s">elevation</span>
+        <span class="c1"># Can be a positive or negative number</span>
+        <span class="na">below</span><span class="pi">:</span> <span class="s">-4.0</span>
+    <span class="na">actions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">switch.turn_on</span>
+        <span class="na">target</span><span class="pi">:</span>
+          <span class="na">entity_id</span><span class="pi">:</span> <span class="s">switch.exterior_lighting</span>
+</code></pre></div></div>
+<p>If you want to get more precise, you can use this <a href="https://gml.noaa.gov/grad/solcalc/" rel="external nofollow">solar calculator<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>, which will help you estimate what the solar elevation will be at any specific time. Then from this, you can select from the defined twilight numbers.</p>
+<p>Although the actual amount of light depends on weather, topography and land cover, they are defined as:</p>
+<ul>
+<li>
+<p>Civil twilight: 0° &gt; Solar angle &gt; -6°</p>
+<p>This is what is meant by twilight for the average person: Under clear weather conditions, civil twilight approximates the limit at which solar illumination suffices for the human eye to clearly distinguish terrestrial objects. Enough illumination renders artificial sources unnecessary for most outdoor activities.</p>
+</li>
+<li>
+<p>Nautical twilight: -6° &gt; Solar angle &gt; -12°</p>
+</li>
+<li>
+<p>Astronomical twilight: -12° &gt; Solar angle &gt; -18°</p>
+</li>
+</ul>
+<p>A very thorough explanation of this is available in the Wikipedia article about the <a href="https://en.wikipedia.org/wiki/Twilight" rel="external nofollow">Twilight<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>.</p>
+<h2>Tag trigger <a class="title-link" name="tag-trigger" href="trigger.1.html#tag-trigger"></a>
+</h2>
+<p>Fires when a <a href="https://www.home-assistant.io/integrations/tag">tag</a> is scanned. For example, a NFC tag is
+scanned using the Home Assistant Companion mobile application.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">tag</span>
+      <span class="na">tag_id</span><span class="pi">:</span> <span class="s">A7-6B-90-5F</span>
+</code></pre></div></div>
+<p>Additionally, you can also only trigger if a card is scanned by a specific
+device/scanner by setting the <code>device_id</code>:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">tag</span>
+      <span class="na">tag_id</span><span class="pi">:</span> <span class="s">A7-6B-90-5F</span>
+      <span class="na">device_id</span><span class="pi">:</span> <span class="s">0e19cd3cf2b311ea88f469a7512c307d</span>
+</code></pre></div></div>
+<p>Or trigger on multiple possible devices for multiple tags:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">tag</span>
+      <span class="na">tag_id</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s2">"</span><span class="s">A7-6B-90-5F"</span>
+        <span class="pi">-</span> <span class="s2">"</span><span class="s">A7-6B-15-AC"</span>
+      <span class="na">device_id</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">0e19cd3cf2b311ea88f469a7512c307d</span>
+        <span class="pi">-</span> <span class="s">d0609cb25f4a13922bb27d8f86e4c821</span>
+</code></pre></div></div>
+<h2>Template trigger <a class="title-link" name="template-trigger" href="trigger.1.html#template-trigger"></a>
+</h2>
+<p>Template triggers work by evaluating a <a href="../configuration/templating/index.html">template</a> when any of the recognized entities change state. The trigger will fire if the state change caused the template to render ‘true’ (a non-zero number or any of the strings <code>true</code>, <code>yes</code>, <code>on</code>, <code>enable</code>) when it was previously ‘false’ (anything else).</p>
+<p>This is achieved by having the template result in a true boolean expression (for example <code>{{ is_state('device_tracker.paulus', 'home') }}</code>) or by having the template render <code>true</code> (example below).</p>
+<p>With template triggers you can also evaluate attribute changes by using is_state_attr (like <code>{{ is_state_attr('climate.living_room', 'away_mode', 'off') }}</code>)</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">template</span>
+      <span class="na">value_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{%</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">is_state('device_tracker.paulus',</span><span class="nv"> </span><span class="s">'home')</span><span class="nv"> </span><span class="s">%}true{%</span><span class="nv"> </span><span class="s">endif</span><span class="nv"> </span><span class="s">%}"</span>
+
+      <span class="c1"># If given, will trigger when template remains true for X time.</span>
+      <span class="na">for</span><span class="pi">:</span> <span class="s2">"</span><span class="s">00:01:00"</span>
+</code></pre></div></div>
+<p>You can also use templates in the <code>for</code> option.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">template</span>
+      <span class="na">value_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">is_state('device_tracker.paulus',</span><span class="nv"> </span><span class="s">'home')</span><span class="nv"> </span><span class="s">}}"</span>
+      <span class="na">for</span><span class="pi">:</span>
+        <span class="na">minutes</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">states('input_number.minutes')|int(0)</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div></div>
+<p>The <code>for</code> template(s) will be evaluated when the <code>value_template</code> becomes ‘true’.</p>
+<p>Templates that do not contain an entity will be rendered once per minute.</p>
+<div class="alert alert-important">
+  <p class="alert-title"><iconify-icon inline icon="mdi:message-alert-outline"></iconify-icon> Important</p>
+  <div class="alert-content">
+<p>Use of the <code>for</code> option will not survive Home Assistant restart or the reload of automations. During restart or reload, automations that were awaiting <code>for</code> the trigger to pass, are reset.</p>
+<p>If for your use case this is undesired, you could consider using the automation to set an <a href="https://www.home-assistant.io/integrations/input_datetime"><code>input_datetime</code></a> to the desired time and then use that <a href="https://www.home-assistant.io/integrations/input_datetime"><code>input_datetime</code></a> as an automation trigger to perform the desired actions at the set time.</p>
+  </div>
+</div>
+<h2>Time trigger <a class="title-link" name="time-trigger" href="trigger.1.html#time-trigger"></a>
+</h2>
+<p>The time trigger is configured to fire once a day at a specific time, or at a specific time on a specific date. There are three allowed formats:</p>
+<h3>Time string <a class="title-link" name="time-string" href="trigger.1.html#time-string"></a>
+</h3>
+<p>A string that represents a time to fire on each day. Can be specified as <code>HH:MM</code> or <code>HH:MM:SS</code>. If the seconds are not specified, <code>:00</code> will be used.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">time</span>
+      <span class="c1"># 24-hour time format. This trigger will fire at 3:32 PM</span>
+      <span class="na">at</span><span class="pi">:</span> <span class="s2">"</span><span class="s">15:32:00"</span>
+</code></pre></div></div>
+<h3>Input datetime <a class="title-link" name="input-datetime" href="trigger.1.html#input-datetime"></a>
+</h3>
+<p>The entity ID of an <a href="https://www.home-assistant.io/integrations/input_datetime/">input datetime</a>.</p>
+<table>
+<thead>
+<tr>
+<th>has_date</th>
+<th>has_time</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>true</code></td>
+<td><code>true</code></td>
+<td>Will fire at specified date &amp; time.</td>
+</tr>
+<tr>
+<td><code>true</code></td>
+<td><code>false</code></td>
+<td>Will fire at midnight on specified date.</td>
+</tr>
+<tr>
+<td><code>false</code></td>
+<td><code>true</code></td>
+<td>Will fire once a day at specified time.</td>
+</tr>
+</tbody>
+</table>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">triggers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s">binary_sensor.motion</span>
+        <span class="na">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">on"</span>
+    <span class="na">actions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">climate.turn_on</span>
+        <span class="na">target</span><span class="pi">:</span>
+          <span class="na">entity_id</span><span class="pi">:</span> <span class="s">climate.office</span>
+      <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">input_datetime.set_datetime</span>
+        <span class="na">target</span><span class="pi">:</span>
+          <span class="na">entity_id</span><span class="pi">:</span> <span class="s">input_datetime.turn_off_ac</span>
+        <span class="na">data</span><span class="pi">:</span>
+          <span class="na">datetime</span><span class="pi">:</span> <span class="pi">&gt;</span>
+            <span class="s">{{ (now().timestamp() + 2*60*60)</span>
+               <span class="s">| timestamp_custom('%Y-%m-%d %H:%M:%S') }}</span>
+  <span class="pi">-</span> <span class="na">triggers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">time</span>
+        <span class="na">at</span><span class="pi">:</span> <span class="s">input_datetime.turn_off_ac</span>
+    <span class="na">actions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">climate.turn_off</span>
+        <span class="na">target</span><span class="pi">:</span>
+          <span class="na">entity_id</span><span class="pi">:</span> <span class="s">climate.office</span>
+</code></pre></div></div>
+<h3>Sensors of datetime device class <a class="title-link" name="sensors-of-datetime-device-class" href="trigger.1.html#sensors-of-datetime-device-class"></a>
+</h3>
+<p>The Entity ID of a <a href="https://www.home-assistant.io/integrations/sensor/">sensor</a> with the “timestamp” device class.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">triggers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">time</span>
+        <span class="na">at</span><span class="pi">:</span> <span class="s">sensor.phone_next_alarm</span>
+    <span class="na">actions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_on</span>
+        <span class="na">target</span><span class="pi">:</span>
+          <span class="na">entity_id</span><span class="pi">:</span> <span class="s">light.bedroom</span>
+</code></pre></div></div>
+<h3>Sensors of datetime device class with offsets <a class="title-link" name="sensors-of-datetime-device-class-with-offsets" href="trigger.1.html#sensors-of-datetime-device-class-with-offsets"></a>
+</h3>
+<p>When the time is provided using a sensor of the timestamp device class, an offset can be provided. This offset will be added to (or subtracted from when negative) the sensor value.</p>
+<p>For example, this trigger fires 5 minutes before the phone alarm goes off.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">triggers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">time</span>
+        <span class="na">at</span><span class="pi">:</span>
+          <span class="na">entity_id</span><span class="pi">:</span> <span class="s">sensor.phone_next_alarm</span>
+          <span class="na">offset</span><span class="pi">:</span> <span class="s">-00:05:00</span>
+    <span class="na">actions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_on</span>
+        <span class="na">target</span><span class="pi">:</span>
+          <span class="na">entity_id</span><span class="pi">:</span> <span class="s">light.bedroom</span>
+</code></pre></div></div>
+<div class="alert alert-important">
+  <p class="alert-title"><iconify-icon inline icon="mdi:message-alert-outline"></iconify-icon> Important</p>
+  <div class="alert-content">
+<p>When using a positive offset the trigger might never fire. This is due to the sensor changing before the offset is reached. For example, when using a phone alarm as a trigger, the sensor value will change to the new alarm time when the alarm goes off, which means this trigger will change to the new time as well.</p>
+  </div>
+</div>
+<h3>Multiple times <a class="title-link" name="multiple-times" href="trigger.1.html#multiple-times"></a>
+</h3>
+<p>Multiple times can be provided in a list. All formats can be intermixed.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">time</span>
+      <span class="na">at</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">input_datetime.leave_for_work</span>
+        <span class="pi">-</span> <span class="s2">"</span><span class="s">18:30:00"</span>
+        <span class="pi">-</span> <span class="na">entity_id</span><span class="pi">:</span> <span class="s">sensor.bus_arrival</span>
+          <span class="na">offset</span><span class="pi">:</span> <span class="s2">"</span><span class="s">-00:10:00"</span>
+</code></pre></div></div>
+<h3>Limited templates <a class="title-link" name="limited-templates" href="trigger.1.html#limited-templates"></a>
+</h3>
+<p>It’s also possible to use <a href="../configuration/templating/index.html#limited-templates">limited templates</a> for times.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">blueprint</span><span class="pi">:</span>
+  <span class="na">input</span><span class="pi">:</span>
+    <span class="na">alarm</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Alarm</span>
+      <span class="na">selector</span><span class="pi">:</span> 
+        <span class="na">text</span><span class="pi">:</span>
+    <span class="na">hour</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Hour</span>
+      <span class="na">selector</span><span class="pi">:</span>
+        <span class="na">number</span><span class="pi">:</span>
+          <span class="na">min</span><span class="pi">:</span> <span class="m">0</span>
+          <span class="na">max</span><span class="pi">:</span> <span class="m">24</span>
+
+  <span class="na">trigger_variables</span><span class="pi">:</span>
+    <span class="na">my_alarm</span><span class="pi">:</span> <span class="kt">!input</span> <span class="s">alarm</span>
+    <span class="na">my_hour</span><span class="pi">:</span> <span class="kt">!input</span> <span class="s">hour</span>
+  <span class="na">trigger</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">platform</span><span class="pi">:</span> <span class="s">time</span>
+      <span class="na">at</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">sensor.{{</span><span class="nv"> </span><span class="s">my_alarm</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">slugify</span><span class="nv"> </span><span class="s">}}_time"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">my_hour</span><span class="nv"> </span><span class="s">}}:30:00"</span>
+</code></pre></div></div>
+<h3>Weekday filtering <a class="title-link" name="weekday-filtering" href="trigger.1.html#weekday-filtering"></a>
+</h3>
+<p>Time triggers can be filtered to fire only on specific days of the week using the <code>weekday</code> option. This allows you to create automations that only run on certain days, such as weekdays or weekends.</p>
+<p>The <code>weekday</code> option accepts:</p>
+<ul>
+<li>A single weekday as a string: <code>"mon"</code>, <code>"tue"</code>, <code>"wed"</code>, <code>"thu"</code>, <code>"fri"</code>, <code>"sat"</code>, <code>"sun"</code>
+</li>
+<li>A list of weekdays using the expanded format</li>
+</ul>
+<h4>Single weekday <a class="title-link" name="single-weekday" href="trigger.1.html#single-weekday"></a>
+</h4>
+<p>This example will turn on the lights only on Mondays at 8:00 AM:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">triggers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">time</span>
+        <span class="na">at</span><span class="pi">:</span> <span class="s2">"</span><span class="s">08:00:00"</span>
+        <span class="na">weekday</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mon"</span>
+    <span class="na">actions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_on</span>
+        <span class="na">target</span><span class="pi">:</span>
+          <span class="na">entity_id</span><span class="pi">:</span> <span class="s">light.bedroom</span>
+</code></pre></div></div>
+<h4>Multiple weekdays <a class="title-link" name="multiple-weekdays" href="trigger.1.html#multiple-weekdays"></a>
+</h4>
+<p>This example will run a morning routine only on weekdays (Monday through Friday) at 6:30 AM:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">triggers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">time</span>
+        <span class="na">at</span><span class="pi">:</span> <span class="s2">"</span><span class="s">06:30:00"</span>
+        <span class="na">weekday</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">mon"</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">tue"</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">wed"</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">thu"</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">fri"</span>
+    <span class="na">actions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">script.morning_routine</span>
+</code></pre></div></div>
+<h4>Weekend example <a class="title-link" name="weekend-example" href="trigger.1.html#weekend-example"></a>
+</h4>
+<p>This example demonstrates a different wake-up time for weekends:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Weekday</span><span class="nv"> </span><span class="s">alarm"</span>
+    <span class="na">triggers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">time</span>
+        <span class="na">at</span><span class="pi">:</span> <span class="s2">"</span><span class="s">06:30:00"</span>
+        <span class="na">weekday</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">mon"</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">tue"</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">wed"</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">thu"</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">fri"</span>
+    <span class="na">actions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">script.weekday_morning</span>
+
+  <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Weekend</span><span class="nv"> </span><span class="s">alarm"</span>
+    <span class="na">triggers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">time</span>
+        <span class="na">at</span><span class="pi">:</span> <span class="s2">"</span><span class="s">08:00:00"</span>
+        <span class="na">weekday</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">sat"</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">sun"</span>
+    <span class="na">actions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">script.weekend_morning</span>
+</code></pre></div></div>
+<h4>Combined with input datetime <a class="title-link" name="combined-with-input-datetime" href="trigger.1.html#combined-with-input-datetime"></a>
+</h4>
+<p>The <code>weekday</code> option works with all time formats, including input datetime entities:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">triggers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">time</span>
+        <span class="na">at</span><span class="pi">:</span> <span class="s">input_datetime.work_start_time</span>
+        <span class="na">weekday</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">mon"</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">tue"</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">wed"</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">thu"</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">fri"</span>
+    <span class="na">actions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">notify.mobile_app</span>
+        <span class="na">data</span><span class="pi">:</span>
+          <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Work</span><span class="nv"> </span><span class="s">Day!"</span>
+          <span class="na">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Time</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">start</span><span class="nv"> </span><span class="s">working"</span>
+</code></pre></div></div>
+<h2>Time pattern trigger <a class="title-link" name="time-pattern-trigger" href="trigger.1.html#time-pattern-trigger"></a>
+</h2>
+<p>With the time pattern trigger, you can match if the hour, minute or second of the current time matches a specific value. You can prefix the value with a <code>/</code> to match whenever the value is divisible by that number. You can specify <code>*</code> to match any value.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">time_pattern</span>
+      <span class="c1"># Matches every hour at 5 minutes past whole</span>
+      <span class="na">minutes</span><span class="pi">:</span> <span class="m">5</span>
+
+<span class="na">automation 2</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">time_pattern</span>
+      <span class="c1"># Trigger once per minute during the hour of 3</span>
+      <span class="na">hours</span><span class="pi">:</span> <span class="s2">"</span><span class="s">3"</span>
+      <span class="na">minutes</span><span class="pi">:</span> <span class="s2">"</span><span class="s">*"</span>
+
+<span class="na">automation 3</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">time_pattern</span>
+      <span class="c1"># You can also match on interval. This will match every 5 minutes</span>
+      <span class="na">minutes</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/5"</span>
+</code></pre></div></div>
+<div class="alert alert-note">
+  <p class="alert-title"><iconify-icon inline icon="mdi:information-outline"></iconify-icon> Note</p>
+  <div class="alert-content">
+<p>Do not prefix numbers with a zero - using <code>'01'</code> instead of <code>'1'</code> for example will result in errors.</p>
+  </div>
+</div>
+<h2>Persistent notification trigger <a class="title-link" name="persistent-notification-trigger" href="trigger.1.html#persistent-notification-trigger"></a>
+</h2>
+<p>Persistent notification triggers are fired when a <code>persistent_notification</code> is <code>added</code> or <code>removed</code> that matches the configuration options.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">persistent_notification</span>
+      <span class="na">update_type</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">added</span>
+        <span class="pi">-</span> <span class="s">removed</span>
+      <span class="na">notification_id</span><span class="pi">:</span> <span class="s">invalid_config</span>
+</code></pre></div></div>
+<p>See the <a href="https://www.home-assistant.io/integrations/persistent_notification/">Persistent Notification</a> integration for more details on event triggers and the additional event data available for use by an automation.</p>
+<h2>Webhook trigger <a class="title-link" name="webhook-trigger" href="trigger.1.html#webhook-trigger"></a>
+</h2>
+<p>Webhook trigger fires when a web request is made to the webhook endpoint: <code>/api/webhook/&lt;webhook_id&gt;</code>. The webhook endpoint is created automatically when you set it as the <code>webhook_id</code> in an automation trigger. The <code>webhook_id</code> can either be a static value or computed using <a href="../configuration/templating/index.html#limited-templates">limited templates</a>.</p>
+<div class="alert alert-note">
+  <p class="alert-title"><iconify-icon inline icon="mdi:information-outline"></iconify-icon> Note</p>
+  <div class="alert-content">
+<p>The <code>webhook_id</code> template is only evaluated when setting up the trigger, they will not be re-evaluated for incoming webhook triggers.</p>
+  </div>
+</div>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">trigger_variables</span><span class="pi">:</span>
+    <span class="na">webhook_id_variable</span><span class="pi">:</span> <span class="s2">"</span><span class="s">template_webhook_id"</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">webhook</span>
+      <span class="na">webhook_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">some_hook_id"</span>
+      <span class="na">allowed_methods</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">POST</span>
+        <span class="pi">-</span> <span class="s">PUT</span>
+      <span class="na">local_only</span><span class="pi">:</span> <span class="kc">true</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">webhook</span>
+      <span class="na">webhook_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+      <span class="na">allowed_methods</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">POST</span>
+</code></pre></div></div>
+<p>You can run this automation by sending an HTTP POST request to <code>http://your-home-assistant:8123/api/webhook/some_hook_id</code>. Here is an example using the <strong>curl</strong> command line program, with an example form data payload:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="shell">curl <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="s1">'key=value&amp;key2=value2'</span> https://your-home-assistant:8123/api/webhook/some_hook_id
+</code></pre></div></div>
+<p>Webhooks support HTTP POST, PUT, HEAD, and GET requests; PUT requests are recommended. HTTP GET and HEAD requests are not enabled by default but can be enabled by adding them to the <code>allowed_methods</code> option. The request methods can also be configured in the UI by selecting the settings gear menu button beside the Webhook ID.</p>
+<p>By default, webhook triggers can only be accessed from devices on the same network as Home Assistant or via <a href="https://www.nabucasa.com/config/webhooks/">Nabu Casa Cloud webhooks<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>. The <code>local_only</code> option should be set to <code>false</code> to allow webhooks to be triggered directly via the internet. This option can also be configured in the UI by selecting the settings gear menu button beside the Webhook ID.</p>
+<p>Remember to use an HTTPS URL if you’ve secured your Home Assistant installation with SSL/TLS.</p>
+<p>Note that a given webhook can only be used in one automation at a time. That is, only one automation trigger can use a specific webhook ID.</p>
+<h3>Webhook data <a class="title-link" name="webhook-data" href="trigger.1.html#webhook-data"></a>
+</h3>
+<p>Payloads may either be encoded as form data or JSON. Depending on that, its data will be available in an automation template as either <code>trigger.data</code> or <code>trigger.json</code>. URL query parameters are also available in the template as <code>trigger.query</code>.</p>
+<p>Note that to use JSON encoded payloads, the <code>Content-Type</code> header must be set to <code>application/json</code>, e.g.:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="bash">curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">-d</span> <span class="s1">'{ "key": "value" }'</span> https://your-home-assistant:8123/api/webhook/some_hook_id
+</code></pre></div></div>
+<h3>Webhook security <a class="title-link" name="webhook-security" href="trigger.1.html#webhook-security"></a>
+</h3>
+<p>Webhook endpoints don’t require authentication, other than knowing a valid webhook ID. Security best practices for webhooks include:</p>
+<ul>
+<li>Do not use webhooks to trigger automations that are destructive, or that can create safety issues. For example, do not use a webhook to unlock a lock, or open a garage door.</li>
+<li>Treat a webhook ID like a password: use a unique, non-guessable value, and keep it secret.</li>
+<li>Do not copy-and-paste webhook IDs from public sources, including blueprints. Always create your own.</li>
+<li>Keep the <code>local_only</code> option enabled for webhooks if access from the internet is not required.</li>
+</ul>
+<h2>Zone trigger <a class="title-link" name="zone-trigger" href="trigger.1.html#zone-trigger"></a>
+</h2>
+<p>Zone trigger fires when an entity is entering or leaving the zone. The entity can be either a person, or a device_tracker. For zone automation to work, you need to have setup a device tracker platform that supports reporting GPS coordinates. This includes <a href="https://www.home-assistant.io/integrations/gpslogger/">GPS Logger</a>, the <a href="https://www.home-assistant.io/integrations/owntracks/">OwnTracks platform</a> and the <a href="https://www.home-assistant.io/integrations/icloud/">iCloud platform</a>.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">zone</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">person.paulus</span>
+      <span class="na">zone</span><span class="pi">:</span> <span class="s">zone.home</span>
+      <span class="c1"># Event is either enter or leave</span>
+      <span class="na">event</span><span class="pi">:</span> <span class="s">enter</span> <span class="c1"># or "leave"</span>
+</code></pre></div></div>
+<h2>Geolocation trigger <a class="title-link" name="geolocation-trigger" href="trigger.1.html#geolocation-trigger"></a>
+</h2>
+<p>Geolocation trigger fires when an entity is appearing in or disappearing from a zone. Entities that are created by a <a href="https://www.home-assistant.io/integrations/geo_location/">Geolocation</a> platform support reporting GPS coordinates.
+Because entities are generated and removed by these platforms automatically, the entity ID normally cannot be predicted. Instead, this trigger requires the definition of a <code>source</code>, which is directly linked to one of the Geolocation platforms.</p>
+<div class="alert alert-tip">
+  <p class="alert-title"><iconify-icon inline icon="mdi:lightbulb-outline"></iconify-icon> Tip</p>
+  <div class="alert-content">
+<p>This isn’t for use with <code>device_tracker</code> entities. For those look above at the <code>zone</code> trigger.</p>
+  </div>
+</div>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">geo_location</span>
+      <span class="na">source</span><span class="pi">:</span> <span class="s">nsw_rural_fire_service_feed</span>
+      <span class="na">zone</span><span class="pi">:</span> <span class="s">zone.bushfire_alert_zone</span>
+      <span class="c1"># Event is either enter or leave</span>
+      <span class="na">event</span><span class="pi">:</span> <span class="s">enter</span> <span class="c1"># or "leave"</span>
+</code></pre></div></div>
+<h2>Device triggers <a class="title-link" name="device-triggers" href="trigger.1.html#device-triggers"></a>
+</h2>
+<p>Device triggers encompass a set of events that are defined by an integration. This includes, for example, state changes of sensors as well as button events from remotes.
+<a href="https://www.home-assistant.io/integrations/device_trigger.mqtt/">MQTT device triggers</a> are set up through autodiscovery.</p>
+<p>In contrast to state triggers, device triggers are tied to a device and not necessarily an entity.
+To use a device trigger, set up an automation through the browser frontend.
+If you would like to use a device trigger for an automation that is not managed through the browser frontend, you can copy the YAML from the trigger widget in the frontend and paste it into your automation’s trigger list.</p>
+<h2>Calendar trigger <a class="title-link" name="calendar-trigger" href="trigger.1.html#calendar-trigger"></a>
+</h2>
+<p>Calendar trigger fires when a <a href="https://www.home-assistant.io/integrations/calendar/">Calendar</a> event starts or ends, allowing
+for much more flexible automations than using the Calendar entity state which only supports a single
+event start at a time.</p>
+<p>An optional time offset can be given to have it fire a set time before or after the calendar event (e.g., 5 minutes before event start).</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">calendar</span>
+      <span class="c1"># Possible values: start, end</span>
+      <span class="na">event</span><span class="pi">:</span> <span class="s">start</span>
+      <span class="c1"># The calendar entity_id</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">calendar.light_schedule</span>
+      <span class="c1"># Optional time offset</span>
+      <span class="na">offset</span><span class="pi">:</span> <span class="s2">"</span><span class="s">-00:05:00"</span>
+</code></pre></div></div>
+<p>See the <a href="https://www.home-assistant.io/integrations/calendar/">Calendar</a> integration for more details on event triggers and the
+additional event data available for use by an automation.</p>
+<h2>Sentence trigger <a class="title-link" name="sentence-trigger" href="trigger.1.html#sentence-trigger"></a>
+</h2>
+<p>A sentence trigger fires when <a href="https://www.home-assistant.io/voice_control/">Assist</a> matches a sentence from a voice assistant using the default <a href="https://www.home-assistant.io/integrations/conversation/">conversation agent</a>. Sentence triggers work with Home Assistant Assist. They will not work with external conversation agents such as OpenAI or Google Generative AI unless “Prefer handling commands locally” is enabled in the conversation agent settings.</p>
+<p>Sentences are allowed to use some basic <a href="https://developers.home-assistant.io/docs/voice/intent-recognition/template-sentence-syntax/#sentence-templates-syntax">template syntax</a> like optional and alternative words. For example, <code>[it's ]party time</code> will match both “party time” and “it’s party time”.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">conversation</span>
+      <span class="na">command</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s2">"</span><span class="s">[it's</span><span class="nv"> </span><span class="s">]party</span><span class="nv"> </span><span class="s">time"</span>
+        <span class="pi">-</span> <span class="s2">"</span><span class="s">happy</span><span class="nv"> </span><span class="s">(new</span><span class="nv"> </span><span class="s">year|birthday)"</span>
+</code></pre></div></div>
+<p>The sentences matched by this trigger will be:</p>
+<ul>
+<li>party time</li>
+<li>it’s party time</li>
+<li>happy new year</li>
+<li>happy birthday</li>
+</ul>
+<p>Punctuation and casing are ignored, so “It’s PARTY TIME!!!” will also match.</p>
+<h3>Related topic <a class="title-link" name="related-topic" href="trigger.1.html#related-topic"></a>
+</h3>
+<ul>
+<li><a href="https://www.home-assistant.io/voice_control/custom_sentences/#adding-a-custom-sentence-to-trigger-an-automation">Adding a custom sentence to trigger an automation</a></li>
+</ul>
+<h3>Sentence wildcards <a class="title-link" name="sentence-wildcards" href="trigger.1.html#sentence-wildcards"></a>
+</h3>
+<p>Adding one or more <code>{lists}</code> to your trigger sentences will capture any text at that point in the sentence. A <code>slots</code> object will be <a href="templating.1.html#sentence">available in the trigger data</a>.
+This allows you to match sentences with variable parts, such as album/artist names or a description of a picture.</p>
+<p>For example, the sentence <code>play {album} by {artist}</code> will match “play the white album by the beatles” and have the following variables available in the action templates:</p>
+<ul>
+<li>
+<code>{{ trigger.slots.album }}</code> - “the white album”</li>
+<li>
+<code>{{ trigger.slots.artist }}</code> - “the beatles”</li>
+</ul>
+<p>Wildcards will match as much text as possible, which may lead to surprises: “play day by day by taken by trees” will match <code>album</code> as “day” and <code>artist</code> as “day by taken by trees”.
+Including extra words in your template can help: <code>play {album} by artist {artist}</code> can now correctly match “play day by day by artist taken by trees”.</p>
+<h2>Multiple triggers <a class="title-link" name="multiple-triggers" href="trigger.1.html#multiple-triggers"></a>
+</h2>
+<p>It is possible to specify multiple triggers for the same rule. To do so just prefix the first line of each trigger with a dash (-) and indent the next lines accordingly. Whenever one of the triggers fires, processing of your automation rule begins.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="c1"># first trigger</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">time_pattern</span>
+      <span class="na">minutes</span><span class="pi">:</span> <span class="m">5</span>
+      <span class="c1"># our second trigger is the sunset</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">sun</span>
+      <span class="na">event</span><span class="pi">:</span> <span class="s">sunset</span>
+</code></pre></div></div>
+<h2>Multiple entity IDs for the same trigger <a class="title-link" name="multiple-entity-ids-for-the-same-trigger" href="trigger.1.html#multiple-entity-ids-for-the-same-trigger"></a>
+</h2>
+<p>It is possible to specify multiple entities for the same trigger. To do so add multiple entities using a nested list. The trigger will fire and start, processing your automation each time the trigger is true for any entity listed.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">sensor.one</span>
+        <span class="pi">-</span> <span class="s">sensor.two</span>
+        <span class="pi">-</span> <span class="s">sensor.three</span>
+</code></pre></div></div>
+<h2>Disabling a trigger <a class="title-link" name="disabling-a-trigger" href="trigger.1.html#disabling-a-trigger"></a>
+</h2>
+<p>Every individual trigger in an automation can be disabled, without removing it.
+To do so, add <code>enabled: false</code> to the trigger. For example:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Example script with a disabled trigger</span>
+<span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="c1"># This trigger will not trigger, as it is disabled.</span>
+    <span class="c1"># This automation does not run when the sun is set.</span>
+    <span class="pi">-</span> <span class="na">enabled</span><span class="pi">:</span> <span class="kc">false</span>
+      <span class="na">trigger</span><span class="pi">:</span> <span class="s">sun</span>
+      <span class="na">event</span><span class="pi">:</span> <span class="s">sunset</span>
+
+    <span class="c1"># This trigger will fire, as it is not disabled.</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">time</span>
+      <span class="na">at</span><span class="pi">:</span> <span class="s2">"</span><span class="s">15:32:00"</span>
+</code></pre></div></div>
+<p>Triggers can also be disabled based on limited templates or blueprint inputs. These are only evaluated once when the automation is loaded.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">blueprint</span><span class="pi">:</span>
+  <span class="na">input</span><span class="pi">:</span>
+    <span class="na">input_boolean</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Boolean</span>
+      <span class="na">selector</span><span class="pi">:</span> 
+        <span class="na">boolean</span><span class="pi">:</span>
+    <span class="na">input_number</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Number</span>
+      <span class="na">selector</span><span class="pi">:</span>
+        <span class="na">number</span><span class="pi">:</span>
+          <span class="na">min</span><span class="pi">:</span> <span class="m">0</span>
+          <span class="na">max</span><span class="pi">:</span> <span class="m">100</span>
+
+  <span class="na">trigger_variables</span><span class="pi">:</span>
+    <span class="na">_enable_number</span><span class="pi">:</span> <span class="kt">!input</span> <span class="s">input_number</span>
+
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">sun</span>
+      <span class="na">event_type</span><span class="pi">:</span> <span class="s">sunrise</span>
+      <span class="na">enabled</span><span class="pi">:</span> <span class="kt">!input</span> <span class="s">input_boolean</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">sun</span>
+      <span class="na">event_type</span><span class="pi">:</span> <span class="s">sunset</span>
+      <span class="na">enabled</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">_enable_number</span><span class="nv"> </span><span class="s">&lt;</span><span class="nv"> </span><span class="s">50</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div></div>
+<h2>Merging lists of triggers <a class="title-link" name="merging-lists-of-triggers" href="trigger.1.html#merging-lists-of-triggers"></a>
+</h2>
+<div class="alert alert-caution">
+  <p class="alert-title"><iconify-icon inline icon="mdi:alert-circle-outline"></iconify-icon> Caution</p>
+  <div class="alert-content">
+<p>This feature requires Home Assistant version 2024.10 or later. If using this in a blueprint, set the <code>min_version</code> for the blueprint to at least this version. See the <a href="../blueprint/schema/index.html#min_version">blueprint schema documentation</a> for more details.</p>
+  </div>
+</div>
+<p>In some advanced cases (like for blueprints with trigger selectors), it may be necessary to insert a second list of triggers into the main trigger list. This can be done by adding a dictionary in the main trigger list with the sole key <code>triggers</code>, and the value for that key contains a second list of triggers. These will then be flattened into a single list of triggers. For example:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">blueprint</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">Nested Trigger Blueprint</span>
+  <span class="na">domain</span><span class="pi">:</span> <span class="s">automation</span>
+  <span class="na">input</span><span class="pi">:</span>
+    <span class="na">usertrigger</span><span class="pi">:</span>
+      <span class="na">selector</span><span class="pi">:</span>
+        <span class="na">trigger</span><span class="pi">:</span>
+
+<span class="na">triggers</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">event</span>
+    <span class="na">event_type</span><span class="pi">:</span> <span class="s">manual_event</span>
+  <span class="pi">-</span> <span class="na">triggers</span><span class="pi">:</span> <span class="kt">!input</span> <span class="s">usertrigger</span>
+</code></pre></div></div>
+<p>This blueprint automation can then be triggered either by the fixed manual_event trigger, or additionally by any triggers selected in the trigger selector. This is also applicable for <code>wait_for_trigger</code> action.</p>
+
+
+  
+
+<div class="text related-topics">
+  <h2>Related topics<a class="title-link" href="trigger.1.html#related-topics" name="related-topics"></a>
+</h2>
+  <ul>
+    
+    
+    
+    
+    
+    <li>
+      <a href="https://www.home-assistant.io/voice_control/custom_sentences/#adding-a-custom-sentence-to-trigger-an-automation" class="topic">
+        Adding a custom sentence to trigger an automation
+      </a>
+    </li>
+    </ul>
+</div>
+
+
+  
+<div class="material-card text feedback">
+  <h4>
+<iconify-icon inline icon="mdi:feedback" title="Feedback"></iconify-icon> <b> Help us improve our documentation</b><a href="trigger.1.html#feedback_section" class="title-link" name="feedback_section"></a>
+</h4>
+  Suggest an edit to this page, or provide/view feedback for this page.
+  <div class="links">
+    <ul aria-label="Page feedback options">
+    <li><a href="https://github.com/home-assistant/home-assistant.io/tree/current/source/_docs/automation/trigger.markdown" target="_blank" title="Edit this page"><iconify-icon inline icon="mdi:edit"></iconify-icon> Edit</a></li>
+    
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues/new?template=feedback.yml&amp;url=https%3A%2F%2Fwww.home-assistant.io%2Fdocs%2Fautomation%2Ftrigger%2F&amp;version=2026.1.2&amp;labels=current" target="_blank" title="Provide feedback on this page"><iconify-icon inline icon="mdi:comment-edit-outline"></iconify-icon> Provide feedback</a></li>
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues?utf8=%E2%9C%93&amp;q=%22%2Fdocs%2Fautomation%2Ftrigger%2F%22&amp;in=body" target="_blank" title="View given feedback for this page"><iconify-icon inline icon="mdi:comment-text-multiple-outline"></iconify-icon> View given feedback</a></li>
+    
+  </ul>
+  </div>
+</div>
+
+
+</article>
+
+            
+          </div>
+
+
+          
+            
+              <aside id="sidebar" class="grid__item one-third desk-wide-one-quarter lap-one-whole palm-one-whole">
+            
+            <div class="grid">
+  
+
+
+
+
+  <section class="vertical-nav aside-module grid__item one-whole lap-one-half">
+  <div class="section">
+    <h1 class="title epsilon"><iconify-icon inline icon='mdi:bookshelf' title='Bookshelf'></iconify-icon> Documentation</h1>
+    <ul class="divided sidebar-menu">
+      <li>
+        <a  href='../index.html'>Overview </a>
+        |
+        <a  href='https://www.home-assistant.io/faq/'>FAQ </a>
+        |
+        <a  href='../glossary/index.html'>Glossary </a>
+      </li>
+
+      <li>
+  <iconify-icon icon="mdi:robot-happy"></iconify-icon> <a  href='index.html'>Automations </a>
+  
+  <ul>
+    <li>
+      <iconify-icon inline icon='mdi:robot-happy' title='Robot happy'></iconify-icon> <a  href='basics/index.html'>Basic automations </a>
+      
+      <ul>
+        <li><a  href='using_blueprints/index.html'>Using automation blueprints </a></li>
+        <li><a  href='editor/index.html'>Editor </a></li>
+        <li><a class='active' href='trigger/index.html'>Triggers </a></li>
+        <li><a  href='condition/index.html'>Conditions </a></li>
+        <li><a  href='action/index.html'>Actions </a></li>
+        <li><a  href='modes/index.html'>Run modes </a></li>
+        <li><a  href='services/index.html'>Automation actions </a></li>
+        <li><a  href='templating/index.html'>Templates </a></li>
+        <li><a  href='yaml/index.html'>YAML </a></li>
+        <li><a  href='troubleshooting/index.html'>Troubleshooting automation </a></li>
+      </ul>
+      
+    </li>
+    <li>
+      <iconify-icon inline icon='mdi:palette' title='Palette'></iconify-icon> <a  href='../scene/index.html'>Scenes </a>
+      
+    </li>
+    <li>
+      <iconify-icon inline icon='mdi:palette-swatch' title='Palette swatch'></iconify-icon> <a  href='../blueprint/index.html'>Blueprints </a>
+      
+    </li>
+    <li>
+      <iconify-icon inline icon='mdi:script-text' title='Script text'></iconify-icon> <a  href='../scripts/index.html'>Scripts </a>
+      
+    </li>
+  </ul>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> <a  href='https://www.home-assistant.io/dashboards'>Dashboards </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:microphone' title='Microphone'></iconify-icon> <a  href='https://www.home-assistant.io/voice_control/'>Voice assistants </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:category' title='Category'></iconify-icon> <a  href='../organizing/index.html'>Organization </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> <a  href='../energy/index.html'>Home energy management </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:update' title='Update'></iconify-icon> <a  href='https://www.home-assistant.io/common-tasks/general/'>Common tasks </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cogs' title='Cogs'></iconify-icon> <a  href='../configuration/index.html'>Advanced configuration </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:account-security' title='Account security'></iconify-icon> <a  href='../authentication/index.html'>Authentication </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:database' title='Database'></iconify-icon> <a  href='../backend/index.html'>Backend </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:palette' title='Palette'></iconify-icon> <a  href='../tools/index.html'>Tools and helpers </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cellphone' title='Cellphone'></iconify-icon> <a href="https://companion.home-assistant.io/docs">iOS and Android apps <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+</li>
+
+<li>
+  <iconify-icon inline icon='simple-icons:mqtt' title='Mqtt'></iconify-icon> <a  href='https://www.home-assistant.io/integrations/mqtt'>MQTT </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='bitcoin-icons:node-hardware-filled' title='Node hardware filled'></iconify-icon> Official hardware
+  <ul>
+    <li><a href="https://support.nabucasa.com/hc/categories/24638797677853">Home Assistant Green <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734620813469">Home Assistant Connect ZBT-1 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/29400540866973">Home Assistant Connect ZBT-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/28669861145885">Home Assistant Connect ZWA-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734575925149">Home Assistant Yellow <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24451727188125">Home Assistant Voice Preview Edition <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+  </ul>
+</li>
+
+    </ul>
+  </div>
+</section>
+
+
+
+  <section id="toc-module" class="aside-module grid__item one-whole lap-one-half">
+        <div class='section'>
+          <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+          <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="trigger.1.html#trigger-id">Trigger ID</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#video-tutorial">Video tutorial</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#trigger-variables">Trigger variables</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#event-trigger">Event trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#home-assistant-trigger">Home Assistant trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#mqtt-trigger">MQTT trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#numeric-state-trigger">Numeric state trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#state-trigger">State trigger</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#examples">Examples</a></li>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#triggering-on-attribute-changes">Triggering on attribute changes</a></li>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#holding-a-state-or-attribute">Holding a state or attribute</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#sun-trigger">Sun trigger</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#sunset--sunrise-trigger">Sunset / Sunrise trigger</a></li>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#sun-elevation-trigger">Sun elevation trigger</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#tag-trigger">Tag trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#template-trigger">Template trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#time-trigger">Time trigger</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#time-string">Time string</a></li>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#input-datetime">Input datetime</a></li>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#sensors-of-datetime-device-class">Sensors of datetime device class</a></li>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#sensors-of-datetime-device-class-with-offsets">Sensors of datetime device class with offsets</a></li>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#multiple-times">Multiple times</a></li>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#limited-templates">Limited templates</a></li>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#weekday-filtering">Weekday filtering</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#time-pattern-trigger">Time pattern trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#persistent-notification-trigger">Persistent notification trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#webhook-trigger">Webhook trigger</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#webhook-data">Webhook data</a></li>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#webhook-security">Webhook security</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#zone-trigger">Zone trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#geolocation-trigger">Geolocation trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#device-triggers">Device triggers</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#calendar-trigger">Calendar trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#sentence-trigger">Sentence trigger</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#related-topic">Related topic</a></li>
+<li class="toc-entry toc-h3"><a href="trigger.1.html#sentence-wildcards">Sentence wildcards</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#multiple-triggers">Multiple triggers</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#multiple-entity-ids-for-the-same-trigger">Multiple entity IDs for the same trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#disabling-a-trigger">Disabling a trigger</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#merging-lists-of-triggers">Merging lists of triggers</a></li>
+<li class="toc-entry toc-h2"><a href="trigger.1.html#related-topics">Related topics</a></li>
+</ul>
+        </div>
+      </section></div>
+
+          </aside>
+          
+        </div>
+      </div>
+
+      <footer>
+        <div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item">
+      <div class="skyline grid">
+        <div class="skyline grid__item one-whole">
+          <div class="footer-skyline">
+          </div>
+        </div>
+      </div>
+      <div class="footer-nav grid">
+        <div class="company grid__item one-quarter lap-one-half palm-one-whole">
+          <div class="title">
+            <img
+              src="../../images/footer-logo-text.svg"
+              height="72"
+              alt="Home Assistant"
+            />
+          </div>
+          <p>
+            Home Assistant is a project from the <a href="https://www.openhomefoundation.org/">Open Home Foundation</a>, sponsored by <a href="https://www.nabucasa.com/">Nabu Casa</a>.
+          </p>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Join us and contribute!</h3>
+          <ul>
+            <li><a class="external-link" href="https://github.com/home-assistant/">GitHub repo <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://developers.home-assistant.io">Developers Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://design.home-assistant.io">Design Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://data.home-assistant.io">Data Science Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://community.home-assistant.io">Community Forum <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://creators.home-assistant.io/">Creator Network <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://works-with.home-assistant.io/">Works With Home Assistant <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a href="https://www.home-assistant.io/community">Our community</a></li>
+            <li><a href="https://www.home-assistant.io/help/reporting_issues/">Reporting issues</a></li>
+          </ul>
+          <h3>System status</h3>
+          <ul>
+            <li>
+              <a class="external-link"  href="https://alerts.home-assistant.io">Integration Alerts <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+            <li><a href="https://www.home-assistant.io/security/">Security Alerts</a></li>
+            <li>
+              <a class="external-link" href="https://status.home-assistant.io">System Status <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Companion apps</h3>
+          <ul>
+            <li><a class="external-link" href="https://apps.apple.com/app/id1099568401">iOS and Apple devices</a></li>
+            <li><a class="external-link" href="https://play.google.com/store/apps/details?id=io.homeassistant.companion.android">Android and Wear OS</a></li>
+            <li><a class="external-link" href="https://companion.home-assistant.io/">...and more!</a></li>
+          </ul>
+          <h3>Governance</h3>
+          <ul>
+            <li><a href="https://www.home-assistant.io/privacy/">Privacy Notices</a></li>
+            <li><a href="https://www.home-assistant.io/developers/cla/">Contributor License Agreement</a></li>
+            <li><a href="https://www.home-assistant.io/tos/">Terms of Service</a></li>
+            <li><a href="https://www.home-assistant.io/code_of_conduct/">Code of Conduct</a></li>
+            <li><a href="https://www.home-assistant.io/developers/credits/">Credits</a></li>
+            <li><a href="https://www.home-assistant.io/developers/license/">License</a></li>
+          </ul>
+        </div>
+
+        <div class="socials grid__item one-quarter lap-one-half palm-one-whole">
+
+          <h3>Follow us</h3>
+          <p><a class="external-link" href='https://newsletter.openhomefoundation.org/#/portal'>Sign up for our newsletter <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></p>
+          <div class="icons">
+            <a
+              rel="me"
+              href="https://youtube.com/@home_assistant"
+              title="YouTube"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:youtube"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://reddit.com/r/homeassistant"
+              title="Reddit"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:reddit"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://github.com/home-assistant"
+              title="GitHub"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:github"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://fosstodon.org/@homeassistant"
+              title="Mastodon"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:mastodon"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://bsky.app/profile/home-assistant.io"
+              title="Bluesky"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:bluesky"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://x.com/home_assistant"
+              title="X"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:x"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://www.facebook.com/homeassistantio"
+              title="Facebook"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:facebook"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.instagram.com/homeassistant/"
+              title="Instagram"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:instagram"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.linkedin.com/company/home-assistant"
+              title="LinkedIn"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:linkedin"></iconify-icon></a>
+          </div>
+
+          <div class="web-notice">
+            <p>
+              For partnership inquiries please check out <a href="https://works-with.home-assistant.io/">Works With Home Assistant</a>. For media, get in touch <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#452820212c24052a35202b2d2a2820232a302b2124312c2a2b6b2a3722">here</a>. For other questions, you can contact us <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#dbb3beb7b7b49bb3b4b6bef6baa8a8b2a8afbab5aff5b2b4">here</a> (No technical support!)
+            </p>
+            <p>
+              Website powered by <a href="https://jekyllrb.com/">Jekyll</a><br />
+              Originally based on the <a href="https://github.com/coogie/oscailte">Oscailte theme</a>
+            </p>
+            <a href="https://www.netlify.com">
+              <img
+                src="../../images/frontpage/netlify.svg"
+                alt="Deploys by Netlify Badge"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+
+    </div>
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.3.1/lite-youtube.js" integrity="sha384-7o3d1sg8jSS1LMKzzIEucWtWFI1X4lFCC5gu2ylAgH3KmHcJgjTqp6LWfIvbbmf9" crossorigin="anonymous"></script>
+
+<script src="../../javascripts/terminology_tooltip.js@274cec0734bc752f0e5ea3d4e2e59858" type="text/javascript" defer></script>
+
+<script src="../../javascripts/prism.js@5d6619066a1fc5cd819a93c132b539ac" type="text/javascript" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3/dist/umd/index.min.js" integrity="sha384-f/IEhh8fvOc2ALU79emLlUqAYXyqlA/zYhM+g5GlWMk15QBjTXy05TtmfT1TbtV6" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  docsearch({
+    container: '#docsearch',
+    appId: 'FBHBYS3J0U',
+    indexName: 'home-assistant',
+    apiKey: "ba6f7e6d97b3d3d2f778978c742a47c6",
+  });
+  document.querySelector('.site-title').addEventListener('contextmenu', function (ev) {
+    ev.preventDefault();
+    document.location.assign("https://design.home-assistant.io/#brand/logo")
+  });
+</script>
+
+
+
+
+<script type="text/javascript">
+  {
+    const article = document.querySelector("article.post");
+    if (article) {
+      const iframes = article.querySelectorAll("iframe[data-src]");
+      let loaded = false;
+      if (iframes) {
+        document.addEventListener('mousemove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('touchmove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('scroll', loadLazyFrames, { passive: true, once: true });
+  
+        function loadLazyFrames() {
+          if (loaded) return;
+          loaded = true;
+  
+          iframes.forEach((iframe) => {
+            const src = iframe.getAttribute("data-src");
+            if (src) {
+              iframe.setAttribute("src", src);
+              iframe.removeAttribute("data-src");
+            }
+          });
+        }
+      }
+    }
+  }
+</script>
+
+  </body>
+</html>

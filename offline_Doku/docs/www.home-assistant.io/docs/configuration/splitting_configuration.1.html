@@ -1,0 +1,1009 @@
+
+
+
+
+<!doctype html>
+  <!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Splitting up the configuration - Home Assistant</title>
+    <meta name="author" content="Home Assistant">
+    <meta name="description" content="Splitting the configuration.yaml into several files.">
+    
+    <meta name="viewport" content="width=device-width">
+    <link rel="canonical" href="splitting_configuration/index.html">
+
+    <meta property="fb:app_id" content="338291289691179">
+    <meta property="og:title" content="Splitting up the configuration">
+    <meta property="og:site_name" content="Home Assistant">
+    <meta property="og:url" content="https://www.home-assistant.io/docs/configuration/splitting_configuration/">
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="Splitting the configuration.yaml into several files.">
+    <meta property="og:image" content="https://www.home-assistant.io/images/default-social.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@home_assistant">
+    
+    <meta name="twitter:title" content="Splitting up the configuration">
+    <meta name="twitter:description" content="Splitting the configuration.yaml into several files.">
+    <meta name="twitter:image" content="https://www.home-assistant.io/images/default-social.png">
+    <link rel="me" href="https://fosstodon.org/@homeassistant">
+
+    <link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3/dist/style.min.css" rel="stylesheet" />
+    <link href="../../stylesheets/prism.css@8acb84bc0387c9548a63998fcfea0139.css" rel="stylesheet">
+    <link href="../../stylesheets/screen.css@cef1bc5aeba0a8ce6d170a9aa21e8dd6.css" media="screen, projection, print" rel="stylesheet">
+    <link href="https://www.home-assistant.io/atom.xml" rel="alternate" title="Home Assistant" type="application/atom+xml">
+    <link rel='shortcut icon' href='../../images/favicon.ico' />
+    <link rel='icon' type='image/png' href='../../images/favicon-192x192.png' sizes='192x192' />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&amp;family=Instrument+Sans:ital,wdth,wght@0,99,400..700;1,99,400..700&amp;" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" integrity="sha384-GPb5RlngihS9H0z1D137JsvzmeZ7tCpWEF4t5YDoTZyMsPP8S7h7vFDh4XhheU83" crossorigin="anonymous"></script>
+  </head>
+
+  <body  class="documentation-page   ">
+    <header class='site-header '>
+      
+
+
+
+<div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item three-tenths lap-two-sixths palm-one-whole ha-title">
+      <a href="https://www.home-assistant.io/" class="site-title">
+        <div class="logo"></div>
+      </a>
+      <a class="release-date" href="https://www.home-assistant.io/blog/2026/01/07/release-20261/" title="Latest version 2026.1.2 released January 16, 2026">
+        2026.1.2
+      </a>
+    </div>
+
+    <div class="grid__item seven-tenths lap-four-sixths palm-one-whole">
+      <nav>
+        <input type="checkbox" id="toggle" />
+        <label
+          for="toggle"
+          class="toggle"
+          data-open="Main Menu"
+          data-close="⨉"
+        ></label>
+        <ul class="menu pull-right">
+          <li><a  href="https://www.home-assistant.io/installation/">Getting started</a></li>
+          <li>
+            <a class="active" href="../index.html">Documentation <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/installation/"><iconify-icon inline icon='simple-icons:homeassistant' title='Homeassistant'></iconify-icon> Installation</a></li>
+              <li><a href="../automation/index.html"><iconify-icon inline icon='mdi:robot-happy' title='Robot happy'></iconify-icon> Automations</a></li>
+              <li><a href="https://www.home-assistant.io/dashboards/"><iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> Dashboards</a></li>
+              <li><a href="https://www.home-assistant.io/voice_control/"><iconify-icon inline icon='mdi:comment-processing-outline' title='Comment processing outline'></iconify-icon> Voice assistants</a></li>
+              <li><a href="../organizing/index.html"><iconify-icon inline icon='mdi:view-grid' title='View grid'></iconify-icon> Device organization</a></li>
+              <li><a href="../energy/index.html"><iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> Energy management</a></li>
+              <li><a href="index.html"><iconify-icon inline icon='mdi:cog' title='Cog'></iconify-icon> Advanced configuration</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="splitting_configuration.1.html#">Our hardware <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/green/">Home Assistant Green</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zbt-2/">Connect ZBT-2</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zwa-2/">Connect ZWA-2</a></li>
+              <li><a href="https://www.home-assistant.io/voice-pe/">Voice Preview Edition</a></li>
+            </ul>
+          </li>
+          <li><a  href="https://www.home-assistant.io/integrations/">Integrations</a></li>
+          <li><a  href="https://www.home-assistant.io/blog/">Blog</a></li>
+          <li><a  href="https://www.home-assistant.io/help/">Need help?</a></li>
+          <li>
+            <div class="docsearch" id="docsearch"></div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    </header>
+
+    <div class="page-content">
+
+      
+
+      <div class="grid-wrapper">
+        <div class="grid grid-center">
+
+          <aside id="toc-bar" class="grid__item desk-wide-one-sixth">
+                <section class="aside-module grid__item one-whole">
+                  <div class='section'>
+                    <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+                    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="splitting_configuration.1.html#example-configuration-files-for-inspiration">Example configuration files for inspiration</a></li>
+<li class="toc-entry toc-h2"><a href="splitting_configuration.1.html#analyzing-the-configuration-files">Analyzing the configuration files</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="splitting_configuration.1.html#the-core-configuration-file">The core configuration file</a></li>
+<li class="toc-entry toc-h3"><a href="splitting_configuration.1.html#indentation-includes-comments-and-modularization">Indentation, includes, comments, and modularization</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="splitting_configuration.1.html#debugging-configuration-files">Debugging configuration files</a></li>
+<li class="toc-entry toc-h2"><a href="splitting_configuration.1.html#advanced-usage">Advanced usage</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="splitting_configuration.1.html#example-include_dir_list">Example: !include_dir_list</a></li>
+<li class="toc-entry toc-h3"><a href="splitting_configuration.1.html#example-include_dir_named">Example: !include_dir_named</a></li>
+<li class="toc-entry toc-h3"><a href="splitting_configuration.1.html#example-include_dir_merge_list">Example: !include_dir_merge_list</a></li>
+<li class="toc-entry toc-h3"><a href="splitting_configuration.1.html#example-include_dir_merge_named">Example: !include_dir_merge_named</a></li>
+<li class="toc-entry toc-h3"><a href="splitting_configuration.1.html#example-combine-include_dir_merge_list-with-automationsyaml">Example: Combine !include_dir_merge_list with automations.yaml</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="splitting_configuration.1.html#related-topics">Related topics</a></li>
+</ul>
+                  </div>
+                </section>
+              </aside> 
+
+          
+          <div class="grid__item two-thirds desk-wide-seven-twelfths lap-one-whole palm-one-whole">
+          
+
+            
+              <article class="page">
+  
+  <header>
+    
+    
+      <div class="breadcrumbs">
+        <a href="https://www.home-assistant.io/">Home</a>
+        
+          
+            
+            ▸ <a href="../index.html">Documentation</a>
+          
+        
+          
+            
+            ▸ <a href="index.html">Configuration</a>
+          
+        
+          
+            ▸ 
+          
+        
+      </div>
+    
+    <h1 class="title indent">
+      
+        Splitting up the configuration
+      
+    </h1>
+  </header>
+  
+  
+  <p>So you’ve been using Home Assistant for a while now and your <span class="terminology"><code>configuration.yaml</code><span class="terminology-tooltip">The configuration.yaml file is the main configuration file for Home Assistant. It lists the integrations to be loaded and their specific configurations. In some cases, the configuration needs to be edited manually directly in the configuration.yaml file. Most integrations can be configured in the UI.<a class="terminology-link" href="index.html"> [Learn more]</a></span></span> file brings people to tears because it has become so large. Or, you simply want to start off with the distributed approach. Here’s how to split the <span class="terminology"><code>configuration.yaml</code><span class="terminology-tooltip">The configuration.yaml file is the main configuration file for Home Assistant. It lists the integrations to be loaded and their specific configurations. In some cases, the configuration needs to be edited manually directly in the configuration.yaml file. Most integrations can be configured in the UI.<a class="terminology-link" href="index.html"> [Learn more]</a></span></span> into more manageable (read: human-readable) pieces.</p>
+<h2>Example configuration files for inspiration <a class="title-link" name="example-configuration-files-for-inspiration" href="splitting_configuration.1.html#example-configuration-files-for-inspiration"></a>
+</h2>
+<p>First off, several community members have sanitized (read: without API keys/passwords) versions of their configurations available for viewing. You can see a <a href="https://github.com/search?q=topic%3Ahome-assistant-config&amp;type=Repositories" rel="external nofollow">list of example configuration on GitHub<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>.</p>
+<p>As commenting code doesn’t always happen, please read on to learn in detail how configuration files can be structured.</p>
+<h2>Analyzing the configuration files <a class="title-link" name="analyzing-the-configuration-files" href="splitting_configuration.1.html#analyzing-the-configuration-files"></a>
+</h2>
+<p>In this section, we are going use some example configuration files and look at their structure and format in more detail.</p>
+<p>Now you might think that the <span class="terminology"><code>configuration.yaml</code><span class="terminology-tooltip">The configuration.yaml file is the main configuration file for Home Assistant. It lists the integrations to be loaded and their specific configurations. In some cases, the configuration needs to be edited manually directly in the configuration.yaml file. Most integrations can be configured in the UI.<a class="terminology-link" href="index.html"> [Learn more]</a></span></span> will be replaced during the splitting process. However, it will in fact remain, albeit in a much less cluttered form.</p>
+<h3>The core configuration file <a class="title-link" name="the-core-configuration-file" href="splitting_configuration.1.html#the-core-configuration-file"></a>
+</h3>
+<p>In this lighter version, we will still need what could be called the core snippet:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">homeassistant</span><span class="pi">:</span>
+  <span class="c1"># Name of the location where Home Assistant is running</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">My</span><span class="nv"> </span><span class="s">Home</span><span class="nv"> </span><span class="s">Assistant</span><span class="nv"> </span><span class="s">Instance"</span>
+  <span class="c1"># Location required to calculate the time the sun rises and sets</span>
+  <span class="na">latitude</span><span class="pi">:</span> <span class="m">37</span>
+  <span class="na">longitude</span><span class="pi">:</span> <span class="s">-121</span>
+  <span class="c1"># 'metric' for Metric, 'us_customary' for US Customary</span>
+  <span class="na">unit_system</span><span class="pi">:</span> <span class="s">us_customary</span>
+  <span class="c1"># Pick yours from here: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones</span>
+  <span class="na">time_zone</span><span class="pi">:</span> <span class="s2">"</span><span class="s">America/Los_Angeles"</span>
+  <span class="na">customize</span><span class="pi">:</span> <span class="kt">!include</span> <span class="s">customize.yaml</span>
+</code></pre></div></div>
+<h3>Indentation, includes, comments, and modularization <a class="title-link" name="indentation-includes-comments-and-modularization" href="splitting_configuration.1.html#indentation-includes-comments-and-modularization"></a>
+</h3>
+<p>Note that each line after <code>homeassistant:</code> is indented two (2) spaces. Since the configuration files in Home Assistant are based on the YAML language, indentation and spacing are important. Also note that seemingly strange entry under <code>customize:</code>.</p>
+<p><code>!include customize.yaml</code> is the statement that tells Home Assistant to insert the parsed contents of <code>customize.yaml</code> at that point. The contents of the included file must be yaml data that is valid at the location it is included. This is how we are going to break a monolithic and hard to read file (when it gets big) into more manageable chunks.</p>
+<p>Now before we start splitting out the different components, let’s look at the other integrations (in our example) that will stay in the base file:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">history</span><span class="pi">:</span>
+<span class="na">frontend</span><span class="pi">:</span>
+<span class="na">logbook</span><span class="pi">:</span>
+<span class="na">http</span><span class="pi">:</span>
+  <span class="na">api_password</span><span class="pi">:</span> <span class="s2">"</span><span class="s">ImNotTelling!"</span>
+
+<span class="na">ifttt</span><span class="pi">:</span>
+  <span class="na">key</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">nope"</span><span class="pi">]</span>
+
+<span class="na">mqtt</span><span class="pi">:</span>
+  <span class="na">sensor</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">test</span><span class="nv"> </span><span class="s">sensor</span><span class="nv"> </span><span class="s">1"</span>
+      <span class="na">state_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">test/some_topic1"</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">test</span><span class="nv"> </span><span class="s">sensor</span><span class="nv"> </span><span class="s">2"</span>
+      <span class="na">state_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">test/some_topic2"</span>
+</code></pre></div></div>
+<p>As with the core snippet, indentation makes a difference:</p>
+<ul>
+<li>The integration headers (<code>mqtt:</code>) should be fully left aligned (aka no indent).</li>
+<li>The key (<code>sensor:</code>) should be indented two (2) spaces.</li>
+<li>The list <code>-</code> under the key <code>sensor</code> should be indented another two (2) spaces followed by a single space.</li>
+<li>The <code>mqtt</code> sensor list contains two (2) configurations, with two (2) keys each.</li>
+</ul>
+<h4>Comments <a class="title-link" name="comments" href="splitting_configuration.1.html#comments"></a>
+</h4>
+<p>The # symbol (hash/pound) represents a “comment” as far as the commands are interpreted. Put another way, any line prefixed with a <code>#</code> will be ignored by the software. It is for humans only. Comments allow breaking up files for readability, as well as turning off features while leaving the entry intact.</p>
+<h4>Modularization and granularity <a class="title-link" name="modularization-and-granularity" href="splitting_configuration.1.html#modularization-and-granularity"></a>
+</h4>
+<p>While some of these integrations could technically be moved to a separate file, they are so small or “one off’s” where splitting them off is superfluous.</p>
+<p>Now, lets assume that a blank file has been created in the Home Assistant configuration directory for each of the following:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">automation.yaml
+zone.yaml
+sensor.yaml
+switch.yaml
+device_tracker.yaml
+customize.yaml
+</code></pre></div></div>
+<p><code>automation.yaml</code> will hold all the automation integration details. <code>zone.yaml</code> will hold the zone integration details and so forth. These files can be called anything but giving them names that match their function will make things easier to keep track of.</p>
+<p>Inside the base configuration file, add the following entries:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span> <span class="kt">!include</span> <span class="s">automation.yaml</span>
+<span class="na">zone</span><span class="pi">:</span> <span class="kt">!include</span> <span class="s">zone.yaml</span>
+<span class="na">sensor</span><span class="pi">:</span> <span class="kt">!include</span> <span class="s">sensor.yaml</span>
+<span class="na">switch</span><span class="pi">:</span> <span class="kt">!include</span> <span class="s">switch.yaml</span>
+<span class="na">device_tracker</span><span class="pi">:</span> <span class="kt">!include</span> <span class="s">device_tracker.yaml</span>
+</code></pre></div></div>
+<h4>Include statements and packages to split files <a class="title-link" name="include-statements-and-packages-to-split-files" href="splitting_configuration.1.html#include-statements-and-packages-to-split-files"></a>
+</h4>
+<p>Nesting <code>!include</code> statements (having an <code>!include</code> within a file that is itself <code>!include</code>d) will also work.</p>
+<p>Some integrations support multiple top-level <code>!include</code> statements. This includes integrations defining an IoT domain. For example, <code>light</code>, <code>switch</code>, or <code>sensor</code>; as well as the <code>automation</code>, <code>script</code>, and <code>template</code> integrations, if you give a different label to each one.</p>
+<p>Configuration for other integrations can instead be split up by using packages. To learn more about packages, see the <a href="packages.1.html">Packages</a> page.</p>
+<h4>Top level keys <a class="title-link" name="top-level-keys" href="splitting_configuration.1.html#top-level-keys"></a>
+</h4>
+<p>Example of multiple top-level keys for the <code>light</code> platform.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">light</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">platform</span><span class="pi">:</span> <span class="s">group</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Bedside</span><span class="nv"> </span><span class="s">Lights"</span>
+  <span class="na">entities</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">light.left_bedside_light</span>
+    <span class="pi">-</span> <span class="s">light.right_bedside_light</span>
+
+<span class="c1"># define more light groups in a separate file</span>
+<span class="na">light groups</span><span class="pi">:</span> <span class="kt">!include</span> <span class="s">light-groups.yaml</span>
+
+<span class="c1"># define some light switch mappings in a different file</span>
+<span class="na">light switches</span><span class="pi">:</span> <span class="kt">!include</span> <span class="s">light-switches.yaml</span>
+</code></pre></div></div>
+<p>where <code>light-groups.yaml</code> might look like:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">platform</span><span class="pi">:</span> <span class="s">group</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Outside</span><span class="nv"> </span><span class="s">Lights"</span>
+  <span class="na">entities</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">light.porch_lights</span>
+    <span class="pi">-</span> <span class="s">light.patio_lights</span>
+</code></pre></div></div>
+<p>with <code>light-switches.yaml</code> containing:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">platform</span><span class="pi">:</span> <span class="s">switch</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Patio</span><span class="nv"> </span><span class="s">Lights"</span>
+  <span class="na">entity_id</span><span class="pi">:</span> <span class="s">switch.patio_lights</span>
+  
+<span class="pi">-</span> <span class="na">platform</span><span class="pi">:</span> <span class="s">switch</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Floor</span><span class="nv"> </span><span class="s">Lamp"</span>
+  <span class="na">entity_id</span><span class="pi">:</span> <span class="s">switch.floor_lamp_plug</span>
+</code></pre></div></div>
+<p>Alright, so we’ve got the single integrations and the include statements in the base file, what goes in those extra files?</p>
+<p>Let’s look at the <code>device_tracker.yaml</code> file from our example:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">platform</span><span class="pi">:</span> <span class="s">owntracks</span>
+<span class="pi">-</span> <span class="na">platform</span><span class="pi">:</span> <span class="s">nmap_tracker</span>
+  <span class="na">home_interval</span><span class="pi">:</span> <span class="m">3</span>
+  <span class="na">hosts</span><span class="pi">:</span> <span class="s">192.168.2.0/24</span>
+
+  <span class="na">track_new_devices</span><span class="pi">:</span> <span class="kc">true</span>
+  <span class="na">interval_seconds</span><span class="pi">:</span> <span class="m">40</span>
+  <span class="na">consider_home</span><span class="pi">:</span> <span class="m">120</span>
+</code></pre></div></div>
+<p>This small example illustrates how the “split” files work. In this case, we start with two (2) device tracker entries (<code>owntracks</code> and <code>nmap</code>). These files follow <a href="https://www.home-assistant.io/getting-started/devices/#style-2-list-each-device-separately">“style 1”</a> that is to say a fully left aligned leading entry (<code>- platform: owntracks</code>) followed by the parameter entries indented two (2) spaces.</p>
+<p>This (large) sensor configuration gives us another example:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1">### sensor.yaml</span>
+<span class="c1">### METEOBRIDGE #############################################</span>
+<span class="pi">-</span> <span class="na">platform</span><span class="pi">:</span> <span class="s">tcp</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Outdoor</span><span class="nv"> </span><span class="s">Temp</span><span class="nv"> </span><span class="s">(Meteobridge)"</span>
+  <span class="na">host</span><span class="pi">:</span> <span class="s">192.168.2.82</span>
+  <span class="na">timeout</span><span class="pi">:</span> <span class="m">6</span>
+  <span class="na">payload</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Content-type:</span><span class="nv"> </span><span class="s">text/xml;</span><span class="nv"> </span><span class="s">charset=UTF-8</span><span class="se">\n\n</span><span class="s">"</span>
+  <span class="na">value_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{value.split</span><span class="nv"> </span><span class="s">('</span><span class="nv"> </span><span class="s">')[2]}}"</span>
+  <span class="na">unit</span><span class="pi">:</span> <span class="s">C</span>
+<span class="pi">-</span> <span class="na">platform</span><span class="pi">:</span> <span class="s">tcp</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Outdoor</span><span class="nv"> </span><span class="s">Humidity</span><span class="nv"> </span><span class="s">(Meteobridge)"</span>
+  <span class="na">host</span><span class="pi">:</span> <span class="s">192.168.2.82</span>
+  <span class="na">port</span><span class="pi">:</span> <span class="m">5556</span>
+  <span class="na">timeout</span><span class="pi">:</span> <span class="m">6</span>
+  <span class="na">payload</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Content-type:</span><span class="nv"> </span><span class="s">text/xml;</span><span class="nv"> </span><span class="s">charset=UTF-8</span><span class="se">\n\n</span><span class="s">"</span>
+  <span class="na">value_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{value.split</span><span class="nv"> </span><span class="s">('</span><span class="nv"> </span><span class="s">')[3]}}"</span>
+  <span class="na">unit</span><span class="pi">:</span> <span class="s">Percent</span>
+
+<span class="c1">#### STEAM FRIENDS ##################################</span>
+<span class="pi">-</span> <span class="na">platform</span><span class="pi">:</span> <span class="s">steam_online</span>
+  <span class="na">api_key</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">not</span><span class="nv"> </span><span class="s">telling"</span><span class="pi">]</span>
+  <span class="na">accounts</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="m">76561198012067051</span>
+
+<span class="c1">#### TIME/DATE ##################################</span>
+<span class="pi">-</span> <span class="na">platform</span><span class="pi">:</span> <span class="s">time_date</span>
+  <span class="na">display_options</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s2">"</span><span class="s">time"</span>
+    <span class="pi">-</span> <span class="s2">"</span><span class="s">date"</span>
+<span class="pi">-</span> <span class="na">platform</span><span class="pi">:</span> <span class="s">worldclock</span>
+  <span class="na">time_zone</span><span class="pi">:</span> <span class="s">Etc/UTC</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">UTC"</span>
+<span class="pi">-</span> <span class="na">platform</span><span class="pi">:</span> <span class="s">worldclock</span>
+  <span class="na">time_zone</span><span class="pi">:</span> <span class="s">America/New_York</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Ann</span><span class="nv"> </span><span class="s">Arbor"</span>
+</code></pre></div></div>
+<p>You’ll notice that this example includes a secondary parameter section (under the steam section) as well as a better example of the way comments can be used to break down files into sections.</p>
+<p>All of the above can be applied when splitting up files using packages. To
+learn more about packages, see the <a href="packages.1.html">Packages</a> page.</p>
+<p>That about wraps it up.</p>
+<p>If you have issues, check the file indentations and check <a href="https://www.home-assistant.io/integrations/logger/#viewing-logs">the Home Assistant logs</a>. If all else fails, head over to our <a href="https://discord.gg/c5DvZ4e" rel="external nofollow">Discord chat server<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> and ask away.</p>
+<h2>Debugging configuration files <a class="title-link" name="debugging-configuration-files" href="splitting_configuration.1.html#debugging-configuration-files"></a>
+</h2>
+<p>If you have many configuration files, Home Assistant provides a CLI that allows you to see how it interprets them. Each installation type has its own section in the common-tasks about this:</p>
+<ul>
+<li><a href="https://www.home-assistant.io/common-tasks/os/#configuration-check">Operating System</a></li>
+<li><a href="https://www.home-assistant.io/common-tasks/container/#configuration-check">Container</a></li>
+</ul>
+<h2>Advanced usage <a class="title-link" name="advanced-usage" href="splitting_configuration.1.html#advanced-usage"></a>
+</h2>
+<p>We offer four advanced options to include whole directories at once. Please note that your files must have the <code>.yaml</code> file extension; <code>.yml</code> is not supported.</p>
+<p>This will allow you to <code>!include</code> files with <code>.yml</code> extensions from within the <code>.yaml</code> files; without those <code>.yml</code> files being imported by the following commands themselves.</p>
+<ul>
+<li>
+<code>!include_dir_list</code> will return the content of a directory as a list with each file content being an entry in the list. The list entries are ordered based on the alphanumeric ordering of the names of the files.</li>
+<li>
+<code>!include_dir_named</code> will return the content of a directory as a dictionary which maps filename =&gt; content of file.</li>
+<li>
+<code>!include_dir_merge_list</code> will return the content of a directory as a list by merging all files (which should contain a list) into 1 big list.</li>
+<li>
+<code>!include_dir_merge_named</code> will return the content of a directory as a dictionary by loading each file and merging it into 1 big dictionary.</li>
+</ul>
+<p>These work recursively. As an example using <code>!include_dir_list automation</code>, will include all 6 files shown below:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="bash"><span class="nb">.</span>
+└── .homeassistant
+    ├── automation
+    │   ├── lights
+    │   │   ├── turn_light_off_bedroom.yaml
+    │   │   ├── turn_light_off_lounge.yaml
+    │   │   ├── turn_light_on_bedroom.yaml
+    │   │   └── turn_light_on_lounge.yaml
+    │   ├── say_hello.yaml
+    │   └── sensors
+    │       └── react.yaml
+    └── configuration.yaml <span class="o">(</span>not included<span class="o">)</span>
+</code></pre></div></div>
+<h3>Example: !include_dir_list <a class="title-link" name="example-include_dir_list" href="splitting_configuration.1.html#example-include_dir_list"></a>
+</h3>
+<p><code>configuration.yaml</code></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Automation</span><span class="nv"> </span><span class="s">1"</span>
+    <span class="na">triggers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s">device_tracker.iphone</span>
+        <span class="na">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home"</span>
+    <span class="na">actions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_on</span>
+        <span class="na">target</span><span class="pi">:</span>
+          <span class="na">entity_id</span><span class="pi">:</span> <span class="s">light.entryway</span>
+  <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Automation</span><span class="nv"> </span><span class="s">2"</span>
+    <span class="na">triggers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s">device_tracker.iphone</span>
+        <span class="na">from</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home"</span>
+    <span class="na">actions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_off</span>
+        <span class="na">target</span><span class="pi">:</span>
+          <span class="na">entity_id</span><span class="pi">:</span> <span class="s">light.entryway</span>
+</code></pre></div></div>
+<p>can be turned into:</p>
+<p><code>configuration.yaml</code></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span> <span class="kt">!include_dir_list</span> <span class="s">automation/presence/</span>
+</code></pre></div></div>
+<p><code>automation/presence/automation1.yaml</code></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Automation</span><span class="nv"> </span><span class="s">1"</span>
+<span class="na">triggers</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">device_tracker.iphone</span>
+    <span class="na">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home"</span>
+<span class="na">actions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_on</span>
+    <span class="na">target</span><span class="pi">:</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">light.entryway</span>
+</code></pre></div></div>
+<p><code>automation/presence/automation2.yaml</code></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Automation</span><span class="nv"> </span><span class="s">2"</span>
+<span class="na">triggers</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">device_tracker.iphone</span>
+    <span class="na">from</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home"</span>
+<span class="na">actions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_off</span>
+    <span class="na">target</span><span class="pi">:</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">light.entryway</span>
+</code></pre></div></div>
+<p>It is important to note that each file must contain only <strong>one</strong> entry when using <code>!include_dir_list</code>.</p>
+<h3>Example: !include_dir_named <a class="title-link" name="example-include_dir_named" href="splitting_configuration.1.html#example-include_dir_named"></a>
+</h3>
+<p><code>configuration.yaml</code></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml">
+<span class="na">alexa</span><span class="pi">:</span>
+  <span class="na">intents</span><span class="pi">:</span>
+    <span class="na">LocateIntent</span><span class="pi">:</span>
+      <span class="na">actions</span><span class="pi">:</span>
+        <span class="na">action</span><span class="pi">:</span> <span class="s">notify.pushover</span>
+        <span class="na">data</span><span class="pi">:</span>
+          <span class="na">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Your</span><span class="nv"> </span><span class="s">location</span><span class="nv"> </span><span class="s">has</span><span class="nv"> </span><span class="s">been</span><span class="nv"> </span><span class="s">queried</span><span class="nv"> </span><span class="s">via</span><span class="nv"> </span><span class="s">Alexa."</span>
+      <span class="na">speech</span><span class="pi">:</span>
+        <span class="na">type</span><span class="pi">:</span> <span class="s">plaintext</span>
+        <span class="na">text</span><span class="pi">:</span> <span class="pi">&gt;</span>
+          <span class="s">{%- for state in states.device_tracker -%}</span>
+            <span class="s">{%- if state.name.lower() == User.lower() -%}</span>
+              <span class="s">{{ state.name }} is at {{ state.state }}</span>
+            <span class="s">{%- endif -%}</span>
+          <span class="s">{%- else -%}</span>
+            <span class="s">I am sorry. Pootie! I do not know where {{User}} is.</span>
+          <span class="s">{%- endfor -%}</span>
+    <span class="na">WhereAreWeIntent</span><span class="pi">:</span>
+      <span class="na">speech</span><span class="pi">:</span>
+        <span class="na">type</span><span class="pi">:</span> <span class="s">plaintext</span>
+        <span class="na">text</span><span class="pi">:</span> <span class="pi">&gt;</span>
+          <span class="s">{%- if is_state('device_tracker.iphone', 'home') -%}</span>
+            <span class="s">iPhone is home.</span>
+          <span class="s">{%- else -%}</span>
+            <span class="s">iPhone is not home.</span>
+          <span class="s">{% endif %}</span>
+</code></pre></div></div>
+<p>can be turned into:</p>
+<p><code>configuration.yaml</code></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">alexa</span><span class="pi">:</span>
+  <span class="na">intents</span><span class="pi">:</span> <span class="kt">!include_dir_named</span> <span class="s">alexa/</span>
+</code></pre></div></div>
+<p><code>alexa/LocateIntent.yaml</code></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml">
+<span class="na">actions</span><span class="pi">:</span>
+  <span class="na">action</span><span class="pi">:</span> <span class="s">notify.pushover</span>
+  <span class="na">data</span><span class="pi">:</span>
+    <span class="na">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Your</span><span class="nv"> </span><span class="s">location</span><span class="nv"> </span><span class="s">has</span><span class="nv"> </span><span class="s">been</span><span class="nv"> </span><span class="s">queried</span><span class="nv"> </span><span class="s">via</span><span class="nv"> </span><span class="s">Alexa."</span>
+<span class="na">speech</span><span class="pi">:</span>
+  <span class="na">type</span><span class="pi">:</span> <span class="s">plaintext</span>
+  <span class="na">text</span><span class="pi">:</span> <span class="pi">&gt;</span>
+    <span class="s">{%- for state in states.device_tracker -%}</span>
+      <span class="s">{%- if state.name.lower() == User.lower() -%}</span>
+        <span class="s">{{ state.name }} is at {{ state.state }}</span>
+      <span class="s">{%- endif -%}</span>
+    <span class="s">{%- else -%}</span>
+      <span class="s">I am sorry. Pootie! I do not know where {{User}} is.</span>
+    <span class="s">{%- endfor -%}</span>
+</code></pre></div></div>
+<p><code>alexa/WhereAreWeIntent.yaml</code></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml">
+<span class="na">speech</span><span class="pi">:</span>
+  <span class="na">type</span><span class="pi">:</span> <span class="s">plaintext</span>
+  <span class="na">text</span><span class="pi">:</span> <span class="pi">&gt;</span>
+    <span class="s">{%- if is_state('device_tracker.iphone', 'home') -%}</span>
+      <span class="s">iPhone is home.</span>
+    <span class="s">{%- else -%}</span>
+      <span class="s">iPhone is not home.</span>
+    <span class="s">{% endif %}</span>
+</code></pre></div></div>
+<h3>Example: !include_dir_merge_list <a class="title-link" name="example-include_dir_merge_list" href="splitting_configuration.1.html#example-include_dir_merge_list"></a>
+</h3>
+<p><code>configuration.yaml</code></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Automation</span><span class="nv"> </span><span class="s">1"</span>
+    <span class="na">triggers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s">device_tracker.iphone</span>
+        <span class="na">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home"</span>
+    <span class="na">actions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_on</span>
+        <span class="na">target</span><span class="pi">:</span>
+          <span class="na">entity_id</span><span class="pi">:</span> <span class="s">light.entryway</span>
+  <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Automation</span><span class="nv"> </span><span class="s">2"</span>
+    <span class="na">triggers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s">device_tracker.iphone</span>
+        <span class="na">from</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home"</span>
+    <span class="na">actions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_off</span>
+        <span class="na">target</span><span class="pi">:</span>
+          <span class="na">entity_id</span><span class="pi">:</span> <span class="s">light.entryway</span>
+</code></pre></div></div>
+<p>can be turned into:</p>
+<p><code>configuration.yaml</code></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span> <span class="kt">!include_dir_merge_list</span> <span class="s">automation/</span>
+</code></pre></div></div>
+<p><code>automation/presence.yaml</code></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Automation</span><span class="nv"> </span><span class="s">1"</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">device_tracker.iphone</span>
+      <span class="na">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home"</span>
+  <span class="na">actions</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_on</span>
+      <span class="na">target</span><span class="pi">:</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s">light.entryway</span>
+<span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Automation</span><span class="nv"> </span><span class="s">2"</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">device_tracker.iphone</span>
+      <span class="na">from</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home"</span>
+  <span class="na">actions</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_off</span>
+      <span class="na">target</span><span class="pi">:</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s">light.entryway</span>
+</code></pre></div></div>
+<p>It is important to note that when using <code>!include_dir_merge_list</code>, you must include a list in each file (each list item is denoted with a hyphen [-]). Each file may contain one or more entries.</p>
+<h3>Example: !include_dir_merge_named <a class="title-link" name="example-include_dir_merge_named" href="splitting_configuration.1.html#example-include_dir_merge_named"></a>
+</h3>
+<p><code>configuration.yaml</code></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">group</span><span class="pi">:</span>
+  <span class="na">bedroom</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Bedroom"</span>
+    <span class="na">entities</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">light.bedroom_lamp</span>
+      <span class="pi">-</span> <span class="s">light.bedroom_overhead</span>
+  <span class="na">hallway</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Hallway"</span>
+    <span class="na">entities</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">light.hallway</span>
+      <span class="pi">-</span> <span class="s">thermostat.home</span>
+  <span class="na">front_yard</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Front</span><span class="nv"> </span><span class="s">Yard"</span>
+    <span class="na">entities</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">light.front_porch</span>
+      <span class="pi">-</span> <span class="s">light.security</span>
+      <span class="pi">-</span> <span class="s">light.pathway</span>
+      <span class="pi">-</span> <span class="s">sensor.mailbox</span>
+      <span class="pi">-</span> <span class="s">camera.front_porch</span>
+</code></pre></div></div>
+<p>can be turned into:</p>
+<p><code>configuration.yaml</code></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">group</span><span class="pi">:</span> <span class="kt">!include_dir_merge_named</span> <span class="s">group/</span>
+</code></pre></div></div>
+<p><code>group/interior.yaml</code></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">bedroom</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Bedroom"</span>
+  <span class="na">entities</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">light.bedroom_lamp</span>
+    <span class="pi">-</span> <span class="s">light.bedroom_overhead</span>
+<span class="na">hallway</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">Hallway</span>
+  <span class="na">entities</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">light.hallway</span>
+    <span class="pi">-</span> <span class="s">thermostat.home</span>
+</code></pre></div></div>
+<p><code>group/exterior.yaml</code></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">front_yard</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Front</span><span class="nv"> </span><span class="s">Yard"</span>
+  <span class="na">entities</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">light.front_porch</span>
+    <span class="pi">-</span> <span class="s">light.security</span>
+    <span class="pi">-</span> <span class="s">light.pathway</span>
+    <span class="pi">-</span> <span class="s">sensor.mailbox</span>
+    <span class="pi">-</span> <span class="s">camera.front_porch</span>
+</code></pre></div></div>
+<h3>Example: Combine !include_dir_merge_list with automations.yaml <a class="title-link" name="example-combine-include_dir_merge_list-with-automationsyaml" href="splitting_configuration.1.html#example-combine-include_dir_merge_list-with-automationsyaml"></a>
+</h3>
+<p>You want to go the advanced route and split your automations, but still want to be able to create <a href="https://my.home-assistant.io/redirect/automations" class="my" target="_blank">automations in the UI</a>?
+In a chapter above we write about nesting <code>!includes</code>. Here is how we can do that for automations.</p>
+<p>Using labels like <code>manual</code> or <code>ui</code> allows for using multiple keys in the config:</p>
+<p><code>configuration.yaml</code></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml">
+<span class="c1"># My own handmade automations</span>
+<span class="na">automation manual</span><span class="pi">:</span> <span class="kt">!include_dir_merge_list</span> <span class="s">automations/</span>
+
+<span class="c1"># Automations I create in the UI</span>
+<span class="na">automation ui</span><span class="pi">:</span> <span class="kt">!include</span> <span class="s">automations.yaml</span>
+</code></pre></div></div>
+
+
+  
+
+<div class="text related-topics">
+  <h2>Related topics<a class="title-link" href="splitting_configuration.1.html#related-topics" name="related-topics"></a>
+</h2>
+  <ul>
+    
+    
+    
+    
+    
+    <li>
+      <a href="index.html" class="topic">
+        Configuration.yaml file
+      </a>
+    </li>
+    
+    
+    
+    </ul>
+</div>
+
+
+  
+<div class="material-card text feedback">
+  <h4>
+<iconify-icon inline icon="mdi:feedback" title="Feedback"></iconify-icon> <b> Help us improve our documentation</b><a href="splitting_configuration.1.html#feedback_section" class="title-link" name="feedback_section"></a>
+</h4>
+  Suggest an edit to this page, or provide/view feedback for this page.
+  <div class="links">
+    <ul aria-label="Page feedback options">
+    <li><a href="https://github.com/home-assistant/home-assistant.io/tree/current/source/_docs/configuration/splitting_configuration.markdown" target="_blank" title="Edit this page"><iconify-icon inline icon="mdi:edit"></iconify-icon> Edit</a></li>
+    
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues/new?template=feedback.yml&amp;url=https%3A%2F%2Fwww.home-assistant.io%2Fdocs%2Fconfiguration%2Fsplitting_configuration%2F&amp;version=2026.1.2&amp;labels=current" target="_blank" title="Provide feedback on this page"><iconify-icon inline icon="mdi:comment-edit-outline"></iconify-icon> Provide feedback</a></li>
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues?utf8=%E2%9C%93&amp;q=%22%2Fdocs%2Fconfiguration%2Fsplitting_configuration%2F%22&amp;in=body" target="_blank" title="View given feedback for this page"><iconify-icon inline icon="mdi:comment-text-multiple-outline"></iconify-icon> View given feedback</a></li>
+    
+  </ul>
+  </div>
+</div>
+
+
+</article>
+
+            
+          </div>
+
+
+          
+            
+              <aside id="sidebar" class="grid__item one-third desk-wide-one-quarter lap-one-whole palm-one-whole">
+            
+            <div class="grid">
+  
+
+
+
+
+  <section class="vertical-nav aside-module grid__item one-whole lap-one-half">
+  <div class="section">
+    <h1 class="title epsilon"><iconify-icon inline icon='mdi:bookshelf' title='Bookshelf'></iconify-icon> Documentation</h1>
+    <ul class="divided sidebar-menu">
+      <li>
+        <a  href='../index.html'>Overview </a>
+        |
+        <a  href='https://www.home-assistant.io/faq/'>FAQ </a>
+        |
+        <a  href='../glossary/index.html'>Glossary </a>
+      </li>
+
+      <li>
+  <iconify-icon icon="mdi:robot-happy"></iconify-icon> <a  href='../automation/index.html'>Automations </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> <a  href='https://www.home-assistant.io/dashboards'>Dashboards </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:microphone' title='Microphone'></iconify-icon> <a  href='https://www.home-assistant.io/voice_control/'>Voice assistants </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:category' title='Category'></iconify-icon> <a  href='../organizing/index.html'>Organization </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> <a  href='../energy/index.html'>Home energy management </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:update' title='Update'></iconify-icon> <a  href='https://www.home-assistant.io/common-tasks/general/'>Common tasks </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cogs' title='Cogs'></iconify-icon> <a  href='index.html'>Advanced configuration </a>
+  
+  <ul>
+    <li><a  href='yaml/index.html'>YAML syntax </a></li>
+    <li><a  href='basic/index.html'>Basic information </a></li>
+    <li><a  href='customizing-devices/index.html'>Customizing entities </a></li>
+    <li><a  href='troubleshooting/index.html'>Troubleshooting configuration </a></li>
+    <li><a  href='securing/index.html'>Security check points </a></li>
+    <li><a  href='remote/index.html'>Remote access </a></li>
+    <li><a class='active' href='splitting_configuration/index.html'>Splitting up the configuration </a></li>
+    <li><a  href='packages/index.html'>Packages </a></li>
+    <li><a  href='secrets/index.html'>Storing secrets </a></li>
+    <li><a  href='events/index.html'>Events </a></li>
+    <li><a  href='state_object/index.html'>State and state object </a></li>
+    <li><a  href='entities_domains/index.html'>Entities and domains </a></li>
+    <li><a  href='templating/index.html'>Templating </a></li>
+    <li><a  href='platform_options/index.html'>Entity component platform options </a></li>
+  </ul>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:account-security' title='Account security'></iconify-icon> <a  href='../authentication/index.html'>Authentication </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:database' title='Database'></iconify-icon> <a  href='../backend/index.html'>Backend </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:palette' title='Palette'></iconify-icon> <a  href='../tools/index.html'>Tools and helpers </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cellphone' title='Cellphone'></iconify-icon> <a href="https://companion.home-assistant.io/docs">iOS and Android apps <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+</li>
+
+<li>
+  <iconify-icon inline icon='simple-icons:mqtt' title='Mqtt'></iconify-icon> <a  href='https://www.home-assistant.io/integrations/mqtt'>MQTT </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='bitcoin-icons:node-hardware-filled' title='Node hardware filled'></iconify-icon> Official hardware
+  <ul>
+    <li><a href="https://support.nabucasa.com/hc/categories/24638797677853">Home Assistant Green <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734620813469">Home Assistant Connect ZBT-1 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/29400540866973">Home Assistant Connect ZBT-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/28669861145885">Home Assistant Connect ZWA-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734575925149">Home Assistant Yellow <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24451727188125">Home Assistant Voice Preview Edition <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+  </ul>
+</li>
+
+    </ul>
+  </div>
+</section>
+
+
+
+  <section id="toc-module" class="aside-module grid__item one-whole lap-one-half">
+        <div class='section'>
+          <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+          <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="splitting_configuration.1.html#example-configuration-files-for-inspiration">Example configuration files for inspiration</a></li>
+<li class="toc-entry toc-h2"><a href="splitting_configuration.1.html#analyzing-the-configuration-files">Analyzing the configuration files</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="splitting_configuration.1.html#the-core-configuration-file">The core configuration file</a></li>
+<li class="toc-entry toc-h3"><a href="splitting_configuration.1.html#indentation-includes-comments-and-modularization">Indentation, includes, comments, and modularization</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="splitting_configuration.1.html#debugging-configuration-files">Debugging configuration files</a></li>
+<li class="toc-entry toc-h2"><a href="splitting_configuration.1.html#advanced-usage">Advanced usage</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="splitting_configuration.1.html#example-include_dir_list">Example: !include_dir_list</a></li>
+<li class="toc-entry toc-h3"><a href="splitting_configuration.1.html#example-include_dir_named">Example: !include_dir_named</a></li>
+<li class="toc-entry toc-h3"><a href="splitting_configuration.1.html#example-include_dir_merge_list">Example: !include_dir_merge_list</a></li>
+<li class="toc-entry toc-h3"><a href="splitting_configuration.1.html#example-include_dir_merge_named">Example: !include_dir_merge_named</a></li>
+<li class="toc-entry toc-h3"><a href="splitting_configuration.1.html#example-combine-include_dir_merge_list-with-automationsyaml">Example: Combine !include_dir_merge_list with automations.yaml</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="splitting_configuration.1.html#related-topics">Related topics</a></li>
+</ul>
+        </div>
+      </section></div>
+
+          </aside>
+          
+        </div>
+      </div>
+
+      <footer>
+        <div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item">
+      <div class="skyline grid">
+        <div class="skyline grid__item one-whole">
+          <div class="footer-skyline">
+          </div>
+        </div>
+      </div>
+      <div class="footer-nav grid">
+        <div class="company grid__item one-quarter lap-one-half palm-one-whole">
+          <div class="title">
+            <img
+              src="../../images/footer-logo-text.svg"
+              height="72"
+              alt="Home Assistant"
+            />
+          </div>
+          <p>
+            Home Assistant is a project from the <a href="https://www.openhomefoundation.org/">Open Home Foundation</a>, sponsored by <a href="https://www.nabucasa.com/">Nabu Casa</a>.
+          </p>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Join us and contribute!</h3>
+          <ul>
+            <li><a class="external-link" href="https://github.com/home-assistant/">GitHub repo <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://developers.home-assistant.io">Developers Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://design.home-assistant.io">Design Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://data.home-assistant.io">Data Science Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://community.home-assistant.io">Community Forum <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://creators.home-assistant.io/">Creator Network <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://works-with.home-assistant.io/">Works With Home Assistant <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a href="https://www.home-assistant.io/community">Our community</a></li>
+            <li><a href="https://www.home-assistant.io/help/reporting_issues/">Reporting issues</a></li>
+          </ul>
+          <h3>System status</h3>
+          <ul>
+            <li>
+              <a class="external-link"  href="https://alerts.home-assistant.io">Integration Alerts <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+            <li><a href="https://www.home-assistant.io/security/">Security Alerts</a></li>
+            <li>
+              <a class="external-link" href="https://status.home-assistant.io">System Status <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Companion apps</h3>
+          <ul>
+            <li><a class="external-link" href="https://apps.apple.com/app/id1099568401">iOS and Apple devices</a></li>
+            <li><a class="external-link" href="https://play.google.com/store/apps/details?id=io.homeassistant.companion.android">Android and Wear OS</a></li>
+            <li><a class="external-link" href="https://companion.home-assistant.io/">...and more!</a></li>
+          </ul>
+          <h3>Governance</h3>
+          <ul>
+            <li><a href="https://www.home-assistant.io/privacy/">Privacy Notices</a></li>
+            <li><a href="https://www.home-assistant.io/developers/cla/">Contributor License Agreement</a></li>
+            <li><a href="https://www.home-assistant.io/tos/">Terms of Service</a></li>
+            <li><a href="https://www.home-assistant.io/code_of_conduct/">Code of Conduct</a></li>
+            <li><a href="https://www.home-assistant.io/developers/credits/">Credits</a></li>
+            <li><a href="https://www.home-assistant.io/developers/license/">License</a></li>
+          </ul>
+        </div>
+
+        <div class="socials grid__item one-quarter lap-one-half palm-one-whole">
+
+          <h3>Follow us</h3>
+          <p><a class="external-link" href='https://newsletter.openhomefoundation.org/#/portal'>Sign up for our newsletter <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></p>
+          <div class="icons">
+            <a
+              rel="me"
+              href="https://youtube.com/@home_assistant"
+              title="YouTube"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:youtube"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://reddit.com/r/homeassistant"
+              title="Reddit"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:reddit"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://github.com/home-assistant"
+              title="GitHub"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:github"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://fosstodon.org/@homeassistant"
+              title="Mastodon"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:mastodon"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://bsky.app/profile/home-assistant.io"
+              title="Bluesky"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:bluesky"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://x.com/home_assistant"
+              title="X"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:x"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://www.facebook.com/homeassistantio"
+              title="Facebook"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:facebook"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.instagram.com/homeassistant/"
+              title="Instagram"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:instagram"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.linkedin.com/company/home-assistant"
+              title="LinkedIn"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:linkedin"></iconify-icon></a>
+          </div>
+
+          <div class="web-notice">
+            <p>
+              For partnership inquiries please check out <a href="https://works-with.home-assistant.io/">Works With Home Assistant</a>. For media, get in touch <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#721f17161b13321d02171c1a1d1f17141d071c1613061b1d1c5c1d0015">here</a>. For other questions, you can contact us <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#b7dfd2dbdbd8f7dfd8dad29ad6c4c4dec4c3d6d9c399ded8">here</a> (No technical support!)
+            </p>
+            <p>
+              Website powered by <a href="https://jekyllrb.com/">Jekyll</a><br />
+              Originally based on the <a href="https://github.com/coogie/oscailte">Oscailte theme</a>
+            </p>
+            <a href="https://www.netlify.com">
+              <img
+                src="../../images/frontpage/netlify.svg"
+                alt="Deploys by Netlify Badge"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+
+    </div>
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.3.1/lite-youtube.js" integrity="sha384-7o3d1sg8jSS1LMKzzIEucWtWFI1X4lFCC5gu2ylAgH3KmHcJgjTqp6LWfIvbbmf9" crossorigin="anonymous"></script>
+
+<script src="../../javascripts/terminology_tooltip.js@274cec0734bc752f0e5ea3d4e2e59858" type="text/javascript" defer></script>
+
+<script src="../../javascripts/prism.js@5d6619066a1fc5cd819a93c132b539ac" type="text/javascript" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3/dist/umd/index.min.js" integrity="sha384-f/IEhh8fvOc2ALU79emLlUqAYXyqlA/zYhM+g5GlWMk15QBjTXy05TtmfT1TbtV6" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  docsearch({
+    container: '#docsearch',
+    appId: 'FBHBYS3J0U',
+    indexName: 'home-assistant',
+    apiKey: "ba6f7e6d97b3d3d2f778978c742a47c6",
+  });
+  document.querySelector('.site-title').addEventListener('contextmenu', function (ev) {
+    ev.preventDefault();
+    document.location.assign("https://design.home-assistant.io/#brand/logo")
+  });
+</script>
+
+
+
+
+<script type="text/javascript">
+  {
+    const article = document.querySelector("article.post");
+    if (article) {
+      const iframes = article.querySelectorAll("iframe[data-src]");
+      let loaded = false;
+      if (iframes) {
+        document.addEventListener('mousemove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('touchmove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('scroll', loadLazyFrames, { passive: true, once: true });
+  
+        function loadLazyFrames() {
+          if (loaded) return;
+          loaded = true;
+  
+          iframes.forEach((iframe) => {
+            const src = iframe.getAttribute("data-src");
+            if (src) {
+              iframe.setAttribute("src", src);
+              iframe.removeAttribute("data-src");
+            }
+          });
+        }
+      }
+    }
+  }
+</script>
+
+  </body>
+</html>

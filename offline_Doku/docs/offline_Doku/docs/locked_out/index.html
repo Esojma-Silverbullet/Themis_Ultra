@@ -1,0 +1,796 @@
+
+
+
+
+<!doctype html>
+  <!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>I'm locked out! - Home Assistant</title>
+    <meta name="author" content="Home Assistant">
+    <meta name="description" content="Options for regaining access">
+    
+    <meta name="viewport" content="width=device-width">
+    <link rel="canonical" href="index.html">
+
+    <meta property="fb:app_id" content="338291289691179">
+    <meta property="og:title" content="I'm locked out!">
+    <meta property="og:site_name" content="Home Assistant">
+    <meta property="og:url" content="https://www.home-assistant.io/docs/locked_out/">
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="Options for regaining access">
+    <meta property="og:image" content="https://www.home-assistant.io/images/default-social.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@home_assistant">
+    
+    <meta name="twitter:title" content="I'm locked out!">
+    <meta name="twitter:description" content="Options for regaining access">
+    <meta name="twitter:image" content="https://www.home-assistant.io/images/default-social.png">
+    <link rel="me" href="https://fosstodon.org/@homeassistant">
+
+    <link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3/dist/style.min.css" rel="stylesheet" />
+    <link href="../../stylesheets/prism.css@8acb84bc0387c9548a63998fcfea0139.css" rel="stylesheet">
+    <link href="../../stylesheets/screen.css@cef1bc5aeba0a8ce6d170a9aa21e8dd6.css" media="screen, projection, print" rel="stylesheet">
+    <link href="https://www.home-assistant.io/atom.xml" rel="alternate" title="Home Assistant" type="application/atom+xml">
+    <link rel='shortcut icon' href='../../images/favicon.ico' />
+    <link rel='icon' type='image/png' href='../../images/favicon-192x192.png' sizes='192x192' />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&amp;family=Instrument+Sans:ital,wdth,wght@0,99,400..700;1,99,400..700&amp;" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" integrity="sha384-GPb5RlngihS9H0z1D137JsvzmeZ7tCpWEF4t5YDoTZyMsPP8S7h7vFDh4XhheU83" crossorigin="anonymous"></script>
+  </head>
+
+  <body  class="documentation-page   ">
+    <header class='site-header '>
+      
+
+
+
+<div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item three-tenths lap-two-sixths palm-one-whole ha-title">
+      <a href="https://www.home-assistant.io/" class="site-title">
+        <div class="logo"></div>
+      </a>
+      <a class="release-date" href="https://www.home-assistant.io/blog/2026/01/07/release-20261/" title="Latest version 2026.1.0 released January  7, 2026">
+        2026.1.0
+      </a>
+    </div>
+
+    <div class="grid__item seven-tenths lap-four-sixths palm-one-whole">
+      <nav>
+        <input type="checkbox" id="toggle" />
+        <label
+          for="toggle"
+          class="toggle"
+          data-open="Main Menu"
+          data-close="⨉"
+        ></label>
+        <ul class="menu pull-right">
+          <li><a  href="https://www.home-assistant.io/installation/">Getting started</a></li>
+          <li>
+            <a class="active" href="../index.html">Documentation <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/installation/"><iconify-icon inline icon='simple-icons:homeassistant' title='Homeassistant'></iconify-icon> Installation</a></li>
+              <li><a href="../automation/index.html"><iconify-icon inline icon='mdi:robot-happy' title='Robot happy'></iconify-icon> Automations</a></li>
+              <li><a href="https://www.home-assistant.io/dashboards/"><iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> Dashboards</a></li>
+              <li><a href="https://www.home-assistant.io/voice_control/"><iconify-icon inline icon='mdi:comment-processing-outline' title='Comment processing outline'></iconify-icon> Voice assistants</a></li>
+              <li><a href="../organizing/index.html"><iconify-icon inline icon='mdi:view-grid' title='View grid'></iconify-icon> Device organization</a></li>
+              <li><a href="../energy/index.html"><iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> Energy management</a></li>
+              <li><a href="../configuration/index.html"><iconify-icon inline icon='mdi:cog' title='Cog'></iconify-icon> Advanced configuration</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="index.html#">Our hardware <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/green/">Home Assistant Green</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zbt-2/">Connect ZBT-2</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zwa-2/">Connect ZWA-2</a></li>
+              <li><a href="https://www.home-assistant.io/voice-pe/">Voice Preview Edition</a></li>
+            </ul>
+          </li>
+          <li><a  href="https://www.home-assistant.io/integrations/">Integrations</a></li>
+          <li><a  href="https://www.home-assistant.io/blog/">Blog</a></li>
+          <li><a  href="https://www.home-assistant.io/help/">Need help?</a></li>
+          <li>
+            <div class="docsearch" id="docsearch"></div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    </header>
+
+    <div class="page-content">
+
+      
+
+      <div class="grid-wrapper">
+        <div class="grid grid-center">
+
+          <aside id="toc-bar" class="grid__item desk-wide-one-sixth">
+                <section class="aside-module grid__item one-whole">
+                  <div class='section'>
+                    <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+                    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="index.html#forgot-username">Forgot username</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#symptom-im-the-owner-and-i-forgot-my-username">Symptom: I’m the owner and I forgot my username</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#forgot-password">Forgot password</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#symptom-im-the-owner-and-i-forgot-my-password">Symptom: I’m the owner and I forgot my password</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#remedy-resetting-an-owners-password">Remedy: resetting an owner’s password</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#preparing-the-system-to-start-a-new-onboarding-process">Preparing the system to start a new onboarding process</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#recovering-data-for-home-assistant">Recovering data for Home Assistant</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#connect-directly">Connect directly</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#accessing-files-from-the-sdhdd">Accessing files from the SD/HDD</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#remove-the-sd-and-access-the-files-from-another-computer">Remove the SD and access the files from another computer</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#deleting-a-user">Deleting a user</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#related-topics">Related topics</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#related-links">Related links</a></li>
+</ul>
+                  </div>
+                </section>
+              </aside> 
+
+          
+          <div class="grid__item two-thirds desk-wide-seven-twelfths lap-one-whole palm-one-whole">
+          
+
+            
+              <article class="page">
+  
+  <header>
+    
+    
+      <div class="breadcrumbs">
+        <a href="https://www.home-assistant.io/">Home</a>
+        
+          
+            
+            ▸ <a href="../index.html">Documentation</a>
+          
+        
+          
+            ▸ 
+          
+        
+      </div>
+    
+    <h1 class="title indent">
+      
+        I'm locked out!
+      
+    </h1>
+  </header>
+  
+  
+  <p>The sections below deal with recovering from a situation where you are not able to sign in,
+or need to recover your data.</p>
+<h2>Forgot username <a class="title-link" name="forgot-username" href="index.html#forgot-username"></a>
+</h2>
+<h3>Symptom: I’m the owner and I forgot my username <a class="title-link" name="symptom-im-the-owner-and-i-forgot-my-username" href="index.html#symptom-im-the-owner-and-i-forgot-my-username"></a>
+</h3>
+<p>You are the <strong>owner</strong> of the Home Assistant server and you cannot login because you forgot your username.</p>
+<h4>Remedy <a class="title-link" name="remedy" href="index.html#remedy"></a>
+</h4>
+<ol>
+<li>Check if the following conditions are met:
+<ul>
+<li>you are using the <span class="terminology">Home Assistant Operating System<span class="terminology-tooltip">Home Assistant OS, the Home Assistant Operating System, is an embedded, minimalistic, operating system designed to run the Home Assistant ecosystem on single board computers (like the Raspberry Pi) or Virtual Machines. It includes Home Assistant Core, the Home Assistant Supervisor, and supports add-ons. Home Assistant Supervisor keeps it up to date, removing the need for you to manage an operating system. Home Assistant Operating System is the recommended installation type for most users.</span></span>
+</li>
+<li>you have access to the Home Assistant server.</li>
+</ul>
+</li>
+<li>Open a terminal connection to Home Assistant:
+<ul>
+<li>If you are using a Home Assistant Green, follow these steps <a href="https://support.nabucasa.com/hc/articles/25153288092829">to access the console<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>.</li>
+<li>If you are using a Home Assistant Yellow, follow these steps:
+<ul>
+<li><a href="https://support.nabucasa.com/hc/articles/25454894609693">to access the console from Windows<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a></li>
+<li>
+<a href="https://support.nabucasa.com/hc/articles/25454972435357">to access the console from Linux or macOS<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>.</li>
+</ul>
+</li>
+<li>If you are using another system, connect keyboard and monitor. The procedure might be similar the one used for Green.</li>
+<li>If you are using a Home Assistant OVA (virtualization image):
+<ul>
+<li>Access the system console by opening the terminal through your virtualization platform’s interface (for example, Proxmox, VMware, VirtualBox).</li>
+<li>Follow the platform-specific steps to interact with the virtual machine’s console.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>In the terminal, enter the <code>auth list</code> command.
+<ul>
+<li>This command lists all users that are registered on your Home Assistant.</li>
+</ul>
+</li>
+</ol>
+<h2>Forgot password <a class="title-link" name="forgot-password" href="index.html#forgot-password"></a>
+</h2>
+<h3>Symptom: I’m the owner and I forgot my password <a class="title-link" name="symptom-im-the-owner-and-i-forgot-my-password" href="index.html#symptom-im-the-owner-and-i-forgot-my-password"></a>
+</h3>
+<p>You are the owner or administrator of Home Assistant and forgot your password.</p>
+<h3>Remedy: resetting an owner’s password <a class="title-link" name="remedy-resetting-an-owners-password" href="index.html#remedy-resetting-an-owners-password"></a>
+</h3>
+<p>If you are the owner or have administrator, there are different methods to reset a password, depending on your situation:</p>
+<ul>
+<li><a href="index.html#to-reset-a-password-while-still-logged-in">Reset a password while still logged in</a></li>
+<li><a href="index.html#to-reset-an-owners-password-via-console">Reset an owner’s password when logged out</a></li>
+<li><a href="index.html#to-reset-a-users-password-via-the-container-command-line">Reset a user’s password, via the container command line</a></li>
+</ul>
+<h4>To reset a password while still logged in <a class="title-link" name="to-reset-a-password-while-still-logged-in" href="index.html#to-reset-a-password-while-still-logged-in"></a>
+</h4>
+<p>The method used to reset a password depends on your user rights:</p>
+<ul>
+<li>If you are a regular user without administrator rights, ask the owner to <a href="index.html#to-reset-a-users-password-as-an-owner-via-the-web-interface">give you a new password</a>.</li>
+<li>If you are the owner, choose one of the procedures below to reset your password.
+<ul>
+<li>You cannot recover an owner password from within Home Assistant.</li>
+<li>There is only one owner per system. You cannot add a new owner.</li>
+</ul>
+</li>
+<li>If you are an administrator, add a new user as an administrator and give the new user a password you can remember.
+<ol>
+<li>Then log out, and log in with this new user.</li>
+<li>Reset your password via this new administrator account (and then <a href="index.html#to-delete-a-user">delete this new account</a>).
+<ul>
+<li>Your configuration will remain, and you don’t have to do a new onboarding process.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4>To reset an owner’s password, via console <a class="title-link" name="to-reset-an-owners-password-via-console" href="index.html#to-reset-an-owners-password-via-console"></a>
+</h4>
+<p>Use this procedure only if the following conditions are met:</p>
+<ul>
+<li>You can access the Home Assistant console <strong>on the device itself</strong> (not via the SSH terminal from the add-ons).</li>
+</ul>
+<ol>
+<li>If you are using a Home Assistant Yellow or Green, refer to their documentation.
+<ul>
+<li>If you are using a Home Assistant Yellow, refer to the following procedure:
+<ul>
+<li><a href="https://support.nabucasa.com/hc/articles/25455301907997">Resetting the owner password on Home Assistant Yellow<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a></li>
+</ul>
+</li>
+<li>If you are using a Home Assistant Green, refer to the following procedure:
+<ul>
+<li><a href="https://support.nabucasa.com/hc/articles/25142896227357">Resetting the owner password on Home Assistant Green<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>If you are not using a Yellow or Green: Connect to the console of the Home Assistant server:
+<ul>
+<li>If you are using a virtual machine, connect to your virtual machine console.</li>
+<li>If you are using another board, connect a keyboard and monitor to your device and access the terminal. The procedure is likely very similar to the one described for the Home Assistant Green.</li>
+</ul>
+</li>
+<li>Once you have opened the Home Assistant command line, enter the following command:
+<ul>
+<li>
+<strong>Command</strong>: <code>auth reset --interactive</code>
+</li>
+<li>This will display a list of users. Select your user and enter a new password when prompted.</li>
+<li>
+<strong>Troubleshooting</strong>: If you see the message <code>zsh: command not found: auth</code>, you likely did not enter the command in the serial console connected to the device itself, but in the terminal within Home Assistant.</li>
+</ul>
+</li>
+<li>You can now log in to Home Assistant using this new password.</li>
+</ol>
+<h4>To reset a user’s password, via the container command line <a class="title-link" name="to-reset-a-users-password-via-the-container-command-line" href="index.html#to-reset-a-users-password-via-the-container-command-line"></a>
+</h4>
+<p>If you are running Home Assistant in a container, you can use the command line in the container with the <code>hass</code> command to change your password. The steps below refer to a Home Assistant container in Docker named <code>homeassistant</code>. Note that while working in the container, commands will take a few moments to execute.</p>
+<ol>
+<li>
+<code>docker exec -it homeassistant bash</code> to open to the container command line</li>
+<li>
+<code>hass</code> to create a default user, if this is your first time using the tool</li>
+<li>
+<code>hass --script auth --config /config change_password existing_user new_password</code> to change the password</li>
+<li>
+<code>exit</code> to exit the container command line</li>
+<li>
+<code>docker restart homeassistant</code> to restart the container.</li>
+</ol>
+<h4>To reset a user’s password, as an owner via the web interface <a class="title-link" name="to-reset-a-users-password-as-an-owner-via-the-web-interface" href="index.html#to-reset-a-users-password-as-an-owner-via-the-web-interface"></a>
+</h4>
+<p>Only the owner can change other user’s passwords.</p>
+<ol>
+<li>In the bottom left, select your user to go to the <a href="https://my.home-assistant.io/redirect/profile" class="my" target="_blank"><strong>Profile</strong></a> page and make sure <strong>Advanced Mode</strong> is activated.</li>
+<li>Go to <a href="https://my.home-assistant.io/redirect/people" class="my" target="_blank"><strong>Settings</strong> &gt; <strong>People</strong></a> and select the person for which you want to change the password.</li>
+<li>At the bottom of the dialog box, select <strong>Change Password</strong>.
+<ul>
+<li>Note: this is available as the owner, not administrator.</li>
+</ul>
+</li>
+<li>Enter the new password, and select <strong>OK</strong>.</li>
+<li>Confirm the new password by entering it again, and select <strong>OK</strong> again.</li>
+<li>A confirmation box will be displayed with the text <strong>Password was changed successfully</strong>.</li>
+</ol>
+<h2>Preparing the system to start a new onboarding process <a class="title-link" name="preparing-the-system-to-start-a-new-onboarding-process" href="index.html#preparing-the-system-to-start-a-new-onboarding-process"></a>
+</h2>
+<p>If you lose the password associated with the owner account and the steps above do not work to reset the password, the only way to resolve this is to start a new onboarding process.</p>
+<ul>
+<li>
+<p>If you have an external backup with an administrator account of which you still know the login credentials, you can restore that backup.</p>
+</li>
+<li>
+<p>If you do not have a backup, resetting the device will erase all data.</p>
+</li>
+<li>
+<p>If you have a Home Assistant Green, <a href="https://support.nabucasa.com/hc/articles/25161225495837">reset the Green<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>.</p>
+</li>
+<li>
+<p>If you have a Home Assistant Yellow, <a href="https://support.nabucasa.com/hc/articles/25463622043165">reset the Yellow<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>.</p>
+</li>
+</ul>
+<h2>Recovering data for Home Assistant <a class="title-link" name="recovering-data-for-home-assistant" href="index.html#recovering-data-for-home-assistant"></a>
+</h2>
+<p>Unless your SD card/data is corrupted, you can still get to your files or troubleshoot further.
+There are a few routes:</p>
+<ul>
+<li>Connect a USB keyboard and HDMI monitor directly to the Raspberry Pi.</li>
+<li>Remove the SD and access the files from another machine (preferably one running Linux).</li>
+</ul>
+<h2>Connect directly <a class="title-link" name="connect-directly" href="index.html#connect-directly"></a>
+</h2>
+<p>If you’re using a Raspberry Pi, you’re likely going to have to pull the power in order to get your monitor recognized at boot. Pulling power has a risk of corrupting the SD, but you may not have another option. Most standard USB keyboards should be recognized easily.</p>
+<p>Once you’re connected, you’ll see a running dmesg log. Hit the enter key to interrupt the log.
+Sign in as “root”. There is no password.</p>
+<p>You will then be at the Home Assistant CLI, where you can run the custom commands. These are the same as you would run using the SSH add-on but without using <code>ha</code> in front of it. For example:</p>
+<ul>
+<li>
+<code>core logs</code> for Home Assistant Core log</li>
+<li>
+<code>supervisor logs</code> for supervisor logs</li>
+<li>
+<code>host reboot</code> to reboot the host</li>
+<li>
+<code>dns logs</code> for checking DNS</li>
+<li>etc (typing <code>help</code> will show more)</li>
+</ul>
+<h2>Accessing files from the SD/HDD <a class="title-link" name="accessing-files-from-the-sdhdd" href="index.html#accessing-files-from-the-sdhdd"></a>
+</h2>
+<h3>Remove the SD and access the files from another computer <a class="title-link" name="remove-the-sd-and-access-the-files-from-another-computer" href="index.html#remove-the-sd-and-access-the-files-from-another-computer"></a>
+</h3>
+<p>The files are on an EXT4 partition (<code>hassos-data</code>) and the path is <code>/mnt/data/supervisor</code>.
+These are easily accessed using another Linux machine with EXT support.</p>
+<p>For Windows or macOS you will need third party software. Below are some options.</p>
+<ul>
+<li>Windows: <a href="https://www.diskinternals.com/linux-reader/" rel="external nofollow">https://www.diskinternals.com/linux-reader/<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> (read-only access to the SD)</li>
+<li>macOS: <a href="https://osxfuse.github.io/" rel="external nofollow">https://osxfuse.github.io/<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>
+</li>
+</ul>
+<h2>Deleting a user <a class="title-link" name="deleting-a-user" href="index.html#deleting-a-user"></a>
+</h2>
+<p>You need to be an owner or have administrator rights to delete a user.</p>
+<ol>
+<li>Go to <a href="https://my.home-assistant.io/redirect/people" class="my" target="_blank"><strong>Settings</strong> &gt; <strong>People</strong></a> and select the person which you want to delete.
+<ul>
+<li>Note: you cannot delete the owner.</li>
+</ul>
+</li>
+<li>At the bottom of the dialog box, select <strong>Delete</strong>.
+<ul>
+<li>A confirmation dialog box will be displayed.</li>
+</ul>
+</li>
+<li>To confirm, select <strong>OK</strong>.</li>
+</ol>
+
+
+  
+
+<div class="text related-topics">
+  <h2>Related topics<a class="title-link" href="index.html#related-topics" name="related-topics"></a>
+</h2>
+  <ul>
+    
+    
+    
+    
+    
+    <li>
+      <a href="https://www.home-assistant.io/common-tasks/os/#listing-all-users-from-the-command-line" class="topic">
+        Listing all usernames via command line
+      </a>
+    </li>
+    </ul>
+</div>
+
+
+<div class="text related-links">
+  <h2>Related links<a class="title-link" href="index.html#related-links" name="related-links"></a>
+</h2>
+  <ul>
+    
+    <li><a href="https://support.nabucasa.com/hc/articles/25463622043165" class="link" target="_blank">Reset the Yellow<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a></li>
+    
+    <li><a href="https://support.nabucasa.com/hc/articles/25161225495837" class="link" target="_blank">Reset the Green<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a></li>
+    
+  </ul>
+</div>
+
+  
+<div class="material-card text feedback">
+  <h4>
+<iconify-icon inline icon="mdi:feedback" title="Feedback"></iconify-icon> <b> Help us improve our documentation</b><a href="index.html#feedback_section" class="title-link" name="feedback_section"></a>
+</h4>
+  Suggest an edit to this page, or provide/view feedback for this page.
+  <div class="links">
+    <ul aria-label="Page feedback options">
+    <li><a href="https://github.com/home-assistant/home-assistant.io/tree/current/source/_docs/locked_out.md" target="_blank" title="Edit this page"><iconify-icon inline icon="mdi:edit"></iconify-icon> Edit</a></li>
+    
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues/new?template=feedback.yml&amp;url=https%3A%2F%2Fwww.home-assistant.io%2Fdocs%2Flocked_out%2F&amp;version=2026.1.0&amp;labels=current" target="_blank" title="Provide feedback on this page"><iconify-icon inline icon="mdi:comment-edit-outline"></iconify-icon> Provide feedback</a></li>
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues?utf8=%E2%9C%93&amp;q=%22%2Fdocs%2Flocked_out%2F%22&amp;in=body" target="_blank" title="View given feedback for this page"><iconify-icon inline icon="mdi:comment-text-multiple-outline"></iconify-icon> View given feedback</a></li>
+    
+  </ul>
+  </div>
+</div>
+
+
+</article>
+
+            
+          </div>
+
+
+          
+            
+              <aside id="sidebar" class="grid__item one-third desk-wide-one-quarter lap-one-whole palm-one-whole">
+            
+            <div class="grid">
+  
+
+
+
+
+  <section class="vertical-nav aside-module grid__item one-whole lap-one-half">
+  <div class="section">
+    <h1 class="title epsilon"><iconify-icon inline icon='mdi:bookshelf' title='Bookshelf'></iconify-icon> Documentation</h1>
+    <ul class="divided sidebar-menu">
+      <li>
+        <a  href='../index.html'>Overview </a>
+        |
+        <a  href='https://www.home-assistant.io/faq/'>FAQ </a>
+        |
+        <a  href='../glossary/index.html'>Glossary </a>
+      </li>
+
+      <li>
+  <iconify-icon icon="mdi:robot-happy"></iconify-icon> <a  href='../automation/index.html'>Automations </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> <a  href='https://www.home-assistant.io/dashboards'>Dashboards </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:microphone' title='Microphone'></iconify-icon> <a  href='https://www.home-assistant.io/voice_control/'>Voice assistants </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:category' title='Category'></iconify-icon> <a  href='../organizing/index.html'>Organization </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> <a  href='../energy/index.html'>Home energy management </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:update' title='Update'></iconify-icon> <a  href='https://www.home-assistant.io/common-tasks/general/'>Common tasks </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cogs' title='Cogs'></iconify-icon> <a  href='../configuration/index.html'>Advanced configuration </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:account-security' title='Account security'></iconify-icon> <a  href='../authentication/index.html'>Authentication </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:database' title='Database'></iconify-icon> <a  href='../backend/index.html'>Backend </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:palette' title='Palette'></iconify-icon> <a  href='../tools/index.html'>Tools and helpers </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cellphone' title='Cellphone'></iconify-icon> <a href="https://companion.home-assistant.io/docs">iOS and Android apps <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+</li>
+
+<li>
+  <iconify-icon inline icon='simple-icons:mqtt' title='Mqtt'></iconify-icon> <a  href='https://www.home-assistant.io/integrations/mqtt'>MQTT </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='bitcoin-icons:node-hardware-filled' title='Node hardware filled'></iconify-icon> Official hardware
+  <ul>
+    <li><a href="https://support.nabucasa.com/hc/categories/24638797677853">Home Assistant Green <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734620813469">Home Assistant Connect ZBT-1 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/29400540866973">Home Assistant Connect ZBT-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/28669861145885">Home Assistant Connect ZWA-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734575925149">Home Assistant Yellow <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24451727188125">Home Assistant Voice Preview Edition <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+  </ul>
+</li>
+
+    </ul>
+  </div>
+</section>
+
+
+
+  <section id="toc-module" class="aside-module grid__item one-whole lap-one-half">
+        <div class='section'>
+          <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+          <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="index.html#forgot-username">Forgot username</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#symptom-im-the-owner-and-i-forgot-my-username">Symptom: I’m the owner and I forgot my username</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#forgot-password">Forgot password</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#symptom-im-the-owner-and-i-forgot-my-password">Symptom: I’m the owner and I forgot my password</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#remedy-resetting-an-owners-password">Remedy: resetting an owner’s password</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#preparing-the-system-to-start-a-new-onboarding-process">Preparing the system to start a new onboarding process</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#recovering-data-for-home-assistant">Recovering data for Home Assistant</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#connect-directly">Connect directly</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#accessing-files-from-the-sdhdd">Accessing files from the SD/HDD</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#remove-the-sd-and-access-the-files-from-another-computer">Remove the SD and access the files from another computer</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#deleting-a-user">Deleting a user</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#related-topics">Related topics</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#related-links">Related links</a></li>
+</ul>
+        </div>
+      </section></div>
+
+          </aside>
+          
+        </div>
+      </div>
+
+      <footer>
+        <div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item">
+      <div class="skyline grid">
+        <div class="skyline grid__item one-whole">
+          <div class="footer-skyline">
+          </div>
+        </div>
+      </div>
+      <div class="footer-nav grid">
+        <div class="company grid__item one-quarter lap-one-half palm-one-whole">
+          <div class="title">
+            <img
+              src="../../images/footer-logo-text.svg"
+              height="72"
+              alt="Home Assistant"
+            />
+          </div>
+          <p>
+            Home Assistant is a project from the <a href="https://www.openhomefoundation.org/">Open Home Foundation</a>, sponsored by <a href="https://www.nabucasa.com/">Nabu Casa</a>.
+          </p>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Join us and contribute!</h3>
+          <ul>
+            <li><a class="external-link" href="https://github.com/home-assistant/">GitHub repo <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://developers.home-assistant.io">Developers Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://design.home-assistant.io">Design Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://data.home-assistant.io">Data Science Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://community.home-assistant.io">Community Forum <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://creators.home-assistant.io/">Creator Network <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://works-with.home-assistant.io/">Works With Home Assistant <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a href="https://www.home-assistant.io/community">Our community</a></li>
+            <li><a href="https://www.home-assistant.io/help/reporting_issues/">Reporting issues</a></li>
+          </ul>
+          <h3>System status</h3>
+          <ul>
+            <li>
+              <a class="external-link"  href="https://alerts.home-assistant.io">Integration Alerts <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+            <li><a href="https://www.home-assistant.io/security/">Security Alerts</a></li>
+            <li>
+              <a class="external-link" href="https://status.home-assistant.io">System Status <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Companion apps</h3>
+          <ul>
+            <li><a class="external-link" href="https://apps.apple.com/app/id1099568401">iOS and Apple devices</a></li>
+            <li><a class="external-link" href="https://play.google.com/store/apps/details?id=io.homeassistant.companion.android">Android and Wear OS</a></li>
+            <li><a class="external-link" href="https://companion.home-assistant.io/">...and more!</a></li>
+          </ul>
+          <h3>Governance</h3>
+          <ul>
+            <li><a href="https://www.home-assistant.io/privacy/">Privacy Notices</a></li>
+            <li><a href="https://www.home-assistant.io/developers/cla/">Contributor License Agreement</a></li>
+            <li><a href="https://www.home-assistant.io/tos/">Terms of Service</a></li>
+            <li><a href="https://www.home-assistant.io/code_of_conduct/">Code of Conduct</a></li>
+            <li><a href="https://www.home-assistant.io/developers/credits/">Credits</a></li>
+            <li><a href="https://www.home-assistant.io/developers/license/">License</a></li>
+          </ul>
+        </div>
+
+        <div class="socials grid__item one-quarter lap-one-half palm-one-whole">
+
+          <h3>Follow us</h3>
+          <p><a class="external-link" href='https://newsletter.openhomefoundation.org/#/portal'>Sign up for our newsletter <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></p>
+          <div class="icons">
+            <a
+              rel="me"
+              href="https://youtube.com/@home_assistant"
+              title="YouTube"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:youtube"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://reddit.com/r/homeassistant"
+              title="Reddit"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:reddit"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://github.com/home-assistant"
+              title="GitHub"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:github"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://fosstodon.org/@homeassistant"
+              title="Mastodon"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:mastodon"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://bsky.app/profile/home-assistant.io"
+              title="Bluesky"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:bluesky"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://x.com/home_assistant"
+              title="X"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:x"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://www.facebook.com/homeassistantio"
+              title="Facebook"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:facebook"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.instagram.com/homeassistant/"
+              title="Instagram"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:instagram"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.linkedin.com/company/home-assistant"
+              title="LinkedIn"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:linkedin"></iconify-icon></a>
+          </div>
+
+          <div class="web-notice">
+            <p>
+              For partnership inquiries please check out <a href="https://works-with.home-assistant.io/">Works With Home Assistant</a>. For media, get in touch <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#7c111918151d3c130c1912141311191a130912181d0815131252130e1b">here</a>. For other questions, you can contact us <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#4e262b2222210e2621232b632f3d3d273d3a2f203a602721">here</a> (No technical support!)
+            </p>
+            <p>
+              Website powered by <a href="https://jekyllrb.com/">Jekyll</a><br />
+              Originally based on the <a href="https://github.com/coogie/oscailte">Oscailte theme</a>
+            </p>
+            <a href="https://www.netlify.com">
+              <img
+                src="../../images/frontpage/netlify.svg"
+                alt="Deploys by Netlify Badge"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+
+    </div>
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.3.1/lite-youtube.js" integrity="sha384-7o3d1sg8jSS1LMKzzIEucWtWFI1X4lFCC5gu2ylAgH3KmHcJgjTqp6LWfIvbbmf9" crossorigin="anonymous"></script>
+
+<script src="../../javascripts/terminology_tooltip.js@274cec0734bc752f0e5ea3d4e2e59858" type="text/javascript" defer></script>
+
+<script src="../../javascripts/prism.js@5d6619066a1fc5cd819a93c132b539ac" type="text/javascript" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3/dist/umd/index.min.js" integrity="sha384-f/IEhh8fvOc2ALU79emLlUqAYXyqlA/zYhM+g5GlWMk15QBjTXy05TtmfT1TbtV6" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  docsearch({
+    container: '#docsearch',
+    appId: 'FBHBYS3J0U',
+    indexName: 'home-assistant',
+    apiKey: "ba6f7e6d97b3d3d2f778978c742a47c6",
+  });
+  document.querySelector('.site-title').addEventListener('contextmenu', function (ev) {
+    ev.preventDefault();
+    document.location.assign("https://design.home-assistant.io/#brand/logo")
+  });
+</script>
+
+
+
+
+<script type="text/javascript">
+  {
+    const article = document.querySelector("article.post");
+    if (article) {
+      const iframes = article.querySelectorAll("iframe[data-src]");
+      let loaded = false;
+      if (iframes) {
+        document.addEventListener('mousemove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('touchmove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('scroll', loadLazyFrames, { passive: true, once: true });
+  
+        function loadLazyFrames() {
+          if (loaded) return;
+          loaded = true;
+  
+          iframes.forEach((iframe) => {
+            const src = iframe.getAttribute("data-src");
+            if (src) {
+              iframe.setAttribute("src", src);
+              iframe.removeAttribute("data-src");
+            }
+          });
+        }
+      }
+    }
+  }
+</script>
+
+  </body>
+</html>

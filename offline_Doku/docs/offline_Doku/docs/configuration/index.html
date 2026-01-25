@@ -1,0 +1,707 @@
+
+
+
+
+<!doctype html>
+  <!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Configuration.yaml - Home Assistant</title>
+    <meta name="author" content="Home Assistant">
+    <meta name="description" content="Configuring Home Assistant via text files.">
+    
+    <meta name="viewport" content="width=device-width">
+    <link rel="canonical" href="index.html">
+
+    <meta property="fb:app_id" content="338291289691179">
+    <meta property="og:title" content="Configuration.yaml">
+    <meta property="og:site_name" content="Home Assistant">
+    <meta property="og:url" content="https://www.home-assistant.io/docs/configuration/">
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="Configuring Home Assistant via text files.">
+    <meta property="og:image" content="https://www.home-assistant.io/images/default-social.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@home_assistant">
+    
+    <meta name="twitter:title" content="Configuration.yaml">
+    <meta name="twitter:description" content="Configuring Home Assistant via text files.">
+    <meta name="twitter:image" content="https://www.home-assistant.io/images/default-social.png">
+    <link rel="me" href="https://fosstodon.org/@homeassistant">
+
+    <link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3/dist/style.min.css" rel="stylesheet" />
+    <link href="../../stylesheets/prism.css@8acb84bc0387c9548a63998fcfea0139.css" rel="stylesheet">
+    <link href="../../stylesheets/screen.css@cef1bc5aeba0a8ce6d170a9aa21e8dd6.css" media="screen, projection, print" rel="stylesheet">
+    <link href="https://www.home-assistant.io/atom.xml" rel="alternate" title="Home Assistant" type="application/atom+xml">
+    <link rel='shortcut icon' href='../../images/favicon.ico' />
+    <link rel='icon' type='image/png' href='../../images/favicon-192x192.png' sizes='192x192' />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&amp;family=Instrument+Sans:ital,wdth,wght@0,99,400..700;1,99,400..700&amp;" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" integrity="sha384-GPb5RlngihS9H0z1D137JsvzmeZ7tCpWEF4t5YDoTZyMsPP8S7h7vFDh4XhheU83" crossorigin="anonymous"></script>
+  </head>
+
+  <body  class="documentation-page   ">
+    <header class='site-header '>
+      
+
+
+
+<div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item three-tenths lap-two-sixths palm-one-whole ha-title">
+      <a href="https://www.home-assistant.io/" class="site-title">
+        <div class="logo"></div>
+      </a>
+      <a class="release-date" href="https://www.home-assistant.io/blog/2026/01/07/release-20261/" title="Latest version 2026.1.0 released January  7, 2026">
+        2026.1.0
+      </a>
+    </div>
+
+    <div class="grid__item seven-tenths lap-four-sixths palm-one-whole">
+      <nav>
+        <input type="checkbox" id="toggle" />
+        <label
+          for="toggle"
+          class="toggle"
+          data-open="Main Menu"
+          data-close="⨉"
+        ></label>
+        <ul class="menu pull-right">
+          <li><a  href="https://www.home-assistant.io/installation/">Getting started</a></li>
+          <li>
+            <a class="active" href="../index.html">Documentation <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/installation/"><iconify-icon inline icon='simple-icons:homeassistant' title='Homeassistant'></iconify-icon> Installation</a></li>
+              <li><a href="../automation/index.html"><iconify-icon inline icon='mdi:robot-happy' title='Robot happy'></iconify-icon> Automations</a></li>
+              <li><a href="https://www.home-assistant.io/dashboards/"><iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> Dashboards</a></li>
+              <li><a href="https://www.home-assistant.io/voice_control/"><iconify-icon inline icon='mdi:comment-processing-outline' title='Comment processing outline'></iconify-icon> Voice assistants</a></li>
+              <li><a href="../organizing/index.html"><iconify-icon inline icon='mdi:view-grid' title='View grid'></iconify-icon> Device organization</a></li>
+              <li><a href="../energy/index.html"><iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> Energy management</a></li>
+              <li><a href="index.html"><iconify-icon inline icon='mdi:cog' title='Cog'></iconify-icon> Advanced configuration</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="index.html#">Our hardware <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/green/">Home Assistant Green</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zbt-2/">Connect ZBT-2</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zwa-2/">Connect ZWA-2</a></li>
+              <li><a href="https://www.home-assistant.io/voice-pe/">Voice Preview Edition</a></li>
+            </ul>
+          </li>
+          <li><a  href="https://www.home-assistant.io/integrations/">Integrations</a></li>
+          <li><a  href="https://www.home-assistant.io/blog/">Blog</a></li>
+          <li><a  href="https://www.home-assistant.io/help/">Need help?</a></li>
+          <li>
+            <div class="docsearch" id="docsearch"></div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    </header>
+
+    <div class="page-content">
+
+      
+
+      <div class="grid-wrapper">
+        <div class="grid grid-center">
+
+          <aside id="toc-bar" class="grid__item desk-wide-one-sixth">
+                <section class="aside-module grid__item one-whole">
+                  <div class='section'>
+                    <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+                    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="index.html#editing-configurationyaml">Editing configuration.yaml</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#to-set-up-access-to-the-files-and-prepare-an-editor">To set up access to the files and prepare an editor</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#to-find-the-configuration-directory">To find the configuration directory</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#to-edit-the-configuration-file">To edit the configuration file</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#validating-the-configuration">Validating the configuration</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#reloading-the-configuration-to-apply-changes">Reloading the configuration to apply changes</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#troubleshooting-the-configuration">Troubleshooting the configuration</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#related-topics">Related topics</a></li>
+</ul>
+                  </div>
+                </section>
+              </aside> 
+
+          
+          <div class="grid__item two-thirds desk-wide-seven-twelfths lap-one-whole palm-one-whole">
+          
+
+            
+              <article class="page">
+  
+  <header>
+    
+    
+      <div class="breadcrumbs">
+        <a href="https://www.home-assistant.io/">Home</a>
+        
+          
+            
+            ▸ <a href="../index.html">Documentation</a>
+          
+        
+          
+            ▸ 
+          
+        
+      </div>
+    
+    <h1 class="title indent">
+      
+        Configuration.yaml
+      
+    </h1>
+  </header>
+  
+  
+  <p>While you can configure most of Home Assistant from the user interface, for some integrations, you need to edit the <code>configuration.yaml</code> file.</p>
+<p>This file contains <span class="terminology">integrations<span class="terminology-tooltip">Integrations connect and integrate Home Assistant with your devices, services, and more.<a class="terminology-link" href="https://www.home-assistant.io/getting-started/concepts-terminology/#integrations"> [Learn more]</a></span></span> to be loaded along with their configurations. Throughout the documentation, you will find snippets that you can add to your configuration file to enable specific functionality.</p>
+<p class="img">
+<img src="../../images/docs/configuration/config-yaml_via-file-editor.png" alt="Screenshot of an example of a configuration.yaml file, accessed using the File editor add-on on a Home Assistant Operating System installation.">
+Example of a configuration.yaml file, accessed using the File editor add-on on a Home Assistant Operating System installation.
+</p>
+<h2>Editing configuration.yaml <a class="title-link" name="editing-configurationyaml" href="index.html#editing-configurationyaml"></a>
+</h2>
+<p>How you edit your <code>configuration.yaml</code> file depends on your editor preferences and the <a href="https://www.home-assistant.io/installation/#about-installation-types">installation type</a> you used to set up Home Assistant. Follow these steps:</p>
+<ol>
+<li>
+<a href="index.html#to-set-up-access-to-the-files-and-prepare-an-editor">Set up file access</a>.</li>
+<li>
+<a href="index.html#to-find-the-configuration-directory">Locate the config directory</a>.</li>
+<li>
+<a href="index.html#to-edit-the-configuration-file">Edit your <code>configuration.yaml</code> file</a>.</li>
+<li>Save your changes and <a href="index.html#reloading-the-configuration-to-apply-changes">reload the configuration</a> to apply the changes.</li>
+</ol>
+<h3>To set up access to the files and prepare an editor <a class="title-link" name="to-set-up-access-to-the-files-and-prepare-an-editor" href="index.html#to-set-up-access-to-the-files-and-prepare-an-editor"></a>
+</h3>
+<p>Before you can edit a file, you need to know how to access files in Home Assistant and setup an editor.
+File access depends on your <a href="https://www.home-assistant.io/installation/#about-installation-types">installation type</a>. If you use <span class="terminology">Home Assistant Operating System<span class="terminology-tooltip">Home Assistant OS, the Home Assistant Operating System, is an embedded, minimalistic, operating system designed to run the Home Assistant ecosystem on single board computers (like the Raspberry Pi) or Virtual Machines. It includes Home Assistant Core, the Home Assistant Supervisor, and supports add-ons. Home Assistant Supervisor keeps it up to date, removing the need for you to manage an operating system. Home Assistant Operating System is the recommended installation type for most users.</span></span>, you can use editor add-ons, for example. If you use <span class="terminology">Home Assistant Container<span class="terminology-tooltip">Home Assistant Container is a standalone container-based installation of Home Assistant Core. Any <a href="https://opencontainers.org/" rel="external nofollow">OCI<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> compatible runtime can be used, but the documentation focus is on Docker.<a class="terminology-link" href="https://www.home-assistant.io/installation/#about-installation-types"> [Learn more]</a></span></span>, add-ons are not available.</p>
+<p>To set up file access on the Home Assistant Operating System, follow these steps:</p>
+<ul>
+<li>If you are unsure which option to choose, install the <a href="https://www.home-assistant.io/common-tasks/os/#installing-and-using-the-file-editor-add-on">file editor add-on</a>.
+<ul>
+<li>Alternatively, use the <a href="https://www.home-assistant.io/common-tasks/os/#installing-and-using-the-visual-studio-code-vsc-add-on">Studio Code Server add-on</a>. This editor offers live syntax checking and auto-fill of various Home Assistant entities. But it looks more complex than the file editor.</li>
+<li>If you prefer to use a file editor on your computer, use the <a href="https://www.home-assistant.io/common-tasks/os/#installing-and-using-the-samba-add-on">Samba add-on</a>.</li>
+</ul>
+</li>
+</ul>
+<h3>To find the configuration directory <a class="title-link" name="to-find-the-configuration-directory" href="index.html#to-find-the-configuration-directory"></a>
+</h3>
+<ol>
+<li>
+<p>To look up the path to your configuration directory, go to <a href="https://my.home-assistant.io/redirect/system_health" class="my" target="_blank"><strong>Settings</strong> &gt; <strong>System</strong> &gt; <strong>Repairs</strong></a>.</p>
+<ul>
+<li>Select the three dots menu and select <strong>System information</strong>.</li>
+</ul>
+<p><img src="../../images/screenshots/System_information_menu.png" alt="Show system information option"></p>
+</li>
+<li>
+<p>Find out the location of the <strong>Configuration directory</strong>.</p>
+<p><img src="../../images/screenshots/system_information.png" alt="Screenshot showing the top of the system information panel"></p>
+<ul>
+<li>Unless you changed the file structure, the default is as follows:     -
+<ul>
+<li>
+<span class="terminology">Home Assistant Operating System<span class="terminology-tooltip">Home Assistant OS, the Home Assistant Operating System, is an embedded, minimalistic, operating system designed to run the Home Assistant ecosystem on single board computers (like the Raspberry Pi) or Virtual Machines. It includes Home Assistant Core, the Home Assistant Supervisor, and supports add-ons. Home Assistant Supervisor keeps it up to date, removing the need for you to manage an operating system. Home Assistant Operating System is the recommended installation type for most users.</span></span>: the <code>configuration.yaml</code> is in the <code>/config</code> folder of the installation.</li>
+<li>
+<span class="terminology">Home Assistant Container<span class="terminology-tooltip">Home Assistant Container is a standalone container-based installation of Home Assistant Core. Any <a href="https://opencontainers.org/" rel="external nofollow">OCI<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> compatible runtime can be used, but the documentation focus is on Docker.<a class="terminology-link" href="https://www.home-assistant.io/installation/#about-installation-types"> [Learn more]</a></span></span>: the <code>configuration.yaml</code> is in the config folder that you mounted in your container.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3>To edit the configuration file <a class="title-link" name="to-edit-the-configuration-file" href="index.html#to-edit-the-configuration-file"></a>
+</h3>
+<p>Once you have located the config folder, you can edit your <code>configuration.yaml</code> file. How you edit the file depends on the editor you set up in step 1:</p>
+<ul>
+<li>
+<strong>If you are using the File editor add-on</strong>: Open the add-on, navigate to the <code>/config</code> folder in the file browser on the left, and select the <code>configuration.yaml</code> file to open it in the editor.</li>
+<li>
+<strong>If you are using the Studio Code Server add-on</strong>: Open the add-on, use the file explorer on the left to navigate to the <code>configuration.yaml</code> file, and select it to open in the editor.</li>
+<li>
+<strong>If you are using Samba to access files</strong>: Navigate to the shared folder on your computer, locate the <code>configuration.yaml</code> file, and open it with your favorite text editor like <a href="https://notepad-plus-plus.org/" rel="external nofollow">Notepad++<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> or <a href="https://code.visualstudio.com/" rel="external nofollow">Visual Studio Code<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>.</li>
+</ul>
+<div class="alert alert-note">
+  <p class="alert-title"><iconify-icon inline icon="mdi:information-outline"></iconify-icon> Note</p>
+  <div class="alert-content">
+<p>If you have watched any videos about setting up Home Assistant using <code>configuration.yaml</code> (particularly ones that are old), you might notice your default configuration file is much smaller than what the videos show. Don’t be concerned, you haven’t done anything wrong. Many items in the default configuration files shown in those old videos are now included in the <code>default_config:</code> line that you see in your configuration file. Refer to the <a href="https://www.home-assistant.io/integrations/default_config/">default config integration</a> for more information on what’s included in that line.</p>
+  </div>
+</div>
+<h2>Validating the configuration <a class="title-link" name="validating-the-configuration" href="index.html#validating-the-configuration"></a>
+</h2>
+<p>After changing configuration or automation files, you can check if the configuration is valid. A configuration check is also applied automatically when you reload the configuration or when you restart Home Assistant.</p>
+<p>The method for running a configuration check depends on your <a href="https://www.home-assistant.io/installation/#about-installation-types">installation type</a>. Check the common tasks for your installation type:</p>
+<ul>
+<li><a href="https://www.home-assistant.io/common-tasks/os/#configuration-check">Configuration check on Operating System</a></li>
+<li><a href="https://www.home-assistant.io/common-tasks/container/#configuration-check">Configuration check on Container</a></li>
+</ul>
+<h2>Reloading the configuration to apply changes <a class="title-link" name="reloading-the-configuration-to-apply-changes" href="index.html#reloading-the-configuration-to-apply-changes"></a>
+</h2>
+<p>For configuration changes to become effective, the configuration must be reloaded. Most integrations in Home Assistant (that do not interact with <span class="terminology">devices<span class="terminology-tooltip">A device is a model representing a physical or logical unit that contains entities.</span></span> or <span class="terminology">services<span class="terminology-tooltip">The term “service” in Home Assistant is used in the sense of an <strong>information
+service</strong>. For example, the municipal waste management service that provides
+entities for organic, paper, and packaging waste. In terms of functionality,
+the information service is like a device. It is called <em>service</em> to avoid
+confusion, as it does not come with a piece of hardware.</span></span>) can reload changes made to their configuration in <code>configuration.yaml</code> without needing to restart Home Assistant.</p>
+<ol>
+<li>
+<p>Under <strong>Settings</strong>, select the three dots menu (top right) <iconify-icon inline icon="mdi:dots-vertical" title="Dots vertical"></iconify-icon>, select <strong>Restart Home Assistant</strong> &gt; <strong>Quick reload</strong>.</p>
+<p><img src="../../images/docs/configuration/settings_restart_ha.png" alt="Settings, three dot menu, restart Home Assistant"></p>
+</li>
+<li>
+<p>If you find that your changes were not applied, you need to restart.</p>
+<ul>
+<li>Select <strong>Restart Home Assistant</strong>.</li>
+<li>Note: This interrupts automations and scripts.</li>
+</ul>
+<p><img src="../../images/docs/configuration/reload_restart.png" alt="Reload and restart buttons"></p>
+</li>
+</ol>
+<h2>Troubleshooting the configuration <a class="title-link" name="troubleshooting-the-configuration" href="index.html#troubleshooting-the-configuration"></a>
+</h2>
+<p>If you run into trouble while configuring Home Assistant, refer to the <a href="troubleshooting/index.html">configuration troubleshooting page</a>.</p>
+
+
+  
+
+<div class="text related-topics">
+  <h2>Related topics<a class="title-link" href="index.html#related-topics" name="related-topics"></a>
+</h2>
+  <ul>
+    
+    
+    
+    
+    
+    <li>
+      <a href="yaml/index.html" class="topic">
+        Yaml syntax
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <li>
+      <a href="https://www.home-assistant.io/common-tasks/general/#backups" class="topic">
+        Creating and restoring backups
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    <li>
+      <a href="../tools/dev-tools/index.html#reloading-the-yaml-configuration" class="topic">
+        Reloading the yaml configuration from developer tools
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    <li>
+      <a href="https://www.home-assistant.io/common-tasks/os/#configuring-access-to-files" class="topic">
+        Configuring file access on the operating system
+      </a>
+    </li>
+    
+    
+    
+    </ul>
+</div>
+
+
+  
+<div class="material-card text feedback">
+  <h4>
+<iconify-icon inline icon="mdi:feedback" title="Feedback"></iconify-icon> <b> Help us improve our documentation</b><a href="index.html#feedback_section" class="title-link" name="feedback_section"></a>
+</h4>
+  Suggest an edit to this page, or provide/view feedback for this page.
+  <div class="links">
+    <ul aria-label="Page feedback options">
+    <li><a href="https://github.com/home-assistant/home-assistant.io/tree/current/source/_docs/configuration.markdown" target="_blank" title="Edit this page"><iconify-icon inline icon="mdi:edit"></iconify-icon> Edit</a></li>
+    
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues/new?template=feedback.yml&amp;url=https%3A%2F%2Fwww.home-assistant.io%2Fdocs%2Fconfiguration%2F&amp;version=2026.1.0&amp;labels=current" target="_blank" title="Provide feedback on this page"><iconify-icon inline icon="mdi:comment-edit-outline"></iconify-icon> Provide feedback</a></li>
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues?utf8=%E2%9C%93&amp;q=%22%2Fdocs%2Fconfiguration%2F%22&amp;in=body" target="_blank" title="View given feedback for this page"><iconify-icon inline icon="mdi:comment-text-multiple-outline"></iconify-icon> View given feedback</a></li>
+    
+  </ul>
+  </div>
+</div>
+
+
+</article>
+
+            
+          </div>
+
+
+          
+            
+              <aside id="sidebar" class="grid__item one-third desk-wide-one-quarter lap-one-whole palm-one-whole">
+            
+            <div class="grid">
+  
+
+
+
+
+  <section class="vertical-nav aside-module grid__item one-whole lap-one-half">
+  <div class="section">
+    <h1 class="title epsilon"><iconify-icon inline icon='mdi:bookshelf' title='Bookshelf'></iconify-icon> Documentation</h1>
+    <ul class="divided sidebar-menu">
+      <li>
+        <a  href='../index.html'>Overview </a>
+        |
+        <a  href='https://www.home-assistant.io/faq/'>FAQ </a>
+        |
+        <a  href='../glossary/index.html'>Glossary </a>
+      </li>
+
+      <li>
+  <iconify-icon icon="mdi:robot-happy"></iconify-icon> <a  href='../automation/index.html'>Automations </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> <a  href='https://www.home-assistant.io/dashboards'>Dashboards </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:microphone' title='Microphone'></iconify-icon> <a  href='https://www.home-assistant.io/voice_control/'>Voice assistants </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:category' title='Category'></iconify-icon> <a  href='../organizing/index.html'>Organization </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> <a  href='../energy/index.html'>Home energy management </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:update' title='Update'></iconify-icon> <a  href='https://www.home-assistant.io/common-tasks/general/'>Common tasks </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cogs' title='Cogs'></iconify-icon> <a class='active' href='index.html'>Advanced configuration </a>
+  
+  <ul>
+    <li><a  href='yaml/index.html'>YAML syntax </a></li>
+    <li><a  href='basic/index.html'>Basic information </a></li>
+    <li><a  href='customizing-devices/index.html'>Customizing entities </a></li>
+    <li><a  href='troubleshooting/index.html'>Troubleshooting configuration </a></li>
+    <li><a  href='securing/index.html'>Security check points </a></li>
+    <li><a  href='remote/index.html'>Remote access </a></li>
+    <li><a  href='splitting_configuration/index.html'>Splitting up the configuration </a></li>
+    <li><a  href='packages/index.html'>Packages </a></li>
+    <li><a  href='secrets/index.html'>Storing secrets </a></li>
+    <li><a  href='events/index.html'>Events </a></li>
+    <li><a  href='state_object/index.html'>State and state object </a></li>
+    <li><a  href='entities_domains/index.html'>Entities and domains </a></li>
+    <li><a  href='templating/index.html'>Templating </a></li>
+    <li><a  href='platform_options/index.html'>Entity component platform options </a></li>
+  </ul>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:account-security' title='Account security'></iconify-icon> <a  href='../authentication/index.html'>Authentication </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:database' title='Database'></iconify-icon> <a  href='../backend/index.html'>Backend </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:palette' title='Palette'></iconify-icon> <a  href='../tools/index.html'>Tools and helpers </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cellphone' title='Cellphone'></iconify-icon> <a href="https://companion.home-assistant.io/docs">iOS and Android apps <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+</li>
+
+<li>
+  <iconify-icon inline icon='simple-icons:mqtt' title='Mqtt'></iconify-icon> <a  href='https://www.home-assistant.io/integrations/mqtt'>MQTT </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='bitcoin-icons:node-hardware-filled' title='Node hardware filled'></iconify-icon> Official hardware
+  <ul>
+    <li><a href="https://support.nabucasa.com/hc/categories/24638797677853">Home Assistant Green <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734620813469">Home Assistant Connect ZBT-1 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/29400540866973">Home Assistant Connect ZBT-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/28669861145885">Home Assistant Connect ZWA-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734575925149">Home Assistant Yellow <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24451727188125">Home Assistant Voice Preview Edition <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+  </ul>
+</li>
+
+    </ul>
+  </div>
+</section>
+
+
+
+  <section id="toc-module" class="aside-module grid__item one-whole lap-one-half">
+        <div class='section'>
+          <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+          <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="index.html#editing-configurationyaml">Editing configuration.yaml</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#to-set-up-access-to-the-files-and-prepare-an-editor">To set up access to the files and prepare an editor</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#to-find-the-configuration-directory">To find the configuration directory</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#to-edit-the-configuration-file">To edit the configuration file</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#validating-the-configuration">Validating the configuration</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#reloading-the-configuration-to-apply-changes">Reloading the configuration to apply changes</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#troubleshooting-the-configuration">Troubleshooting the configuration</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#related-topics">Related topics</a></li>
+</ul>
+        </div>
+      </section></div>
+
+          </aside>
+          
+        </div>
+      </div>
+
+      <footer>
+        <div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item">
+      <div class="skyline grid">
+        <div class="skyline grid__item one-whole">
+          <div class="footer-skyline">
+          </div>
+        </div>
+      </div>
+      <div class="footer-nav grid">
+        <div class="company grid__item one-quarter lap-one-half palm-one-whole">
+          <div class="title">
+            <img
+              src="../../images/footer-logo-text.svg"
+              height="72"
+              alt="Home Assistant"
+            />
+          </div>
+          <p>
+            Home Assistant is a project from the <a href="https://www.openhomefoundation.org/">Open Home Foundation</a>, sponsored by <a href="https://www.nabucasa.com/">Nabu Casa</a>.
+          </p>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Join us and contribute!</h3>
+          <ul>
+            <li><a class="external-link" href="https://github.com/home-assistant/">GitHub repo <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://developers.home-assistant.io">Developers Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://design.home-assistant.io">Design Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://data.home-assistant.io">Data Science Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://community.home-assistant.io">Community Forum <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://creators.home-assistant.io/">Creator Network <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://works-with.home-assistant.io/">Works With Home Assistant <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a href="https://www.home-assistant.io/community">Our community</a></li>
+            <li><a href="https://www.home-assistant.io/help/reporting_issues/">Reporting issues</a></li>
+          </ul>
+          <h3>System status</h3>
+          <ul>
+            <li>
+              <a class="external-link"  href="https://alerts.home-assistant.io">Integration Alerts <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+            <li><a href="https://www.home-assistant.io/security/">Security Alerts</a></li>
+            <li>
+              <a class="external-link" href="https://status.home-assistant.io">System Status <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Companion apps</h3>
+          <ul>
+            <li><a class="external-link" href="https://apps.apple.com/app/id1099568401">iOS and Apple devices</a></li>
+            <li><a class="external-link" href="https://play.google.com/store/apps/details?id=io.homeassistant.companion.android">Android and Wear OS</a></li>
+            <li><a class="external-link" href="https://companion.home-assistant.io/">...and more!</a></li>
+          </ul>
+          <h3>Governance</h3>
+          <ul>
+            <li><a href="https://www.home-assistant.io/privacy/">Privacy Notices</a></li>
+            <li><a href="https://www.home-assistant.io/developers/cla/">Contributor License Agreement</a></li>
+            <li><a href="https://www.home-assistant.io/tos/">Terms of Service</a></li>
+            <li><a href="https://www.home-assistant.io/code_of_conduct/">Code of Conduct</a></li>
+            <li><a href="https://www.home-assistant.io/developers/credits/">Credits</a></li>
+            <li><a href="https://www.home-assistant.io/developers/license/">License</a></li>
+          </ul>
+        </div>
+
+        <div class="socials grid__item one-quarter lap-one-half palm-one-whole">
+
+          <h3>Follow us</h3>
+          <p><a class="external-link" href='https://newsletter.openhomefoundation.org/#/portal'>Sign up for our newsletter <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></p>
+          <div class="icons">
+            <a
+              rel="me"
+              href="https://youtube.com/@home_assistant"
+              title="YouTube"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:youtube"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://reddit.com/r/homeassistant"
+              title="Reddit"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:reddit"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://github.com/home-assistant"
+              title="GitHub"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:github"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://fosstodon.org/@homeassistant"
+              title="Mastodon"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:mastodon"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://bsky.app/profile/home-assistant.io"
+              title="Bluesky"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:bluesky"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://x.com/home_assistant"
+              title="X"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:x"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://www.facebook.com/homeassistantio"
+              title="Facebook"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:facebook"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.instagram.com/homeassistant/"
+              title="Instagram"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:instagram"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.linkedin.com/company/home-assistant"
+              title="LinkedIn"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:linkedin"></iconify-icon></a>
+          </div>
+
+          <div class="web-notice">
+            <p>
+              For partnership inquiries please check out <a href="https://works-with.home-assistant.io/">Works With Home Assistant</a>. For media, get in touch <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#274a42434e4667485742494f484a42414852494346534e484909485540">here</a>. For other questions, you can contact us <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#5139343d3d3e11393e3c347c302222382225303f257f383e">here</a> (No technical support!)
+            </p>
+            <p>
+              Website powered by <a href="https://jekyllrb.com/">Jekyll</a><br />
+              Originally based on the <a href="https://github.com/coogie/oscailte">Oscailte theme</a>
+            </p>
+            <a href="https://www.netlify.com">
+              <img
+                src="../../images/frontpage/netlify.svg"
+                alt="Deploys by Netlify Badge"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+
+    </div>
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.3.1/lite-youtube.js" integrity="sha384-7o3d1sg8jSS1LMKzzIEucWtWFI1X4lFCC5gu2ylAgH3KmHcJgjTqp6LWfIvbbmf9" crossorigin="anonymous"></script>
+
+<script src="../../javascripts/terminology_tooltip.js@274cec0734bc752f0e5ea3d4e2e59858" type="text/javascript" defer></script>
+
+<script src="../../javascripts/prism.js@5d6619066a1fc5cd819a93c132b539ac" type="text/javascript" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3/dist/umd/index.min.js" integrity="sha384-f/IEhh8fvOc2ALU79emLlUqAYXyqlA/zYhM+g5GlWMk15QBjTXy05TtmfT1TbtV6" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  docsearch({
+    container: '#docsearch',
+    appId: 'FBHBYS3J0U',
+    indexName: 'home-assistant',
+    apiKey: "ba6f7e6d97b3d3d2f778978c742a47c6",
+  });
+  document.querySelector('.site-title').addEventListener('contextmenu', function (ev) {
+    ev.preventDefault();
+    document.location.assign("https://design.home-assistant.io/#brand/logo")
+  });
+</script>
+
+
+
+
+<script type="text/javascript">
+  {
+    const article = document.querySelector("article.post");
+    if (article) {
+      const iframes = article.querySelectorAll("iframe[data-src]");
+      let loaded = false;
+      if (iframes) {
+        document.addEventListener('mousemove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('touchmove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('scroll', loadLazyFrames, { passive: true, once: true });
+  
+        function loadLazyFrames() {
+          if (loaded) return;
+          loaded = true;
+  
+          iframes.forEach((iframe) => {
+            const src = iframe.getAttribute("data-src");
+            if (src) {
+              iframe.setAttribute("src", src);
+              iframe.removeAttribute("data-src");
+            }
+          });
+        }
+      }
+    }
+  }
+</script>
+
+  </body>
+</html>

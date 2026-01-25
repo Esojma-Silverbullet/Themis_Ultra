@@ -1,0 +1,2375 @@
+
+
+
+
+<!doctype html>
+  <!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Selectors - Home Assistant</title>
+    <meta name="author" content="Home Assistant">
+    <meta name="description" content="Documentation on available selectors.">
+    
+    <meta name="viewport" content="width=device-width">
+    <link rel="canonical" href="index.html">
+
+    <meta property="fb:app_id" content="338291289691179">
+    <meta property="og:title" content="Selectors">
+    <meta property="og:site_name" content="Home Assistant">
+    <meta property="og:url" content="https://www.home-assistant.io/docs/blueprint/selectors/">
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="Documentation on available selectors.">
+    <meta property="og:image" content="https://www.home-assistant.io/images/default-social.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@home_assistant">
+    
+    <meta name="twitter:title" content="Selectors">
+    <meta name="twitter:description" content="Documentation on available selectors.">
+    <meta name="twitter:image" content="https://www.home-assistant.io/images/default-social.png">
+    <link rel="me" href="https://fosstodon.org/@homeassistant">
+
+    <link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3/dist/style.min.css" rel="stylesheet" />
+    <link href="../../../stylesheets/prism.css@8acb84bc0387c9548a63998fcfea0139.css" rel="stylesheet">
+    <link href="../../../stylesheets/screen.css@cef1bc5aeba0a8ce6d170a9aa21e8dd6.css" media="screen, projection, print" rel="stylesheet">
+    <link href="https://www.home-assistant.io/atom.xml" rel="alternate" title="Home Assistant" type="application/atom+xml">
+    <link rel='shortcut icon' href='../../../images/favicon.ico' />
+    <link rel='icon' type='image/png' href='../../../images/favicon-192x192.png' sizes='192x192' />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&amp;family=Instrument+Sans:ital,wdth,wght@0,99,400..700;1,99,400..700&amp;" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" integrity="sha384-GPb5RlngihS9H0z1D137JsvzmeZ7tCpWEF4t5YDoTZyMsPP8S7h7vFDh4XhheU83" crossorigin="anonymous"></script>
+  </head>
+
+  <body  class="documentation-page   ">
+    <header class='site-header '>
+      
+
+
+
+<div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item three-tenths lap-two-sixths palm-one-whole ha-title">
+      <a href="https://www.home-assistant.io/" class="site-title">
+        <div class="logo"></div>
+      </a>
+      <a class="release-date" href="https://www.home-assistant.io/blog/2026/01/07/release-20261/" title="Latest version 2026.1.0 released January  7, 2026">
+        2026.1.0
+      </a>
+    </div>
+
+    <div class="grid__item seven-tenths lap-four-sixths palm-one-whole">
+      <nav>
+        <input type="checkbox" id="toggle" />
+        <label
+          for="toggle"
+          class="toggle"
+          data-open="Main Menu"
+          data-close="⨉"
+        ></label>
+        <ul class="menu pull-right">
+          <li><a  href="https://www.home-assistant.io/installation/">Getting started</a></li>
+          <li>
+            <a class="active" href="../../index.html">Documentation <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/installation/"><iconify-icon inline icon='simple-icons:homeassistant' title='Homeassistant'></iconify-icon> Installation</a></li>
+              <li><a href="../../automation/index.html"><iconify-icon inline icon='mdi:robot-happy' title='Robot happy'></iconify-icon> Automations</a></li>
+              <li><a href="https://www.home-assistant.io/dashboards/"><iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> Dashboards</a></li>
+              <li><a href="https://www.home-assistant.io/voice_control/"><iconify-icon inline icon='mdi:comment-processing-outline' title='Comment processing outline'></iconify-icon> Voice assistants</a></li>
+              <li><a href="../../organizing/index.html"><iconify-icon inline icon='mdi:view-grid' title='View grid'></iconify-icon> Device organization</a></li>
+              <li><a href="../../energy/index.html"><iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> Energy management</a></li>
+              <li><a href="../../configuration/index.html"><iconify-icon inline icon='mdi:cog' title='Cog'></iconify-icon> Advanced configuration</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="index.html#">Our hardware <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/green/">Home Assistant Green</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zbt-2/">Connect ZBT-2</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zwa-2/">Connect ZWA-2</a></li>
+              <li><a href="https://www.home-assistant.io/voice-pe/">Voice Preview Edition</a></li>
+            </ul>
+          </li>
+          <li><a  href="https://www.home-assistant.io/integrations/">Integrations</a></li>
+          <li><a  href="https://www.home-assistant.io/blog/">Blog</a></li>
+          <li><a  href="https://www.home-assistant.io/help/">Need help?</a></li>
+          <li>
+            <div class="docsearch" id="docsearch"></div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    </header>
+
+    <div class="page-content">
+
+      
+
+      <div class="grid-wrapper">
+        <div class="grid grid-center">
+
+          <aside id="toc-bar" class="grid__item desk-wide-one-sixth">
+                <section class="aside-module grid__item one-whole">
+                  <div class='section'>
+                    <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+                    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="index.html#action-selector">Action selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#add-on-selector">Add-on selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#area-selector">Area selector</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#example-area-selectors-">Example area selectors </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#attribute-selector">Attribute selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#assist-pipeline-selector">Assist pipeline selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#backup-location-selector">Backup location selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#boolean-selector">Boolean selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#color-temperature-selector">Color temperature selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#condition-selector">Condition selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#config-entry-selector">Config entry selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#constant-selector">Constant selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#conversation-agent-selector">Conversation agent selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#country-selector">Country selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#date-selector">Date selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#date--time-selector">Date &amp; time selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#device-selector">Device selector</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#example-device-selector-">Example device selector </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#duration-selector">Duration selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#entity-selector">Entity selector</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#example-entity-selector-">Example entity selector </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#floor-selector">Floor selector</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#example-floor-selectors-">Example floor selectors </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#icon-selector">Icon selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#label-selector">Label selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#language-selector">Language selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#location-selector">Location selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#media-selector">Media selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#number-selector">Number selector</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#example-number-selectors-">Example number selectors </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#object-selector">Object selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#qr-code-selector">QR code selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#rgb-color-selector">RGB color selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#select-selector">Select selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#state-selector">State selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#statistic-selector">Statistic selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#target-selector">Target selector</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#example-target-selectors-">Example target selectors </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#template-selector">Template selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#text-selector">Text selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#theme-selector">Theme selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#time-selector">Time selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#trigger-selector">Trigger selector</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#example---merging-with-existing-triggers">Example - Merging with existing triggers</a></li>
+</ul>
+</li>
+</ul>
+                  </div>
+                </section>
+              </aside> 
+
+          
+          <div class="grid__item two-thirds desk-wide-seven-twelfths lap-one-whole palm-one-whole">
+          
+
+            
+              <article class="page">
+  
+  <header>
+    
+    
+      <div class="breadcrumbs">
+        <a href="https://www.home-assistant.io/">Home</a>
+        
+          
+            
+            ▸ <a href="../../index.html">Documentation</a>
+          
+        
+          
+            
+            ▸ <a href="../index.html">Blueprint</a>
+          
+        
+          
+            ▸ 
+          
+        
+      </div>
+    
+    <h1 class="title indent">
+      
+        Selectors
+      
+    </h1>
+  </header>
+  
+  
+  <p>Selectors can be used to specify what values are accepted for a blueprint
+input. The selector also defines how the input is shown in the user interface.</p>
+<p>Some selectors can, for example, show a toggle button to turn something
+on or off, while another select can filter a list of devices to show
+only devices that have motion-sensing capabilities.</p>
+<p>Having good selectors set on your blueprint automation inputs makes a
+blueprint easier to use from the UI.</p>
+<p>The following selectors are currently available:</p>
+<ul>
+<li><a href="index.html#action-selector">Action selector</a></li>
+<li><a href="index.html#add-on-selector">Add-on selector</a></li>
+<li><a href="index.html#area-selector">Area selector</a></li>
+<li><a href="index.html#attribute-selector">Attribute selector</a></li>
+<li><a href="index.html#assist-pipeline-selector">Assist pipeline selector</a></li>
+<li><a href="index.html#backup-location-selector">Backup location selector</a></li>
+<li><a href="index.html#boolean-selector">Boolean selector</a></li>
+<li><a href="index.html#color-temperature-selector">Color temperature selector</a></li>
+<li><a href="index.html#condition-selector">Condition selector</a></li>
+<li><a href="index.html#config-entry-selector">Config entry selector</a></li>
+<li><a href="index.html#constant-selector">Constant selector</a></li>
+<li><a href="index.html#conversation-agent-selector">Conversation agent selector</a></li>
+<li><a href="index.html#country-selector">Country selector</a></li>
+<li><a href="index.html#date-selector">Date selector</a></li>
+<li><a href="index.html#date--time-selector">Date &amp; time selector</a></li>
+<li><a href="index.html#device-selector">Device selector</a></li>
+<li><a href="index.html#duration-selector">Duration selector</a></li>
+<li><a href="index.html#entity-selector">Entity selector</a></li>
+<li><a href="index.html#floor-selector">Floor selector</a></li>
+<li><a href="index.html#icon-selector">Icon selector</a></li>
+<li><a href="index.html#label-selector">Label selector</a></li>
+<li><a href="index.html#language-selector">Language selector</a></li>
+<li><a href="index.html#location-selector">Location selector</a></li>
+<li><a href="index.html#media-selector">Media selector</a></li>
+<li><a href="index.html#number-selector">Number selector</a></li>
+<li><a href="index.html#object-selector">Object selector</a></li>
+<li><a href="index.html#qr-code-selector">QR code selector</a></li>
+<li><a href="index.html#rgb-color-selector">RGB color selector</a></li>
+<li><a href="index.html#select-selector">Select selector</a></li>
+<li><a href="index.html#state-selector">State selector</a></li>
+<li><a href="index.html#statistic-selector">Statistic selector</a></li>
+<li><a href="index.html#target-selector">Target selector</a></li>
+<li><a href="index.html#template-selector">Template selector</a></li>
+<li><a href="index.html#text-selector">Text selector</a></li>
+<li><a href="index.html#theme-selector">Theme selector</a></li>
+<li><a href="index.html#time-selector">Time selector</a></li>
+<li><a href="index.html#trigger-selector">Trigger selector</a></li>
+</ul>
+<p>Interactive demos of each of these selectors can be found on the
+<a href="https://design.home-assistant.io/#components/ha-selector">Home Assistant Design portal</a>.</p>
+<p>If no selector is defined, a text input for a single line will be shown.</p>
+<h2>Action selector <a class="title-link" name="action-selector" href="index.html#action-selector"></a>
+</h2>
+<p>The action selector allows the user to input one or more sequences of actions.
+On the user interface, the action part of the automation editor will be shown.
+The value of the input will contain a list of actions to perform.</p>
+<p><img src="../../../images/blueprints/selector-action.png" alt="Screenshot of an action selector"></p>
+<p>This selector does not have any other options; therefore, it only has its key.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">action</span><span class="pi">:</span>
+</code></pre></div></div>
+<p>The output of this selector is a list of actions. For example:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Example action selector output result</span>
+<span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">scene.turn_on</span>
+  <span class="na">target</span><span class="pi">:</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">scene.watching_movies</span>
+  <span class="na">metadata</span><span class="pi">:</span> <span class="pi">{}</span>
+</code></pre></div></div>
+<h2>Add-on selector <a class="title-link" name="add-on-selector" href="index.html#add-on-selector"></a>
+</h2>
+<p>This can only be used on a <span class="terminology">Home Assistant Operating System<span class="terminology-tooltip">Home Assistant OS, the Home Assistant Operating System, is an embedded, minimalistic, operating system designed to run the Home Assistant ecosystem on single board computers (like the Raspberry Pi) or Virtual Machines. It includes Home Assistant Core, the Home Assistant Supervisor, and supports add-ons. Home Assistant Supervisor keeps it up to date, removing the need for you to manage an operating system. Home Assistant Operating System is the recommended installation type for most users.</span></span> installation. For <span class="terminology">Home Assistant Container<span class="terminology-tooltip">Home Assistant Container is a standalone container-based installation of Home Assistant Core. Any <a href="https://opencontainers.org/" rel="external nofollow">OCI<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> compatible runtime can be used, but the documentation focus is on Docker.<a class="terminology-link" href="https://www.home-assistant.io/installation/#about-installation-types"> [Learn more]</a></span></span> installations, an error will be displayed.</p>
+<p>The add-on selector allows the user to input an add-on slug.
+On the user interface, it will list all installed add-ons and use the slug of the
+selected add-on.</p>
+<p><img src="../../../images/blueprints/selector-addon.png" alt="Screenshot of an add-on selector"></p>
+<p>This selector does not have any other options; therefore, it only has its key.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Example add-on selector</span>
+<span class="na">addon</span><span class="pi">:</span>
+</code></pre></div></div>
+<p>The output of this selector is the slug of the selected add-on.
+For example: <code>core_ssh</code>.</p>
+<h2>Area selector <a class="title-link" name="area-selector" href="index.html#area-selector"></a>
+</h2>
+<p>The area selector shows an area finder that can pick a single or multiple areas
+based on the selector configuration. The value of the input will be the area ID,
+or a list of area IDs, based on if <code>multiple</code> is set to <code>true</code>.</p>
+<p>An area selector can filter the list of areas, based on properties of the devices
+and entities that are assigned to those areas. For example, the areas list could
+be limited to areas with entities provided by the <a href="https://www.home-assistant.io/integrations/zha">ZHA</a>
+integration.</p>
+<p>In its most basic form, this selector doesn’t require any options, which will show
+all areas.</p>
+<p><img src="../../../images/blueprints/selector-area.png" alt="Screenshot of an area selector"></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">area</span><span class="pi">:</span>
+</code></pre></div></div>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="area-configuration-variables" href="index.html#area-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class="">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> device </span><span class="config-vars-type">list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="device" class="title-link" href="index.html#device"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>When device options are provided, the list of areas is filtered by areas that at least provide one device that matches the given conditions. Can be either a object or a list of object.</p>
+</span></div>
+<div class="nested">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> integration </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="integration" class="title-link" href="index.html#integration"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Can be set to an integration domain. Limits the list of areas that provide devices by the set integration domain, for example, <a href="https://www.home-assistant.io/integrations/zha"><code>zha</code></a>.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> manufacturer </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="manufacturer" class="title-link" href="index.html#manufacturer"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>When set, it limits the list of areas that provide devices by the set manufacturer name.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> model </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="model" class="title-link" href="index.html#model"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>When set, it limits the list of areas that provide devices that have the set model.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> model_id </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="model_id" class="title-link" href="index.html#model_id"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>When set, the list of areas is limited to areas with devices that have the set model ID.</p>
+</span></div>
+</div>
+</div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> entity </span><span class="config-vars-type">list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="entity" class="title-link" href="index.html#entity"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>When entity options are provided, the list of areas is filtered by areas that at least provide one entity that matches the given conditions. Can be either a object or a list of object.</p>
+</span></div>
+<div class="nested">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> integration </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="integration" class="title-link" href="index.html#integration"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Can be set to an integration domain. Limits the list of areas that provide entities by the set integration domain, for example, <a href="https://www.home-assistant.io/integrations/zha"><code>zha</code></a>.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> domain </span><span class="config-vars-type">string | list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="domain" class="title-link" href="index.html#domain"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Limits the list of areas that provide entities of a certain <a href="../../configuration/entities_domains/index.html#domains">domain(s)</a>, for example, <a href="https://www.home-assistant.io/integrations/light"><code>light</code></a> or <a href="https://www.home-assistant.io/integrations/binary_sensor"><code>binary_sensor</code></a>. Can be either a string with a single domain, or a list of string domains to limit the selection to.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> device_class </span><span class="config-vars-type"><a href="https://www.home-assistant.io/integrations/homeassistant/#device-class">device_class</a> | list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="device_class" class="title-link" href="index.html#device_class"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Limits the list of areas to areas that have entities with a certain device class(es), for example, <code>motion</code> or <code>window</code>. Can be either a string with a single device_class, or a list of string device_class to limit the selection to.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> supported_features </span><span class="config-vars-type">list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="supported_features" class="title-link" href="index.html#supported_features"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Limits the list of areas to areas that have entities with a certain supported feature, for example, <code>light.LightEntityFeature.TRANSITION</code> or <code>climate.ClimateEntityFeature.TARGET_TEMPERATURE</code>. Should be a list of features. For a list of supported features for each entity type, refer to the <a href="https://developers.home-assistant.io/docs/core/entity">entity documentation</a>.</p>
+</span></div>
+</div>
+</div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> multiple </span><span class="config-vars-type">boolean</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: false</span>)</span><a name="multiple" class="title-link" href="index.html#multiple"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Allows selecting multiple areas. If set to <code>true</code>, the resulting value of this selector will be a list instead of a single string value.</p>
+</span></div>
+</div>
+</div>
+</div>
+<p>The output of this selector is the area ID, or (in case <code>multiple</code> is set to
+<code>true</code>) a list of area IDs.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Example area selector output result, when multiple is set to false</span>
+<span class="s">living_room</span>
+
+<span class="c1"># Example area selector output result, when multiple is set to true</span>
+<span class="pi">-</span> <span class="s">living_room</span>
+<span class="pi">-</span> <span class="s">kitchen</span>
+</code></pre></div></div>
+<h3>Example area selectors  <a class="title-link" name="example-area-selectors" href="index.html#example-area-selectors"></a>
+</h3>
+<p>An example area selector only shows areas that provide one or more lights or
+switches provided by the <a href="https://www.home-assistant.io/integrations/zha">ZHA</a> integration.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">area</span><span class="pi">:</span>
+  <span class="na">entity</span><span class="pi">:</span>
+    <span class="na">integration</span><span class="pi">:</span> <span class="s">zha</span>
+    <span class="na">domain</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">light</span>
+      <span class="pi">-</span> <span class="s">switch</span>
+</code></pre></div></div>
+<p>Another example uses the area selector, which only shows areas that provide one
+or more remote controls provided by the <a href="https://www.home-assistant.io/integrations/deconz">deCONZ</a>
+integration. Multiple areas can be selected.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">area</span><span class="pi">:</span>
+  <span class="na">multiple</span><span class="pi">:</span> <span class="kc">true</span>
+  <span class="na">device</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">integration</span><span class="pi">:</span> <span class="s">deconz</span>
+      <span class="na">manufacturer</span><span class="pi">:</span> <span class="s">IKEA of Sweden</span>
+      <span class="na">model</span><span class="pi">:</span> <span class="s">TRADFRI remote control</span>
+</code></pre></div></div>
+<h2>Attribute selector <a class="title-link" name="attribute-selector" href="index.html#attribute-selector"></a>
+</h2>
+<p>The attributes selector shows a list of state attributes from a provided entity
+of which one can be selected.</p>
+<p>This allows for selecting, e.g., the “Effect” attribute from a light entity, or the
+“Next dawn” attribute from the <code>sun</code> entity.</p>
+<p><img src="../../../images/blueprints/selector-attribute.png" alt="Screenshot of an attribute selector"></p>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="attribute-configuration-variables" href="index.html#attribute-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class=""><div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> entity_id </span><span class="config-vars-type">string</span><span class="config-vars-required"> <span class="true">Required</span><span class="default"></span></span><a name="entity_id" class="title-link" href="index.html#entity_id"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>The entity ID of which an state attribute can be selected from.</p>
+</span></div>
+</div></div>
+</div>
+<p>The output of this selector is the selected attribute key (not the translated or
+prettified name shown in the frontend).
+For example: <code>next_dawn</code>.</p>
+<h2>Assist pipeline selector <a class="title-link" name="assist-pipeline-selector" href="index.html#assist-pipeline-selector"></a>
+</h2>
+<p>The assist pipeline selector shows all available assist pipelines (assistants) of which one can be selected.</p>
+<p><img src="../../../images/blueprints/selector-assist-pipeline.png" alt="Screenshot of an assist pipeline selector"></p>
+<p>This selector does not have any other options; therefore, it only has its key.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">assist_pipeline</span><span class="pi">:</span>
+</code></pre></div></div>
+<h2>Backup location selector <a class="title-link" name="backup-location-selector" href="index.html#backup-location-selector"></a>
+</h2>
+<p>This can only be used on an installation with a <span class="terminology">Home Assistant Operating System<span class="terminology-tooltip">Home Assistant OS, the Home Assistant Operating System, is an embedded, minimalistic, operating system designed to run the Home Assistant ecosystem on single board computers (like the Raspberry Pi) or Virtual Machines. It includes Home Assistant Core, the Home Assistant Supervisor, and supports add-ons. Home Assistant Supervisor keeps it up to date, removing the need for you to manage an operating system. Home Assistant Operating System is the recommended installation type for most users.</span></span>. For <span class="terminology">Home Assistant Container<span class="terminology-tooltip">Home Assistant Container is a standalone container-based installation of Home Assistant Core. Any <a href="https://opencontainers.org/" rel="external nofollow">OCI<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> compatible runtime can be used, but the documentation focus is on Docker.<a class="terminology-link" href="https://www.home-assistant.io/installation/#about-installation-types"> [Learn more]</a></span></span> installations, an error</p>
+<p>will be displayed.</p>
+<p>The backup location selector shows a list of places a backup could go, depending
+on what you have configured in <a href="https://my.home-assistant.io/redirect/storage/">storage</a>.</p>
+<p><img src="../../../images/blueprints/selector-backup-location.png" alt="Screenshot of an assist pipeline selector"></p>
+<p>The output of this selector is the name of the selected network storage. It may
+also be the value <code>/backup</code>, if the user chooses to use the local data disk option
+instead of one of the configured network storage locations.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">backup_location</span><span class="pi">:</span>
+</code></pre></div></div>
+<h2>Boolean selector <a class="title-link" name="boolean-selector" href="index.html#boolean-selector"></a>
+</h2>
+<p>The boolean selector shows a toggle that allows the user to turn on or off
+the selected option.</p>
+<p><img src="../../../images/blueprints/selector-boolean.png" alt="Screenshot of a boolean selector"></p>
+<p>The boolean selector is suitable for adding feature switches
+to, for example, blueprints.</p>
+<p>This selector does not have any other options; therefore, it only has its key.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">boolean</span><span class="pi">:</span>
+</code></pre></div></div>
+<p>The output of this selector is <code>true</code> when the toggle is on, <code>false</code> otherwise.</p>
+<h2>Color temperature selector <a class="title-link" name="color-temperature-selector" href="index.html#color-temperature-selector"></a>
+</h2>
+<p>The color temperature selector allows you to select a color temperature from a gradient using a slider.</p>
+<p><img src="../../../images/blueprints/selector-color-temp.png" alt="Screenshot of the Color temperature selector"></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">color_temp</span><span class="pi">:</span>
+</code></pre></div></div>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="color_temp-configuration-variables" href="index.html#color_temp-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class="">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> unit </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: mired</span>)</span><a name="unit" class="title-link" href="index.html#unit"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>The chosen unit for the color temperature. This can be either <code>kelvin</code> or <code>mired</code>. <code>mired</code> is the default for historical reasons.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> min </span><span class="config-vars-type">integer</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="min" class="title-link" href="index.html#min"></a>
+</div>
+<div class="config-vars-description-and-children">
+<span class="config-vars-description"><p>The minimum color temperature in the chosen unit.</p>
+</span><div class="config-vars-default">
+Default: <p>2700 for kelvin 153 for mired</p>
+</div>
+</div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> max </span><span class="config-vars-type">integer</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="max" class="title-link" href="index.html#max"></a>
+</div>
+<div class="config-vars-description-and-children">
+<span class="config-vars-description"><p>The maximum color temperature in the chosen unit.</p>
+</span><div class="config-vars-default">
+Default: <p>6500 for kelvin 500 for mired</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>The output of this selector is the number representing the chosen color temperature for the unit used.</p>
+<h2>Condition selector <a class="title-link" name="condition-selector" href="index.html#condition-selector"></a>
+</h2>
+<p>The condition selector allows the user to input one or more conditions.
+On the user interface, the condition part of the automation editor will be shown.
+The value of the input will contain a list of conditions.</p>
+<p><img src="../../../images/blueprints/selector-condition.png" alt="Screenshot of an condition selector"></p>
+<p>This selector does not have any other options; therefore, it only has its key.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">condition</span><span class="pi">:</span>
+</code></pre></div></div>
+<p>The output of this selector is a list of conditions. For example:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Example condition selector output result</span>
+<span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">numeric_state</span>
+  <span class="na">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">sensor.outside_temperature"</span>
+  <span class="na">below</span><span class="pi">:</span> <span class="m">20</span>
+</code></pre></div></div>
+<h2>Config entry selector <a class="title-link" name="config-entry-selector" href="index.html#config-entry-selector"></a>
+</h2>
+<p>The config entry selector allows the user to select an integration
+configuration entry. The selector returns the entry ID of the selected
+integration configuration entry.</p>
+<p><img src="../../../images/blueprints/selector-config-entry.png" alt="Screenshot of the Configuration entry selector"></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">config_entry</span><span class="pi">:</span>
+</code></pre></div></div>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="config_entry-configuration-variables" href="index.html#config_entry-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class=""><div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> integration </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="integration" class="title-link" href="index.html#integration"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Limits the list of selectable configuration entries to a single integration domain.</p>
+</span></div>
+</div></div>
+</div>
+<p>The output of this selector is the entry ID of the config entry, for example, <code>6b68b250388cbe0d620c92dd3acc93ec</code>.</p>
+<h2>Constant selector <a class="title-link" name="constant-selector" href="index.html#constant-selector"></a>
+</h2>
+<p>The constant selector shows a toggle that allows the user to enable the selected option.
+This is similar to the <a href="index.html#boolean-selector">boolean selector</a>, the difference
+is that the constant selector has no value when it’s not enabled.</p>
+<p><img src="../../../images/blueprints/selector-constant.png" alt="Screenshot of a constant selector"></p>
+<p>The selector’s value must be configured, and optionally, a label.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">constant</span><span class="pi">:</span>
+  <span class="na">value</span><span class="pi">:</span> <span class="kc">true</span>
+  <span class="na">label</span><span class="pi">:</span> <span class="s">Enabled</span>
+</code></pre></div></div>
+<p>The output of this selector is the configured value when the toggle is on, it has no output otherwise.</p>
+<h2>Conversation agent selector <a class="title-link" name="conversation-agent-selector" href="index.html#conversation-agent-selector"></a>
+</h2>
+<p>The conversation agent selector allows picking a conversation agent.</p>
+<p><img src="../../../images/blueprints/selector-conversation-agent.png" alt="Screenshot of a conversation agent selector"></p>
+<p>The selector has 1 option, <code>language</code>. This filters the conversation agents shown, depending on the language.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conversation_agent</span><span class="pi">:</span>
+  <span class="na">language</span><span class="pi">:</span> <span class="s">en</span>
+</code></pre></div></div>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="conversation_agent-configuration-variables" href="index.html#conversation_agent-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class=""><div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> language </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="language" class="title-link" href="index.html#language"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Limits the list of conversation agents to those supporting the specified language.</p>
+</span></div>
+</div></div>
+</div>
+<p>The output of this selector is the ID of the conversation agent.</p>
+<h2>Country selector <a class="title-link" name="country-selector" href="index.html#country-selector"></a>
+</h2>
+<p>The country selector allows a user to pick a country from a list of countries.</p>
+<p><img src="../../../images/blueprints/country_selector.png" alt="Screenshot of a country selector"></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">country</span><span class="pi">:</span>
+</code></pre></div></div>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="entity-configuration-variables" href="index.html#entity-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class="">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> countries </span><span class="config-vars-type">list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="countries" class="title-link" href="index.html#countries"></a>
+</div>
+<div class="config-vars-description-and-children">
+<span class="config-vars-description"><p>A list of countries to pick from, this should be ISO 3166 country codes.</p>
+</span><div class="config-vars-default">
+Default: <p>The available countries in the Home Assistant frontend</p>
+</div>
+</div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> no_sort </span><span class="config-vars-type">boolean</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: false</span>)</span><a name="no_sort" class="title-link" href="index.html#no_sort"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Should the options be sorted by name, if set to true, the order of the provided countries is kept.</p>
+</span></div>
+</div>
+</div>
+</div>
+<p>The output of this selector is an ISO 3166 country code.</p>
+<h2>Date selector <a class="title-link" name="date-selector" href="index.html#date-selector"></a>
+</h2>
+<p>The date selector shows a date input that allows the user to specify a date.</p>
+<p><img src="../../../images/blueprints/selector-date.png" alt="Screenshot of the Date selector"></p>
+<p>This selector does not have any other options; therefore, it only has its key.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">date</span><span class="pi">:</span>
+</code></pre></div></div>
+<p>The output of this selector will contain the date in Year-Month-Day
+(<code>YYYY-MM-DD</code>) format, for example, <code>2022-02-22</code>.</p>
+<h2>Date &amp; time selector <a class="title-link" name="date--time-selector" href="index.html#date--time-selector"></a>
+</h2>
+<p>The date selector shows a date and time input that allows the user to specify a
+date with a specific time.</p>
+<p><img src="../../../images/blueprints/selector-datetime.png" alt="Screenshot of the Date &amp; time selector"></p>
+<p>This selector does not have any other options; therefore, it only has its key.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">datetime</span><span class="pi">:</span>
+</code></pre></div></div>
+<p>The output of this selector will contain the date in Year-Month-Day
+(<code>YYYY-MM-DD</code>) format and the time in 24-hour format, for example:
+<code>2022-02-22 13:30:00</code>.</p>
+<h2>Device selector <a class="title-link" name="device-selector" href="index.html#device-selector"></a>
+</h2>
+<p>The device selector shows a device finder that can pick a single or multiple
+devices based on the selector configuration. The value of the input will contain
+the device ID or a list of device IDs, based on if <code>multiple</code> is set to <code>true</code>.</p>
+<p>A device selector can filter the list of devices, based on things like the
+manufacturer, model, or model ID of the device, the entities the device provides or based
+on the domain that provided the device.</p>
+<p><img src="../../../images/blueprints/selector-device.png" alt="Screenshot of a device selector"></p>
+<p>In its most basic form, this selector doesn’t require any options, which will show
+all devices.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">device</span><span class="pi">:</span>
+</code></pre></div></div>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="device-configuration-variables" href="index.html#device-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class="">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> entity </span><span class="config-vars-type">list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="entity" class="title-link" href="index.html#entity"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>When entity options are provided, the list of devices is filtered by devices that at least provide one entity that matches the given conditions. Can be either a object or a list of object.</p>
+</span></div>
+<div class="nested">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> integration </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="integration" class="title-link" href="index.html#integration"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Can be set to an integration domain. Limits the list of devices that provide entities by the set integration domain, for example, <a href="https://www.home-assistant.io/integrations/zha"><code>zha</code></a>.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> domain </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="domain" class="title-link" href="index.html#domain"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Limits the list of devices that provide entities of a certain <a href="../../configuration/entities_domains/index.html#domains">domain(s)</a>, for example, <a href="https://www.home-assistant.io/integrations/light"><code>light</code></a> or <a href="https://www.home-assistant.io/integrations/binary_sensor"><code>binary_sensor</code></a>. Can be either a string with a single domain, or a list of string domains to limit the selection to.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> device_class </span><span class="config-vars-type"><a href="https://www.home-assistant.io/integrations/homeassistant/#device-class">device_class</a> | list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="device_class" class="title-link" href="index.html#device_class"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Limits the list of devices to devices that have entities with a certain device class(es), for example, <code>motion</code> or <code>window</code>. Can be either a string with a single device_class, or a list of string device_class to limit the selection to.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> supported_features </span><span class="config-vars-type">list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="supported_features" class="title-link" href="index.html#supported_features"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Limits the list of devices to devices that have entities with a certain supported feature, for example, <code>light.LightEntityFeature.TRANSITION</code> or <code>climate.ClimateEntityFeature.TARGET_TEMPERATURE</code>. Should be a list of features. For a list of supported features for each entity type, refer to the <a href="https://developers.home-assistant.io/docs/core/entity">entity documentation</a>.</p>
+</span></div>
+</div>
+</div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> filter </span><span class="config-vars-type">list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="filter" class="title-link" href="index.html#filter"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>When filter options are provided, the list of devices is filtered by devices that at least provide one entity that matches the given conditions. Can be either a object or a list of object.</p>
+</span></div>
+<div class="nested">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> integration </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="integration" class="title-link" href="index.html#integration"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Can be set to an integration domain. Limits the list of devices to devices provided by the set integration domain.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> manufacturer </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="manufacturer" class="title-link" href="index.html#manufacturer"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>When set, it limits the list of devices to devices provided by the set manufacturer name.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> model </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="model" class="title-link" href="index.html#model"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>When set, it limits the list of devices to devices that have the set model.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> model_id </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="model_id" class="title-link" href="index.html#model_id"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>When set, the list of devices is limited to devices that have the set model ID.</p>
+</span></div>
+</div>
+</div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> multiple </span><span class="config-vars-type">boolean</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: false</span>)</span><a name="multiple" class="title-link" href="index.html#multiple"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Allows selecting multiple devices. If set to <code>true</code>, the resulting value of this selector will be a list instead of a single string value.</p>
+</span></div>
+</div>
+</div>
+</div>
+<p>The output of this selector is the device ID, or (in case <code>multiple</code> is set to
+<code>true</code>) a list of devices IDs.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Example device selector output result, when multiple is set to false</span>
+<span class="s">faadde5365842003e8ca55267fe9d1f4</span>
+
+<span class="c1"># Example device selector output result, when multiple is set to true</span>
+<span class="pi">-</span> <span class="s">faadde5365842003e8ca55267fe9d1f4</span>
+<span class="pi">-</span> <span class="s">3da77cb054352848b9544d40e19de562</span>
+</code></pre></div></div>
+<h3>Example device selector  <a class="title-link" name="example-device-selector" href="index.html#example-device-selector"></a>
+</h3>
+<p>An example entity selector that, will only show devices that are:</p>
+<ul>
+<li>Provided by the <a href="https://www.home-assistant.io/integrations/deconz">deCONZ</a> integration.</li>
+<li>Are a Philips Hue Remote of Model RWL021.</li>
+<li>Provide a battery <a href="https://www.home-assistant.io/integrations/sensor">sensor</a>.</li>
+</ul>
+<p>And this is what is looks like in YAML:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">device</span><span class="pi">:</span>
+  <span class="na">filter</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">integration</span><span class="pi">:</span> <span class="s">deconz</span>
+      <span class="na">manufacturer</span><span class="pi">:</span> <span class="s">Philips</span>
+      <span class="na">model</span><span class="pi">:</span> <span class="s">RWL021</span>
+  <span class="na">entity</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">domain</span><span class="pi">:</span> <span class="s">sensor</span>
+      <span class="na">device_class</span><span class="pi">:</span> <span class="s">battery</span>
+</code></pre></div></div>
+<h2>Duration selector <a class="title-link" name="duration-selector" href="index.html#duration-selector"></a>
+</h2>
+<p>The duration select allow the user to select a time duration. This can be
+helpful for, e.g., delays or offsets.</p>
+<p><img src="../../../images/blueprints/selector-duration.png" alt="Screenshot of the Duration selector"></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">duration</span><span class="pi">:</span>
+</code></pre></div></div>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="attribute-configuration-variables" href="index.html#attribute-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class="">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> enable_day </span><span class="config-vars-type">boolean</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: false</span>)</span><a name="enable_day" class="title-link" href="index.html#enable_day"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>When <code>true</code>, the duration selector will allow selecting days.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> enable_millisecond </span><span class="config-vars-type">boolean</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: false</span>)</span><a name="enable_millisecond" class="title-link" href="index.html#enable_millisecond"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>When <code>true</code>, the duration selector will allow selecting milliseconds.</p>
+</span></div>
+</div>
+</div>
+</div>
+<p>The output of this selector is a mapping of the time values the user selected.
+For example:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">days</span><span class="pi">:</span> <span class="m">1</span> <span class="c1"># Only when enable_day was set to true</span>
+<span class="na">hours</span><span class="pi">:</span> <span class="m">12</span>
+<span class="na">minutes</span><span class="pi">:</span> <span class="m">30</span>
+<span class="na">seconds</span><span class="pi">:</span> <span class="m">15</span>
+<span class="na">milliseconds</span><span class="pi">:</span> <span class="m">500</span> <span class="c1"># Only when enable_millisecond was set to true</span>
+</code></pre></div></div>
+<h2>Entity selector <a class="title-link" name="entity-selector" href="index.html#entity-selector"></a>
+</h2>
+<p>The entity selector shows an entity finder that can pick a single entity or a
+list of entities based on the selector configuration. The value of the input
+will contain the entity ID, or list of entity IDs, based on if <code>multiple</code> is
+set to <code>true</code>.</p>
+<p>An entity selector can filter the list of entities, based on things like the
+class of the device, the domain of the entity or the domain that provided the
+entity.</p>
+<p><img src="../../../images/blueprints/selector-entity.png" alt="Screenshot of an entity selector"></p>
+<p>In its most basic form, this selector doesn’t require any options, which will show
+all entities.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">entity</span><span class="pi">:</span>
+</code></pre></div></div>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="entity-configuration-variables" href="index.html#entity-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class="">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> exclude_entities </span><span class="config-vars-type">list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="exclude_entities" class="title-link" href="index.html#exclude_entities"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>List of entity IDs to exclude from the selectable list.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> include_entities </span><span class="config-vars-type">list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="include_entities" class="title-link" href="index.html#include_entities"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>List of entity IDs to limit the selectable list to.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> filter </span><span class="config-vars-type">list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="filter" class="title-link" href="index.html#filter"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>When filter options are provided, the entities are limited by entities that at least match the given conditions. Can be either an object or a list of objects.</p>
+</span></div>
+<div class="nested">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> integration </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="integration" class="title-link" href="index.html#integration"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Can be set to an integration domain. Limits the list of entities to entities provided by the set integration domain, for example, <a href="https://www.home-assistant.io/integrations/zha"><code>zha</code></a>.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> domain </span><span class="config-vars-type">string | list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="domain" class="title-link" href="index.html#domain"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Limits the list of entities to entities of a certain <a href="../../configuration/entities_domains/index.html#domains">domain(s)</a>, for example, <a href="https://www.home-assistant.io/integrations/light"><code>light</code></a> or <a href="https://www.home-assistant.io/integrations/binary_sensor"><code>binary_sensor</code></a>. Can be either a string with a single domain, or a list of string domains to limit the selection to.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> device_class </span><span class="config-vars-type"><a href="https://www.home-assistant.io/integrations/homeassistant/#device-class">device_class</a> | list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="device_class" class="title-link" href="index.html#device_class"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Limits the list of entities to entities that have a certain device class(es), for example, <code>motion</code> or <code>window</code>. Can be either a string with a single device_class, or a list of string device_class to limit the selection to.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> supported_features </span><span class="config-vars-type">list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="supported_features" class="title-link" href="index.html#supported_features"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Limits the list of entities to entities that have a certain supported feature, for example, <code>light.LightEntityFeature.TRANSITION</code> or <code>climate.ClimateEntityFeature.TARGET_TEMPERATURE</code>. Should be a list of features.</p>
+</span></div>
+</div>
+</div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> multiple </span><span class="config-vars-type">boolean</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: false</span>)</span><a name="multiple" class="title-link" href="index.html#multiple"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Allows selecting multiple entities. If set to <code>true</code>, the resulting value of this selector will be a list instead of a single string value.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> reorder </span><span class="config-vars-type">boolean</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: false</span>)</span><a name="reorder" class="title-link" href="index.html#reorder"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Allows reordering of entities (only applies if <code>multiple</code> is set to <code>true</code>).</p>
+</span></div>
+</div>
+</div>
+</div>
+<p>The output of this selector is the entity ID, or (in case <code>multiple</code> is set to
+<code>true</code>) a list of entity IDs.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Example entity selector output result, when multiple is set to false</span>
+<span class="s">light.living_room</span>
+
+<span class="c1"># Example entity selector output result, when multiple is set to true</span>
+<span class="pi">-</span> <span class="s">light.living_room</span>
+<span class="pi">-</span> <span class="s">light.kitchen</span>
+</code></pre></div></div>
+<h3>Example entity selector  <a class="title-link" name="example-entity-selector" href="index.html#example-entity-selector"></a>
+</h3>
+<p>An example entity selector that, will only show entities that are:</p>
+<ul>
+<li>Provided by the <a href="https://www.home-assistant.io/integrations/zha">ZHA</a> integration.</li>
+<li>From the <a href="https://www.home-assistant.io/integrations/binary_sensor">Binary sensor</a> domain.</li>
+<li>Have presented themselves as devices of a motion device class.</li>
+<li>Allows selecting one or more entities.</li>
+</ul>
+<p>And this is what it looks like in YAML:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">entity</span><span class="pi">:</span>
+  <span class="na">multiple</span><span class="pi">:</span> <span class="kc">true</span>
+  <span class="na">filter</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">integration</span><span class="pi">:</span> <span class="s">zha</span>
+      <span class="na">domain</span><span class="pi">:</span> <span class="s">binary_sensor</span>
+      <span class="na">device_class</span><span class="pi">:</span> <span class="s">motion</span>
+</code></pre></div></div>
+<h2>Floor selector <a class="title-link" name="floor-selector" href="index.html#floor-selector"></a>
+</h2>
+<p>The floor selector shows a floor finder that can pick
+floors based on the selector configuration. The value of the input will be the
+floor ID. If <code>multiple</code> is set to <code>true</code>, the value is a list of floor IDs.</p>
+<p>A floor selector can filter the list of floors based on the properties of the
+devices and entities assigned to the areas on those floors.
+For example, the floor list could be limited to floors with entities
+provided by the <a href="https://www.home-assistant.io/integrations/zha">ZHA</a> integration, based on the areas they are in.</p>
+<p>In its most basic form, this selector doesn’t require any options.
+It will show all floors.</p>
+<p><img src="../../../images/blueprints/selector-floor.png" alt="Screenshot of a floor selector"></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">floor</span><span class="pi">:</span>
+</code></pre></div></div>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="floor-configuration-variables" href="index.html#floor-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class="">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> device </span><span class="config-vars-type">list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="device" class="title-link" href="index.html#device"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>When device options are provided, the list of floors is filtered by floors that have at least one device matching the given conditions. Can be either an object or a list of objects.</p>
+</span></div>
+<div class="nested">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> integration </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="integration" class="title-link" href="index.html#integration"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Can be set to an integration domain. Limits the list of floors that have devices by this integration domain. For example, <a href="https://www.home-assistant.io/integrations/zha"><code>zha</code></a>.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> manufacturer </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="manufacturer" class="title-link" href="index.html#manufacturer"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>When set, the list only includes floors that have devices by the set manufacturer name.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> model </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="model" class="title-link" href="index.html#model"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>When set, the list only includes floors that have devices which have the set model.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> model_id </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="model_id" class="title-link" href="index.html#model_id"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>When set, the list only includes floors with devices that have the set model ID.</p>
+</span></div>
+</div>
+</div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> entity </span><span class="config-vars-type">list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="entity" class="title-link" href="index.html#entity"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>When entity options are provided, the list only includes floors that at least have one entity that matches the given conditions. Can be either an object or a list of objects.</p>
+</span></div>
+<div class="nested">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> integration </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="integration" class="title-link" href="index.html#integration"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Can be set to an integration domain. Limits the list of floors that have entities by the set integration domain. For example, <a href="https://www.home-assistant.io/integrations/zha"><code>zha</code></a>.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> domain </span><span class="config-vars-type">string | list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="domain" class="title-link" href="index.html#domain"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>When set, the list only includes floors that have entities of certain <a href="../../configuration/entities_domains/index.html#domains">domains</a>, for example, <a href="https://www.home-assistant.io/integrations/light"><code>light</code></a> or <a href="https://www.home-assistant.io/integrations/binary_sensor"><code>binary_sensor</code></a>. Can be either a string with a single domain, or a list of string domains to limit the selection to.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> device_class </span><span class="config-vars-type"><a href="https://www.home-assistant.io/integrations/homeassistant/#device-class">device_class</a> | list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="device_class" class="title-link" href="index.html#device_class"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>When set, the list only includes floors that have entities with a certain device class, for example, <code>motion</code> or <code>window</code>. Can be either a string with a single device_class, or a list of string device_class to limit the selection.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> supported_features </span><span class="config-vars-type">list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="supported_features" class="title-link" href="index.html#supported_features"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>When set, the list only includes floors that have entities with a certain supported feature, for example, <code>light.LightEntityFeature.TRANSITION</code> or <code>climate.ClimateEntityFeature.TARGET_TEMPERATURE</code>. Should be a list of features.</p>
+</span></div>
+</div>
+</div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> multiple </span><span class="config-vars-type">boolean</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: false</span>)</span><a name="multiple" class="title-link" href="index.html#multiple"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Allows selecting multiple floors. If set to <code>true</code>, the resulting value of this selector will be a list instead of a single string value.</p>
+</span></div>
+</div>
+</div>
+</div>
+<p>The output of this selector is the floor ID, or (in case <code>multiple</code> is set to
+<code>true</code>) a list of floor IDs.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Example floor selector output result, when multiple is set to false</span>
+<span class="s">first_floor</span>
+
+<span class="c1"># Example floor selector output result, when multiple is set to true</span>
+<span class="pi">-</span> <span class="s">first_floor</span>
+<span class="pi">-</span> <span class="s">second_floor</span>
+</code></pre></div></div>
+<h3>Example floor selectors  <a class="title-link" name="example-floor-selectors" href="index.html#example-floor-selectors"></a>
+</h3>
+<p>An example floor selector only shows floors that have one or more lights or
+switches provided by the <a href="https://www.home-assistant.io/integrations/zha">ZHA</a> integration.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">floor</span><span class="pi">:</span>
+  <span class="na">entity</span><span class="pi">:</span>
+    <span class="na">integration</span><span class="pi">:</span> <span class="s">zha</span>
+    <span class="na">domain</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">light</span>
+      <span class="pi">-</span> <span class="s">switch</span>
+</code></pre></div></div>
+<p>Another example using the floor selector, which only shows floors that
+have one or more remote controls provided by the <a href="https://www.home-assistant.io/integrations/deconz">deCONZ</a>
+integration. Multiple floors can be selected.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">floor</span><span class="pi">:</span>
+  <span class="na">multiple</span><span class="pi">:</span> <span class="kc">true</span>
+  <span class="na">device</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">integration</span><span class="pi">:</span> <span class="s">deconz</span>
+      <span class="na">manufacturer</span><span class="pi">:</span> <span class="s">IKEA of Sweden</span>
+      <span class="na">model</span><span class="pi">:</span> <span class="s">TRADFRI remote control</span>
+</code></pre></div></div>
+<h2>Icon selector <a class="title-link" name="icon-selector" href="index.html#icon-selector"></a>
+</h2>
+<p>The icon selector shows an icon picker that allows the user to select an icon.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">icon</span><span class="pi">:</span>
+</code></pre></div></div>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="entity-configuration-variables" href="index.html#entity-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class=""><div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> placeholder </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="placeholder" class="title-link" href="index.html#placeholder"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Placeholder icon to show, when no icon is selected.</p>
+</span></div>
+</div></div>
+</div>
+<p>The output of this selector is a string containing the selected icon,
+for example: <code>mdi:bell</code>.</p>
+<h2>Label selector <a class="title-link" name="label-selector" href="index.html#label-selector"></a>
+</h2>
+<p>The label selector shows a label finder that can pick labels. The value of the
+input is the label ID. If <code>multiple</code> is set to <code>true</code>, the value is a list
+of label IDs.</p>
+<p><img src="../../../images/blueprints/selector-label.png" alt="Screenshot of the label selector"></p>
+<p>In its most basic form, this selector doesn’t require any options.
+It will show all labels.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">label</span><span class="pi">:</span>
+</code></pre></div></div>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="text-configuration-variables" href="index.html#text-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class=""><div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> multiple </span><span class="config-vars-type">boolean</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: false</span>)</span><a name="multiple" class="title-link" href="index.html#multiple"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Allows selecting multiple labels. If set to <code>true</code>, the resulting value of this selector will be a list instead of a single string value.</p>
+</span></div>
+</div></div>
+</div>
+<p>The output of this selector is the label ID, or (in case <code>multiple</code> is set to
+<code>true</code>) a list of label IDs.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Example label selector output result, when multiple is set to false</span>
+<span class="s">energy_saving</span>
+
+<span class="c1"># Example label selector output result, when multiple is set to true</span>
+<span class="pi">-</span> <span class="s">energy_saving</span>
+<span class="pi">-</span> <span class="s">christmas_decorations</span>
+</code></pre></div></div>
+<h2>Language selector <a class="title-link" name="language-selector" href="index.html#language-selector"></a>
+</h2>
+<p>The language selector allows a user to pick a language from a list of languages.</p>
+<p><img src="../../../images/blueprints/selector-language.png" alt="Screenshot of an language selector"></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">language</span><span class="pi">:</span>
+</code></pre></div></div>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="entity-configuration-variables" href="index.html#entity-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class="">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> languages </span><span class="config-vars-type">list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="languages" class="title-link" href="index.html#languages"></a>
+</div>
+<div class="config-vars-description-and-children">
+<span class="config-vars-description"><p>A list of languages to pick from, this should be RFC 5646 languages codes.</p>
+</span><div class="config-vars-default">
+Default: <p>The available languages in the Home Assistant frontend</p>
+</div>
+</div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> native_name </span><span class="config-vars-type">boolean</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: false</span>)</span><a name="native_name" class="title-link" href="index.html#native_name"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Should the name of the languages be shown in the language of the user, or in the language itself.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> no_sort </span><span class="config-vars-type">boolean</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: false</span>)</span><a name="no_sort" class="title-link" href="index.html#no_sort"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Should the options be sorted by name, if set to true, the order of the provided languages is kept.</p>
+</span></div>
+</div>
+</div>
+</div>
+<p>The output of this selector is a RFC 5646 language code.</p>
+<h2>Location selector <a class="title-link" name="location-selector" href="index.html#location-selector"></a>
+</h2>
+<p>The location selector allow a user to pick a location from a map and returns
+the matching longitude and latitude coordinators. Optionally it supports
+selecting the radius of the location.</p>
+<p><img src="../../../images/blueprints/selector-location.png" alt="Screenshot of the Location selector"></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">location</span><span class="pi">:</span>
+</code></pre></div></div>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="entity-configuration-variables" href="index.html#entity-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class="">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> icon </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="icon" class="title-link" href="index.html#icon"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>An optional icon to show on the map.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> radius </span><span class="config-vars-type">boolean</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: false</span>)</span><a name="radius" class="title-link" href="index.html#radius"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Allow selecting the radius of the location. If enabled, the radius will be returned in meters.</p>
+</span></div>
+</div>
+</div>
+</div>
+<p>The output of this selector is a mapping containing the latitude and longitude
+of the selected location, and, if enabled, the radius.
+For example:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">latitude</span><span class="pi">:</span> <span class="m">50.935</span>
+<span class="na">longitude</span><span class="pi">:</span> <span class="m">6.95</span>
+<span class="na">radius</span><span class="pi">:</span> <span class="m">500</span> <span class="c1"># Only provided when radius was set to true.</span>
+</code></pre></div></div>
+<h2>Media selector <a class="title-link" name="media-selector" href="index.html#media-selector"></a>
+</h2>
+<p>The media selector is a powerful selector that allows a user to easily select
+media to play on a media device. Media can be a lot of things, for example,
+cameras, local media, text-to-speech, Home Assistant Dashboards, and many more.</p>
+<p>You are prompted to select the device used to play media. Once the device is selected, the media selector only shows media that is suitable for this device.</p>
+<p><img src="../../../images/blueprints/selector-media.png" alt="Screenshot of the Media selector"></p>
+<p>To ask the user to select a media device and suitable media, you can use the
+media selector without any options:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">media</span><span class="pi">:</span>
+</code></pre></div></div>
+<p>You can also use the media selector with an optional <code>accept</code> filter to limit the
+media types that can be selected. The user will not be asked to pick a device.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">media</span><span class="pi">:</span>
+  <span class="na">accept</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">image/*</span>
+</code></pre></div></div>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="media-configuration-variables" href="index.html#media-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class="">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> accept </span><span class="config-vars-type">list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="accept" class="title-link" href="index.html#accept"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>List of media types the user is allowed to select.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> multiple </span><span class="config-vars-type">boolean</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: false</span>)</span><a name="multiple" class="title-link" href="index.html#multiple"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Allows selecting multiple media items. If set to <code>true</code>, the resulting value of this selector will be a list instead of a single object.</p>
+</span></div>
+</div>
+</div>
+</div>
+<p>The output of the media selector, is an mapping with information about
+the selected media device and the selected media to play. There is also
+metadata, which is used by the frontend and should not be used in the
+backend.</p>
+<p>Example output:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">entity_id</span><span class="pi">:</span> <span class="s">media_player.living_room</span>
+<span class="na">media_content_id</span><span class="pi">:</span> <span class="s">media-source://tts/cloud?message=TTS+Message&amp;language=en-US&amp;gender=female</span>
+<span class="na">media_content_type</span><span class="pi">:</span> <span class="s">provider</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">title</span><span class="pi">:</span> <span class="s">TTS Message</span>
+  <span class="na">thumbnail</span><span class="pi">:</span> <span class="s">https://brands.home-assistant.io/_/cloud/logo.png</span>
+  <span class="na">media_class</span><span class="pi">:</span> <span class="s">app</span>
+  <span class="na">children_media_class</span><span class="pi">:</span> <span class="kc">null</span>
+  <span class="na">navigateIds</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="pi">{}</span>
+    <span class="pi">-</span> <span class="na">media_content_type</span><span class="pi">:</span> <span class="s">app</span>
+      <span class="na">media_content_id</span><span class="pi">:</span> <span class="s">media-source://tts</span>
+    <span class="pi">-</span> <span class="na">media_content_type</span><span class="pi">:</span> <span class="s">provider</span>
+      <span class="na">media_content_id</span><span class="pi">:</span> <span class="pi">&gt;-</span>
+        <span class="s">media-source://tts/cloud?message=TTS+Message&amp;language=en-US&amp;gender=female</span>
+</code></pre></div></div>
+<p>Example output if accept filter is used. Note that the <code>entity_id</code> is not present:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">media_content_id</span><span class="pi">:</span> <span class="s">media-source://tts/cloud?message=TTS+Message&amp;language=en-US&amp;gender=female</span>
+<span class="na">media_content_type</span><span class="pi">:</span> <span class="s">provider</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">title</span><span class="pi">:</span> <span class="s">TTS Message</span>
+  <span class="na">thumbnail</span><span class="pi">:</span> <span class="s">https://brands.home-assistant.io/_/cloud/logo.png</span>
+  <span class="na">media_class</span><span class="pi">:</span> <span class="s">app</span>
+  <span class="na">children_media_class</span><span class="pi">:</span> <span class="kc">null</span>
+  <span class="na">navigateIds</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="pi">{}</span>
+    <span class="pi">-</span> <span class="na">media_content_type</span><span class="pi">:</span> <span class="s">app</span>
+      <span class="na">media_content_id</span><span class="pi">:</span> <span class="s">media-source://tts</span>
+    <span class="pi">-</span> <span class="na">media_content_type</span><span class="pi">:</span> <span class="s">provider</span>
+      <span class="na">media_content_id</span><span class="pi">:</span> <span class="pi">&gt;-</span>
+        <span class="s">media-source://tts/cloud?message=TTS+Message&amp;language=en-US&amp;gender=female</span>
+</code></pre></div></div>
+<p>Example output when <code>multiple</code> is set to <code>true</code> (a list of media objects):</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">media_content_id</span><span class="pi">:</span> <span class="s">media-source://media_source/local/image1.jpg</span>
+  <span class="na">media_content_type</span><span class="pi">:</span> <span class="s">image/jpeg</span>
+  <span class="na">metadata</span><span class="pi">:</span>
+    <span class="na">title</span><span class="pi">:</span> <span class="s">image1.jpg</span>
+<span class="pi">-</span> <span class="na">media_content_id</span><span class="pi">:</span> <span class="s">media-source://media_source/local/image2.jpg</span>
+  <span class="na">media_content_type</span><span class="pi">:</span> <span class="s">image/jpeg</span>
+  <span class="na">metadata</span><span class="pi">:</span>
+    <span class="na">title</span><span class="pi">:</span> <span class="s">image2.jpg</span>
+</code></pre></div></div>
+<h2>Number selector <a class="title-link" name="number-selector" href="index.html#number-selector"></a>
+</h2>
+<p>The number selector shows either a number input or a slider input, that allows
+the user to specify a numeric value. The value of the input will contain
+the select value.</p>
+<p><img src="../../../images/blueprints/selector-number.png" alt="Screenshot of a number selector"></p>
+<p>On the user interface, the input can either be in a slider or number mode.
+Both modes limit the user input by a minimum and maximum value, and can
+have a unit of measurement to go with it.</p>
+<p>In its most basic form, this selector requires a minimum and maximum value:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">number</span><span class="pi">:</span>
+  <span class="na">min</span><span class="pi">:</span> <span class="m">0</span>
+  <span class="na">max</span><span class="pi">:</span> <span class="m">100</span>
+</code></pre></div></div>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="number-configuration-variables" href="index.html#number-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class="">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> min </span><span class="config-vars-type">integer | float</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="min" class="title-link" href="index.html#min"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>The minimum user-settable number value.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> max </span><span class="config-vars-type">integer | float</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="max" class="title-link" href="index.html#max"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>The maximum user-settable number value.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> step </span><span class="config-vars-type">integer | float | any</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: 1</span>)</span><a name="step" class="title-link" href="index.html#step"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>The step size of the number value. Set to <code>"any"</code> to allow any number.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> unit_of_measurement </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="unit_of_measurement" class="title-link" href="index.html#unit_of_measurement"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Unit of measurement in which the number value is expressed in.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> mode </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="mode" class="title-link" href="index.html#mode"></a>
+</div>
+<div class="config-vars-description-and-children">
+<span class="config-vars-description"><p>This can be either <code>box</code> or <code>slider</code> mode.</p>
+</span><div class="config-vars-default">
+Default: <p>slider if min and max are set, otherwise box</p>
+</div>
+</div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> translation_key </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="translation_key" class="title-link" href="index.html#translation_key"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Allows translations provided by an integration where <code>translation_key</code> is the translation key that is providing the unit_of_measurement string translation. See the documentation on <a href="https://developers.home-assistant.io/docs/internationalization/core/#selectors">Backend Localization</a> for more information.</p>
+</span></div>
+</div>
+</div>
+</div>
+<p>The output of this selector is a number, for example: <code>42</code></p>
+<h3>Example number selectors  <a class="title-link" name="example-number-selectors" href="index.html#example-number-selectors"></a>
+</h3>
+<p>An example number selector that allows a user a percentage, directly in a
+regular number input box.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">number</span><span class="pi">:</span>
+  <span class="na">min</span><span class="pi">:</span> <span class="m">0</span>
+  <span class="na">max</span><span class="pi">:</span> <span class="m">100</span>
+  <span class="na">unit_of_measurement</span><span class="pi">:</span> <span class="s2">"</span><span class="s">%"</span>
+</code></pre></div></div>
+<p>A more visual variant of this example could be achieved using a slider.
+This can be helpful for things like allowing the user to select a
+brightness level of lights. Additionally, this example changes the brightness
+in incremental steps of 10%.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">number</span><span class="pi">:</span>
+  <span class="na">min</span><span class="pi">:</span> <span class="m">0</span>
+  <span class="na">max</span><span class="pi">:</span> <span class="m">100</span>
+  <span class="na">step</span><span class="pi">:</span> <span class="m">10</span>
+  <span class="na">unit_of_measurement</span><span class="pi">:</span> <span class="s2">"</span><span class="s">%"</span>
+  <span class="na">mode</span><span class="pi">:</span> <span class="s">slider</span>
+</code></pre></div></div>
+<h2>Object selector <a class="title-link" name="object-selector" href="index.html#object-selector"></a>
+</h2>
+<p>The object selector can be used to input arbitrary data in YAML form. This is useful for e.g. lists and dictionaries containing data for actions. The value of the input will contain the provided data.</p>
+<p>When used without options, the selector will accept any valid YAML content, such as objects, arrays, strings, or other YAML types. The input box is displayed as an editor with syntax highlighting.</p>
+<p><img src="../../../images/blueprints/selector-object.png" alt="Screenshot of an object selector"></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">object</span><span class="pi">:</span>
+</code></pre></div></div>
+<p>When used with <code>fields</code> specified, the selector will force the object to be in this format by displaying a form.</p>
+<p><img src="../../../images/blueprints/selector-object-schema.png" alt="Screenshot of an object selector"></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">object</span><span class="pi">:</span>
+  <span class="na">label_field</span><span class="pi">:</span> <span class="s">name</span>
+  <span class="na">description_field</span><span class="pi">:</span> <span class="s">percentage</span>
+  <span class="na">multiple</span><span class="pi">:</span> <span class="kc">true</span>
+  <span class="na">fields</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span>
+      <span class="na">label</span><span class="pi">:</span> <span class="s">Name</span>
+      <span class="na">selector</span><span class="pi">:</span>
+        <span class="na">text</span><span class="pi">:</span>
+    <span class="na">percentage</span><span class="pi">:</span>
+      <span class="na">label</span><span class="pi">:</span> <span class="s">Percentage</span>
+      <span class="na">selector</span><span class="pi">:</span>
+        <span class="na">number</span><span class="pi">:</span>
+          <span class="na">unit_of_measurement</span><span class="pi">:</span> <span class="s2">"</span><span class="s">%"</span>
+</code></pre></div></div>
+<p>The output of this selector is a YAML object.</p>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="object-configuration-variables" href="index.html#object-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class="">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> fields </span><span class="config-vars-type">map</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="fields" class="title-link" href="index.html#fields"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>List of fields of the object.</p>
+</span></div>
+<div class="nested">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> label </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="label" class="title-link" href="index.html#label"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>The label of the field</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> required </span><span class="config-vars-type">boolean</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: false</span>)</span><a name="required" class="title-link" href="index.html#required"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>If set to true, the field must be present.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> selector </span><span class="config-vars-type">string</span><span class="config-vars-required"> <span class="true">Required</span><span class="default"></span></span><a name="selector" class="title-link" href="index.html#selector"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>The selector to use for this field. It can be any available selector.</p>
+</span></div>
+</div>
+</div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> label_field </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="label_field" class="title-link" href="index.html#label_field"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>The field to use as a label. By default, it will be the first field defined. This option is only used if <code>fields</code> option set.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> description_field </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="description_field" class="title-link" href="index.html#description_field"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>The field to use as a description. This option is only used if <code>fields</code> option set.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> translation_key </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="translation_key" class="title-link" href="index.html#translation_key"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Allows translations provided by an integration where <code>translation_key</code> is the translation key that is providing the selector option strings translation. See the documentation on <a href="https://developers.home-assistant.io/docs/internationalization/core/#selectors">Backend Localization</a> for more information.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> multiple </span><span class="config-vars-type">boolean</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: false</span>)</span><a name="multiple" class="title-link" href="index.html#multiple"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Allows adding multiple objects. If set to <code>true</code>, the resulting value of this selector will be a list instead of a single YAML object. This option is only used if <code>fields</code> option set.</p>
+</span></div>
+</div>
+</div>
+</div>
+<h2>QR code selector <a class="title-link" name="qr-code-selector" href="index.html#qr-code-selector"></a>
+</h2>
+<p>The QR code selector shows a QR code. It has no return value.</p>
+<p><img src="../../../images/blueprints/selector-qr-code.png" alt="Screenshot of a QR code selector"></p>
+<p>The QR code’s data must be configured, and optionally, the scale, and error correction level can be set.
+The scale makes the QR code bigger or smaller.</p>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="qr_code-configuration-variables" href="index.html#qr_code-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class="">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> data </span><span class="config-vars-type">any</span><span class="config-vars-required"> <span class="true">Required</span><span class="default"></span></span><a name="data" class="title-link" href="index.html#data"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>The data that should be represented in the QR code.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> scale </span><span class="config-vars-type">integer</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: 4</span>)</span><a name="scale" class="title-link" href="index.html#scale"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>The scale factor to use, this will make the QR code bigger or smaller.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> error_correction_level </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: medium</span>)</span><a name="error_correction_level" class="title-link" href="index.html#error_correction_level"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>The error correction level of the QR code, with a higher error correction level the QR code can be scanned even when some pieces are missing. Can be “low”, “medium”, “quartile” or “high”.</p>
+</span></div>
+</div>
+</div>
+</div>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">qr_code</span><span class="pi">:</span>
+  <span class="na">data</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://home-assistant.io"</span>
+  <span class="na">scale</span><span class="pi">:</span> <span class="m">5</span>
+  <span class="na">error_correction_level</span><span class="pi">:</span> <span class="s">quartile</span>
+</code></pre></div></div>
+<h2>RGB color selector <a class="title-link" name="rgb-color-selector" href="index.html#rgb-color-selector"></a>
+</h2>
+<p>The RGB color selector allows the user to select an color from a color picker
+from the user interface, and returns the RGB color value.</p>
+<p><img src="../../../images/blueprints/selector-color-rgb.png" alt="Screenshot of the RGB Color selector"></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">color_rgb</span><span class="pi">:</span>
+</code></pre></div></div>
+<p>This selector does not have any other options; therefore, it only has its key.</p>
+<p>The output of this selector is a list with the three (RGB) color value, for example: <code>[255, 0, 0]</code>.</p>
+<h2>Select selector <a class="title-link" name="select-selector" href="index.html#select-selector"></a>
+</h2>
+<p>The select selector shows a list of available options from which the user can choose. The value of the input contains the value of the selected option. Only a single option can be selected at a time.</p>
+<p><img src="../../../images/blueprints/selector-select.png" alt="Screenshot of a select selector"></p>
+<p>The selector requires a list of options that the user can choose from.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">select</span><span class="pi">:</span>
+  <span class="na">options</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">Red</span>
+    <span class="pi">-</span> <span class="s">Green</span>
+    <span class="pi">-</span> <span class="s">Blue</span>
+</code></pre></div></div>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="select-configuration-variables" href="index.html#select-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class="">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> options </span><span class="config-vars-type">list</span><span class="config-vars-required"> <span class="true">Required</span><span class="default"></span></span><a name="options" class="title-link" href="index.html#options"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>List of options that the user can choose from. Small lists (5 items or less), are displayed as radio buttons. When more items are added, a dropdown list is used.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> multiple </span><span class="config-vars-type">boolean</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: false</span>)</span><a name="multiple" class="title-link" href="index.html#multiple"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Allows selecting multiple options. If set to <code>true</code>, the resulting value of this selector will be a list instead of a single string value.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> custom_value </span><span class="config-vars-type">boolean</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: false</span>)</span><a name="custom_value" class="title-link" href="index.html#custom_value"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Allows the user to enter and select a custom value (or multiple custom values in addition to the listed options if <code>multiple</code> is set to <code>true</code>).</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> mode </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="mode" class="title-link" href="index.html#mode"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>This can be either <code>list</code> (radio buttons) or <code>dropdown</code> (combobox) mode. When not specified, small lists (5 items or less), are displayed as radio buttons. When more items are added, a dropdown list is used. If <code>custom_value</code> is <code>true</code>, this setting will be ignored and the frontend will use a <code>dropdown</code> input.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> translation_key </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="translation_key" class="title-link" href="index.html#translation_key"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Allows translations provided by an integration where <code>translation_key</code> is the translation key that is providing the selector option strings translation. See the documentation on <a href="https://developers.home-assistant.io/docs/internationalization/core/#selectors">Backend Localization</a> for more information.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> sort </span><span class="config-vars-type">boolean</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: false</span>)</span><a name="sort" class="title-link" href="index.html#sort"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Display options in alphabetical order.</p>
+</span></div>
+</div>
+</div>
+</div>
+<p>Alternatively, a mapping can be used for the options. When you want to return
+a different value compared to how it is displayed to the user.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">select</span><span class="pi">:</span>
+  <span class="na">options</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">label</span><span class="pi">:</span> <span class="s">Red</span>
+      <span class="na">value</span><span class="pi">:</span> <span class="s">r</span>
+    <span class="pi">-</span> <span class="na">label</span><span class="pi">:</span> <span class="s">Green</span>
+      <span class="na">value</span><span class="pi">:</span> <span class="s">g</span>
+    <span class="pi">-</span> <span class="na">label</span><span class="pi">:</span> <span class="s">Blue</span>
+      <span class="na">value</span><span class="pi">:</span> <span class="s">b</span>
+</code></pre></div></div>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="select_map-configuration-variables" href="index.html#select_map-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class=""><div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> options </span><span class="config-vars-type">map</span><span class="config-vars-required"> <span class="true">Required</span><span class="default"></span></span><a name="options" class="title-link" href="index.html#options"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>List of options that the user can choose from. Small lists (5 items or less), are displayed as radio buttons. When more items are added, a dropdown list is used.</p>
+</span></div>
+<div class="nested">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> label </span><span class="config-vars-type">string</span><span class="config-vars-required"> <span class="true">Required</span><span class="default"></span></span><a name="label" class="title-link" href="index.html#label"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>The description to show in the UI for this item.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> value </span><span class="config-vars-type">string</span><span class="config-vars-required"> <span class="true">Required</span><span class="default"></span></span><a name="value" class="title-link" href="index.html#value"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>The value to return when this label is selected.</p>
+</span></div>
+</div>
+</div>
+</div></div>
+</div>
+<p>When <code>multiple</code> is <code>false</code>, the output of this selector is the string of
+the selected option value. When selecting <code>Green</code> in the last example,
+it returns: <code>g</code>, in the first example it would return <code>Green</code>.</p>
+<p>When <code>multiple</code> is <code>true</code>, the output of this selector is the list of selected
+option values. In this case, if <code>Green</code> was selected, in the first example it
+would return [“Green”] and in the last example it returns [“g”].</p>
+<h2>State selector <a class="title-link" name="state-selector" href="index.html#state-selector"></a>
+</h2>
+<p>The state selector shows a list of states for a provided entity of which
+one or more can be selected.</p>
+<p><img src="../../../images/blueprints/selector-state.png" alt="Screenshot of an state selector"></p>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="state-configuration-variables" href="index.html#state-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class="">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> entity_id </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="entity_id" class="title-link" href="index.html#entity_id"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>The entity ID of which an state can be selected from.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> hide_states </span><span class="config-vars-type">list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="hide_states" class="title-link" href="index.html#hide_states"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>The states to exclude from the list of options</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> multiple </span><span class="config-vars-type">boolean</span><a name="multiple" class="title-link" href="index.html#multiple"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Allows selecting multiple states. If set to <code>true</code>, the resulting value of this selector will be a list instead of a single string value.</p>
+</span></div>
+</div>
+</div>
+</div>
+<p>The output of this selector is the select state (not the translated or
+prettified name shown in the frontend), or a list of states if <code>multiple</code> is true.</p>
+<p>For example: <code>heat_cool</code>.</p>
+<h2>Statistic selector <a class="title-link" name="statistic-selector" href="index.html#statistic-selector"></a>
+</h2>
+<p>The statistic selector selects the statistic ID of an entity that records
+<span class="terminology">Long-term statistics<span class="terminology-tooltip">Home Assistant saves long-term statistics for a sensor if the entity has a state_class of measurement, total, or total_increasing. For short-term statistics, a snapshot is taken every 5 minutes. For long-term statistics, an hourly aggregate is stored of the short-term statistics. Short-term statistics are automatically purged after a predefined period (default is 10 days). Long-term statistics are never purged.<a class="terminology-link" href="https://www.home-assistant.io/blog/2021/08/04/release-20218/#long-term-statistics"> [Learn more]</a></span></span>. It may resemble an entity ID (like <code>sensor.temperature</code>),
+or an external statistic ID (like <code>external:temperature</code>).</p>
+<p><img src="../../../images/blueprints/selector-statistic.png" alt="Screenshot of a statistic selector"></p>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="statistic-configuration-variables" href="index.html#statistic-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class=""><div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> multiple </span><span class="config-vars-type">boolean</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: false</span>)</span><a name="multiple" class="title-link" href="index.html#multiple"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>If set to true, the selector returns a list of statistic IDs.</p>
+</span></div>
+</div></div>
+</div>
+<p>The output of this selector is a string representing a statistic ID, or
+a list of statistic IDs if <code>multiple</code> is set to <code>true</code>.</p>
+<h2>Target selector <a class="title-link" name="target-selector" href="index.html#target-selector"></a>
+</h2>
+<p>The target selector is a rather special selector, allowing the user to select
+targeted entities, devices, or areas for actions. The value of
+the input will contain a special target format, that is accepted by
+actions.</p>
+<p>The selectable targets can be filtered, based on entity or device properties.
+Areas are only selectable as a target, if some entities or devices match
+those properties in those areas.</p>
+<p><img src="../../../images/blueprints/selector-target.png" alt="Screenshot of a target selector"></p>
+<p>In its most basic form, this selector does not require any options, which will allow the
+user to target any entity, device or area available in the system.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">target</span><span class="pi">:</span>
+</code></pre></div></div>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="target-configuration-variables" href="index.html#target-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class=""><div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> entity </span><span class="config-vars-type">list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="entity" class="title-link" href="index.html#entity"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>When entity options are provided, the targets are limited by entities that at least match the given conditions. Can be either a object or a list of object.</p>
+</span></div>
+<div class="nested">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> integration </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="integration" class="title-link" href="index.html#integration"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Can be set to an integration domain. Limits targets to entities provided by the set integration domain, for example, <a href="https://www.home-assistant.io/integrations/zha"><code>zha</code></a>.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> domain </span><span class="config-vars-type">string | list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="domain" class="title-link" href="index.html#domain"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Limits the targets to entities of a certain <a href="../../configuration/entities_domains/index.html#domains">domain(s)</a>, for example, <a href="https://www.home-assistant.io/integrations/light"><code>light</code></a> or <a href="https://www.home-assistant.io/integrations/binary_sensor"><code>binary_sensor</code></a>. Can be either a with a single domain, or a list of string domains to limit the selection to.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> device_class </span><span class="config-vars-type"><a href="https://www.home-assistant.io/integrations/homeassistant/#device-class">device_class</a> | list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="device_class" class="title-link" href="index.html#device_class"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Limits the targets to entities with a certain device class(es), for example, <code>motion</code> or <code>window</code>. Can be either a string with a single device_class, or a list of string device_class to limit the selection to.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> supported_features </span><span class="config-vars-type">list</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="supported_features" class="title-link" href="index.html#supported_features"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Limits the targets to entities with a certain supported feature, for example, <code>light.LightEntityFeature.TRANSITION</code> or <code>climate.ClimateEntityFeature.TARGET_TEMPERATURE</code>. Should be a list of features. For a list of supported features for each entity type, refer to the <a href="https://developers.home-assistant.io/docs/core/entity">entity documentation</a>.</p>
+</span></div>
+</div>
+</div>
+</div></div>
+</div>
+<div class="alert alert-important">
+  <p class="alert-title"><iconify-icon inline icon="mdi:message-alert-outline"></iconify-icon> Important</p>
+  <div class="alert-content">
+<p>Targets are meant to be used with the <code>target</code> property of an action in
+a script sequence. For example:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_on</span>
+    <span class="na">target</span><span class="pi">:</span> <span class="kt">!input</span> <span class="s">lights</span>
+</code></pre></div></div>
+  </div>
+</div>
+<h3>Example target selectors  <a class="title-link" name="example-target-selectors" href="index.html#example-target-selectors"></a>
+</h3>
+<p>An example target selector that only shows targets that at least provide one
+or more lights, provided by the <a href="https://www.home-assistant.io/integrations/zha">ZHA</a> integration.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">target</span><span class="pi">:</span>
+  <span class="na">entity</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">integration</span><span class="pi">:</span> <span class="s">zha</span>
+      <span class="na">domain</span><span class="pi">:</span> <span class="s">light</span>
+</code></pre></div></div>
+<h2>Template selector <a class="title-link" name="template-selector" href="index.html#template-selector"></a>
+</h2>
+<p>The template selector can be used to input a Jinja2 template. This is useful
+for allowing more advanced user-input that use Jinja2 templates.</p>
+<p><img src="../../../images/blueprints/selector-template.png" alt="Screenshot of an template selector"></p>
+<p>This selector does not have any other options; therefore, it only has its key.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">template</span><span class="pi">:</span>
+</code></pre></div></div>
+<p>The output of this selector is a template string.</p>
+<h2>Text selector <a class="title-link" name="text-selector" href="index.html#text-selector"></a>
+</h2>
+<p>The text selector can be used to enter a text string. It can also be used to enter a list of text strings; if <code>multiple</code> is set to <code>true</code>. The value of the input will contain the selected text. This can be used in shopping lists, for example.</p>
+<p><img src="../../../images/blueprints/selector-text.png" alt="Screenshot of text selectors"></p>
+<p>Unless <code>multiline</code> is set to <code>true</code>, this selector behaves exactly like if no selector at all was specified, and will display a single line text input box on the user interface.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">text</span><span class="pi">:</span>
+</code></pre></div></div>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="text-configuration-variables" href="index.html#text-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class="">
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> multiline </span><span class="config-vars-type">boolean</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: false</span>)</span><a name="multiline" class="title-link" href="index.html#multiline"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Set to true to display the input as a multi-line text box on the user interface.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> prefix </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="prefix" class="title-link" href="index.html#prefix"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>An optional prefix to show before the text input box.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> suffix </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="suffix" class="title-link" href="index.html#suffix"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>An optional suffix to show after the text input box.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> type </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: text</span>)</span><a name="type" class="title-link" href="index.html#type"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>The type of input. This supplies the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types" rel="external nofollow">HTML <code>type</code> attribute<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>, which controls how the browser displays and validates the field. A subset of types available to the attribute are supported, since some are handled by other selectors. Possible types are: <code>color</code>, <code>date</code>, <code>datetime-local</code>, <code>email</code>, <code>month</code>, <code>number</code>, <code>password</code>, <code>search</code>, <code>tel</code>, <code>text</code>, <code>time</code>, <code>url</code>, <code>week</code>.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> autocomplete </span><span class="config-vars-type">string</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default"></span>)</span><a name="autocomplete" class="title-link" href="index.html#autocomplete"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Guides the browser on the type of information which should automatically fill the field. This supplies the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete" rel="external nofollow">HTML <code>autocomplete</code> attribute<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>. Any value supported by the HTML attribute is valid.</p>
+</span></div>
+</div>
+<div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> multiple </span><span class="config-vars-type">boolean</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: false</span>)</span><a name="multiple" class="title-link" href="index.html#multiple"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Allows adding list of text strings. If set to <code>true</code>, the resulting value of this selector will be a list instead of a single string value.</p>
+</span></div>
+</div>
+</div>
+</div>
+<p>The output of this selector is a single string value.</p>
+<h2>Theme selector <a class="title-link" name="theme-selector" href="index.html#theme-selector"></a>
+</h2>
+<p>The theme selector allows for selecting a theme from the available themes
+installed in Home Assistant.</p>
+<p><img src="../../../images/blueprints/selector-theme.png" alt="Screenshot of the Theme selector"></p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">theme</span><span class="pi">:</span>
+</code></pre></div></div>
+<div class="config-vars">
+  <h4>
+    Configuration Variables <a class="title-link" name="theme-configuration-variables" href="index.html#theme-configuration-variables"></a>
+  </h4>
+  <div class="configuration-link">
+    <a href="../../configuration/index.html" target="_blank">Looking for your configuration file?</a>
+  </div>
+  <div class=""><div class="config-vars-item">
+<div class="config-vars-label">
+<span class="config-vars-label-name"> include_default </span><span class="config-vars-type">boolean</span><span class="config-vars-required"> (<span class="false">Optional</span><span class="default">, default: false</span>)</span><a name="include_default" class="title-link" href="index.html#include_default"></a>
+</div>
+<div class="config-vars-description-and-children"><span class="config-vars-description"><p>Includes Home Assistant default theme in the list.</p>
+</span></div>
+</div></div>
+</div>
+<p>The output of this selector will contain the selected theme, for example:
+<code>waves_dark</code>.</p>
+<h2>Time selector <a class="title-link" name="time-selector" href="index.html#time-selector"></a>
+</h2>
+<p>The time selector shows a time input that allows the user to specify a time
+of the day.</p>
+<p><img src="../../../images/blueprints/selector-time.png" alt="Screenshot of a time selector"></p>
+<p>This selector does not have any other options; therefore, it only has its key.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">time</span><span class="pi">:</span>
+</code></pre></div></div>
+<p>The output of this selector will contain the time in 24-hour format,
+for example, <code>23:59:59</code>.</p>
+<h2>Trigger selector <a class="title-link" name="trigger-selector" href="index.html#trigger-selector"></a>
+</h2>
+<p>The triggers selector allows the user to input one or more triggers.
+On the user interface, the trigger part of the automation editor is shown.
+The value of the input contains a list of triggers.</p>
+<p><img src="../../../images/blueprints/selector-trigger.png" alt="Screenshot of an trigger selector"></p>
+<p>This selector does not have any other options; therefore, it only has its key.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">trigger</span><span class="pi">:</span>
+</code></pre></div></div>
+<p>The output of this selector is a list of triggers. For example:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Example trigger selector output result</span>
+<span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">numeric_state</span>
+  <span class="na">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">sensor.outside_temperature"</span>
+  <span class="na">below</span><span class="pi">:</span> <span class="m">20</span>
+</code></pre></div></div>
+<h3>Example - Merging with existing triggers <a class="title-link" name="example---merging-with-existing-triggers" href="index.html#example---merging-with-existing-triggers"></a>
+</h3>
+<p>If the trigger(s) should exist within a blueprint that already has some default triggers defined, and an additional customizable trigger should be merged, you need to use the <code>- triggers</code> syntax in the blueprint.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Example trigger selector</span>
+<span class="na">input</span><span class="pi">:</span>
+  <span class="na">my_trigger_input</span><span class="pi">:</span>
+    <span class="na">selector</span><span class="pi">:</span>
+      <span class="na">trigger</span><span class="pi">:</span>
+<span class="na">triggers</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">triggers</span><span class="pi">:</span> <span class="kt">!input</span> <span class="s">my_trigger_input</span>
+  <span class="pi">-</span> <span class="na">platform</span><span class="pi">:</span> <span class="s">numeric_state</span>
+  <span class="pi">[</span><span class="nv">...</span><span class="pi">]</span>
+</code></pre></div></div>
+
+
+  
+
+
+  
+<div class="material-card text feedback">
+  <h4>
+<iconify-icon inline icon="mdi:feedback" title="Feedback"></iconify-icon> <b> Help us improve our documentation</b><a href="index.html#feedback_section" class="title-link" name="feedback_section"></a>
+</h4>
+  Suggest an edit to this page, or provide/view feedback for this page.
+  <div class="links">
+    <ul aria-label="Page feedback options">
+    <li><a href="https://github.com/home-assistant/home-assistant.io/tree/current/source/_docs/blueprint/selectors.markdown" target="_blank" title="Edit this page"><iconify-icon inline icon="mdi:edit"></iconify-icon> Edit</a></li>
+    
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues/new?template=feedback.yml&amp;url=https%3A%2F%2Fwww.home-assistant.io%2Fdocs%2Fblueprint%2Fselectors%2F&amp;version=2026.1.0&amp;labels=current" target="_blank" title="Provide feedback on this page"><iconify-icon inline icon="mdi:comment-edit-outline"></iconify-icon> Provide feedback</a></li>
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues?utf8=%E2%9C%93&amp;q=%22%2Fdocs%2Fblueprint%2Fselectors%2F%22&amp;in=body" target="_blank" title="View given feedback for this page"><iconify-icon inline icon="mdi:comment-text-multiple-outline"></iconify-icon> View given feedback</a></li>
+    
+  </ul>
+  </div>
+</div>
+
+
+</article>
+
+            
+          </div>
+
+
+          
+            
+              <aside id="sidebar" class="grid__item one-third desk-wide-one-quarter lap-one-whole palm-one-whole">
+            
+            <div class="grid">
+  
+
+
+
+
+  <section class="vertical-nav aside-module grid__item one-whole lap-one-half">
+  <div class="section">
+    <h1 class="title epsilon"><iconify-icon inline icon='mdi:bookshelf' title='Bookshelf'></iconify-icon> Documentation</h1>
+    <ul class="divided sidebar-menu">
+      <li>
+        <a  href='../../index.html'>Overview </a>
+        |
+        <a  href='https://www.home-assistant.io/faq/'>FAQ </a>
+        |
+        <a  href='../../glossary/index.html'>Glossary </a>
+      </li>
+
+      <li>
+  <iconify-icon icon="mdi:robot-happy"></iconify-icon> <a  href='../../automation/index.html'>Automations </a>
+  
+  <ul>
+    <li>
+      <iconify-icon inline icon='mdi:robot-happy' title='Robot happy'></iconify-icon> <a  href='../../automation/basics/index.html'>Basic automations </a>
+      
+    </li>
+    <li>
+      <iconify-icon inline icon='mdi:palette' title='Palette'></iconify-icon> <a  href='../../scene/index.html'>Scenes </a>
+      
+    </li>
+    <li>
+      <iconify-icon inline icon='mdi:palette-swatch' title='Palette swatch'></iconify-icon> <a  href='../index.html'>Blueprints </a>
+      
+      <ul>
+        <li><a  href='../tutorial/index.html'>Tutorial </a></li>
+        <li><a  href='../schema/index.html'>Blueprint schema </a></li>
+        <li><a class='active' href='index.html'>Selectors </a></li>
+      </ul>
+      
+    </li>
+    <li>
+      <iconify-icon inline icon='mdi:script-text' title='Script text'></iconify-icon> <a  href='../../scripts/index.html'>Scripts </a>
+      
+    </li>
+  </ul>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> <a  href='https://www.home-assistant.io/dashboards'>Dashboards </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:microphone' title='Microphone'></iconify-icon> <a  href='https://www.home-assistant.io/voice_control/'>Voice assistants </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:category' title='Category'></iconify-icon> <a  href='../../organizing/index.html'>Organization </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> <a  href='../../energy/index.html'>Home energy management </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:update' title='Update'></iconify-icon> <a  href='https://www.home-assistant.io/common-tasks/general/'>Common tasks </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cogs' title='Cogs'></iconify-icon> <a  href='../../configuration/index.html'>Advanced configuration </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:account-security' title='Account security'></iconify-icon> <a  href='../../authentication/index.html'>Authentication </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:database' title='Database'></iconify-icon> <a  href='../../backend/index.html'>Backend </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:palette' title='Palette'></iconify-icon> <a  href='../../tools/index.html'>Tools and helpers </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cellphone' title='Cellphone'></iconify-icon> <a href="https://companion.home-assistant.io/docs">iOS and Android apps <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+</li>
+
+<li>
+  <iconify-icon inline icon='simple-icons:mqtt' title='Mqtt'></iconify-icon> <a  href='https://www.home-assistant.io/integrations/mqtt'>MQTT </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='bitcoin-icons:node-hardware-filled' title='Node hardware filled'></iconify-icon> Official hardware
+  <ul>
+    <li><a href="https://support.nabucasa.com/hc/categories/24638797677853">Home Assistant Green <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734620813469">Home Assistant Connect ZBT-1 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/29400540866973">Home Assistant Connect ZBT-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/28669861145885">Home Assistant Connect ZWA-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734575925149">Home Assistant Yellow <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24451727188125">Home Assistant Voice Preview Edition <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+  </ul>
+</li>
+
+    </ul>
+  </div>
+</section>
+
+
+
+  <section id="toc-module" class="aside-module grid__item one-whole lap-one-half">
+        <div class='section'>
+          <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+          <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="index.html#action-selector">Action selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#add-on-selector">Add-on selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#area-selector">Area selector</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#example-area-selectors-">Example area selectors </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#attribute-selector">Attribute selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#assist-pipeline-selector">Assist pipeline selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#backup-location-selector">Backup location selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#boolean-selector">Boolean selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#color-temperature-selector">Color temperature selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#condition-selector">Condition selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#config-entry-selector">Config entry selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#constant-selector">Constant selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#conversation-agent-selector">Conversation agent selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#country-selector">Country selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#date-selector">Date selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#date--time-selector">Date &amp; time selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#device-selector">Device selector</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#example-device-selector-">Example device selector </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#duration-selector">Duration selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#entity-selector">Entity selector</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#example-entity-selector-">Example entity selector </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#floor-selector">Floor selector</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#example-floor-selectors-">Example floor selectors </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#icon-selector">Icon selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#label-selector">Label selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#language-selector">Language selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#location-selector">Location selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#media-selector">Media selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#number-selector">Number selector</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#example-number-selectors-">Example number selectors </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#object-selector">Object selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#qr-code-selector">QR code selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#rgb-color-selector">RGB color selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#select-selector">Select selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#state-selector">State selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#statistic-selector">Statistic selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#target-selector">Target selector</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#example-target-selectors-">Example target selectors </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#template-selector">Template selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#text-selector">Text selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#theme-selector">Theme selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#time-selector">Time selector</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#trigger-selector">Trigger selector</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#example---merging-with-existing-triggers">Example - Merging with existing triggers</a></li>
+</ul>
+</li>
+</ul>
+        </div>
+      </section></div>
+
+          </aside>
+          
+        </div>
+      </div>
+
+      <footer>
+        <div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item">
+      <div class="skyline grid">
+        <div class="skyline grid__item one-whole">
+          <div class="footer-skyline">
+          </div>
+        </div>
+      </div>
+      <div class="footer-nav grid">
+        <div class="company grid__item one-quarter lap-one-half palm-one-whole">
+          <div class="title">
+            <img
+              src="../../../images/footer-logo-text.svg"
+              height="72"
+              alt="Home Assistant"
+            />
+          </div>
+          <p>
+            Home Assistant is a project from the <a href="https://www.openhomefoundation.org/">Open Home Foundation</a>, sponsored by <a href="https://www.nabucasa.com/">Nabu Casa</a>.
+          </p>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Join us and contribute!</h3>
+          <ul>
+            <li><a class="external-link" href="https://github.com/home-assistant/">GitHub repo <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://developers.home-assistant.io">Developers Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://design.home-assistant.io">Design Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://data.home-assistant.io">Data Science Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://community.home-assistant.io">Community Forum <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://creators.home-assistant.io/">Creator Network <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://works-with.home-assistant.io/">Works With Home Assistant <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a href="https://www.home-assistant.io/community">Our community</a></li>
+            <li><a href="https://www.home-assistant.io/help/reporting_issues/">Reporting issues</a></li>
+          </ul>
+          <h3>System status</h3>
+          <ul>
+            <li>
+              <a class="external-link"  href="https://alerts.home-assistant.io">Integration Alerts <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+            <li><a href="https://www.home-assistant.io/security/">Security Alerts</a></li>
+            <li>
+              <a class="external-link" href="https://status.home-assistant.io">System Status <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Companion apps</h3>
+          <ul>
+            <li><a class="external-link" href="https://apps.apple.com/app/id1099568401">iOS and Apple devices</a></li>
+            <li><a class="external-link" href="https://play.google.com/store/apps/details?id=io.homeassistant.companion.android">Android and Wear OS</a></li>
+            <li><a class="external-link" href="https://companion.home-assistant.io/">...and more!</a></li>
+          </ul>
+          <h3>Governance</h3>
+          <ul>
+            <li><a href="https://www.home-assistant.io/privacy/">Privacy Notices</a></li>
+            <li><a href="https://www.home-assistant.io/developers/cla/">Contributor License Agreement</a></li>
+            <li><a href="https://www.home-assistant.io/tos/">Terms of Service</a></li>
+            <li><a href="https://www.home-assistant.io/code_of_conduct/">Code of Conduct</a></li>
+            <li><a href="https://www.home-assistant.io/developers/credits/">Credits</a></li>
+            <li><a href="https://www.home-assistant.io/developers/license/">License</a></li>
+          </ul>
+        </div>
+
+        <div class="socials grid__item one-quarter lap-one-half palm-one-whole">
+
+          <h3>Follow us</h3>
+          <p><a class="external-link" href='https://newsletter.openhomefoundation.org/#/portal'>Sign up for our newsletter <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></p>
+          <div class="icons">
+            <a
+              rel="me"
+              href="https://youtube.com/@home_assistant"
+              title="YouTube"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:youtube"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://reddit.com/r/homeassistant"
+              title="Reddit"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:reddit"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://github.com/home-assistant"
+              title="GitHub"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:github"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://fosstodon.org/@homeassistant"
+              title="Mastodon"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:mastodon"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://bsky.app/profile/home-assistant.io"
+              title="Bluesky"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:bluesky"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://x.com/home_assistant"
+              title="X"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:x"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://www.facebook.com/homeassistantio"
+              title="Facebook"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:facebook"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.instagram.com/homeassistant/"
+              title="Instagram"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:instagram"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.linkedin.com/company/home-assistant"
+              title="LinkedIn"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:linkedin"></iconify-icon></a>
+          </div>
+
+          <div class="web-notice">
+            <p>
+              For partnership inquiries please check out <a href="https://works-with.home-assistant.io/">Works With Home Assistant</a>. For media, get in touch <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#650800010c04250a15000b0d0a0800030a100b0104110c0a0b4b0a1702">here</a>. For other questions, you can contact us <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#1a727f7676755a7275777f377b696973696e7b746e347375">here</a> (No technical support!)
+            </p>
+            <p>
+              Website powered by <a href="https://jekyllrb.com/">Jekyll</a><br />
+              Originally based on the <a href="https://github.com/coogie/oscailte">Oscailte theme</a>
+            </p>
+            <a href="https://www.netlify.com">
+              <img
+                src="../../../images/frontpage/netlify.svg"
+                alt="Deploys by Netlify Badge"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+
+    </div>
+    <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.3.1/lite-youtube.js" integrity="sha384-7o3d1sg8jSS1LMKzzIEucWtWFI1X4lFCC5gu2ylAgH3KmHcJgjTqp6LWfIvbbmf9" crossorigin="anonymous"></script>
+
+<script src="../../../javascripts/terminology_tooltip.js@274cec0734bc752f0e5ea3d4e2e59858" type="text/javascript" defer></script>
+
+<script src="../../../javascripts/prism.js@5d6619066a1fc5cd819a93c132b539ac" type="text/javascript" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3/dist/umd/index.min.js" integrity="sha384-f/IEhh8fvOc2ALU79emLlUqAYXyqlA/zYhM+g5GlWMk15QBjTXy05TtmfT1TbtV6" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  docsearch({
+    container: '#docsearch',
+    appId: 'FBHBYS3J0U',
+    indexName: 'home-assistant',
+    apiKey: "ba6f7e6d97b3d3d2f778978c742a47c6",
+  });
+  document.querySelector('.site-title').addEventListener('contextmenu', function (ev) {
+    ev.preventDefault();
+    document.location.assign("https://design.home-assistant.io/#brand/logo")
+  });
+</script>
+
+
+
+
+<script type="text/javascript">
+  {
+    const article = document.querySelector("article.post");
+    if (article) {
+      const iframes = article.querySelectorAll("iframe[data-src]");
+      let loaded = false;
+      if (iframes) {
+        document.addEventListener('mousemove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('touchmove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('scroll', loadLazyFrames, { passive: true, once: true });
+  
+        function loadLazyFrames() {
+          if (loaded) return;
+          loaded = true;
+  
+          iframes.forEach((iframe) => {
+            const src = iframe.getAttribute("data-src");
+            if (src) {
+              iframe.setAttribute("src", src);
+              iframe.removeAttribute("data-src");
+            }
+          });
+        }
+      }
+    }
+  }
+</script>
+
+  </body>
+</html>

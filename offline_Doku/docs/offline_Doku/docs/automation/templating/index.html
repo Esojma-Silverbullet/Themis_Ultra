@@ -1,0 +1,1264 @@
+
+
+
+
+<!doctype html>
+  <!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Automation Templates - Home Assistant</title>
+    <meta name="author" content="Home Assistant">
+    <meta name="description" content="List all trigger variables available to templates.">
+    
+    <meta name="viewport" content="width=device-width">
+    <link rel="canonical" href="index.html">
+
+    <meta property="fb:app_id" content="338291289691179">
+    <meta property="og:title" content="Automation Templates">
+    <meta property="og:site_name" content="Home Assistant">
+    <meta property="og:url" content="https://www.home-assistant.io/docs/automation/templating/">
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="List all trigger variables available to templates.">
+    <meta property="og:image" content="https://www.home-assistant.io/images/default-social.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@home_assistant">
+    
+    <meta name="twitter:title" content="Automation Templates">
+    <meta name="twitter:description" content="List all trigger variables available to templates.">
+    <meta name="twitter:image" content="https://www.home-assistant.io/images/default-social.png">
+    <link rel="me" href="https://fosstodon.org/@homeassistant">
+
+    <link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3/dist/style.min.css" rel="stylesheet" />
+    <link href="../../../stylesheets/prism.css@8acb84bc0387c9548a63998fcfea0139.css" rel="stylesheet">
+    <link href="../../../stylesheets/screen.css@cef1bc5aeba0a8ce6d170a9aa21e8dd6.css" media="screen, projection, print" rel="stylesheet">
+    <link href="https://www.home-assistant.io/atom.xml" rel="alternate" title="Home Assistant" type="application/atom+xml">
+    <link rel='shortcut icon' href='../../../images/favicon.ico' />
+    <link rel='icon' type='image/png' href='../../../images/favicon-192x192.png' sizes='192x192' />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&amp;family=Instrument+Sans:ital,wdth,wght@0,99,400..700;1,99,400..700&amp;" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" integrity="sha384-GPb5RlngihS9H0z1D137JsvzmeZ7tCpWEF4t5YDoTZyMsPP8S7h7vFDh4XhheU83" crossorigin="anonymous"></script>
+  </head>
+
+  <body  class="documentation-page   ">
+    <header class='site-header '>
+      
+
+
+
+<div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item three-tenths lap-two-sixths palm-one-whole ha-title">
+      <a href="https://www.home-assistant.io/" class="site-title">
+        <div class="logo"></div>
+      </a>
+      <a class="release-date" href="https://www.home-assistant.io/blog/2026/01/07/release-20261/" title="Latest version 2026.1.0 released January  7, 2026">
+        2026.1.0
+      </a>
+    </div>
+
+    <div class="grid__item seven-tenths lap-four-sixths palm-one-whole">
+      <nav>
+        <input type="checkbox" id="toggle" />
+        <label
+          for="toggle"
+          class="toggle"
+          data-open="Main Menu"
+          data-close="⨉"
+        ></label>
+        <ul class="menu pull-right">
+          <li><a  href="https://www.home-assistant.io/installation/">Getting started</a></li>
+          <li>
+            <a class="active" href="../../index.html">Documentation <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/installation/"><iconify-icon inline icon='simple-icons:homeassistant' title='Homeassistant'></iconify-icon> Installation</a></li>
+              <li><a href="../index.html"><iconify-icon inline icon='mdi:robot-happy' title='Robot happy'></iconify-icon> Automations</a></li>
+              <li><a href="https://www.home-assistant.io/dashboards/"><iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> Dashboards</a></li>
+              <li><a href="https://www.home-assistant.io/voice_control/"><iconify-icon inline icon='mdi:comment-processing-outline' title='Comment processing outline'></iconify-icon> Voice assistants</a></li>
+              <li><a href="../../organizing/index.html"><iconify-icon inline icon='mdi:view-grid' title='View grid'></iconify-icon> Device organization</a></li>
+              <li><a href="../../energy/index.html"><iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> Energy management</a></li>
+              <li><a href="../../configuration/index.html"><iconify-icon inline icon='mdi:cog' title='Cog'></iconify-icon> Advanced configuration</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="index.html#">Our hardware <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/green/">Home Assistant Green</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zbt-2/">Connect ZBT-2</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zwa-2/">Connect ZWA-2</a></li>
+              <li><a href="https://www.home-assistant.io/voice-pe/">Voice Preview Edition</a></li>
+            </ul>
+          </li>
+          <li><a  href="https://www.home-assistant.io/integrations/">Integrations</a></li>
+          <li><a  href="https://www.home-assistant.io/blog/">Blog</a></li>
+          <li><a  href="https://www.home-assistant.io/help/">Need help?</a></li>
+          <li>
+            <div class="docsearch" id="docsearch"></div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    </header>
+
+    <div class="page-content">
+
+      
+
+      <div class="grid-wrapper">
+        <div class="grid grid-center">
+
+          <aside id="toc-bar" class="grid__item desk-wide-one-sixth">
+                <section class="aside-module grid__item one-whole">
+                  <div class='section'>
+                    <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+                    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="index.html#available-state-data">Available state data</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#available-trigger-data">Available trigger data</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#all">All</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#calendar">Calendar</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#device">Device</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#event">Event</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#geolocation">Geolocation</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#home-assistant">Home Assistant</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#mqtt">MQTT</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#numeric-state">Numeric state</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#sentence">Sentence</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#state">State</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#sun">Sun</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#tag">Tag</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#template">Template</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#time">Time</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#time-pattern">Time pattern</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#persistent-notification">Persistent notification</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#webhook">Webhook</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#zone">Zone</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#examples">Examples</a></li>
+</ul>
+                  </div>
+                </section>
+              </aside> 
+
+          
+          <div class="grid__item two-thirds desk-wide-seven-twelfths lap-one-whole palm-one-whole">
+          
+
+            
+              <article class="page">
+  
+  <header>
+    
+    
+      <div class="breadcrumbs">
+        <a href="https://www.home-assistant.io/">Home</a>
+        
+          
+            
+            ▸ <a href="../../index.html">Documentation</a>
+          
+        
+          
+            
+            ▸ <a href="../index.html">Automation</a>
+          
+        
+          
+            ▸ 
+          
+        
+      </div>
+    
+    <h1 class="title indent">
+      
+        Automation Templates
+      
+    </h1>
+  </header>
+  
+  
+  <p>Automations support the advanced features of <a href="../../configuration/templating/index.html">templating</a> in the same way as scripts do. In addition to the <a href="../../configuration/templating/index.html#home-assistant-template-extensions">Home Assistant template extensions</a> available to scripts, the <code>trigger</code> and <code>this</code> template variables are available for automations.</p>
+<p>Example of variables used in templates:</p>
+<ul>
+<li>
+<code>{{ this.name }}</code> is the name of the automation executing from this trigger</li>
+<li>
+<code>{{ trigger.platform }}</code> is the type of trigger object, like <code>calendar</code>
+</li>
+</ul>
+<h2>Available state data <a class="title-link" name="available-state-data" href="index.html#available-state-data"></a>
+</h2>
+<p>The template variable <code>this</code> is an object that contains the <a href="../../configuration/state_object.1.html">state</a> of the automation at the moment of triggering the actions and can be used to evaluate <a href="../trigger/index.html#trigger-variables"><code>trigger_variables</code></a> declared in the configuration of the active <span class="terminology">trigger<span class="terminology-tooltip">A trigger is a set of values or conditions of a platform that are defined to cause an automation to run.<a class="terminology-link" href="../trigger/index.html"> [Learn more]</a></span></span>.
+State objects also contain context data which can be used to identify the user that caused a <span class="terminology">script<span class="terminology-tooltip">Scripts are components that allow users to specify a sequence of actions to be executed by Home Assistant when turned on.<a class="terminology-link" href="../../scripts/index.html"> [Learn more]</a></span></span> or <span class="terminology">automation<span class="terminology-tooltip">Automations in Home Assistant allow you to automatically respond to things that happen in and around your home.<a class="terminology-link" href="../index.html"> [Learn more]</a></span></span> to execute. Note that <code>this</code> will not change while executing the <span class="terminology">actions<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../action/index.html"> [Learn more]</a></span></span>.</p>
+<h2>Available trigger data <a class="title-link" name="available-trigger-data" href="index.html#available-trigger-data"></a>
+</h2>
+<p>The template variable <code>trigger</code> is an object that contains details about which <span class="terminology">platform<span class="terminology-tooltip">Platforms are building blocks provided by some integrations to be used by other integrations.<a class="terminology-link" href="../../configuration/platform_options/index.html"> [Learn more]</a></span></span> triggered the automation. The <code>platform</code> property contains the name of the <span class="terminology">platform<span class="terminology-tooltip">Platforms are building blocks provided by some integrations to be used by other integrations.<a class="terminology-link" href="../../configuration/platform_options/index.html"> [Learn more]</a></span></span> whose event triggered the automation.</p>
+<p>Templates can use the data to modify the actions performed by the automation or displayed in a message. For example, you could create an automation that multiple sensors can trigger and then use the sensor’s location to specify a light to activate; or you could send a notification containing the friendly name of the sensor that triggered it.</p>
+<p>Each <a href="../trigger/index.html#event-trigger">trigger</a> platform includes additional data specific to that <span class="terminology">platform<span class="terminology-tooltip">Platforms are building blocks provided by some integrations to be used by other integrations.<a class="terminology-link" href="../../configuration/platform_options/index.html"> [Learn more]</a></span></span>.</p>
+<h3>All <a class="title-link" name="all" href="index.html#all"></a>
+</h3>
+<p>Triggers from all platforms will include the following properties.</p>
+<table>
+<thead>
+<tr>
+<th>Template variable</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trigger.platform</code></td>
+<td>Trigger object type.</td>
+</tr>
+<tr>
+<td><code>trigger.alias</code></td>
+<td>Alias of the trigger.</td>
+</tr>
+<tr>
+<td><code>trigger.id</code></td>
+<td>The <a href="../trigger/index.html#trigger-id"><code>id</code> of the trigger</a>.</td>
+</tr>
+<tr>
+<td><code>trigger.idx</code></td>
+<td>Index of the trigger. (The first trigger idx is <code>0</code>.)</td>
+</tr>
+</tbody>
+</table>
+<h3>Calendar <a class="title-link" name="calendar" href="index.html#calendar"></a>
+</h3>
+<p>These are the properties available for a <a href="../trigger/index.html#calendar-trigger">Calendar trigger</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Template variable</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trigger.platform</code></td>
+<td>Hardcoded: <code>calendar</code>
+</td>
+</tr>
+<tr>
+<td><code>trigger.event</code></td>
+<td>The trigger event type, either <code>start</code>  or <code>end</code>.</td>
+</tr>
+<tr>
+<td><code>trigger.calendar_event</code></td>
+<td>The calendar event object matched.</td>
+</tr>
+<tr>
+<td><code>trigger.calendar_event.summary</code></td>
+<td>The title or summary of the calendar event.</td>
+</tr>
+<tr>
+<td><code>trigger.calendar_event.start</code></td>
+<td>String representation of the start date or date time of the calendar event e.g. <code>2022-04-10</code>, or <code>2022-04-10 11:30:00-07:00</code>
+</td>
+</tr>
+<tr>
+<td><code>trigger.calendar_event.end</code></td>
+<td>String representation of the end time of date time the calendar event in UTC  e.g. <code>2022-04-11</code>, or <code>2022-04-10 11:45:00-07:00</code>
+</td>
+</tr>
+<tr>
+<td><code>trigger.calendar_event.all_day</code></td>
+<td>Indicates the event spans the entire day.</td>
+</tr>
+<tr>
+<td><code>trigger.calendar_event.description</code></td>
+<td>A detailed description of the calendar event, if available.</td>
+</tr>
+<tr>
+<td><code>trigger.calendar_event.location</code></td>
+<td>Location information for the calendar event, if available.</td>
+</tr>
+<tr>
+<td><code>trigger.offset</code></td>
+<td>Timedelta object with offset to the event, if any.</td>
+</tr>
+</tbody>
+</table>
+<h3>Device <a class="title-link" name="device" href="index.html#device"></a>
+</h3>
+<p>These are the properties available for a <a href="../trigger/index.html#device-triggers">Device trigger</a>.</p>
+<p>Inherits template variables from <a href="index.html#event">event</a> or <a href="index.html#state">state</a> template based on the type of trigger selected for the device.</p>
+<table>
+<thead>
+<tr>
+<th>Template variable</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trigger.platform</code></td>
+<td>Hardcoded: <code>device</code>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Event <a class="title-link" name="event" href="index.html#event"></a>
+</h3>
+<p>An <a href="../../configuration/events/index.html">Event</a> trigger is fired each time an <span class="terminology">entity<span class="terminology-tooltip">An entity represents a sensor, actor, or function in Home Assistant. Entities are used to monitor physical properties or to control other entities. An entity is usually part of a device or a service.<a class="terminology-link" href="../../configuration/entities_domains/index.html"> [Learn more]</a></span></span> state changes or an event matching the configured event_type occurs.</p>
+<p>These are the properties available for an <a href="../trigger/index.html#event-trigger">Event trigger</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Template variable</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trigger.platform</code></td>
+<td>Hardcoded: <code>event</code>
+</td>
+</tr>
+<tr>
+<td><code>trigger.event</code></td>
+<td>Event object that matched.</td>
+</tr>
+<tr>
+<td><code>trigger.event.event_type</code></td>
+<td>Event type.</td>
+</tr>
+<tr>
+<td><code>trigger.event.data</code></td>
+<td>Optional event data.</td>
+</tr>
+</tbody>
+</table>
+<h3>Geolocation <a class="title-link" name="geolocation" href="index.html#geolocation"></a>
+</h3>
+<p>These are the properties available for a <a href="../trigger/index.html#geolocation-trigger">Geolocation trigger</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Template variable</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trigger.platform</code></td>
+<td>Hardcoded: <code>geo_location</code>
+</td>
+</tr>
+<tr>
+<td><code>trigger.event</code></td>
+<td>The trigger event type, either <code>enter</code>  or <code>leave</code>.</td>
+</tr>
+<tr>
+<td><code>trigger.source</code></td>
+<td>The Geolocation platform creating the trigger event.</td>
+</tr>
+<tr>
+<td><code>trigger.zone</code></td>
+<td>State object of the zone.</td>
+</tr>
+</tbody>
+</table>
+<h3>Home Assistant <a class="title-link" name="home-assistant" href="index.html#home-assistant"></a>
+</h3>
+<p>The Home Assistant trigger is recommended for automations instead of <a href="../../configuration/events/index.html#homeassistant_start-homeassistant_started">homeassistant_start or homeassistant_stop events</a>.</p>
+<p>These are the properties available for a <a href="../trigger/index.html#home-assistant-trigger">Home Assistant trigger</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Template variable</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trigger.platform</code></td>
+<td>Hardcoded: <code>homeassistant</code>
+</td>
+</tr>
+<tr>
+<td><code>trigger.event</code></td>
+<td>The trigger event type, either <code>start</code>  or <code>shutdown</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3>MQTT <a class="title-link" name="mqtt" href="index.html#mqtt"></a>
+</h3>
+<p>These are the properties available for a <a href="../trigger/index.html#mqtt-trigger">MQTT trigger</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Template variable</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trigger.platform</code></td>
+<td>Hardcoded: <code>mqtt</code>
+</td>
+</tr>
+<tr>
+<td><code>trigger.topic</code></td>
+<td>Topic that received payload.</td>
+</tr>
+<tr>
+<td><code>trigger.payload</code></td>
+<td>Payload.</td>
+</tr>
+<tr>
+<td><code>trigger.payload_json</code></td>
+<td>Dictionary of the JSON parsed payload.</td>
+</tr>
+<tr>
+<td><code>trigger.qos</code></td>
+<td>QOS of payload.</td>
+</tr>
+</tbody>
+</table>
+<h3>Numeric state <a class="title-link" name="numeric-state" href="index.html#numeric-state"></a>
+</h3>
+<p>These are the properties available for a <a href="../trigger/index.html#numeric-state-trigger">numeric state trigger</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Template variable</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trigger.platform</code></td>
+<td>Hardcoded: <code>numeric_state</code>
+</td>
+</tr>
+<tr>
+<td><code>trigger.entity_id</code></td>
+<td>Entity ID that we observe.</td>
+</tr>
+<tr>
+<td><code>trigger.below</code></td>
+<td>The below threshold, if any.</td>
+</tr>
+<tr>
+<td><code>trigger.above</code></td>
+<td>The above threshold, if any.</td>
+</tr>
+<tr>
+<td><code>trigger.from_state</code></td>
+<td>The previous <a href="../../configuration/state_object/index.html">state object</a> of the entity.</td>
+</tr>
+<tr>
+<td><code>trigger.to_state</code></td>
+<td>The new <a href="../../configuration/state_object/index.html">state object</a> that triggered trigger.</td>
+</tr>
+<tr>
+<td><code>trigger.for</code></td>
+<td>Timedelta object how long state has met above/below criteria, if any.</td>
+</tr>
+</tbody>
+</table>
+<h3>Sentence <a class="title-link" name="sentence" href="index.html#sentence"></a>
+</h3>
+<p>These are the properties available for a <a href="../trigger/index.html#sentence-trigger">Sentence trigger</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Template variable</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trigger.platform</code></td>
+<td>Hardcoded: <code>conversation</code>
+</td>
+</tr>
+<tr>
+<td><code>trigger.sentence</code></td>
+<td>Text of the sentence that was matched.</td>
+</tr>
+<tr>
+<td><code>trigger.slots</code></td>
+<td>Object with matched slot values.</td>
+</tr>
+<tr>
+<td><code>trigger.details</code></td>
+<td>Object with matched slot details by name, such as <a href="../trigger/index.html#sentence-wildcards">wildcards</a>. Each detail contains: <ul>
+<li>
+<code>name</code> - name of the slot</li>
+<li>
+<code>text</code> - matched text</li>
+<li>
+<code>value</code> - output value (see <a href="https://www.home-assistant.io/docs/voice/intent-recognition/template-sentence-syntax/#lists">lists</a>)</li>
+</ul>.</td>
+</tr>
+<tr>
+<td><code>trigger.device_id</code></td>
+<td>The device ID that captured the command, if any.</td>
+</tr>
+<tr>
+<td><code>trigger.satellite_id</code></td>
+<td>The entity ID of the satellite that captured the command, if any.</td>
+</tr>
+</tbody>
+</table>
+<h3>State <a class="title-link" name="state" href="index.html#state"></a>
+</h3>
+<p>These are the properties available for a <a href="../trigger/index.html#state-trigger">State trigger</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Template variable</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trigger.platform</code></td>
+<td>Hardcoded: <code>state</code>
+</td>
+</tr>
+<tr>
+<td><code>trigger.entity_id</code></td>
+<td>Entity ID that we observe.</td>
+</tr>
+<tr>
+<td><code>trigger.from_state</code></td>
+<td>The previous <a href="../../configuration/state_object/index.html">state object</a> of the entity.</td>
+</tr>
+<tr>
+<td><code>trigger.to_state</code></td>
+<td>The new <a href="../../configuration/state_object/index.html">state object</a> that triggered trigger.</td>
+</tr>
+<tr>
+<td><code>trigger.for</code></td>
+<td>Timedelta object how long state has been to state, if any.</td>
+</tr>
+</tbody>
+</table>
+<h3>Sun <a class="title-link" name="sun" href="index.html#sun"></a>
+</h3>
+<p>These are the properties available for a <a href="../trigger/index.html#sun-trigger">Sun trigger</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Template variable</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trigger.platform</code></td>
+<td>Hardcoded: <code>sun</code>
+</td>
+</tr>
+<tr>
+<td><code>trigger.event</code></td>
+<td>The event that just happened: <code>sunset</code> or <code>sunrise</code>.</td>
+</tr>
+<tr>
+<td><code>trigger.offset</code></td>
+<td>Timedelta object with offset to the event, if any.</td>
+</tr>
+</tbody>
+</table>
+<h3>Tag <a class="title-link" name="tag" href="index.html#tag"></a>
+</h3>
+<p>These are the properties available for a <a href="../trigger/index.html#tag-trigger">Tag trigger</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Template variable</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trigger.platform</code></td>
+<td>Hardcoded: <code>tag</code>
+</td>
+</tr>
+<tr>
+<td><code>trigger.tag_id</code></td>
+<td>The tag ID captured.</td>
+</tr>
+<tr>
+<td><code>trigger.device_id</code></td>
+<td>Optional device ID that captured the tag.</td>
+</tr>
+</tbody>
+</table>
+<h3>Template <a class="title-link" name="template" href="index.html#template"></a>
+</h3>
+<p>These are the properties available for a <a href="../trigger/index.html#template-trigger">Template trigger</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Template variable</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trigger.platform</code></td>
+<td>Hardcoded: <code>template</code>
+</td>
+</tr>
+<tr>
+<td><code>trigger.entity_id</code></td>
+<td>Entity ID that caused change.</td>
+</tr>
+<tr>
+<td><code>trigger.from_state</code></td>
+<td>Previous <a href="../../configuration/state_object/index.html">state object</a> of entity that caused change.</td>
+</tr>
+<tr>
+<td><code>trigger.to_state</code></td>
+<td>New <a href="../../configuration/state_object/index.html">state object</a> of entity that caused template to change.</td>
+</tr>
+<tr>
+<td><code>trigger.for</code></td>
+<td>Timedelta object how long state has been to state, if any.</td>
+</tr>
+</tbody>
+</table>
+<h3>Time <a class="title-link" name="time" href="index.html#time"></a>
+</h3>
+<p>These are the properties available for a <a href="../trigger/index.html#time-trigger">Time trigger</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Template variable</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trigger.platform</code></td>
+<td>Hardcoded: <code>time</code>
+</td>
+</tr>
+<tr>
+<td><code>trigger.now</code></td>
+<td>DateTime object that triggered the time trigger.</td>
+</tr>
+</tbody>
+</table>
+<h3>Time pattern <a class="title-link" name="time-pattern" href="index.html#time-pattern"></a>
+</h3>
+<p>These are the properties available for a <a href="../trigger/index.html#time-pattern-trigger">time pattern trigger</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Template variable</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trigger.platform</code></td>
+<td>Hardcoded: <code>time_pattern</code>
+</td>
+</tr>
+<tr>
+<td><code>trigger.now</code></td>
+<td>DateTime object that triggered the time_pattern trigger.</td>
+</tr>
+</tbody>
+</table>
+<h3>Persistent notification <a class="title-link" name="persistent-notification" href="index.html#persistent-notification"></a>
+</h3>
+<p>These properties are available for a <a href="../trigger/index.html#persistent-notification-trigger">persistent notification trigger</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Template variable</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trigger.platform</code></td>
+<td>Hardcoded: <code>persistent_notification</code>
+</td>
+</tr>
+<tr>
+<td><code>trigger.update_type</code></td>
+<td>Type of persistent notification update <code>added</code>, <code>removed</code>, <code>current</code>, or <code>updated</code>.</td>
+</tr>
+<tr>
+<td><code>trigger.notification</code></td>
+<td>Notification object that triggered the persistent notification trigger.</td>
+</tr>
+<tr>
+<td><code>trigger.notification.notification_id</code></td>
+<td>The notification ID.</td>
+</tr>
+<tr>
+<td><code>trigger.notification.title</code></td>
+<td>Title of the notification.</td>
+</tr>
+<tr>
+<td><code>trigger.notification.message</code></td>
+<td>Message of the notification.</td>
+</tr>
+<tr>
+<td><code>trigger.notification.created_at</code></td>
+<td>DateTime object indicating when the notification was created.</td>
+</tr>
+</tbody>
+</table>
+<h3>Webhook <a class="title-link" name="webhook" href="index.html#webhook"></a>
+</h3>
+<p>These are the properties available for a <a href="../trigger/index.html#webhook-trigger">Webhook trigger</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Template variable</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trigger.platform</code></td>
+<td>Hardcoded: <code>webhook</code>
+</td>
+</tr>
+<tr>
+<td><code>trigger.webhook_id</code></td>
+<td>The webhook ID that was triggered.</td>
+</tr>
+<tr>
+<td><code>trigger.json</code></td>
+<td>The JSON data of the request (if it had a JSON content type) as a mapping.</td>
+</tr>
+<tr>
+<td><code>trigger.data</code></td>
+<td>The form data of the request (if it had a form data content type).</td>
+</tr>
+<tr>
+<td><code>trigger.query</code></td>
+<td>The URL query parameters of the request (if provided).</td>
+</tr>
+</tbody>
+</table>
+<h3>Zone <a class="title-link" name="zone" href="index.html#zone"></a>
+</h3>
+<p>These are the properties available for a <a href="../trigger/index.html#zone-trigger">Zone trigger</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Template variable</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trigger.platform</code></td>
+<td>Hardcoded: <code>zone</code>
+</td>
+</tr>
+<tr>
+<td><code>trigger.entity_id</code></td>
+<td>Entity ID that we are observing.</td>
+</tr>
+<tr>
+<td><code>trigger.from_state</code></td>
+<td>Previous <a href="../../configuration/state_object/index.html">state object</a> of the entity.</td>
+</tr>
+<tr>
+<td><code>trigger.to_state</code></td>
+<td>New <a href="../../configuration/state_object/index.html">state object</a> of the entity.</td>
+</tr>
+<tr>
+<td><code>trigger.zone</code></td>
+<td>State object of the zone.</td>
+</tr>
+<tr>
+<td><code>trigger.event</code></td>
+<td>Event that trigger observed: <code>enter</code> or <code>leave</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2>Examples <a class="title-link" name="examples" href="index.html#examples"></a>
+</h2>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Example configuration.yaml entries</span>
+<span class="na">automation</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">device_tracker.paulus</span>
+      <span class="na">id</span><span class="pi">:</span> <span class="s">paulus_device</span>
+  <span class="na">actions</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">notify.notify</span>
+      <span class="na">data</span><span class="pi">:</span>
+        <span class="na">message</span><span class="pi">:</span> <span class="pi">&gt;</span>
+          <span class="s">Paulus just changed from {{ trigger.from_state.state }}</span>
+          <span class="s">to {{ trigger.to_state.state }}</span>
+          
+          <span class="s">This was triggered by {{ trigger.id }}</span>
+
+<span class="na">automation 2</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">mqtt</span>
+      <span class="na">topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/notify/+"</span>
+  <span class="na">actions</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="pi">&gt;</span>
+        <span class="s">notify.{{ trigger.topic.split('/')[-1] }}</span>
+      <span class="na">data</span><span class="pi">:</span>
+        <span class="na">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">trigger.payload</span><span class="nv"> </span><span class="s">}}"</span>
+
+<span class="na">automation 3</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="c1"># Multiple entities for which you want to perform the same action.</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">light.bedroom_closet</span>
+        <span class="pi">-</span> <span class="s">light.kiddos_closet</span>
+        <span class="pi">-</span> <span class="s">light.linen_closet</span>
+      <span class="na">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">on"</span>
+      <span class="c1"># Trigger when someone leaves one of those lights on for 10 minutes.</span>
+      <span class="na">for</span><span class="pi">:</span> <span class="s2">"</span><span class="s">00:10:00"</span>
+  <span class="na">actions</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_off</span>
+      <span class="na">target</span><span class="pi">:</span>
+        <span class="c1"># Turn off whichever entity triggered the automation.</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">trigger.entity_id</span><span class="nv"> </span><span class="s">}}"</span>
+
+<span class="na">automation 4</span><span class="pi">:</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="c1"># When an NFC tag is scanned by Home Assistant...</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">event</span>
+      <span class="na">event_type</span><span class="pi">:</span> <span class="s">tag_scanned</span>
+      <span class="c1"># ...By certain people</span>
+      <span class="na">context</span><span class="pi">:</span>
+        <span class="na">user_id</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="s">06cbf6deafc54cf0b2ffa49552a396ba</span>
+          <span class="pi">-</span> <span class="s">2df8a2a6e0be4d5d962aad2d39ed4c9c</span>
+  <span class="na">conditions</span><span class="pi">:</span>
+    <span class="c1"># Check NFC tag (ID) is the one by the front door</span>
+    <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">template</span>
+      <span class="na">value_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">trigger.event.data.tag_id</span><span class="nv"> </span><span class="s">==</span><span class="nv"> </span><span class="s">'8b6d6755-b4d5-4c23-818b-cf224d221ab7'}}"</span>
+  <span class="na">actions</span><span class="pi">:</span>
+    <span class="c1"># Turn off various lights</span>
+    <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_off</span>
+      <span class="na">target</span><span class="pi">:</span>
+        <span class="na">entity_id</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="s">light.kitchen</span>
+          <span class="pi">-</span> <span class="s">light.bedroom</span>
+          <span class="pi">-</span> <span class="s">light.living_room</span>
+</code></pre></div></div>
+
+
+  
+
+
+  
+<div class="material-card text feedback">
+  <h4>
+<iconify-icon inline icon="mdi:feedback" title="Feedback"></iconify-icon> <b> Help us improve our documentation</b><a href="index.html#feedback_section" class="title-link" name="feedback_section"></a>
+</h4>
+  Suggest an edit to this page, or provide/view feedback for this page.
+  <div class="links">
+    <ul aria-label="Page feedback options">
+    <li><a href="https://github.com/home-assistant/home-assistant.io/tree/current/source/_docs/automation/templating.markdown" target="_blank" title="Edit this page"><iconify-icon inline icon="mdi:edit"></iconify-icon> Edit</a></li>
+    
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues/new?template=feedback.yml&amp;url=https%3A%2F%2Fwww.home-assistant.io%2Fdocs%2Fautomation%2Ftemplating%2F&amp;version=2026.1.0&amp;labels=current" target="_blank" title="Provide feedback on this page"><iconify-icon inline icon="mdi:comment-edit-outline"></iconify-icon> Provide feedback</a></li>
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues?utf8=%E2%9C%93&amp;q=%22%2Fdocs%2Fautomation%2Ftemplating%2F%22&amp;in=body" target="_blank" title="View given feedback for this page"><iconify-icon inline icon="mdi:comment-text-multiple-outline"></iconify-icon> View given feedback</a></li>
+    
+  </ul>
+  </div>
+</div>
+
+
+</article>
+
+            
+          </div>
+
+
+          
+            
+              <aside id="sidebar" class="grid__item one-third desk-wide-one-quarter lap-one-whole palm-one-whole">
+            
+            <div class="grid">
+  
+
+
+
+
+  <section class="vertical-nav aside-module grid__item one-whole lap-one-half">
+  <div class="section">
+    <h1 class="title epsilon"><iconify-icon inline icon='mdi:bookshelf' title='Bookshelf'></iconify-icon> Documentation</h1>
+    <ul class="divided sidebar-menu">
+      <li>
+        <a  href='../../index.html'>Overview </a>
+        |
+        <a  href='https://www.home-assistant.io/faq/'>FAQ </a>
+        |
+        <a  href='../../glossary/index.html'>Glossary </a>
+      </li>
+
+      <li>
+  <iconify-icon icon="mdi:robot-happy"></iconify-icon> <a  href='../index.html'>Automations </a>
+  
+  <ul>
+    <li>
+      <iconify-icon inline icon='mdi:robot-happy' title='Robot happy'></iconify-icon> <a  href='../basics/index.html'>Basic automations </a>
+      
+      <ul>
+        <li><a  href='../using_blueprints/index.html'>Using automation blueprints </a></li>
+        <li><a  href='../editor/index.html'>Editor </a></li>
+        <li><a  href='../trigger/index.html'>Triggers </a></li>
+        <li><a  href='../condition/index.html'>Conditions </a></li>
+        <li><a  href='../action/index.html'>Actions </a></li>
+        <li><a  href='../modes/index.html'>Run modes </a></li>
+        <li><a  href='../services/index.html'>Automation actions </a></li>
+        <li><a class='active' href='index.html'>Templates </a></li>
+        <li><a  href='../yaml/index.html'>YAML </a></li>
+        <li><a  href='../troubleshooting/index.html'>Troubleshooting automation </a></li>
+      </ul>
+      
+    </li>
+    <li>
+      <iconify-icon inline icon='mdi:palette' title='Palette'></iconify-icon> <a  href='../../scene/index.html'>Scenes </a>
+      
+    </li>
+    <li>
+      <iconify-icon inline icon='mdi:palette-swatch' title='Palette swatch'></iconify-icon> <a  href='../../blueprint/index.html'>Blueprints </a>
+      
+    </li>
+    <li>
+      <iconify-icon inline icon='mdi:script-text' title='Script text'></iconify-icon> <a  href='../../scripts/index.html'>Scripts </a>
+      
+    </li>
+  </ul>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> <a  href='https://www.home-assistant.io/dashboards'>Dashboards </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:microphone' title='Microphone'></iconify-icon> <a  href='https://www.home-assistant.io/voice_control/'>Voice assistants </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:category' title='Category'></iconify-icon> <a  href='../../organizing/index.html'>Organization </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> <a  href='../../energy/index.html'>Home energy management </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:update' title='Update'></iconify-icon> <a  href='https://www.home-assistant.io/common-tasks/general/'>Common tasks </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cogs' title='Cogs'></iconify-icon> <a  href='../../configuration/index.html'>Advanced configuration </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:account-security' title='Account security'></iconify-icon> <a  href='../../authentication/index.html'>Authentication </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:database' title='Database'></iconify-icon> <a  href='../../backend/index.html'>Backend </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:palette' title='Palette'></iconify-icon> <a  href='../../tools/index.html'>Tools and helpers </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cellphone' title='Cellphone'></iconify-icon> <a href="https://companion.home-assistant.io/docs">iOS and Android apps <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+</li>
+
+<li>
+  <iconify-icon inline icon='simple-icons:mqtt' title='Mqtt'></iconify-icon> <a  href='https://www.home-assistant.io/integrations/mqtt'>MQTT </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='bitcoin-icons:node-hardware-filled' title='Node hardware filled'></iconify-icon> Official hardware
+  <ul>
+    <li><a href="https://support.nabucasa.com/hc/categories/24638797677853">Home Assistant Green <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734620813469">Home Assistant Connect ZBT-1 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/29400540866973">Home Assistant Connect ZBT-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/28669861145885">Home Assistant Connect ZWA-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734575925149">Home Assistant Yellow <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24451727188125">Home Assistant Voice Preview Edition <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+  </ul>
+</li>
+
+    </ul>
+  </div>
+</section>
+
+
+
+  <section id="toc-module" class="aside-module grid__item one-whole lap-one-half">
+        <div class='section'>
+          <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+          <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="index.html#available-state-data">Available state data</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#available-trigger-data">Available trigger data</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#all">All</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#calendar">Calendar</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#device">Device</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#event">Event</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#geolocation">Geolocation</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#home-assistant">Home Assistant</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#mqtt">MQTT</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#numeric-state">Numeric state</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#sentence">Sentence</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#state">State</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#sun">Sun</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#tag">Tag</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#template">Template</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#time">Time</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#time-pattern">Time pattern</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#persistent-notification">Persistent notification</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#webhook">Webhook</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#zone">Zone</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#examples">Examples</a></li>
+</ul>
+        </div>
+      </section></div>
+
+          </aside>
+          
+        </div>
+      </div>
+
+      <footer>
+        <div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item">
+      <div class="skyline grid">
+        <div class="skyline grid__item one-whole">
+          <div class="footer-skyline">
+          </div>
+        </div>
+      </div>
+      <div class="footer-nav grid">
+        <div class="company grid__item one-quarter lap-one-half palm-one-whole">
+          <div class="title">
+            <img
+              src="../../../images/footer-logo-text.svg"
+              height="72"
+              alt="Home Assistant"
+            />
+          </div>
+          <p>
+            Home Assistant is a project from the <a href="https://www.openhomefoundation.org/">Open Home Foundation</a>, sponsored by <a href="https://www.nabucasa.com/">Nabu Casa</a>.
+          </p>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Join us and contribute!</h3>
+          <ul>
+            <li><a class="external-link" href="https://github.com/home-assistant/">GitHub repo <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://developers.home-assistant.io">Developers Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://design.home-assistant.io">Design Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://data.home-assistant.io">Data Science Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://community.home-assistant.io">Community Forum <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://creators.home-assistant.io/">Creator Network <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://works-with.home-assistant.io/">Works With Home Assistant <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a href="https://www.home-assistant.io/community">Our community</a></li>
+            <li><a href="https://www.home-assistant.io/help/reporting_issues/">Reporting issues</a></li>
+          </ul>
+          <h3>System status</h3>
+          <ul>
+            <li>
+              <a class="external-link"  href="https://alerts.home-assistant.io">Integration Alerts <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+            <li><a href="https://www.home-assistant.io/security/">Security Alerts</a></li>
+            <li>
+              <a class="external-link" href="https://status.home-assistant.io">System Status <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Companion apps</h3>
+          <ul>
+            <li><a class="external-link" href="https://apps.apple.com/app/id1099568401">iOS and Apple devices</a></li>
+            <li><a class="external-link" href="https://play.google.com/store/apps/details?id=io.homeassistant.companion.android">Android and Wear OS</a></li>
+            <li><a class="external-link" href="https://companion.home-assistant.io/">...and more!</a></li>
+          </ul>
+          <h3>Governance</h3>
+          <ul>
+            <li><a href="https://www.home-assistant.io/privacy/">Privacy Notices</a></li>
+            <li><a href="https://www.home-assistant.io/developers/cla/">Contributor License Agreement</a></li>
+            <li><a href="https://www.home-assistant.io/tos/">Terms of Service</a></li>
+            <li><a href="https://www.home-assistant.io/code_of_conduct/">Code of Conduct</a></li>
+            <li><a href="https://www.home-assistant.io/developers/credits/">Credits</a></li>
+            <li><a href="https://www.home-assistant.io/developers/license/">License</a></li>
+          </ul>
+        </div>
+
+        <div class="socials grid__item one-quarter lap-one-half palm-one-whole">
+
+          <h3>Follow us</h3>
+          <p><a class="external-link" href='https://newsletter.openhomefoundation.org/#/portal'>Sign up for our newsletter <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></p>
+          <div class="icons">
+            <a
+              rel="me"
+              href="https://youtube.com/@home_assistant"
+              title="YouTube"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:youtube"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://reddit.com/r/homeassistant"
+              title="Reddit"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:reddit"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://github.com/home-assistant"
+              title="GitHub"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:github"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://fosstodon.org/@homeassistant"
+              title="Mastodon"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:mastodon"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://bsky.app/profile/home-assistant.io"
+              title="Bluesky"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:bluesky"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://x.com/home_assistant"
+              title="X"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:x"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://www.facebook.com/homeassistantio"
+              title="Facebook"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:facebook"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.instagram.com/homeassistant/"
+              title="Instagram"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:instagram"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.linkedin.com/company/home-assistant"
+              title="LinkedIn"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:linkedin"></iconify-icon></a>
+          </div>
+
+          <div class="web-notice">
+            <p>
+              For partnership inquiries please check out <a href="https://works-with.home-assistant.io/">Works With Home Assistant</a>. For media, get in touch <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#137e76777a72537c63767d7b7c7e76757c667d7772677a7c7d3d7c6174">here</a>. For other questions, you can contact us <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#4c24292020230c24232129612d3f3f253f382d2238622523">here</a> (No technical support!)
+            </p>
+            <p>
+              Website powered by <a href="https://jekyllrb.com/">Jekyll</a><br />
+              Originally based on the <a href="https://github.com/coogie/oscailte">Oscailte theme</a>
+            </p>
+            <a href="https://www.netlify.com">
+              <img
+                src="../../../images/frontpage/netlify.svg"
+                alt="Deploys by Netlify Badge"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+
+    </div>
+    <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.3.1/lite-youtube.js" integrity="sha384-7o3d1sg8jSS1LMKzzIEucWtWFI1X4lFCC5gu2ylAgH3KmHcJgjTqp6LWfIvbbmf9" crossorigin="anonymous"></script>
+
+<script src="../../../javascripts/terminology_tooltip.js@274cec0734bc752f0e5ea3d4e2e59858" type="text/javascript" defer></script>
+
+<script src="../../../javascripts/prism.js@5d6619066a1fc5cd819a93c132b539ac" type="text/javascript" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3/dist/umd/index.min.js" integrity="sha384-f/IEhh8fvOc2ALU79emLlUqAYXyqlA/zYhM+g5GlWMk15QBjTXy05TtmfT1TbtV6" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  docsearch({
+    container: '#docsearch',
+    appId: 'FBHBYS3J0U',
+    indexName: 'home-assistant',
+    apiKey: "ba6f7e6d97b3d3d2f778978c742a47c6",
+  });
+  document.querySelector('.site-title').addEventListener('contextmenu', function (ev) {
+    ev.preventDefault();
+    document.location.assign("https://design.home-assistant.io/#brand/logo")
+  });
+</script>
+
+
+
+
+<script type="text/javascript">
+  {
+    const article = document.querySelector("article.post");
+    if (article) {
+      const iframes = article.querySelectorAll("iframe[data-src]");
+      let loaded = false;
+      if (iframes) {
+        document.addEventListener('mousemove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('touchmove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('scroll', loadLazyFrames, { passive: true, once: true });
+  
+        function loadLazyFrames() {
+          if (loaded) return;
+          loaded = true;
+  
+          iframes.forEach((iframe) => {
+            const src = iframe.getAttribute("data-src");
+            if (src) {
+              iframe.setAttribute("src", src);
+              iframe.removeAttribute("data-src");
+            }
+          });
+        }
+      }
+    }
+  }
+</script>
+
+  </body>
+</html>

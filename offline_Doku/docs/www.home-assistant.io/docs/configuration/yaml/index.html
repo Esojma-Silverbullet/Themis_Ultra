@@ -1,0 +1,745 @@
+
+
+
+
+<!doctype html>
+  <!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>YAML syntax - Home Assistant</title>
+    <meta name="author" content="Home Assistant">
+    <meta name="description" content="Details about the YAML syntax used to configure Home Assistant.">
+    
+    <meta name="viewport" content="width=device-width">
+    <link rel="canonical" href="index.html">
+
+    <meta property="fb:app_id" content="338291289691179">
+    <meta property="og:title" content="YAML syntax">
+    <meta property="og:site_name" content="Home Assistant">
+    <meta property="og:url" content="https://www.home-assistant.io/docs/configuration/yaml/">
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="Details about the YAML syntax used to configure Home Assistant.">
+    <meta property="og:image" content="https://www.home-assistant.io/images/default-social.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@home_assistant">
+    
+    <meta name="twitter:title" content="YAML syntax">
+    <meta name="twitter:description" content="Details about the YAML syntax used to configure Home Assistant.">
+    <meta name="twitter:image" content="https://www.home-assistant.io/images/default-social.png">
+    <link rel="me" href="https://fosstodon.org/@homeassistant">
+
+    <link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3/dist/style.min.css" rel="stylesheet" />
+    <link href="../../../stylesheets/prism.css@8acb84bc0387c9548a63998fcfea0139.css" rel="stylesheet">
+    <link href="../../../stylesheets/screen.css@cef1bc5aeba0a8ce6d170a9aa21e8dd6.css" media="screen, projection, print" rel="stylesheet">
+    <link href="https://www.home-assistant.io/atom.xml" rel="alternate" title="Home Assistant" type="application/atom+xml">
+    <link rel='shortcut icon' href='../../../images/favicon.ico' />
+    <link rel='icon' type='image/png' href='../../../images/favicon-192x192.png' sizes='192x192' />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&amp;family=Instrument+Sans:ital,wdth,wght@0,99,400..700;1,99,400..700&amp;" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" integrity="sha384-GPb5RlngihS9H0z1D137JsvzmeZ7tCpWEF4t5YDoTZyMsPP8S7h7vFDh4XhheU83" crossorigin="anonymous"></script>
+  </head>
+
+  <body  class="documentation-page   ">
+    <header class='site-header '>
+      
+
+
+
+<div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item three-tenths lap-two-sixths palm-one-whole ha-title">
+      <a href="https://www.home-assistant.io/" class="site-title">
+        <div class="logo"></div>
+      </a>
+      <a class="release-date" href="https://www.home-assistant.io/blog/2026/01/07/release-20261/" title="Latest version 2026.1.2 released January 16, 2026">
+        2026.1.2
+      </a>
+    </div>
+
+    <div class="grid__item seven-tenths lap-four-sixths palm-one-whole">
+      <nav>
+        <input type="checkbox" id="toggle" />
+        <label
+          for="toggle"
+          class="toggle"
+          data-open="Main Menu"
+          data-close="⨉"
+        ></label>
+        <ul class="menu pull-right">
+          <li><a  href="https://www.home-assistant.io/installation/">Getting started</a></li>
+          <li>
+            <a class="active" href="../../index.html">Documentation <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/installation/"><iconify-icon inline icon='simple-icons:homeassistant' title='Homeassistant'></iconify-icon> Installation</a></li>
+              <li><a href="../../automation/index.html"><iconify-icon inline icon='mdi:robot-happy' title='Robot happy'></iconify-icon> Automations</a></li>
+              <li><a href="https://www.home-assistant.io/dashboards/"><iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> Dashboards</a></li>
+              <li><a href="https://www.home-assistant.io/voice_control/"><iconify-icon inline icon='mdi:comment-processing-outline' title='Comment processing outline'></iconify-icon> Voice assistants</a></li>
+              <li><a href="../../organizing/index.html"><iconify-icon inline icon='mdi:view-grid' title='View grid'></iconify-icon> Device organization</a></li>
+              <li><a href="../../energy/index.html"><iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> Energy management</a></li>
+              <li><a href="../index.html"><iconify-icon inline icon='mdi:cog' title='Cog'></iconify-icon> Advanced configuration</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="index.html#">Our hardware <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/green/">Home Assistant Green</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zbt-2/">Connect ZBT-2</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zwa-2/">Connect ZWA-2</a></li>
+              <li><a href="https://www.home-assistant.io/voice-pe/">Voice Preview Edition</a></li>
+            </ul>
+          </li>
+          <li><a  href="https://www.home-assistant.io/integrations/">Integrations</a></li>
+          <li><a  href="https://www.home-assistant.io/blog/">Blog</a></li>
+          <li><a  href="https://www.home-assistant.io/help/">Need help?</a></li>
+          <li>
+            <div class="docsearch" id="docsearch"></div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    </header>
+
+    <div class="page-content">
+
+      
+
+      <div class="grid-wrapper">
+        <div class="grid grid-center">
+
+          <aside id="toc-bar" class="grid__item desk-wide-one-sixth">
+                <section class="aside-module grid__item one-whole">
+                  <div class='section'>
+                    <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+                    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="index.html#yaml-style-guide">YAML Style Guide</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#a-first-example">A first example</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#indentation-in-yaml">Indentation in YAML</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#comments">Comments</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#example-with-comment-and-nesting">Example with comment and nesting</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#example-of-nested-mapping">Example of nested mapping</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#including-values">Including values</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#environment-variables">Environment variables</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#including-entire-files">Including entire files</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#common-issues">Common issues</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#found-character-t">found character ‘\t’</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#upper-and-lower-case">Upper and lower case</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#booleans">Booleans</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#validating-yaml-syntax">Validating YAML syntax</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#related-topics">Related topics</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#related-links">Related links</a></li>
+</ul>
+                  </div>
+                </section>
+              </aside> 
+
+          
+          <div class="grid__item two-thirds desk-wide-seven-twelfths lap-one-whole palm-one-whole">
+          
+
+            
+              <article class="page">
+  
+  <header>
+    
+    
+      <div class="breadcrumbs">
+        <a href="https://www.home-assistant.io/">Home</a>
+        
+          
+            
+            ▸ <a href="../../index.html">Documentation</a>
+          
+        
+          
+            
+            ▸ <a href="../index.html">Configuration</a>
+          
+        
+          
+            ▸ 
+          
+        
+      </div>
+    
+    <h1 class="title indent">
+      
+        YAML syntax
+      
+    </h1>
+  </header>
+  
+  
+  <p>Home Assistant uses the <a href="https://yaml.org/" rel="external nofollow">YAML<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> syntax for configuration. While most integrations can be configured through the UI, some integrations require you to edit your <a href="../index.html"><code>configuration.yaml</code></a> file to specify its settings.</p>
+<h2>YAML Style Guide <a class="title-link" name="yaml-style-guide" href="index.html#yaml-style-guide"></a>
+</h2>
+<p>This page gives a high-level introduction to the YAML syntax used in Home Assistant. For a more detailed description and more examples, refer to the <a href="https://developers.home-assistant.io/docs/documenting/yaml-style-guide/">YAML Style Guide for Home Assistant developers</a>.</p>
+<h2>A first example <a class="title-link" name="a-first-example" href="index.html#a-first-example"></a>
+</h2>
+<p>The following YAML example entry assumes that you would like to set up the <a href="https://www.home-assistant.io/integrations/notify">notify integration</a> with the <a href="https://www.home-assistant.io/integrations/pushbullet">pushbullet platform</a>.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">notify</span><span class="pi">:</span>
+  <span class="na">platform</span><span class="pi">:</span> <span class="s">pushbullet</span>
+  <span class="na">api_key</span><span class="pi">:</span> <span class="s2">"</span><span class="s">o.1234abcd"</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">pushbullet</span>
+</code></pre></div></div>
+<ul>
+<li>An <strong>integration</strong> provides the core logic for some functionality (like <code>notify</code> provides sending notifications).</li>
+<li>A <strong>platform</strong> makes the connection to a specific software or hardware platform (like <code>pushbullet</code> works with the service from pushbullet.com).</li>
+</ul>
+<p>The basics of YAML syntax are block collections and mappings containing key-value pairs. Each item in a collection starts with a <code>-</code> while mappings have the format <code>key: value</code>. This is somewhat similar to a Hash table or more specifically a dictionary in Python. These can be nested as well. <strong>Beware that if you specify duplicate keys, the last value for a key is used</strong>.</p>
+<h2>Indentation in YAML <a class="title-link" name="indentation-in-yaml" href="index.html#indentation-in-yaml"></a>
+</h2>
+<p>In YAML, indentation is important for specifying relationships. Indented lines are nested inside lines that are one level higher. In the above example, <code>platform: pushbullet</code> is a property of (nested inside) the <code>notify</code> integration.</p>
+<p>Getting the right indentation can be tricky if you’re not using an editor with a fixed-width font. Tabs are not allowed to be used for indentation. The convention is to use 2 spaces for each level of indentation.</p>
+<h2>Comments <a class="title-link" name="comments" href="index.html#comments"></a>
+</h2>
+<p>Strings of text following a <code>#</code> are comments. They are ignored by the system. Comments explain in plain language what a particular code block is supposed to do. For future-you or someone else looking at the file.</p>
+<h3>Example with comment and nesting <a class="title-link" name="example-with-comment-and-nesting" href="index.html#example-with-comment-and-nesting"></a>
+</h3>
+<p>The next example shows an <a href="https://www.home-assistant.io/integrations/input_select">input_select</a> integration that uses a block collection for the values of options.
+The other properties (like <code>name:</code>) are specified using mappings. Note that the second line just has <code>threat:</code> with no value on the same line. Here, <code>threat</code> is the name of the input_select. The values for it are everything nested below it.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">input_select</span><span class="pi">:</span>
+  <span class="na">threat</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Threat</span><span class="nv"> </span><span class="s">level"</span>
+    <span class="c1"># A collection is used for options</span>
+    <span class="na">options</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="m">0</span>
+      <span class="pi">-</span> <span class="m">1</span>
+      <span class="pi">-</span> <span class="m">2</span>
+      <span class="pi">-</span> <span class="m">3</span>
+    <span class="na">initial</span><span class="pi">:</span> <span class="m">0</span>
+</code></pre></div></div>
+<h3>Example of nested mapping <a class="title-link" name="example-of-nested-mapping" href="index.html#example-of-nested-mapping"></a>
+</h3>
+<p>The following example shows nesting a collection of mappings in a mapping. In Home Assistant, this would create two sensors that each use the MQTT platform but have different values for their <code>state_topic</code> (one of the properties used for MQTT sensors).</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">sensor</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">platform</span><span class="pi">:</span> <span class="s">mqtt</span>
+    <span class="na">state_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">sensor/topic"</span>
+  <span class="pi">-</span> <span class="na">platform</span><span class="pi">:</span> <span class="s">mqtt</span>
+    <span class="na">state_topic</span><span class="pi">:</span> <span class="s2">"</span><span class="s">sensor2/topic"</span>
+</code></pre></div></div>
+<h2>Including values <a class="title-link" name="including-values" href="index.html#including-values"></a>
+</h2>
+<h3>Environment variables <a class="title-link" name="environment-variables" href="index.html#environment-variables"></a>
+</h3>
+<p>On <span class="terminology">Home Assistant Core<span class="terminology-tooltip">Home Assistant Core is the Python program at the heart of Home Assistant. It is part of all installation types. It can be installed standalone (without Home Assistant Supervisor) as a container using Docker (this is typically referred to as the Home Assistant Container installation type). For development, Core can also be run using a Virtual Environment (previously referred as the Home Assistant Core installation type). For production setup, the Home Assistant Core installation type is deprecated.</span></span>  installations, you can include values from your system’s environment variables with <code>!env_var</code>.
+Note that this will only work for <span class="terminology">Home Assistant Core<span class="terminology-tooltip">Home Assistant Core is the Python program at the heart of Home Assistant. It is part of all installation types. It can be installed standalone (without Home Assistant Supervisor) as a container using Docker (this is typically referred to as the Home Assistant Container installation type). For development, Core can also be run using a Virtual Environment (previously referred as the Home Assistant Core installation type). For production setup, the Home Assistant Core installation type is deprecated.</span></span>  installations, in a scenario where it is possible to specify these.
+Regular Home Assistant users are recommended to use <code>!include</code> statements instead.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">example</span><span class="pi">:</span>
+  <span class="na">password</span><span class="pi">:</span> <span class="kt">!env_var</span> <span class="s">PASSWORD</span>
+</code></pre></div></div>
+<h4>Default value <a class="title-link" name="default-value" href="index.html#default-value"></a>
+</h4>
+<p>If an environment variable is not set, you can fall back to a default value.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">example</span><span class="pi">:</span>
+  <span class="na">password</span><span class="pi">:</span> <span class="kt">!env_var</span> <span class="s">PASSWORD default_password</span>
+</code></pre></div></div>
+<h3>Including entire files <a class="title-link" name="including-entire-files" href="index.html#including-entire-files"></a>
+</h3>
+<p>To improve readability, you can source out certain domains from your main configuration file with the <code>!include</code>-syntax.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">light</span><span class="pi">:</span> <span class="kt">!include</span> <span class="s">lights.yaml</span>
+</code></pre></div></div>
+<p>More information about this feature can also be found at <a href="../splitting_configuration/index.html">splitting configuration</a>.</p>
+<h2>Common issues <a class="title-link" name="common-issues" href="index.html#common-issues"></a>
+</h2>
+<h3>found character ‘\t’ <a class="title-link" name="found-character-t" href="index.html#found-character-t"></a>
+</h3>
+<p>If you see the following message:</p>
+<div class="language-txt highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="txt">found character '\t' that cannot start any token
+</code></pre></div></div>
+<p>This means that you’ve mistakenly entered a tab character, instead of spaces.</p>
+<h3>Upper and lower case <a class="title-link" name="upper-and-lower-case" href="index.html#upper-and-lower-case"></a>
+</h3>
+<p>Home Assistant is case sensitive, a state of <code>'on'</code> is not the same as <code>'On'</code> or <code>'ON'</code>. Similarly an entity of <code>group.Doors</code> is not the same as <code>group.doors</code>.</p>
+<p>If you’re having trouble, check the case that Home Assistant is reporting in the dev-state menu, under <em>Developer tools</em>.</p>
+<h3>Booleans <a class="title-link" name="booleans" href="index.html#booleans"></a>
+</h3>
+<p>YAML treats <code>Y</code>, <code>true</code>, <code>Yes</code>, <code>ON</code> all as <code>true</code> and <code>n</code>, <code>FALSE</code>, <code>No</code>, <code>off</code> as <code>false</code>. This means that if you want to set the state of an entity to <code>on</code> you <em>must</em> quote it as <code>'on'</code> otherwise it will be translated as setting the state to true. The same applies to <code>off</code>.</p>
+<p>Not quoting the value may generate an error such as:</p>
+<div class="language-txt highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="txt">not a valid value for dictionary value @ data
+</code></pre></div></div>
+<h2>Validating YAML syntax <a class="title-link" name="validating-yaml-syntax" href="index.html#validating-yaml-syntax"></a>
+</h2>
+<p>With all these indents and rules, it is easy to make a mistake. The best way to check if your YAML syntax is correct (validate) depends on the editor you use. We can’t list them all here.</p>
+<ul>
+<li>If you edit the files directly in Home Assistant, refer to the section: <a href="../index.html#validating-the-configuration">Validating the configuration</a>
+</li>
+</ul>
+
+
+  
+
+<div class="text related-topics">
+  <h2>Related topics<a class="title-link" href="index.html#related-topics" name="related-topics"></a>
+</h2>
+  <ul>
+    
+    
+    
+    
+    
+    <li>
+      <a href="../index.html" class="topic">
+        Configuration.yaml file
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    <li>
+      <a href="../secrets/index.html" class="topic">
+        Storing private data in separate file
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    <li>
+      <a href="../../automation/yaml/index.html" class="topic">
+        Automation.yaml
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    <li>
+      <a href="../troubleshooting/index.html" class="topic">
+        Troubleshooting the configuration files
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    <li>
+      <a href="../index.html#validating-the-configuration" class="topic">
+        Validating the configuration
+      </a>
+    </li>
+    </ul>
+</div>
+
+
+<div class="text related-links">
+  <h2>Related links<a class="title-link" href="index.html#related-links" name="related-links"></a>
+</h2>
+  <ul>
+    
+    <li><a href="https://developers.home-assistant.io/docs/documenting/yaml-style-guide/" class="link" target="_blank">YAML Style Guide for Home Assistant developers</a></li>
+    
+  </ul>
+</div>
+
+  
+<div class="material-card text feedback">
+  <h4>
+<iconify-icon inline icon="mdi:feedback" title="Feedback"></iconify-icon> <b> Help us improve our documentation</b><a href="index.html#feedback_section" class="title-link" name="feedback_section"></a>
+</h4>
+  Suggest an edit to this page, or provide/view feedback for this page.
+  <div class="links">
+    <ul aria-label="Page feedback options">
+    <li><a href="https://github.com/home-assistant/home-assistant.io/tree/current/source/_docs/configuration/yaml.markdown" target="_blank" title="Edit this page"><iconify-icon inline icon="mdi:edit"></iconify-icon> Edit</a></li>
+    
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues/new?template=feedback.yml&amp;url=https%3A%2F%2Fwww.home-assistant.io%2Fdocs%2Fconfiguration%2Fyaml%2F&amp;version=2026.1.2&amp;labels=current" target="_blank" title="Provide feedback on this page"><iconify-icon inline icon="mdi:comment-edit-outline"></iconify-icon> Provide feedback</a></li>
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues?utf8=%E2%9C%93&amp;q=%22%2Fdocs%2Fconfiguration%2Fyaml%2F%22&amp;in=body" target="_blank" title="View given feedback for this page"><iconify-icon inline icon="mdi:comment-text-multiple-outline"></iconify-icon> View given feedback</a></li>
+    
+  </ul>
+  </div>
+</div>
+
+
+</article>
+
+            
+          </div>
+
+
+          
+            
+              <aside id="sidebar" class="grid__item one-third desk-wide-one-quarter lap-one-whole palm-one-whole">
+            
+            <div class="grid">
+  
+
+
+
+
+  <section class="vertical-nav aside-module grid__item one-whole lap-one-half">
+  <div class="section">
+    <h1 class="title epsilon"><iconify-icon inline icon='mdi:bookshelf' title='Bookshelf'></iconify-icon> Documentation</h1>
+    <ul class="divided sidebar-menu">
+      <li>
+        <a  href='../../index.html'>Overview </a>
+        |
+        <a  href='https://www.home-assistant.io/faq/'>FAQ </a>
+        |
+        <a  href='../../glossary/index.html'>Glossary </a>
+      </li>
+
+      <li>
+  <iconify-icon icon="mdi:robot-happy"></iconify-icon> <a  href='../../automation/index.html'>Automations </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> <a  href='https://www.home-assistant.io/dashboards'>Dashboards </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:microphone' title='Microphone'></iconify-icon> <a  href='https://www.home-assistant.io/voice_control/'>Voice assistants </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:category' title='Category'></iconify-icon> <a  href='../../organizing/index.html'>Organization </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> <a  href='../../energy/index.html'>Home energy management </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:update' title='Update'></iconify-icon> <a  href='https://www.home-assistant.io/common-tasks/general/'>Common tasks </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cogs' title='Cogs'></iconify-icon> <a  href='../index.html'>Advanced configuration </a>
+  
+  <ul>
+    <li><a class='active' href='index.html'>YAML syntax </a></li>
+    <li><a  href='../basic/index.html'>Basic information </a></li>
+    <li><a  href='../customizing-devices/index.html'>Customizing entities </a></li>
+    <li><a  href='../troubleshooting/index.html'>Troubleshooting configuration </a></li>
+    <li><a  href='../securing/index.html'>Security check points </a></li>
+    <li><a  href='../remote/index.html'>Remote access </a></li>
+    <li><a  href='../splitting_configuration/index.html'>Splitting up the configuration </a></li>
+    <li><a  href='../packages/index.html'>Packages </a></li>
+    <li><a  href='../secrets/index.html'>Storing secrets </a></li>
+    <li><a  href='../events/index.html'>Events </a></li>
+    <li><a  href='../state_object/index.html'>State and state object </a></li>
+    <li><a  href='../entities_domains/index.html'>Entities and domains </a></li>
+    <li><a  href='../templating/index.html'>Templating </a></li>
+    <li><a  href='../platform_options/index.html'>Entity component platform options </a></li>
+  </ul>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:account-security' title='Account security'></iconify-icon> <a  href='../../authentication/index.html'>Authentication </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:database' title='Database'></iconify-icon> <a  href='../../backend/index.html'>Backend </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:palette' title='Palette'></iconify-icon> <a  href='../../tools/index.html'>Tools and helpers </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cellphone' title='Cellphone'></iconify-icon> <a href="https://companion.home-assistant.io/docs">iOS and Android apps <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+</li>
+
+<li>
+  <iconify-icon inline icon='simple-icons:mqtt' title='Mqtt'></iconify-icon> <a  href='https://www.home-assistant.io/integrations/mqtt'>MQTT </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='bitcoin-icons:node-hardware-filled' title='Node hardware filled'></iconify-icon> Official hardware
+  <ul>
+    <li><a href="https://support.nabucasa.com/hc/categories/24638797677853">Home Assistant Green <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734620813469">Home Assistant Connect ZBT-1 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/29400540866973">Home Assistant Connect ZBT-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/28669861145885">Home Assistant Connect ZWA-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734575925149">Home Assistant Yellow <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24451727188125">Home Assistant Voice Preview Edition <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+  </ul>
+</li>
+
+    </ul>
+  </div>
+</section>
+
+
+
+  <section id="toc-module" class="aside-module grid__item one-whole lap-one-half">
+        <div class='section'>
+          <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+          <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="index.html#yaml-style-guide">YAML Style Guide</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#a-first-example">A first example</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#indentation-in-yaml">Indentation in YAML</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#comments">Comments</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#example-with-comment-and-nesting">Example with comment and nesting</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#example-of-nested-mapping">Example of nested mapping</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#including-values">Including values</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#environment-variables">Environment variables</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#including-entire-files">Including entire files</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#common-issues">Common issues</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#found-character-t">found character ‘\t’</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#upper-and-lower-case">Upper and lower case</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#booleans">Booleans</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#validating-yaml-syntax">Validating YAML syntax</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#related-topics">Related topics</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#related-links">Related links</a></li>
+</ul>
+        </div>
+      </section></div>
+
+          </aside>
+          
+        </div>
+      </div>
+
+      <footer>
+        <div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item">
+      <div class="skyline grid">
+        <div class="skyline grid__item one-whole">
+          <div class="footer-skyline">
+          </div>
+        </div>
+      </div>
+      <div class="footer-nav grid">
+        <div class="company grid__item one-quarter lap-one-half palm-one-whole">
+          <div class="title">
+            <img
+              src="../../../images/footer-logo-text.svg"
+              height="72"
+              alt="Home Assistant"
+            />
+          </div>
+          <p>
+            Home Assistant is a project from the <a href="https://www.openhomefoundation.org/">Open Home Foundation</a>, sponsored by <a href="https://www.nabucasa.com/">Nabu Casa</a>.
+          </p>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Join us and contribute!</h3>
+          <ul>
+            <li><a class="external-link" href="https://github.com/home-assistant/">GitHub repo <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://developers.home-assistant.io">Developers Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://design.home-assistant.io">Design Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://data.home-assistant.io">Data Science Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://community.home-assistant.io">Community Forum <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://creators.home-assistant.io/">Creator Network <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://works-with.home-assistant.io/">Works With Home Assistant <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a href="https://www.home-assistant.io/community">Our community</a></li>
+            <li><a href="https://www.home-assistant.io/help/reporting_issues/">Reporting issues</a></li>
+          </ul>
+          <h3>System status</h3>
+          <ul>
+            <li>
+              <a class="external-link"  href="https://alerts.home-assistant.io">Integration Alerts <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+            <li><a href="https://www.home-assistant.io/security/">Security Alerts</a></li>
+            <li>
+              <a class="external-link" href="https://status.home-assistant.io">System Status <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Companion apps</h3>
+          <ul>
+            <li><a class="external-link" href="https://apps.apple.com/app/id1099568401">iOS and Apple devices</a></li>
+            <li><a class="external-link" href="https://play.google.com/store/apps/details?id=io.homeassistant.companion.android">Android and Wear OS</a></li>
+            <li><a class="external-link" href="https://companion.home-assistant.io/">...and more!</a></li>
+          </ul>
+          <h3>Governance</h3>
+          <ul>
+            <li><a href="https://www.home-assistant.io/privacy/">Privacy Notices</a></li>
+            <li><a href="https://www.home-assistant.io/developers/cla/">Contributor License Agreement</a></li>
+            <li><a href="https://www.home-assistant.io/tos/">Terms of Service</a></li>
+            <li><a href="https://www.home-assistant.io/code_of_conduct/">Code of Conduct</a></li>
+            <li><a href="https://www.home-assistant.io/developers/credits/">Credits</a></li>
+            <li><a href="https://www.home-assistant.io/developers/license/">License</a></li>
+          </ul>
+        </div>
+
+        <div class="socials grid__item one-quarter lap-one-half palm-one-whole">
+
+          <h3>Follow us</h3>
+          <p><a class="external-link" href='https://newsletter.openhomefoundation.org/#/portal'>Sign up for our newsletter <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></p>
+          <div class="icons">
+            <a
+              rel="me"
+              href="https://youtube.com/@home_assistant"
+              title="YouTube"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:youtube"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://reddit.com/r/homeassistant"
+              title="Reddit"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:reddit"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://github.com/home-assistant"
+              title="GitHub"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:github"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://fosstodon.org/@homeassistant"
+              title="Mastodon"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:mastodon"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://bsky.app/profile/home-assistant.io"
+              title="Bluesky"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:bluesky"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://x.com/home_assistant"
+              title="X"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:x"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://www.facebook.com/homeassistantio"
+              title="Facebook"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:facebook"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.instagram.com/homeassistant/"
+              title="Instagram"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:instagram"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.linkedin.com/company/home-assistant"
+              title="LinkedIn"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:linkedin"></iconify-icon></a>
+          </div>
+
+          <div class="web-notice">
+            <p>
+              For partnership inquiries please check out <a href="https://works-with.home-assistant.io/">Works With Home Assistant</a>. For media, get in touch <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#85e8e0e1ece4c5eaf5e0ebedeae8e0e3eaf0ebe1e4f1eceaebabeaf7e2">here</a>. For other questions, you can contact us <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#375f525b5b58775f585a521a5644445e4443565943195e58">here</a> (No technical support!)
+            </p>
+            <p>
+              Website powered by <a href="https://jekyllrb.com/">Jekyll</a><br />
+              Originally based on the <a href="https://github.com/coogie/oscailte">Oscailte theme</a>
+            </p>
+            <a href="https://www.netlify.com">
+              <img
+                src="../../../images/frontpage/netlify.svg"
+                alt="Deploys by Netlify Badge"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+
+    </div>
+    <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.3.1/lite-youtube.js" integrity="sha384-7o3d1sg8jSS1LMKzzIEucWtWFI1X4lFCC5gu2ylAgH3KmHcJgjTqp6LWfIvbbmf9" crossorigin="anonymous"></script>
+
+<script src="../../../javascripts/terminology_tooltip.js@274cec0734bc752f0e5ea3d4e2e59858" type="text/javascript" defer></script>
+
+<script src="../../../javascripts/prism.js@5d6619066a1fc5cd819a93c132b539ac" type="text/javascript" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3/dist/umd/index.min.js" integrity="sha384-f/IEhh8fvOc2ALU79emLlUqAYXyqlA/zYhM+g5GlWMk15QBjTXy05TtmfT1TbtV6" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  docsearch({
+    container: '#docsearch',
+    appId: 'FBHBYS3J0U',
+    indexName: 'home-assistant',
+    apiKey: "ba6f7e6d97b3d3d2f778978c742a47c6",
+  });
+  document.querySelector('.site-title').addEventListener('contextmenu', function (ev) {
+    ev.preventDefault();
+    document.location.assign("https://design.home-assistant.io/#brand/logo")
+  });
+</script>
+
+
+
+
+<script type="text/javascript">
+  {
+    const article = document.querySelector("article.post");
+    if (article) {
+      const iframes = article.querySelectorAll("iframe[data-src]");
+      let loaded = false;
+      if (iframes) {
+        document.addEventListener('mousemove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('touchmove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('scroll', loadLazyFrames, { passive: true, once: true });
+  
+        function loadLazyFrames() {
+          if (loaded) return;
+          loaded = true;
+  
+          iframes.forEach((iframe) => {
+            const src = iframe.getAttribute("data-src");
+            if (src) {
+              iframe.setAttribute("src", src);
+              iframe.removeAttribute("data-src");
+            }
+          });
+        }
+      }
+    }
+  }
+</script>
+
+  </body>
+</html>

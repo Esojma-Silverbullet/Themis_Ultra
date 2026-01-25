@@ -1,0 +1,904 @@
+
+
+
+
+<!doctype html>
+  <!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Creating an automation blueprint - Home Assistant</title>
+    <meta name="author" content="Home Assistant">
+    <meta name="description" content="Tutorial on creating an automation blueprint.">
+    
+    <meta name="viewport" content="width=device-width">
+    <link rel="canonical" href="index.html">
+
+    <meta property="fb:app_id" content="338291289691179">
+    <meta property="og:title" content="Creating an automation blueprint">
+    <meta property="og:site_name" content="Home Assistant">
+    <meta property="og:url" content="https://www.home-assistant.io/docs/blueprint/tutorial/">
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="Tutorial on creating an automation blueprint.">
+    <meta property="og:image" content="https://www.home-assistant.io/images/default-social.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@home_assistant">
+    
+    <meta name="twitter:title" content="Creating an automation blueprint">
+    <meta name="twitter:description" content="Tutorial on creating an automation blueprint.">
+    <meta name="twitter:image" content="https://www.home-assistant.io/images/default-social.png">
+    <link rel="me" href="https://fosstodon.org/@homeassistant">
+
+    <link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3/dist/style.min.css" rel="stylesheet" />
+    <link href="../../../stylesheets/prism.css@8acb84bc0387c9548a63998fcfea0139.css" rel="stylesheet">
+    <link href="../../../stylesheets/screen.css@cef1bc5aeba0a8ce6d170a9aa21e8dd6.css" media="screen, projection, print" rel="stylesheet">
+    <link href="https://www.home-assistant.io/atom.xml" rel="alternate" title="Home Assistant" type="application/atom+xml">
+    <link rel='shortcut icon' href='../../../images/favicon.ico' />
+    <link rel='icon' type='image/png' href='../../../images/favicon-192x192.png' sizes='192x192' />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&amp;family=Instrument+Sans:ital,wdth,wght@0,99,400..700;1,99,400..700&amp;" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" integrity="sha384-GPb5RlngihS9H0z1D137JsvzmeZ7tCpWEF4t5YDoTZyMsPP8S7h7vFDh4XhheU83" crossorigin="anonymous"></script>
+  </head>
+
+  <body  class="documentation-page   ">
+    <header class='site-header '>
+      
+
+
+
+<div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item three-tenths lap-two-sixths palm-one-whole ha-title">
+      <a href="https://www.home-assistant.io/" class="site-title">
+        <div class="logo"></div>
+      </a>
+      <a class="release-date" href="https://www.home-assistant.io/blog/2026/01/07/release-20261/" title="Latest version 2026.1.0 released January  7, 2026">
+        2026.1.0
+      </a>
+    </div>
+
+    <div class="grid__item seven-tenths lap-four-sixths palm-one-whole">
+      <nav>
+        <input type="checkbox" id="toggle" />
+        <label
+          for="toggle"
+          class="toggle"
+          data-open="Main Menu"
+          data-close="⨉"
+        ></label>
+        <ul class="menu pull-right">
+          <li><a  href="https://www.home-assistant.io/installation/">Getting started</a></li>
+          <li>
+            <a class="active" href="../../index.html">Documentation <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/installation/"><iconify-icon inline icon='simple-icons:homeassistant' title='Homeassistant'></iconify-icon> Installation</a></li>
+              <li><a href="../../automation/index.html"><iconify-icon inline icon='mdi:robot-happy' title='Robot happy'></iconify-icon> Automations</a></li>
+              <li><a href="https://www.home-assistant.io/dashboards/"><iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> Dashboards</a></li>
+              <li><a href="https://www.home-assistant.io/voice_control/"><iconify-icon inline icon='mdi:comment-processing-outline' title='Comment processing outline'></iconify-icon> Voice assistants</a></li>
+              <li><a href="../../organizing/index.html"><iconify-icon inline icon='mdi:view-grid' title='View grid'></iconify-icon> Device organization</a></li>
+              <li><a href="../../energy/index.html"><iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> Energy management</a></li>
+              <li><a href="../../configuration/index.html"><iconify-icon inline icon='mdi:cog' title='Cog'></iconify-icon> Advanced configuration</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="index.html#">Our hardware <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/green/">Home Assistant Green</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zbt-2/">Connect ZBT-2</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zwa-2/">Connect ZWA-2</a></li>
+              <li><a href="https://www.home-assistant.io/voice-pe/">Voice Preview Edition</a></li>
+            </ul>
+          </li>
+          <li><a  href="https://www.home-assistant.io/integrations/">Integrations</a></li>
+          <li><a  href="https://www.home-assistant.io/blog/">Blog</a></li>
+          <li><a  href="https://www.home-assistant.io/help/">Need help?</a></li>
+          <li>
+            <div class="docsearch" id="docsearch"></div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    </header>
+
+    <div class="page-content">
+
+      
+
+      <div class="grid-wrapper">
+        <div class="grid grid-center">
+
+          <aside id="toc-bar" class="grid__item desk-wide-one-sixth">
+                <section class="aside-module grid__item one-whole">
+                  <div class='section'>
+                    <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+                    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="index.html#creating-an-automation-blueprint">Creating an automation blueprint</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#prerequisites">Prerequisites</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#creating-an-automation">Creating an automation</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#creating-the-blueprint-file">Creating the blueprint file</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#using-your-blueprint-via-configurationyaml">Using your blueprint via configuration.yaml</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#improving-the-inputs">Improving the inputs</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#add-a-user-friendly-names-to-the-inputs">Add a user friendly names to the inputs</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#describe-the-inputs">Describe the inputs</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#the-final-blueprint">The final blueprint</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#using-the-blueprint-via-the-ui">Using the blueprint via the UI</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#video-tutorial">Video tutorial</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#share-the-love">Share the love</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#share-informally">Share informally</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#share-on-the-blueprint-exchange">Share on the Blueprint Exchange</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#related-topics">Related topics</a></li>
+</ul>
+                  </div>
+                </section>
+              </aside> 
+
+          
+          <div class="grid__item two-thirds desk-wide-seven-twelfths lap-one-whole palm-one-whole">
+          
+
+            
+              <article class="page">
+  
+  <header>
+    
+    
+      <div class="breadcrumbs">
+        <a href="https://www.home-assistant.io/">Home</a>
+        
+          
+            
+            ▸ <a href="../../index.html">Documentation</a>
+          
+        
+          
+            
+            ▸ <a href="../index.html">Blueprint</a>
+          
+        
+          
+            ▸ 
+          
+        
+      </div>
+    
+    <h1 class="title indent">
+      
+        Creating an automation blueprint
+      
+    </h1>
+  </header>
+  
+  
+  <div class="alert alert-tip">
+  <p class="alert-title"><iconify-icon inline icon="mdi:lightbulb-outline"></iconify-icon> Tip</p>
+  <div class="alert-content">
+<p>While the tutorial only shows how to create an automation blueprint, <span class="terminology">scripts<span class="terminology-tooltip">Scripts are components that allow users to specify a sequence of actions to be executed by Home Assistant when turned on.<a class="terminology-link" href="../../scripts/index.html"> [Learn more]</a></span></span> also support blueprints in the same way.</p>
+  </div>
+</div>
+<h2>Creating an automation blueprint <a class="title-link" name="creating-an-automation-blueprint" href="index.html#creating-an-automation-blueprint"></a>
+</h2>
+<p>In this tutorial, we’re going to create an automation blueprint that controls a light based on a motion sensor. We will do this by taking an existing automation and converting it to a blueprint.</p>
+<h3>Prerequisites <a class="title-link" name="prerequisites" href="index.html#prerequisites"></a>
+</h3>
+<ul>
+<li>This tutorial assumes knowledge in the following topics:
+<ul>
+<li><a href="../../configuration/index.html">Editing the configuration file</a></li>
+<li>
+<a href="../../configuration/yaml/index.html">YAML</a>, and specifically, <a href="../../automation/yaml/index.html">YAML used in automations</a>
+</li>
+<li><a href="../../scripts/index.html">Scripts</a></li>
+</ul>
+</li>
+</ul>
+<h3>Creating an automation <a class="title-link" name="creating-an-automation" href="index.html#creating-an-automation"></a>
+</h3>
+<p>To create a blueprint, we first need to have a working automation.
+For this tutorial, we use a simple automation. The process for converting a complex automation is no different.</p>
+<p>The automation we’re going to use in this tutorial controls a light based on a motion sensor:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">triggers</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">binary_sensor.motion_kitchen</span>
+
+<span class="na">actions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="pi">&gt;</span>
+      <span class="s">{% if trigger.to_state.state == "on" %}</span>
+        <span class="s">light.turn_on</span>
+      <span class="s">{% else %}</span>
+        <span class="s">light.turn_off</span>
+      <span class="s">{% endif %}</span>
+    <span class="na">target</span><span class="pi">:</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">light.kitchen</span>
+</code></pre></div></div>
+<p>The options that can be used with the <code>trigger</code> object are listed under <a href="../../automation/templating/index.html#available-trigger-data">automation trigger variables</a>.
+In this example, a <a href="../../automation/templating/index.html#state">state trigger</a> is used.
+<code>turn_on</code> and <code>turn_off</code> are <a href="../../scripts/perform-actions/index.html#homeassistant-actions"><code>homeassistant</code> actions</a>. They are not tied to a specific domain. You can use them on lights, switches, and other domains.</p>
+<h3>Creating the blueprint file <a class="title-link" name="creating-the-blueprint-file" href="index.html#creating-the-blueprint-file"></a>
+</h3>
+<p>Automation blueprints are YAML files (with the <code>.yaml</code> extension) and live in the <code>&lt;config&gt;/blueprints/automation/</code> folder. You can create as many subdirectories in this folder as you want.</p>
+<p>To get started with our blueprint, we’re going to copy the above automation YAML and save it in that directory with the name <code>motion_light_tutorial.yaml</code>.</p>
+<h4>Add basic blueprint metadata <a class="title-link" name="add-basic-blueprint-metadata" href="index.html#add-basic-blueprint-metadata"></a>
+</h4>
+<p>Home Assistant needs to know about the blueprint. This is achieved by adding a <code>blueprint:</code> section. It should contain the <code>domain</code> of the integration it is for (<code>automation</code>) and <code>name</code>, the name of your blueprint. Optionally, you can also include a <code>description</code> for your blueprint.</p>
+<p>Add this to the top of the file:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">blueprint</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">Motion Light Tutorial</span>
+  <span class="na">description</span><span class="pi">:</span> <span class="s">Turn a light on based on detected motion</span>
+  <span class="na">domain</span><span class="pi">:</span> <span class="s">automation</span>
+</code></pre></div></div>
+<h4>Define the configurable parts as inputs <a class="title-link" name="define-the-configurable-parts-as-inputs" href="index.html#define-the-configurable-parts-as-inputs"></a>
+</h4>
+<p>Now we have to decide what steps we want to make configurable. We want to make it as re-usable as possible, without losing its original intent of turning on a light-based on a motion sensor.</p>
+<p>Configurable parts in blueprints are called <a href="../schema/index.html#blueprint-inputs">inputs</a>. To make the motion sensor entity configurable, we’re replacing the entity ID with a custom YAML tag <code>!input</code>. This YAML tag has to be combined with the name of the input:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">triggers</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="kt">!input</span> <span class="s">motion_sensor</span>
+</code></pre></div></div>
+<p>For the light, we can offer some more flexibility. We want to allow the user to be able to define any device or area as the target. The <code>target</code> property in the action can contain references to areas, devices, and/or entities, so that’s what we will use.</p>
+<p>Inputs are not limited to strings. They can contain complex objects too. So in this case, we’re going to mark the whole <code>target</code> as input:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="pi">&gt;</span>
+      <span class="s">{% if trigger.to_state.state == "on" %}</span>
+        <span class="s">light.turn_on</span>
+      <span class="s">{% else %}</span>
+        <span class="s">light.turn_off</span>
+      <span class="s">{% endif %}</span>
+    <span class="na">target</span><span class="pi">:</span> <span class="kt">!input</span> <span class="s">target_light</span>
+</code></pre></div></div>
+<h4>Add the inputs to the metadata <a class="title-link" name="add-the-inputs-to-the-metadata" href="index.html#add-the-inputs-to-the-metadata"></a>
+</h4>
+<p>All parts that are marked as inputs need to be added to the metadata. The minimum is that we add their names as used in the automation:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">blueprint</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">Motion Light Tutorial</span>
+  <span class="na">description</span><span class="pi">:</span> <span class="s">Turn a light on based on detected motion</span>
+  <span class="na">domain</span><span class="pi">:</span> <span class="s">automation</span>
+  <span class="na">input</span><span class="pi">:</span>
+    <span class="na">motion_sensor</span><span class="pi">:</span>
+    <span class="na">target_light</span><span class="pi">:</span>
+</code></pre></div></div>
+<p>For more information on blueprint inputs, refer to the documentation of the <a href="../schema/index.html#input">blueprint schema</a></p>
+<h2>Using your blueprint via configuration.yaml <a class="title-link" name="using-your-blueprint-via-configurationyaml" href="index.html#using-your-blueprint-via-configurationyaml"></a>
+</h2>
+<p>With the bare minimum metadata added, your blueprint is ready to use.</p>
+<p>Open your <span class="terminology"><code>configuration.yaml</code><span class="terminology-tooltip">The configuration.yaml file is the main configuration file for Home Assistant. It lists the integrations to be loaded and their specific configurations. In some cases, the configuration needs to be edited manually directly in the configuration.yaml file. Most integrations can be configured in the UI.<a class="terminology-link" href="../../configuration/index.html"> [Learn more]</a></span></span> and add the following:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation tutorial</span><span class="pi">:</span>
+  <span class="na">use_blueprint</span><span class="pi">:</span>
+    <span class="na">path</span><span class="pi">:</span> <span class="s">motion_light_tutorial.yaml</span>
+    <span class="na">input</span><span class="pi">:</span>
+      <span class="na">motion_sensor</span><span class="pi">:</span> <span class="s">binary_sensor.kitchen</span>
+      <span class="na">target_light</span><span class="pi">:</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s">light.kitchen</span>
+</code></pre></div></div>
+<p>Reload automations and your new automation should pop up. Because we configured the exact values as the original automation, they should work exactly the same.</p>
+<h2>Improving the inputs <a class="title-link" name="improving-the-inputs" href="index.html#improving-the-inputs"></a>
+</h2>
+<p>Blueprints are easier to use if it’s easy to see what each field is used for.</p>
+<h3>Add a user friendly names to the inputs <a class="title-link" name="add-a-user-friendly-names-to-the-inputs" href="index.html#add-a-user-friendly-names-to-the-inputs"></a>
+</h3>
+<p>We can improve this experience by adding names and descriptions to our inputs:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">blueprint</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">Motion Light Tutorial</span>
+  <span class="na">description</span><span class="pi">:</span> <span class="s">Turn a light on based on detected motion</span>
+  <span class="na">domain</span><span class="pi">:</span> <span class="s">automation</span>
+  <span class="na">input</span><span class="pi">:</span>
+    <span class="na">motion_sensor</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Motion Sensor</span>
+      <span class="na">description</span><span class="pi">:</span> <span class="s">This sensor will be synchronized with the light.</span>
+    <span class="na">target_light</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Lights</span>
+      <span class="na">description</span><span class="pi">:</span> <span class="s">The lights to keep in sync.</span>
+</code></pre></div></div>
+<h3>Describe the inputs <a class="title-link" name="describe-the-inputs" href="index.html#describe-the-inputs"></a>
+</h3>
+<p>Our blueprint doesn’t currently describe what the inputs should contain. Without this information, Home Assistant will offer the user an empty text box.</p>
+<p>To instead allow Home Assistant to offer more assistance, we will use <a href="../selectors/index.html">selectors</a>. Selectors describe a type and can be used to help the user pick a matching value.</p>
+<p>The selector for the motion sensor entity should describe that we want entities from the binary sensor domain that have the device class <code>motion</code>.</p>
+<p>The selector for the target light should describe that we want to target light entities.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">blueprint</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">Motion Light Tutorial</span>
+  <span class="na">domain</span><span class="pi">:</span> <span class="s">automation</span>
+  <span class="na">input</span><span class="pi">:</span>
+    <span class="na">motion_sensor</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Motion Sensor</span>
+      <span class="na">description</span><span class="pi">:</span> <span class="s">This sensor will be synchronized with the light.</span>
+      <span class="na">selector</span><span class="pi">:</span>
+        <span class="na">entity</span><span class="pi">:</span>
+          <span class="na">filter</span><span class="pi">:</span>
+            <span class="pi">-</span> <span class="na">domain</span><span class="pi">:</span> <span class="s">binary_sensor</span>
+              <span class="na">device_class</span><span class="pi">:</span> <span class="s">motion</span>
+    <span class="na">target_light</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Lights</span>
+      <span class="na">description</span><span class="pi">:</span> <span class="s">The lights to keep in sync.</span>
+      <span class="na">selector</span><span class="pi">:</span>
+        <span class="na">target</span><span class="pi">:</span>
+          <span class="na">entity</span><span class="pi">:</span>
+            <span class="pi">-</span> <span class="na">domain</span><span class="pi">:</span> <span class="s">light</span>
+</code></pre></div></div>
+<p>By limiting our blueprint to working with lights and motion sensors, we unlock a couple of benefits: the UI will be able to limit suggested values to lights and motion sensors instead of all devices. It will also allow the user to pick an area to control the lights in.</p>
+<h2>The final blueprint <a class="title-link" name="the-final-blueprint" href="index.html#the-final-blueprint"></a>
+</h2>
+<p>After we have added all the steps, our blueprint will look like this:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">blueprint</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">Motion Light Tutorial</span>
+  <span class="na">description</span><span class="pi">:</span> <span class="s">Turn a light on based on detected motion</span>
+  <span class="na">domain</span><span class="pi">:</span> <span class="s">automation</span>
+  <span class="na">input</span><span class="pi">:</span>
+    <span class="na">motion_sensor</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Motion Sensor</span>
+      <span class="na">description</span><span class="pi">:</span> <span class="s">This sensor will be synchronized with the light.</span>
+      <span class="na">selector</span><span class="pi">:</span>
+        <span class="na">entity</span><span class="pi">:</span>
+          <span class="na">filter</span><span class="pi">:</span>
+            <span class="pi">-</span> <span class="na">domain</span><span class="pi">:</span> <span class="s">binary_sensor</span>
+              <span class="na">device_class</span><span class="pi">:</span> <span class="s">motion</span>
+    <span class="na">target_light</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Lights</span>
+      <span class="na">description</span><span class="pi">:</span> <span class="s">The lights to keep in sync.</span>
+      <span class="na">selector</span><span class="pi">:</span>
+        <span class="na">target</span><span class="pi">:</span>
+          <span class="na">entity</span><span class="pi">:</span>
+            <span class="pi">-</span> <span class="na">domain</span><span class="pi">:</span> <span class="s">light</span>
+
+<span class="na">triggers</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="kt">!input</span> <span class="s">motion_sensor</span>
+
+<span class="na">actions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="pi">&gt;</span>
+      <span class="s">{% if trigger.to_state.state == "on" %}</span>
+        <span class="s">light.turn_on</span>
+      <span class="s">{% else %}</span>
+        <span class="s">light.turn_off</span>
+      <span class="s">{% endif %}</span>
+    <span class="na">target</span><span class="pi">:</span> <span class="kt">!input</span> <span class="s">target_light</span>
+</code></pre></div></div>
+<h2>Using the blueprint via the UI <a class="title-link" name="using-the-blueprint-via-the-ui" href="index.html#using-the-blueprint-via-the-ui"></a>
+</h2>
+<ol>
+<li>To configure your blueprint via the UI, go to <a href="https://my.home-assistant.io/redirect/blueprints" class="my" target="_blank"><strong>Settings</strong> &gt; <strong>Automations &amp; Scenes</strong> &gt; <strong>Blueprints</strong></a>.</li>
+<li>Find the <strong>Motion Light Tutorial</strong> blueprint and select <strong>Create Automation</strong>.</li>
+</ol>
+<div class="alert alert-important">
+  <p class="alert-title"><iconify-icon inline icon="mdi:message-alert-outline"></iconify-icon> Important</p>
+  <div class="alert-content">
+<p>Don’t forget to reload automations after you make changes to your blueprint to have the UI and the automation integration pick up the latest blueprint changes.</p>
+  </div>
+</div>
+<p><img src="../../../images/blueprints/tutorial-ui.png" alt="Screenshot of the blueprint UI"></p>
+<h2>Video tutorial <a class="title-link" name="video-tutorial" href="index.html#video-tutorial"></a>
+</h2>
+<p>This video tutorial explains how to create a blueprint that toggles a light on motion when the lux value is below a certain threshold.</p>
+<p><lite-youtube videoid="ZxxxZ9Vci3I" videotitle="Blueprints in Home Assistant - Tutorial" posterquality="maxresdefault"></lite-youtube></p>
+<h2>Share the love <a class="title-link" name="share-the-love" href="index.html#share-the-love"></a>
+</h2>
+<p>The final step is to share this blueprint with others. For this tutorial we’re going to share it on GitHub Gists.</p>
+<h3>Share informally <a class="title-link" name="share-informally" href="index.html#share-informally"></a>
+</h3>
+<p>For this tutorial, we’re going to share it on GitHub Gists. This is a good option if you don’t want to publish your blueprint to a larger audience.</p>
+<ol>
+<li>Go to <a href="https://gist.github.com/" rel="external nofollow">GitHub Gists<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>
+<ul>
+<li>
+<strong>Gist description</strong>: blueprint tutorial</li>
+<li>
+<strong>Filename including extension</strong>: <code>motion_light_tutorial.yaml</code>
+</li>
+<li>
+<strong>Content</strong> is the content of the blueprint file.</li>
+</ul>
+</li>
+<li>Select <strong>Create Gist</strong>.</li>
+<li>To share your blueprint with other people, copy the URL of your new Gist. They can import it by going to <a href="https://my.home-assistant.io/redirect/blueprint_import" class="my" target="_blank"><strong>Settings</strong> &gt; <strong>Automations &amp; Scenes</strong> &gt; <strong>Blueprints</strong></a> and select <strong>Import blueprint</strong>.</li>
+<li>Celebrate! Cheers to you. You created your first blueprint and helped someone in the community.</li>
+</ol>
+<h3>Share on the Blueprint Exchange <a class="title-link" name="share-on-the-blueprint-exchange" href="index.html#share-on-the-blueprint-exchange"></a>
+</h3>
+<p>If you follow the <a href="https://www.home-assistant.io/get-blueprints">Rules and format for posting</a>, you can share your blueprint on the Home Assistant Blueprint Exchange forum. This option is accessible to the general Home Assistant community but recommended only for your original blueprints. Please don’t post this tutorial to the Blueprint Exchange, but instead, remember this as an option for releasing your real blueprints.</p>
+
+
+  
+
+<div class="text related-topics">
+  <h2>Related topics<a class="title-link" href="index.html#related-topics" name="related-topics"></a>
+</h2>
+  <ul>
+    
+    
+    
+    
+    
+    <li>
+      <a href="../../configuration/index.html" class="topic">
+        Editing the configuration file
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    <li>
+      <a href="../../configuration/yaml/index.html" class="topic">
+        YAML syntax
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    <li>
+      <a href="../../automation/yaml/index.html" class="topic">
+        Yaml used in automations
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    <li>
+      <a href="../../scripts/index.html" class="topic">
+        Scripts
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    <li>
+      <a href="../selectors/index.html" class="topic">
+        Blueprint selectors
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    <li>
+      <a href="../schema/index.html" class="topic">
+        Blueprint schema
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    <li>
+      <a href="../index.html" class="topic">
+        About blueprints
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    <li>
+      <a href="../../automation/using_blueprints/index.html" class="topic">
+        Using automation blueprints
+      </a>
+    </li>
+    </ul>
+</div>
+
+
+  
+<div class="material-card text feedback">
+  <h4>
+<iconify-icon inline icon="mdi:feedback" title="Feedback"></iconify-icon> <b> Help us improve our documentation</b><a href="index.html#feedback_section" class="title-link" name="feedback_section"></a>
+</h4>
+  Suggest an edit to this page, or provide/view feedback for this page.
+  <div class="links">
+    <ul aria-label="Page feedback options">
+    <li><a href="https://github.com/home-assistant/home-assistant.io/tree/current/source/_docs/blueprint/tutorial.markdown" target="_blank" title="Edit this page"><iconify-icon inline icon="mdi:edit"></iconify-icon> Edit</a></li>
+    
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues/new?template=feedback.yml&amp;url=https%3A%2F%2Fwww.home-assistant.io%2Fdocs%2Fblueprint%2Ftutorial%2F&amp;version=2026.1.0&amp;labels=current" target="_blank" title="Provide feedback on this page"><iconify-icon inline icon="mdi:comment-edit-outline"></iconify-icon> Provide feedback</a></li>
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues?utf8=%E2%9C%93&amp;q=%22%2Fdocs%2Fblueprint%2Ftutorial%2F%22&amp;in=body" target="_blank" title="View given feedback for this page"><iconify-icon inline icon="mdi:comment-text-multiple-outline"></iconify-icon> View given feedback</a></li>
+    
+  </ul>
+  </div>
+</div>
+
+
+</article>
+
+            
+          </div>
+
+
+          
+            
+              <aside id="sidebar" class="grid__item one-third desk-wide-one-quarter lap-one-whole palm-one-whole">
+            
+            <div class="grid">
+  
+
+
+
+
+  <section class="vertical-nav aside-module grid__item one-whole lap-one-half">
+  <div class="section">
+    <h1 class="title epsilon"><iconify-icon inline icon='mdi:bookshelf' title='Bookshelf'></iconify-icon> Documentation</h1>
+    <ul class="divided sidebar-menu">
+      <li>
+        <a  href='../../index.html'>Overview </a>
+        |
+        <a  href='https://www.home-assistant.io/faq/'>FAQ </a>
+        |
+        <a  href='../../glossary/index.html'>Glossary </a>
+      </li>
+
+      <li>
+  <iconify-icon icon="mdi:robot-happy"></iconify-icon> <a  href='../../automation/index.html'>Automations </a>
+  
+  <ul>
+    <li>
+      <iconify-icon inline icon='mdi:robot-happy' title='Robot happy'></iconify-icon> <a  href='../../automation/basics/index.html'>Basic automations </a>
+      
+    </li>
+    <li>
+      <iconify-icon inline icon='mdi:palette' title='Palette'></iconify-icon> <a  href='../../scene/index.html'>Scenes </a>
+      
+    </li>
+    <li>
+      <iconify-icon inline icon='mdi:palette-swatch' title='Palette swatch'></iconify-icon> <a  href='../index.html'>Blueprints </a>
+      
+      <ul>
+        <li><a class='active' href='index.html'>Tutorial </a></li>
+        <li><a  href='../schema/index.html'>Blueprint schema </a></li>
+        <li><a  href='../selectors/index.html'>Selectors </a></li>
+      </ul>
+      
+    </li>
+    <li>
+      <iconify-icon inline icon='mdi:script-text' title='Script text'></iconify-icon> <a  href='../../scripts/index.html'>Scripts </a>
+      
+    </li>
+  </ul>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> <a  href='https://www.home-assistant.io/dashboards'>Dashboards </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:microphone' title='Microphone'></iconify-icon> <a  href='https://www.home-assistant.io/voice_control/'>Voice assistants </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:category' title='Category'></iconify-icon> <a  href='../../organizing/index.html'>Organization </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> <a  href='../../energy/index.html'>Home energy management </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:update' title='Update'></iconify-icon> <a  href='https://www.home-assistant.io/common-tasks/general/'>Common tasks </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cogs' title='Cogs'></iconify-icon> <a  href='../../configuration/index.html'>Advanced configuration </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:account-security' title='Account security'></iconify-icon> <a  href='../../authentication/index.html'>Authentication </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:database' title='Database'></iconify-icon> <a  href='../../backend/index.html'>Backend </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:palette' title='Palette'></iconify-icon> <a  href='../../tools/index.html'>Tools and helpers </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cellphone' title='Cellphone'></iconify-icon> <a href="https://companion.home-assistant.io/docs">iOS and Android apps <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+</li>
+
+<li>
+  <iconify-icon inline icon='simple-icons:mqtt' title='Mqtt'></iconify-icon> <a  href='https://www.home-assistant.io/integrations/mqtt'>MQTT </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='bitcoin-icons:node-hardware-filled' title='Node hardware filled'></iconify-icon> Official hardware
+  <ul>
+    <li><a href="https://support.nabucasa.com/hc/categories/24638797677853">Home Assistant Green <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734620813469">Home Assistant Connect ZBT-1 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/29400540866973">Home Assistant Connect ZBT-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/28669861145885">Home Assistant Connect ZWA-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734575925149">Home Assistant Yellow <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24451727188125">Home Assistant Voice Preview Edition <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+  </ul>
+</li>
+
+    </ul>
+  </div>
+</section>
+
+
+
+  <section id="toc-module" class="aside-module grid__item one-whole lap-one-half">
+        <div class='section'>
+          <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+          <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="index.html#creating-an-automation-blueprint">Creating an automation blueprint</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#prerequisites">Prerequisites</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#creating-an-automation">Creating an automation</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#creating-the-blueprint-file">Creating the blueprint file</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#using-your-blueprint-via-configurationyaml">Using your blueprint via configuration.yaml</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#improving-the-inputs">Improving the inputs</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#add-a-user-friendly-names-to-the-inputs">Add a user friendly names to the inputs</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#describe-the-inputs">Describe the inputs</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#the-final-blueprint">The final blueprint</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#using-the-blueprint-via-the-ui">Using the blueprint via the UI</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#video-tutorial">Video tutorial</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#share-the-love">Share the love</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#share-informally">Share informally</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#share-on-the-blueprint-exchange">Share on the Blueprint Exchange</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#related-topics">Related topics</a></li>
+</ul>
+        </div>
+      </section></div>
+
+          </aside>
+          
+        </div>
+      </div>
+
+      <footer>
+        <div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item">
+      <div class="skyline grid">
+        <div class="skyline grid__item one-whole">
+          <div class="footer-skyline">
+          </div>
+        </div>
+      </div>
+      <div class="footer-nav grid">
+        <div class="company grid__item one-quarter lap-one-half palm-one-whole">
+          <div class="title">
+            <img
+              src="../../../images/footer-logo-text.svg"
+              height="72"
+              alt="Home Assistant"
+            />
+          </div>
+          <p>
+            Home Assistant is a project from the <a href="https://www.openhomefoundation.org/">Open Home Foundation</a>, sponsored by <a href="https://www.nabucasa.com/">Nabu Casa</a>.
+          </p>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Join us and contribute!</h3>
+          <ul>
+            <li><a class="external-link" href="https://github.com/home-assistant/">GitHub repo <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://developers.home-assistant.io">Developers Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://design.home-assistant.io">Design Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://data.home-assistant.io">Data Science Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://community.home-assistant.io">Community Forum <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://creators.home-assistant.io/">Creator Network <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://works-with.home-assistant.io/">Works With Home Assistant <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a href="https://www.home-assistant.io/community">Our community</a></li>
+            <li><a href="https://www.home-assistant.io/help/reporting_issues/">Reporting issues</a></li>
+          </ul>
+          <h3>System status</h3>
+          <ul>
+            <li>
+              <a class="external-link"  href="https://alerts.home-assistant.io">Integration Alerts <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+            <li><a href="https://www.home-assistant.io/security/">Security Alerts</a></li>
+            <li>
+              <a class="external-link" href="https://status.home-assistant.io">System Status <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Companion apps</h3>
+          <ul>
+            <li><a class="external-link" href="https://apps.apple.com/app/id1099568401">iOS and Apple devices</a></li>
+            <li><a class="external-link" href="https://play.google.com/store/apps/details?id=io.homeassistant.companion.android">Android and Wear OS</a></li>
+            <li><a class="external-link" href="https://companion.home-assistant.io/">...and more!</a></li>
+          </ul>
+          <h3>Governance</h3>
+          <ul>
+            <li><a href="https://www.home-assistant.io/privacy/">Privacy Notices</a></li>
+            <li><a href="https://www.home-assistant.io/developers/cla/">Contributor License Agreement</a></li>
+            <li><a href="https://www.home-assistant.io/tos/">Terms of Service</a></li>
+            <li><a href="https://www.home-assistant.io/code_of_conduct/">Code of Conduct</a></li>
+            <li><a href="https://www.home-assistant.io/developers/credits/">Credits</a></li>
+            <li><a href="https://www.home-assistant.io/developers/license/">License</a></li>
+          </ul>
+        </div>
+
+        <div class="socials grid__item one-quarter lap-one-half palm-one-whole">
+
+          <h3>Follow us</h3>
+          <p><a class="external-link" href='https://newsletter.openhomefoundation.org/#/portal'>Sign up for our newsletter <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></p>
+          <div class="icons">
+            <a
+              rel="me"
+              href="https://youtube.com/@home_assistant"
+              title="YouTube"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:youtube"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://reddit.com/r/homeassistant"
+              title="Reddit"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:reddit"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://github.com/home-assistant"
+              title="GitHub"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:github"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://fosstodon.org/@homeassistant"
+              title="Mastodon"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:mastodon"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://bsky.app/profile/home-assistant.io"
+              title="Bluesky"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:bluesky"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://x.com/home_assistant"
+              title="X"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:x"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://www.facebook.com/homeassistantio"
+              title="Facebook"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:facebook"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.instagram.com/homeassistant/"
+              title="Instagram"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:instagram"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.linkedin.com/company/home-assistant"
+              title="LinkedIn"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:linkedin"></iconify-icon></a>
+          </div>
+
+          <div class="web-notice">
+            <p>
+              For partnership inquiries please check out <a href="https://works-with.home-assistant.io/">Works With Home Assistant</a>. For media, get in touch <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#741911101d15341b04111a1c1b1911121b011a1015001d1b1a5a1b0613">here</a>. For other questions, you can contact us <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#83ebe6efefecc3ebeceee6aee2f0f0eaf0f7e2edf7adeaec">here</a> (No technical support!)
+            </p>
+            <p>
+              Website powered by <a href="https://jekyllrb.com/">Jekyll</a><br />
+              Originally based on the <a href="https://github.com/coogie/oscailte">Oscailte theme</a>
+            </p>
+            <a href="https://www.netlify.com">
+              <img
+                src="../../../images/frontpage/netlify.svg"
+                alt="Deploys by Netlify Badge"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+
+    </div>
+    <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.3.1/lite-youtube.js" integrity="sha384-7o3d1sg8jSS1LMKzzIEucWtWFI1X4lFCC5gu2ylAgH3KmHcJgjTqp6LWfIvbbmf9" crossorigin="anonymous"></script>
+
+<script src="../../../javascripts/terminology_tooltip.js@274cec0734bc752f0e5ea3d4e2e59858" type="text/javascript" defer></script>
+
+<script src="../../../javascripts/prism.js@5d6619066a1fc5cd819a93c132b539ac" type="text/javascript" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3/dist/umd/index.min.js" integrity="sha384-f/IEhh8fvOc2ALU79emLlUqAYXyqlA/zYhM+g5GlWMk15QBjTXy05TtmfT1TbtV6" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  docsearch({
+    container: '#docsearch',
+    appId: 'FBHBYS3J0U',
+    indexName: 'home-assistant',
+    apiKey: "ba6f7e6d97b3d3d2f778978c742a47c6",
+  });
+  document.querySelector('.site-title').addEventListener('contextmenu', function (ev) {
+    ev.preventDefault();
+    document.location.assign("https://design.home-assistant.io/#brand/logo")
+  });
+</script>
+
+
+
+
+<script type="text/javascript">
+  {
+    const article = document.querySelector("article.post");
+    if (article) {
+      const iframes = article.querySelectorAll("iframe[data-src]");
+      let loaded = false;
+      if (iframes) {
+        document.addEventListener('mousemove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('touchmove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('scroll', loadLazyFrames, { passive: true, once: true });
+  
+        function loadLazyFrames() {
+          if (loaded) return;
+          loaded = true;
+  
+          iframes.forEach((iframe) => {
+            const src = iframe.getAttribute("data-src");
+            if (src) {
+              iframe.setAttribute("src", src);
+              iframe.removeAttribute("data-src");
+            }
+          });
+        }
+      }
+    }
+  }
+</script>
+
+  </body>
+</html>

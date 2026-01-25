@@ -1,0 +1,1442 @@
+
+
+
+
+<!doctype html>
+  <!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Script Syntax - Home Assistant</title>
+    <meta name="author" content="Home Assistant">
+    <meta name="description" content="Documentation for the Home Assistant Script Syntax.">
+    
+    <meta name="viewport" content="width=device-width">
+    <link rel="canonical" href="index.html">
+
+    <meta property="fb:app_id" content="338291289691179">
+    <meta property="og:title" content="Script Syntax">
+    <meta property="og:site_name" content="Home Assistant">
+    <meta property="og:url" content="https://www.home-assistant.io/docs/scripts/">
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="Documentation for the Home Assistant Script Syntax.">
+    <meta property="og:image" content="https://www.home-assistant.io/images/default-social.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@home_assistant">
+    
+    <meta name="twitter:title" content="Script Syntax">
+    <meta name="twitter:description" content="Documentation for the Home Assistant Script Syntax.">
+    <meta name="twitter:image" content="https://www.home-assistant.io/images/default-social.png">
+    <link rel="me" href="https://fosstodon.org/@homeassistant">
+
+    <link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3/dist/style.min.css" rel="stylesheet" />
+    <link href="../../stylesheets/prism.css@8acb84bc0387c9548a63998fcfea0139.css" rel="stylesheet">
+    <link href="../../stylesheets/screen.css@cef1bc5aeba0a8ce6d170a9aa21e8dd6.css" media="screen, projection, print" rel="stylesheet">
+    <link href="https://www.home-assistant.io/atom.xml" rel="alternate" title="Home Assistant" type="application/atom+xml">
+    <link rel='shortcut icon' href='../../images/favicon.ico' />
+    <link rel='icon' type='image/png' href='../../images/favicon-192x192.png' sizes='192x192' />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&amp;family=Instrument+Sans:ital,wdth,wght@0,99,400..700;1,99,400..700&amp;" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" integrity="sha384-GPb5RlngihS9H0z1D137JsvzmeZ7tCpWEF4t5YDoTZyMsPP8S7h7vFDh4XhheU83" crossorigin="anonymous"></script>
+  </head>
+
+  <body  class="documentation-page   ">
+    <header class='site-header '>
+      
+
+
+
+<div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item three-tenths lap-two-sixths palm-one-whole ha-title">
+      <a href="https://www.home-assistant.io/" class="site-title">
+        <div class="logo"></div>
+      </a>
+      <a class="release-date" href="https://www.home-assistant.io/blog/2026/01/07/release-20261/" title="Latest version 2026.1.2 released January 16, 2026">
+        2026.1.2
+      </a>
+    </div>
+
+    <div class="grid__item seven-tenths lap-four-sixths palm-one-whole">
+      <nav>
+        <input type="checkbox" id="toggle" />
+        <label
+          for="toggle"
+          class="toggle"
+          data-open="Main Menu"
+          data-close="⨉"
+        ></label>
+        <ul class="menu pull-right">
+          <li><a  href="https://www.home-assistant.io/installation/">Getting started</a></li>
+          <li>
+            <a class="active" href="../index.html">Documentation <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/installation/"><iconify-icon inline icon='simple-icons:homeassistant' title='Homeassistant'></iconify-icon> Installation</a></li>
+              <li><a href="../automation/index.html"><iconify-icon inline icon='mdi:robot-happy' title='Robot happy'></iconify-icon> Automations</a></li>
+              <li><a href="https://www.home-assistant.io/dashboards/"><iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> Dashboards</a></li>
+              <li><a href="https://www.home-assistant.io/voice_control/"><iconify-icon inline icon='mdi:comment-processing-outline' title='Comment processing outline'></iconify-icon> Voice assistants</a></li>
+              <li><a href="../organizing/index.html"><iconify-icon inline icon='mdi:view-grid' title='View grid'></iconify-icon> Device organization</a></li>
+              <li><a href="../energy/index.html"><iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> Energy management</a></li>
+              <li><a href="../configuration/index.html"><iconify-icon inline icon='mdi:cog' title='Cog'></iconify-icon> Advanced configuration</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="index.html#">Our hardware <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/green/">Home Assistant Green</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zbt-2/">Connect ZBT-2</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zwa-2/">Connect ZWA-2</a></li>
+              <li><a href="https://www.home-assistant.io/voice-pe/">Voice Preview Edition</a></li>
+            </ul>
+          </li>
+          <li><a  href="https://www.home-assistant.io/integrations/">Integrations</a></li>
+          <li><a  href="https://www.home-assistant.io/blog/">Blog</a></li>
+          <li><a  href="https://www.home-assistant.io/help/">Need help?</a></li>
+          <li>
+            <div class="docsearch" id="docsearch"></div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    </header>
+
+    <div class="page-content">
+
+      
+
+      <div class="grid-wrapper">
+        <div class="grid grid-center">
+
+          <aside id="toc-bar" class="grid__item desk-wide-one-sixth">
+                <section class="aside-module grid__item one-whole">
+                  <div class='section'>
+                    <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+                    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="index.html#script-syntax">Script syntax</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#perform-an-action">Perform an action</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#activate-a-scene">Activate a scene</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#variables">Variables</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#scope-of-variables">Scope of variables</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#test-a-condition">Test a condition</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#wait-for-time-to-pass-delay">Wait for time to pass (delay)</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#wait">Wait</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#wait-for-a-template">Wait for a template</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#wait-for-a-trigger">Wait for a trigger</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#wait-timeout">Wait timeout</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#wait-variable">Wait variable</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#fire-an-event">Fire an event</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#raise-and-consume-custom-events">Raise and Consume Custom Events</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#repeat-a-group-of-actions">Repeat a group of actions</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#counted-repeat">Counted repeat</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#for-each">For each</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#while-loop">While loop</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#repeat-until">Repeat until</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#repeat-loop-variable">Repeat loop variable</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#if-then">If-then</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#choose-a-group-of-actions">Choose a group of actions</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#grouping-actions">Grouping actions</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#parallelizing-actions">Parallelizing actions</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#stopping-a-script-sequence">Stopping a script sequence</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#continuing-on-error">Continuing on error</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#disabling-an-action">Disabling an action</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#respond-to-a-conversation">Respond to a conversation</a></li>
+</ul>
+                  </div>
+                </section>
+              </aside> 
+
+          
+          <div class="grid__item two-thirds desk-wide-seven-twelfths lap-one-whole palm-one-whole">
+          
+
+            
+              <article class="page">
+  
+  <header>
+    
+    
+      <div class="breadcrumbs">
+        <a href="https://www.home-assistant.io/">Home</a>
+        
+          
+            
+            ▸ <a href="../index.html">Documentation</a>
+          
+        
+          
+            ▸ 
+          
+        
+      </div>
+    
+    <h1 class="title indent">
+      
+        Script Syntax
+      
+    </h1>
+  </header>
+  
+  
+  <p>Scripts are a sequence of <span class="terminology">actions<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> that Home Assistant will execute. Scripts are available as an entity through the standalone <a href="https://www.home-assistant.io/integrations/script/">Script integration</a> but can also be embedded in <span class="terminology">automations<span class="terminology-tooltip">Automations in Home Assistant allow you to automatically respond to things that happen in and around your home.<a class="terminology-link" href="../automation/index.html"> [Learn more]</a></span></span> and <a href="https://www.home-assistant.io/integrations/alexa/">Alexa/Amazon Echo</a> configurations.</p>
+<p>When the script is executed within an <span class="terminology">automation<span class="terminology-tooltip">Automations in Home Assistant allow you to automatically respond to things that happen in and around your home.<a class="terminology-link" href="../automation/index.html"> [Learn more]</a></span></span>, the <code>trigger</code> variable is available. See <a href="../automation/templating/index.html#available-trigger-data">Available-Trigger-Data</a>.</p>
+<h2>Script syntax <a class="title-link" name="script-syntax" href="index.html#script-syntax"></a>
+</h2>
+<p>The script syntax basic structure is a list of key/value maps that contain <span class="terminology">actions<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span>. If a script contains only 1 <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span>, the wrapping list can be omitted.</p>
+<p>All <span class="terminology">actions<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> support an optional <code>alias</code>.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Example script integration containing script syntax</span>
+<span class="na">script</span><span class="pi">:</span>
+  <span class="na">example_script</span><span class="pi">:</span>
+    <span class="na">sequence</span><span class="pi">:</span>
+      <span class="c1"># This is written using the Script Syntax</span>
+      <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Turn</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">ceiling</span><span class="nv"> </span><span class="s">light"</span>
+        <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_on</span>
+        <span class="na">target</span><span class="pi">:</span>
+          <span class="na">entity_id</span><span class="pi">:</span> <span class="s">light.ceiling</span>
+      <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Notify</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">ceiling</span><span class="nv"> </span><span class="s">light</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">turned</span><span class="nv"> </span><span class="s">on"</span>
+        <span class="na">action</span><span class="pi">:</span> <span class="s">notify.notify</span>
+        <span class="na">data</span><span class="pi">:</span>
+          <span class="na">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Turned</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">ceiling</span><span class="nv"> </span><span class="s">light!"</span>
+</code></pre></div></div>
+<ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="index.html#script-syntax">Script syntax</a></li>
+<li class="toc-entry toc-h2">
+<a href="index.html#perform-an-action">Perform an action</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#activate-a-scene">Activate a scene</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2">
+<a href="index.html#variables">Variables</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#scope-of-variables">Scope of variables</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#test-a-condition">Test a condition</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#wait-for-time-to-pass-delay">Wait for time to pass (delay)</a></li>
+<li class="toc-entry toc-h2">
+<a href="index.html#wait">Wait</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#wait-for-a-template">Wait for a template</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#wait-for-a-trigger">Wait for a trigger</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#wait-timeout">Wait timeout</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#wait-variable">Wait variable</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2">
+<a href="index.html#fire-an-event">Fire an event</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#raise-and-consume-custom-events">Raise and Consume Custom Events</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2">
+<a href="index.html#repeat-a-group-of-actions">Repeat a group of actions</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#counted-repeat">Counted repeat</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#for-each">For each</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#while-loop">While loop</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#repeat-until">Repeat until</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#repeat-loop-variable">Repeat loop variable</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#if-then">If-then</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#choose-a-group-of-actions">Choose a group of actions</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#grouping-actions">Grouping actions</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#parallelizing-actions">Parallelizing actions</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#stopping-a-script-sequence">Stopping a script sequence</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#continuing-on-error">Continuing on error</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#disabling-an-action">Disabling an action</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#respond-to-a-conversation">Respond to a conversation</a></li>
+</ul>
+<h2>Perform an action <a class="title-link" name="perform-an-action" href="index.html#perform-an-action"></a>
+</h2>
+<p>Performing an action can be done in various ways. For all the different possibilities, have a look at the <a href="perform-actions/index.html">actions page</a>.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Bedroom</span><span class="nv"> </span><span class="s">lights</span><span class="nv"> </span><span class="s">on"</span>
+  <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_on</span>
+  <span class="na">target</span><span class="pi">:</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">group.bedroom</span>
+  <span class="na">data</span><span class="pi">:</span>
+    <span class="na">brightness</span><span class="pi">:</span> <span class="m">100</span>
+</code></pre></div></div>
+<h3>Activate a scene <a class="title-link" name="activate-a-scene" href="index.html#activate-a-scene"></a>
+</h3>
+<p>Scripts may also use a shortcut syntax for activating <span class="terminology">scenes<span class="terminology-tooltip">Scenes capture the states you want certain entities to be. For example, a scene can specify that light A should be turned on and light B should be bright red.<a class="terminology-link" href="https://www.home-assistant.io/integrations/scene/"> [Learn more]</a></span></span> instead of calling the <code>scene.turn_on</code> action.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">scene</span><span class="pi">:</span> <span class="s">scene.morning_living_room</span>
+</code></pre></div></div>
+<h2>Variables <a class="title-link" name="variables" href="index.html#variables"></a>
+</h2>
+<p>The variables <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> allows you to set/override variables that will be accessible by templates in <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> after it. See also <a href="https://www.home-assistant.io/integrations/script/#configuration-variables">script variables</a> for how to define variables accessible in the entire script.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Set</span><span class="nv"> </span><span class="s">variables"</span>
+  <span class="na">variables</span><span class="pi">:</span>
+    <span class="na">entities</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">light.kitchen</span>
+      <span class="pi">-</span> <span class="s">light.living_room</span>
+    <span class="na">brightness</span><span class="pi">:</span> <span class="m">100</span>
+<span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Control</span><span class="nv"> </span><span class="s">lights"</span>
+  <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_on</span>
+  <span class="na">target</span><span class="pi">:</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">entities</span><span class="nv"> </span><span class="s">}}"</span>
+  <span class="na">data</span><span class="pi">:</span>
+    <span class="na">brightness</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">brightness</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div></div>
+<p>Variables can be templated.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Set</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">templated</span><span class="nv"> </span><span class="s">variable"</span>
+  <span class="na">variables</span><span class="pi">:</span>
+    <span class="na">blind_state_message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">The</span><span class="nv"> </span><span class="s">blind</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">states('cover.blind')</span><span class="nv"> </span><span class="s">}}."</span>
+<span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Notify</span><span class="nv"> </span><span class="s">about</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">state</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">blind"</span>
+  <span class="na">action</span><span class="pi">:</span> <span class="s">notify.mobile_app_iphone</span>
+  <span class="na">data</span><span class="pi">:</span>
+    <span class="na">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">blind_state_message</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div></div>
+<h3>Scope of variables <a class="title-link" name="scope-of-variables" href="index.html#scope-of-variables"></a>
+</h3>
+<p>The <code>variables</code> <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> assigns the values to previously defined variables with the same name. If a variable was not previously defined, it is assigned in the top-level (script run) scope.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">sequence</span><span class="pi">:</span>
+  <span class="c1"># Set the people variable to a default value</span>
+  <span class="pi">-</span> <span class="na">variables</span><span class="pi">:</span>
+      <span class="na">people</span><span class="pi">:</span> <span class="m">0</span>
+  <span class="c1"># Try to increment people if Paulus is home</span>
+  <span class="pi">-</span> <span class="na">if</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s">device_tracker.paulus</span>
+        <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home"</span>
+    <span class="na">then</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">variables</span><span class="pi">:</span>
+          <span class="na">people</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">people</span><span class="nv"> </span><span class="s">+</span><span class="nv"> </span><span class="s">1</span><span class="nv"> </span><span class="s">}}"</span>
+          <span class="na">paulus_home</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">notify.notify</span>
+        <span class="na">data</span><span class="pi">:</span>
+          <span class="na">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">There</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">people</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">people</span><span class="nv"> </span><span class="s">home"</span> <span class="c1"># "There are 1 people home"</span>
+  <span class="c1"># Variable value is now updated</span>
+  <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">notify.notify</span>
+    <span class="na">data</span><span class="pi">:</span>
+      <span class="na">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">There</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">people</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">people</span><span class="nv"> </span><span class="s">home</span><span class="nv"> </span><span class="s">{%</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">paulus_home</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">defined</span><span class="nv"> </span><span class="s">%}(including</span><span class="nv"> </span><span class="s">Paulus){%</span><span class="nv"> </span><span class="s">endif</span><span class="nv"> </span><span class="s">%}"</span>
+      <span class="c1"># "There are 1 people home (including Paulus)"</span>
+</code></pre></div></div>
+<h2>Test a condition <a class="title-link" name="test-a-condition" href="index.html#test-a-condition"></a>
+</h2>
+<p>While executing a script you can add a condition in the main sequence to stop further execution. When a condition does not return <code>true</code>, the script will stop executing. For documentation on the many different conditions refer to the <a href="conditions/index.html">conditions page</a>.</p>
+<div class="alert alert-note">
+  <p class="alert-title"><iconify-icon inline icon="mdi:information-outline"></iconify-icon> Note</p>
+  <div class="alert-content">
+<p>The <code>condition</code> <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> only stops executing the current sequence block. When it is used inside a <a href="index.html#repeat-a-group-of-actions">repeat</a> action, only the current iteration of the <code>repeat</code> loop will stop. When it is used inside a <a href="index.html#choose-a-group-of-actions">choose</a> action, only the <span class="terminology">actions<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> within that <code>choose</code> will stop.</p>
+  </div>
+</div>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># If paulus is home, continue to execute the script below these lines</span>
+<span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Check</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">Paulus</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">home"</span>
+  <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+  <span class="na">entity_id</span><span class="pi">:</span> <span class="s">device_tracker.paulus</span>
+  <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home"</span>
+</code></pre></div></div>
+<p><code>condition</code> can also be a list of conditions and execution will then only continue if ALL conditions return <code>true</code>.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Check</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">Paulus</span><span class="nv"> </span><span class="s">ishome</span><span class="nv"> </span><span class="s">AND</span><span class="nv"> </span><span class="s">temperature</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">below</span><span class="nv"> </span><span class="s">20"</span>
+  <span class="na">conditions</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">device_tracker.paulus"</span>
+      <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home"</span>
+    <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">numeric_state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">sensor.temperature"</span>
+      <span class="na">below</span><span class="pi">:</span> <span class="m">20</span>
+</code></pre></div></div>
+<h2>Wait for time to pass (delay) <a class="title-link" name="wait-for-time-to-pass-delay" href="index.html#wait-for-time-to-pass-delay"></a>
+</h2>
+<p>Delays are useful for temporarily suspending your script and start it at a later moment. We support different syntaxes for a delay as shown below.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Seconds</span>
+<span class="c1"># Waits 5 seconds</span>
+<span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Wait</span><span class="nv"> </span><span class="s">5s"</span>
+  <span class="na">delay</span><span class="pi">:</span> <span class="m">5</span>
+</code></pre></div></div>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># HH:MM</span>
+<span class="c1"># Waits 1 hour</span>
+<span class="pi">-</span> <span class="na">delay</span><span class="pi">:</span> <span class="s2">"</span><span class="s">01:00"</span>
+</code></pre></div></div>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># HH:MM:SS</span>
+<span class="c1"># Waits 1.5 minutes</span>
+<span class="pi">-</span> <span class="na">delay</span><span class="pi">:</span> <span class="s2">"</span><span class="s">00:01:30"</span>
+</code></pre></div></div>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Supports milliseconds, seconds, minutes, hours, days</span>
+<span class="c1"># Can be used in combination, at least one required</span>
+<span class="c1"># When using milliseconds, consider that delay as *at least* X milliseconds. It won´t be exact.</span>
+<span class="c1"># Waits 1 minute</span>
+<span class="pi">-</span> <span class="na">delay</span><span class="pi">:</span>
+    <span class="na">minutes</span><span class="pi">:</span> <span class="m">1</span>
+</code></pre></div></div>
+<p>All forms accept templates.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Waits however many minutes input_number.minute_delay is set to</span>
+<span class="pi">-</span> <span class="na">delay</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">states('input_number.minute_delay')</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">multiply(60)</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">int</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div></div>
+<h2>Wait <a class="title-link" name="wait" href="index.html#wait"></a>
+</h2>
+<p>These <span class="terminology">actions<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> allow a script to wait for entities in the system to be in a certain state as specified by a template, or some event to happen as expressed by one or more triggers.</p>
+<h3>Wait for a template <a class="title-link" name="wait-for-a-template" href="index.html#wait-for-a-template"></a>
+</h3>
+<p>This <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> evaluates the template, and if true, the script will continue. If not, then it will wait until it is true.</p>
+<p>The template is re-evaluated whenever an entity ID that it references changes state. If you use non-deterministic functions like <code>now()</code> in the template it will not be continuously re-evaluated, but only when an entity ID that is referenced is changed. If you need to periodically re-evaluate the template, reference a sensor from the <a href="https://www.home-assistant.io/integrations/time_date/">Time and Date</a> integration that will update minutely or daily.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Wait until media player is stopped</span>
+<span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Wait</span><span class="nv"> </span><span class="s">until</span><span class="nv"> </span><span class="s">media</span><span class="nv"> </span><span class="s">player</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">stopped"</span>
+  <span class="na">wait_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">is_state('media_player.floor',</span><span class="nv"> </span><span class="s">'stop')</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div></div>
+<h3>Wait for a trigger <a class="title-link" name="wait-for-a-trigger" href="index.html#wait-for-a-trigger"></a>
+</h3>
+<p>This <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> can use the same triggers that are available in an automation’s <code>trigger</code> section. See <a href="../automation/trigger.1.html">Automation Trigger</a>. The script will continue whenever any of the triggers fires. All previously defined <a href="../automation/trigger.1.html#trigger-variables">trigger variables</a>, <a href="index.html#variables">variables</a> and <a href="https://www.home-assistant.io/integrations/script/#configuration-variables">script variables</a> are passed to the trigger.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Wait for a custom event or light to turn on and stay on for 10 sec</span>
+<span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Wait</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">MY_EVENT</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">light</span><span class="nv"> </span><span class="s">on"</span>
+  <span class="na">wait_for_trigger</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">event</span>
+      <span class="na">event_type</span><span class="pi">:</span> <span class="s">MY_EVENT</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">light.LIGHT</span>
+      <span class="na">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">on"</span>
+      <span class="na">for</span><span class="pi">:</span> <span class="m">10</span>
+</code></pre></div></div>
+<h3>Wait timeout <a class="title-link" name="wait-timeout" href="index.html#wait-timeout"></a>
+</h3>
+<p>With both types of waits it is possible to set a timeout after which the script will continue its execution if the condition/event is not satisfied. Timeout has the same syntax as <code>delay</code>, and like <code>delay</code>, also accepts templates.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Wait for sensor to change to 'on' up to 1 minute before continuing to execute.</span>
+<span class="pi">-</span> <span class="na">wait_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">is_state('binary_sensor.entrance',</span><span class="nv"> </span><span class="s">'on')</span><span class="nv"> </span><span class="s">}}"</span>
+  <span class="na">timeout</span><span class="pi">:</span> <span class="s2">"</span><span class="s">00:01:00"</span>
+</code></pre></div></div>
+<p>You can also get the script to abort after the timeout by using optional <code>continue_on_timeout: false</code>.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Wait for IFTTT event or abort after specified timeout.</span>
+<span class="pi">-</span> <span class="na">wait_for_trigger</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">event</span>
+      <span class="na">event_type</span><span class="pi">:</span> <span class="s">ifttt_webhook_received</span>
+      <span class="na">event_data</span><span class="pi">:</span>
+        <span class="na">action</span><span class="pi">:</span> <span class="s">connected_to_network</span>
+  <span class="na">timeout</span><span class="pi">:</span>
+    <span class="na">minutes</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">timeout_minutes</span><span class="nv"> </span><span class="s">}}"</span>
+  <span class="na">continue_on_timeout</span><span class="pi">:</span> <span class="kc">false</span>
+</code></pre></div></div>
+<p>Without <code>continue_on_timeout: false</code> the script will always continue since the default for <code>continue_on_timeout</code> is <code>true</code>.</p>
+<h3>Wait variable <a class="title-link" name="wait-variable" href="index.html#wait-variable"></a>
+</h3>
+<p>After each time a wait completes, either because the condition was met, the event happened, or the timeout expired, the variable <code>wait</code> will be created/updated to indicate the result.</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wait.completed</code></td>
+<td>
+<code>true</code> if the condition was met, <code>false</code> otherwise</td>
+</tr>
+<tr>
+<td><code>wait.remaining</code></td>
+<td>Timeout remaining, or <code>none</code> if a timeout was not specified</td>
+</tr>
+<tr>
+<td><code>wait.trigger</code></td>
+<td>Exists only after <code>wait_for_trigger</code>. Contains information about which trigger fired. (See <a href="../automation/templating/index.html#available-trigger-data">Available-Trigger-Data</a>.) Will be <code>none</code> if no trigger happened before timeout expired</td>
+</tr>
+</tbody>
+</table>
+<p>This can be used to take different actions based on whether or not the condition was met, or to use more than one wait sequentially while implementing a single timeout overall.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Take different actions depending on if condition was met.</span>
+<span class="pi">-</span> <span class="na">wait_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">is_state('binary_sensor.door',</span><span class="nv"> </span><span class="s">'on')</span><span class="nv"> </span><span class="s">}}"</span>
+  <span class="na">timeout</span><span class="pi">:</span> <span class="m">10</span>
+<span class="pi">-</span> <span class="na">if</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">wait.completed</span><span class="nv"> </span><span class="s">}}"</span>
+  <span class="na">then</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">script.door_did_not_open</span>
+  <span class="na">else</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">script.turn_on</span>
+      <span class="na">target</span><span class="pi">:</span>
+        <span class="na">entity_id</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="s">script.door_did_open</span>
+          <span class="pi">-</span> <span class="s">script.play_fanfare</span>
+
+<span class="c1"># Wait a total of 10 seconds.</span>
+<span class="pi">-</span> <span class="na">wait_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">is_state('binary_sensor.door_1',</span><span class="nv"> </span><span class="s">'on')</span><span class="nv"> </span><span class="s">}}"</span>
+  <span class="na">timeout</span><span class="pi">:</span> <span class="m">10</span>
+  <span class="na">continue_on_timeout</span><span class="pi">:</span> <span class="kc">false</span>
+<span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">switch.turn_on</span>
+  <span class="na">target</span><span class="pi">:</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">switch.some_light</span>
+<span class="pi">-</span> <span class="na">wait_for_trigger</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">binary_sensor.door_2</span>
+      <span class="na">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">on"</span>
+      <span class="na">for</span><span class="pi">:</span> <span class="m">2</span>
+  <span class="na">timeout</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">wait.remaining</span><span class="nv"> </span><span class="s">}}"</span>
+  <span class="na">continue_on_timeout</span><span class="pi">:</span> <span class="kc">false</span>
+<span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">switch.turn_off</span>
+  <span class="na">target</span><span class="pi">:</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">switch.some_light</span>
+</code></pre></div></div>
+<h2>Fire an event <a class="title-link" name="fire-an-event" href="index.html#fire-an-event"></a>
+</h2>
+<p>This <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> allows you to fire an event. Events can be used for many things. It could trigger an <span class="terminology">automation<span class="terminology-tooltip">Automations in Home Assistant allow you to automatically respond to things that happen in and around your home.<a class="terminology-link" href="../automation/index.html"> [Learn more]</a></span></span> or indicate to another integration that something is happening. For instance, in the below example it is used to create an entry in the <strong>Activity</strong> panel.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Fire</span><span class="nv"> </span><span class="s">LOGBOOK_ENTRY</span><span class="nv"> </span><span class="s">event"</span>
+  <span class="na">event</span><span class="pi">:</span> <span class="s">LOGBOOK_ENTRY</span>
+  <span class="na">event_data</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">Paulus</span>
+    <span class="na">message</span><span class="pi">:</span> <span class="s">is waking up</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">device_tracker.paulus</span>
+    <span class="na">domain</span><span class="pi">:</span> <span class="s">light</span>
+</code></pre></div></div>
+<p>You can also use event_data to fire an event with custom data. This could be used to pass data to another script awaiting
+an event trigger.</p>
+<p>The <code>event_data</code> accepts templates.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">event</span><span class="pi">:</span> <span class="s">MY_EVENT</span>
+  <span class="na">event_data</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">myEvent</span>
+    <span class="na">customData</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">myCustomVariable</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div></div>
+<h3>Raise and Consume Custom Events <a class="title-link" name="raise-and-consume-custom-events" href="index.html#raise-and-consume-custom-events"></a>
+</h3>
+<p>The following <span class="terminology">automation<span class="terminology-tooltip">Automations in Home Assistant allow you to automatically respond to things that happen in and around your home.<a class="terminology-link" href="../automation/index.html"> [Learn more]</a></span></span> example shows how to raise a custom event called <code>event_light_state_changed</code> with <code>entity_id</code> as the event data. The <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> part could be inside a script or an <span class="terminology">automation<span class="terminology-tooltip">Automations in Home Assistant allow you to automatically respond to things that happen in and around your home.<a class="terminology-link" href="../automation/index.html"> [Learn more]</a></span></span>.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Fire</span><span class="nv"> </span><span class="s">Event"</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">switch.kitchen</span>
+      <span class="na">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">on"</span>
+  <span class="na">actions</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">event</span><span class="pi">:</span> <span class="s">event_light_state_changed</span>
+      <span class="na">event_data</span><span class="pi">:</span>
+        <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">on"</span>
+</code></pre></div></div>
+<p>The following <span class="terminology">automation<span class="terminology-tooltip">Automations in Home Assistant allow you to automatically respond to things that happen in and around your home.<a class="terminology-link" href="../automation/index.html"> [Learn more]</a></span></span> example shows how to capture the custom event <code>event_light_state_changed</code> with an <a href="../automation/trigger.1.html#event-trigger">Event Automation Trigger</a>, and retrieve corresponding <code>entity_id</code> that was passed as the event trigger data, see <a href="../automation/templating/index.html#available-trigger-data">Available-Trigger-Data</a> for more details.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Capture</span><span class="nv"> </span><span class="s">Event"</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">event</span>
+      <span class="na">event_type</span><span class="pi">:</span> <span class="s">event_light_state_changed</span>
+  <span class="na">actions</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">notify.notify</span>
+      <span class="na">data</span><span class="pi">:</span>
+        <span class="na">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">kitchen</span><span class="nv"> </span><span class="s">light</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">turned</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">trigger.event.data.state</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div></div>
+<h2>Repeat a group of actions <a class="title-link" name="repeat-a-group-of-actions" href="index.html#repeat-a-group-of-actions"></a>
+</h2>
+<p>This <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> allows you to repeat a sequence of other <span class="terminology">actions<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span>. Nesting is fully supported.
+There are three ways to control how many times the sequence will be run.</p>
+<h3>Counted repeat <a class="title-link" name="counted-repeat" href="index.html#counted-repeat"></a>
+</h3>
+<p>This form accepts a count value. The value may be specified by a template, in which case
+the template is rendered when the repeat step is reached.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">script</span><span class="pi">:</span>
+  <span class="na">flash_light</span><span class="pi">:</span>
+    <span class="na">mode</span><span class="pi">:</span> <span class="s">restart</span>
+    <span class="na">sequence</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_on</span>
+        <span class="na">target</span><span class="pi">:</span>
+          <span class="na">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">light.{{</span><span class="nv"> </span><span class="s">light</span><span class="nv"> </span><span class="s">}}"</span>
+      <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Cycle</span><span class="nv"> </span><span class="s">light</span><span class="nv"> </span><span class="s">'count'</span><span class="nv"> </span><span class="s">times"</span>
+        <span class="na">repeat</span><span class="pi">:</span>
+          <span class="na">count</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">count|int</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">2</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">1</span><span class="nv"> </span><span class="s">}}"</span>
+          <span class="na">sequence</span><span class="pi">:</span>
+            <span class="pi">-</span> <span class="na">delay</span><span class="pi">:</span> <span class="m">2</span>
+            <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">light.toggle</span>
+              <span class="na">target</span><span class="pi">:</span>
+                <span class="na">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">light.{{</span><span class="nv"> </span><span class="s">light</span><span class="nv"> </span><span class="s">}}"</span>
+  <span class="na">flash_hallway_light</span><span class="pi">:</span>
+    <span class="na">sequence</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Flash</span><span class="nv"> </span><span class="s">hallway</span><span class="nv"> </span><span class="s">light</span><span class="nv"> </span><span class="s">3</span><span class="nv"> </span><span class="s">times"</span>
+        <span class="na">action</span><span class="pi">:</span> <span class="s">script.flash_light</span>
+        <span class="na">data</span><span class="pi">:</span>
+          <span class="na">light</span><span class="pi">:</span> <span class="s">hallway</span>
+          <span class="na">count</span><span class="pi">:</span> <span class="m">3</span>
+</code></pre></div></div>
+<h3>For each <a class="title-link" name="for-each" href="index.html#for-each"></a>
+</h3>
+<p>This repeat form accepts a list of items to iterate over. The list of items
+can be a pre-defined list, or a list created by a template.</p>
+<p>The sequence is ran for each item in the list, and current item in the
+iteration is available as <code>repeat.item</code>.</p>
+<p>The following example will turn a list of lights:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">repeat</span><span class="pi">:</span>
+  <span class="na">for_each</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s2">"</span><span class="s">living_room"</span>
+    <span class="pi">-</span> <span class="s2">"</span><span class="s">kitchen"</span>
+    <span class="pi">-</span> <span class="s2">"</span><span class="s">office"</span>
+  <span class="na">sequence</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_off</span>
+      <span class="na">target</span><span class="pi">:</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">light.{{</span><span class="nv"> </span><span class="s">repeat.item</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div></div>
+<p>Other types are accepted as list items, for example, each item can be a
+template, or even an mapping of key/value pairs.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">repeat</span><span class="pi">:</span>
+  <span class="na">for_each</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">language</span><span class="pi">:</span> <span class="s">English</span>
+      <span class="na">message</span><span class="pi">:</span> <span class="s">Hello World</span>
+    <span class="pi">-</span> <span class="na">language</span><span class="pi">:</span> <span class="s">Dutch</span>
+      <span class="na">message</span><span class="pi">:</span> <span class="s">Hallo Wereld</span>
+  <span class="na">sequence</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">notify.phone</span>
+      <span class="na">data</span><span class="pi">:</span>
+        <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Message</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">repeat.item.language</span><span class="nv"> </span><span class="s">}}"</span>
+        <span class="na">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">repeat.item.message</span><span class="nv"> </span><span class="s">}}!"</span>
+</code></pre></div></div>
+<h3>While loop <a class="title-link" name="while-loop" href="index.html#while-loop"></a>
+</h3>
+<p>This form accepts a list of conditions (see <a href="conditions/index.html">conditions page</a> for available options) that are evaluated <em>before</em> each time the sequence
+is run. The sequence will be run <em>as long as</em> the condition(s) evaluate to true.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">script</span><span class="pi">:</span>
+  <span class="na">do_something</span><span class="pi">:</span>
+    <span class="na">sequence</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">script.get_ready_for_something</span>
+      <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Repeat</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sequence</span><span class="nv"> </span><span class="s">AS</span><span class="nv"> </span><span class="s">LONG</span><span class="nv"> </span><span class="s">AS</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">conditions</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">true"</span>
+        <span class="na">repeat</span><span class="pi">:</span>
+          <span class="na">while</span><span class="pi">:</span>
+            <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+              <span class="na">entity_id</span><span class="pi">:</span> <span class="s">input_boolean.do_something</span>
+              <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">on"</span>
+            <span class="c1"># Don't do it too many times</span>
+            <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">template</span>
+              <span class="na">value_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">repeat.index</span><span class="nv"> </span><span class="s">&lt;=</span><span class="nv"> </span><span class="s">20</span><span class="nv"> </span><span class="s">}}"</span>
+          <span class="na">sequence</span><span class="pi">:</span>
+            <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">script.something</span>
+</code></pre></div></div>
+<p>The <code>while</code> also accepts a <a href="conditions/index.html#template-condition-shorthand-notation">shorthand notation of a template condition</a>.
+For example:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">repeat</span><span class="pi">:</span>
+    <span class="na">while</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">is_state('sensor.mode',</span><span class="nv"> </span><span class="s">'Home')</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">repeat.index</span><span class="nv"> </span><span class="s">&lt;</span><span class="nv"> </span><span class="s">10</span><span class="nv"> </span><span class="s">}}"</span>
+    <span class="na">sequence</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">...</span>
+</code></pre></div></div>
+<h3>Repeat until <a class="title-link" name="repeat-until" href="index.html#repeat-until"></a>
+</h3>
+<p>This form accepts a list of conditions that are evaluated <em>after</em> each time the sequence
+is run. Therefore the sequence will always run at least once. The sequence will be run
+<em>until</em> the condition(s) evaluate to true.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">triggers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s">binary_sensor.xyz</span>
+        <span class="na">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">on"</span>
+    <span class="na">conditions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s">binary_sensor.something</span>
+        <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">off"</span>
+    <span class="na">actions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Repeat</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sequence</span><span class="nv"> </span><span class="s">UNTIL</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">conditions</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">true"</span>
+        <span class="na">repeat</span><span class="pi">:</span>
+          <span class="na">sequence</span><span class="pi">:</span>
+            <span class="c1"># Run command that for some reason doesn't always work</span>
+            <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">shell_command.turn_something_on</span>
+            <span class="c1"># Give it time to complete</span>
+            <span class="pi">-</span> <span class="na">delay</span><span class="pi">:</span>
+                <span class="na">milliseconds</span><span class="pi">:</span> <span class="m">200</span>
+          <span class="na">until</span><span class="pi">:</span>
+            <span class="c1"># Did it work?</span>
+            <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+              <span class="na">entity_id</span><span class="pi">:</span> <span class="s">binary_sensor.something</span>
+              <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">on"</span>
+</code></pre></div></div>
+<p><code>until</code> also accepts a <a href="conditions/index.html#template-condition-shorthand-notation">shorthand notation of a template condition</a>.
+For example:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">repeat</span><span class="pi">:</span>
+    <span class="na">until</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">is_state('device_tracker.iphone',</span><span class="nv"> </span><span class="s">'home')</span><span class="nv"> </span><span class="s">}}"</span>
+    <span class="na">sequence</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">...</span>
+</code></pre></div></div>
+<h3>Repeat loop variable <a class="title-link" name="repeat-loop-variable" href="index.html#repeat-loop-variable"></a>
+</h3>
+<p>A variable named <code>repeat</code> is defined within the repeat <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> (i.e., it is available inside <code>sequence</code>, <code>while</code> &amp; <code>until</code>.)
+It contains the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>first</code></td>
+<td>True during the first iteration of the repeat sequence</td>
+</tr>
+<tr>
+<td><code>index</code></td>
+<td>The iteration number of the loop: 1, 2, 3, …</td>
+</tr>
+<tr>
+<td><code>last</code></td>
+<td>True during the last iteration of the repeat sequence, which is only valid for counted loops</td>
+</tr>
+</tbody>
+</table>
+<h2>If-then <a class="title-link" name="if-then" href="index.html#if-then"></a>
+</h2>
+<p>This <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> allows you to conditionally (<code>if</code>), based on or more <a href="conditions/index.html">conditions</a> (which are <code>and</code> combined),
+run a sequence of actions (<code>then</code>) and optionally supports running other sequence when the condition didn’t pass (<code>else</code>).</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">script</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">if</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">If</span><span class="nv"> </span><span class="s">no</span><span class="nv"> </span><span class="s">one</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">home"</span>
+        <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s">zone.home</span>
+        <span class="na">state</span><span class="pi">:</span> <span class="m">0</span>
+    <span class="na">then</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Then</span><span class="nv"> </span><span class="s">start</span><span class="nv"> </span><span class="s">cleaning</span><span class="nv"> </span><span class="s">already!"</span>
+        <span class="na">action</span><span class="pi">:</span> <span class="s">vacuum.start</span>
+        <span class="na">target</span><span class="pi">:</span>
+          <span class="na">area_id</span><span class="pi">:</span> <span class="s">living_room</span>
+    <span class="c1"># The `else` is fully optional and can be omitted</span>
+    <span class="na">else</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">notify.notify</span>
+        <span class="na">data</span><span class="pi">:</span>
+          <span class="na">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Skipped</span><span class="nv"> </span><span class="s">cleaning,</span><span class="nv"> </span><span class="s">someone</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">home!"</span>
+</code></pre></div></div>
+<p>This <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> supports nesting, however, if you find yourself using nested if-then
+actions in the <code>else</code> part, you may want to consider using
+<a href="index.html#choose-a-group-of-actions">choose</a> instead.</p>
+<h2>Choose a group of actions <a class="title-link" name="choose-a-group-of-actions" href="index.html#choose-a-group-of-actions"></a>
+</h2>
+<p>This <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> allows you to select a sequence of other <span class="terminology">actions<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> from a list of sequences.
+Nesting is fully supported.</p>
+<p>Each sequence is paired with a list of conditions. (See the <a href="conditions/index.html">conditions page</a> for available options and how multiple conditions are handled.) The first sequence whose conditions are all true will be run.
+An <em>optional</em> <code>default</code> sequence can be included which will be run only if none of the sequences from the list are run.</p>
+<p>An <em>optional</em> <code>alias</code> can be added to each of the sequences, excluding the <code>default</code> sequence.</p>
+<p>The <code>choose</code> <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> can be used like an “if/then/elseif/then…/else” statement. The first <code>conditions</code>/<code>sequence</code> pair is like the “if/then”, and can be used just by itself. Or additional pairs can be added, each of which is like an “elif/then”. And lastly, a <code>default</code> can be added, which would be like the “else.”</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Example with "if", "elif" and "else"</span>
+<span class="na">automation</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">triggers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s">input_boolean.simulate</span>
+        <span class="na">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">on"</span>
+    <span class="na">mode</span><span class="pi">:</span> <span class="s">restart</span>
+    <span class="na">actions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">choose</span><span class="pi">:</span>
+          <span class="c1"># IF morning</span>
+          <span class="pi">-</span> <span class="na">conditions</span><span class="pi">:</span>
+              <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">template</span>
+                <span class="na">value_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">now().hour</span><span class="nv"> </span><span class="s">&lt;</span><span class="nv"> </span><span class="s">9</span><span class="nv"> </span><span class="s">}}"</span>
+            <span class="na">sequence</span><span class="pi">:</span>
+              <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">script.sim_morning</span>
+          <span class="c1"># ELIF day</span>
+          <span class="pi">-</span> <span class="na">conditions</span><span class="pi">:</span>
+              <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">template</span>
+                <span class="na">value_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">now().hour</span><span class="nv"> </span><span class="s">&lt;</span><span class="nv"> </span><span class="s">18</span><span class="nv"> </span><span class="s">}}"</span>
+            <span class="na">sequence</span><span class="pi">:</span>
+              <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_off</span>
+                <span class="na">target</span><span class="pi">:</span>
+                  <span class="na">entity_id</span><span class="pi">:</span> <span class="s">light.living_room</span>
+              <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">script.sim_day</span>
+        <span class="c1"># ELSE night</span>
+        <span class="na">default</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_off</span>
+            <span class="na">target</span><span class="pi">:</span>
+              <span class="na">entity_id</span><span class="pi">:</span> <span class="s">light.kitchen</span>
+          <span class="pi">-</span> <span class="na">delay</span><span class="pi">:</span>
+              <span class="na">minutes</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">range(1,</span><span class="nv"> </span><span class="s">11)|random</span><span class="nv"> </span><span class="s">}}"</span>
+          <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_off</span>
+            <span class="na">target</span><span class="pi">:</span>
+              <span class="na">entity_id</span><span class="pi">:</span> <span class="s">all</span>
+</code></pre></div></div>
+<p><code>conditions</code> also accepts a <a href="conditions/index.html#template-condition-shorthand-notation">shorthand notation of a template condition</a>.
+For example:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">triggers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s">input_select.home_mode</span>
+    <span class="na">actions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">choose</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="na">conditions</span><span class="pi">:</span> <span class="pi">&gt;</span>
+              <span class="s">{{ trigger.to_state.state == 'Home' and</span>
+                 <span class="s">is_state('binary_sensor.all_clear', 'on') }}</span>
+            <span class="na">sequence</span><span class="pi">:</span>
+              <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">script.arrive_home</span>
+                <span class="na">data</span><span class="pi">:</span>
+                  <span class="na">ok</span><span class="pi">:</span> <span class="kc">true</span>
+          <span class="pi">-</span> <span class="na">conditions</span><span class="pi">:</span> <span class="pi">&gt;</span>
+              <span class="s">{{ trigger.to_state.state == 'Home' and</span>
+                 <span class="s">is_state('binary_sensor.all_clear', 'off') }}</span>
+            <span class="na">sequence</span><span class="pi">:</span>
+              <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">script.turn_on</span>
+                <span class="na">target</span><span class="pi">:</span>
+                  <span class="na">entity_id</span><span class="pi">:</span> <span class="s">script.flash_lights</span>
+              <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">script.arrive_home</span>
+                <span class="na">data</span><span class="pi">:</span>
+                  <span class="na">ok</span><span class="pi">:</span> <span class="kc">false</span>
+          <span class="pi">-</span> <span class="na">conditions</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">trigger.to_state.state</span><span class="nv"> </span><span class="s">==</span><span class="nv"> </span><span class="s">'Away'</span><span class="nv"> </span><span class="s">}}"</span>
+            <span class="na">sequence</span><span class="pi">:</span>
+              <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">script.left_home</span>
+</code></pre></div></div>
+<p>More <code>choose</code> can be used together. This is the case of an IF-IF.</p>
+<p>The following example shows how a single <span class="terminology">automation<span class="terminology-tooltip">Automations in Home Assistant allow you to automatically respond to things that happen in and around your home.<a class="terminology-link" href="../automation/index.html"> [Learn more]</a></span></span> can control entities that aren’t related to each other but have in common the same trigger.</p>
+<p>When the sun goes below the horizon, the <code>porch</code> and <code>garden</code> lights must turn on. If someone is watching the TV in the living room, there is a high chance that someone is in that room, therefore the living room lights have to turn on too. The same concept applies to the <code>studio</code> room.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Example with "if" and "if"</span>
+<span class="na">automation</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Turn</span><span class="nv"> </span><span class="s">lights</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">when</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sun</span><span class="nv"> </span><span class="s">gets</span><span class="nv"> </span><span class="s">dim</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">some</span><span class="nv"> </span><span class="s">room</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">occupied"</span>
+      <span class="na">triggers</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">numeric_state</span>
+          <span class="na">entity_id</span><span class="pi">:</span> <span class="s">sun.sun</span>
+          <span class="na">attribute</span><span class="pi">:</span> <span class="s">elevation</span>
+          <span class="na">below</span><span class="pi">:</span> <span class="m">4</span>
+      <span class="na">actions</span><span class="pi">:</span>
+        <span class="c1"># This must always apply</span>
+        <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_on</span>
+          <span class="na">data</span><span class="pi">:</span>
+            <span class="na">brightness</span><span class="pi">:</span> <span class="m">255</span>
+            <span class="na">color_temp</span><span class="pi">:</span> <span class="m">366</span>
+          <span class="na">target</span><span class="pi">:</span>
+            <span class="na">entity_id</span><span class="pi">:</span>
+              <span class="pi">-</span> <span class="s">light.porch</span>
+              <span class="pi">-</span> <span class="s">light.garden</span>
+        <span class="c1"># IF a entity is ON</span>
+        <span class="pi">-</span> <span class="na">choose</span><span class="pi">:</span>
+            <span class="pi">-</span> <span class="na">conditions</span><span class="pi">:</span>
+                <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+                  <span class="na">entity_id</span><span class="pi">:</span> <span class="s">binary_sensor.livingroom_tv</span>
+                  <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">on"</span>
+              <span class="na">sequence</span><span class="pi">:</span>
+                <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_on</span>
+                  <span class="na">data</span><span class="pi">:</span>
+                    <span class="na">brightness</span><span class="pi">:</span> <span class="m">255</span>
+                    <span class="na">color_temp</span><span class="pi">:</span> <span class="m">366</span>
+                  <span class="na">target</span><span class="pi">:</span>
+                    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">light.livingroom</span>
+         <span class="c1"># IF another entity not related to the previous, is ON</span>
+        <span class="pi">-</span> <span class="na">choose</span><span class="pi">:</span>
+            <span class="pi">-</span> <span class="na">conditions</span><span class="pi">:</span>
+                <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+                  <span class="na">entity_id</span><span class="pi">:</span> <span class="s">binary_sensor.studio_pc</span>
+                  <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">on"</span>
+              <span class="na">sequence</span><span class="pi">:</span>
+                <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_on</span>
+                  <span class="na">data</span><span class="pi">:</span>
+                    <span class="na">brightness</span><span class="pi">:</span> <span class="m">255</span>
+                    <span class="na">color_temp</span><span class="pi">:</span> <span class="m">366</span>
+                  <span class="na">target</span><span class="pi">:</span>
+                    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">light.studio</span>
+</code></pre></div></div>
+<h2>Grouping actions <a class="title-link" name="grouping-actions" href="index.html#grouping-actions"></a>
+</h2>
+<p>The <code>sequence</code> <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> allows you to group multiple <span class="terminology">actions<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span>
+together. Each action will be executed in order, meaning the next action will
+only be executed after the previous action has been completed.</p>
+<p>Grouping actions in a sequence can be useful when you want to be able to
+collapse related groups in the user interface for organizational purposes.</p>
+<p>Combined with the <a href="index.html#parallelizing-actions"><code>parallel</code></a> action, it can also be
+used to run multiple groups of actions in a sequence in parallel.</p>
+<p>In the example below, two separate groups of actions are executed in sequence,
+one for turning on devices, the other for sending notifications. Each group of
+actions is executed in order, this includes the actions in each group and the
+groups themselves. In total, four actions are executed, one after the other.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">triggers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s">binary_sensor.motion</span>
+        <span class="na">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">on"</span>
+    <span class="na">actions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Turn</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">devices"</span>
+        <span class="na">sequence</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_on</span>
+            <span class="na">target</span><span class="pi">:</span>
+              <span class="na">entity_id</span><span class="pi">:</span> <span class="s">light.ceiling</span>
+          <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">siren.turn_on</span>
+            <span class="na">target</span><span class="pi">:</span>
+              <span class="na">entity_id</span><span class="pi">:</span> <span class="s">siren.noise_maker</span>
+      <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Send</span><span class="nv"> </span><span class="s">notifications"</span>
+        <span class="na">sequence</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">notify.person1</span>
+            <span class="na">data</span><span class="pi">:</span>
+              <span class="na">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">The</span><span class="nv"> </span><span class="s">motion</span><span class="nv"> </span><span class="s">sensor</span><span class="nv"> </span><span class="s">was</span><span class="nv"> </span><span class="s">triggered!"</span>
+          <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">notify.person2</span>
+            <span class="na">data</span><span class="pi">:</span>
+              <span class="na">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Oh</span><span class="nv"> </span><span class="s">oh,</span><span class="nv"> </span><span class="s">someone</span><span class="nv"> </span><span class="s">triggered</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">motion</span><span class="nv"> </span><span class="s">sensor..."</span>
+</code></pre></div></div>
+<h2>Parallelizing actions <a class="title-link" name="parallelizing-actions" href="index.html#parallelizing-actions"></a>
+</h2>
+<p>By default, all sequences of <span class="terminology">actions<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> in Home Assistant run sequentially. This
+means the next <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> is started after the current action has been completed.</p>
+<p>This is not always needed, for example, if the sequence of actions doesn’t rely
+on each other and order doesn’t matter. For those cases, the <code>parallel</code> action
+can be used to run the <span class="terminology">actions<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> in the sequence in parallel, meaning all
+the <span class="terminology">actions<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> are started at the same time.</p>
+<p>The following example shows sending messages out at the same time (in parallel):</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">automation</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">triggers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s">binary_sensor.motion</span>
+        <span class="na">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">on"</span>
+    <span class="na">actions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">parallel</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">notify.person1</span>
+            <span class="na">data</span><span class="pi">:</span>
+              <span class="na">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">These</span><span class="nv"> </span><span class="s">messages</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">sent</span><span class="nv"> </span><span class="s">at</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">same</span><span class="nv"> </span><span class="s">time!"</span>
+          <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">notify.person2</span>
+            <span class="na">data</span><span class="pi">:</span>
+              <span class="na">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">These</span><span class="nv"> </span><span class="s">messages</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">sent</span><span class="nv"> </span><span class="s">at</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">same</span><span class="nv"> </span><span class="s">time!"</span>
+</code></pre></div></div>
+<p>It is also possible to run a group of actions sequentially inside the parallel
+actions. The example below demonstrates that:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">script</span><span class="pi">:</span>
+  <span class="na">example_script</span><span class="pi">:</span>
+    <span class="na">sequence</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">parallel</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="na">sequence</span><span class="pi">:</span>
+              <span class="pi">-</span> <span class="na">wait_for_trigger</span><span class="pi">:</span>
+                  <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">state</span>
+                    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">binary_sensor.motion</span>
+                    <span class="na">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">on"</span>
+              <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">notify.person1</span>
+                <span class="na">data</span><span class="pi">:</span>
+                  <span class="na">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">This</span><span class="nv"> </span><span class="s">message</span><span class="nv"> </span><span class="s">awaited</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">motion</span><span class="nv"> </span><span class="s">trigger"</span>
+          <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">notify.person2</span>
+            <span class="na">data</span><span class="pi">:</span>
+              <span class="na">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">I</span><span class="nv"> </span><span class="s">am</span><span class="nv"> </span><span class="s">sent</span><span class="nv"> </span><span class="s">immediately</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">do</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">await</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">above</span><span class="nv"> </span><span class="s">action!"</span>
+</code></pre></div></div>
+<div class="alert alert-warning">
+  <p class="alert-title"><iconify-icon inline icon="mdi:alert-outline"></iconify-icon> Warning</p>
+  <div class="alert-content">
+<p>Running <span class="terminology">actions<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> in parallel can be helpful in many cases, but use it with
+caution and only if you need it.</p>
+<p>There are some caveats (see below) when using parallel actions.</p>
+<p>While it sounds attractive to parallelize, most of the time, just the regular
+sequential <span class="terminology">actions<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> will work just fine.</p>
+  </div>
+</div>
+<p>Some of the caveats of running <span class="terminology">actions<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> in parallel:</p>
+<ul>
+<li>There is no order guarantee. The <span class="terminology">actions<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> will be started in parallel, but
+there is no guarantee that they will be completed in the same order.</li>
+<li>If one <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> fails or errors, the other <span class="terminology">actions<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> will keep running until
+they too have finished or errored.</li>
+<li>Variables created/modified in one parallelized <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> can conflict with variables
+from another parallelized <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span>. Make sure to give them distinct names to prevent that.</li>
+</ul>
+<h2>Stopping a script sequence <a class="title-link" name="stopping-a-script-sequence" href="index.html#stopping-a-script-sequence"></a>
+</h2>
+<p>It is possible to halt a script sequence at any point and return script responses
+using the <code>stop</code> <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span>.</p>
+<p>The <code>stop</code> <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> takes a text as input explaining the reason for halting the
+sequence. This text will be logged and shows up in the <span class="terminology">automations<span class="terminology-tooltip">Automations in Home Assistant allow you to automatically respond to things that happen in and around your home.<a class="terminology-link" href="../automation/index.html"> [Learn more]</a></span></span> and
+script traces.</p>
+<p><code>stop</code> can be useful to halt a script halfway through a sequence when,
+for example, a condition is not met.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">stop</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Stop</span><span class="nv"> </span><span class="s">running</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">rest</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sequence"</span>
+</code></pre></div></div>
+<p>To return a response from a script, use the <code>response_variable</code> option. This
+option expects the name of the variable that contains the data to return. The
+response data must contains a mapping of key/value pairs.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">stop</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Stop</span><span class="nv"> </span><span class="s">running</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">rest</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sequence"</span>
+  <span class="na">response_variable</span><span class="pi">:</span> <span class="s2">"</span><span class="s">my_response_variable"</span>
+</code></pre></div></div>
+<p>There is also an <code>error</code> option, to indicate we are stopping because of
+an unexpected error. It stops the sequence as well, but marks the <span class="terminology">automation<span class="terminology-tooltip">Automations in Home Assistant allow you to automatically respond to things that happen in and around your home.<a class="terminology-link" href="../automation/index.html"> [Learn more]</a></span></span>
+or script as failed to run.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">stop</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Well,</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">was</span><span class="nv"> </span><span class="s">unexpected!"</span>
+  <span class="na">error</span><span class="pi">:</span> <span class="kc">true</span>
+</code></pre></div></div>
+<h2>Continuing on error <a class="title-link" name="continuing-on-error" href="index.html#continuing-on-error"></a>
+</h2>
+<p>By default, a sequence of <span class="terminology">actions<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> will be halted when one of the <span class="terminology">actions<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> in
+that sequence encounters an error. The <span class="terminology">automation<span class="terminology-tooltip">Automations in Home Assistant allow you to automatically respond to things that happen in and around your home.<a class="terminology-link" href="../automation/index.html"> [Learn more]</a></span></span> or script will be halted,
+an error is logged, and the <span class="terminology">automation<span class="terminology-tooltip">Automations in Home Assistant allow you to automatically respond to things that happen in and around your home.<a class="terminology-link" href="../automation/index.html"> [Learn more]</a></span></span> or script run is marked as errored.</p>
+<p>Sometimes these errors are expected, for example, because you know the action
+you perform can be problematic at times, and it doesn’t matter if it fails.
+You can set <code>continue_on_error</code> for those cases on such an <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span>.</p>
+<p>The <code>continue_on_error</code> is available on all <span class="terminology">actions<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> and is set to
+<code>false</code>. You can set it to <code>true</code> if you’d like to continue the <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span>
+sequence, regardless of whether that <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> encounters an error.</p>
+<p>The example below shows the <code>continue_on_error</code> set on the first <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span>. If
+it encounters an error; it will continue to the next <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span>.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">If</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">one</span><span class="nv"> </span><span class="s">fails..."</span>
+  <span class="na">continue_on_error</span><span class="pi">:</span> <span class="kc">true</span>
+  <span class="na">action</span><span class="pi">:</span> <span class="s">notify.super_unreliable_service_provider</span>
+  <span class="na">data</span><span class="pi">:</span>
+    <span class="na">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">I'm</span><span class="nv"> </span><span class="s">going</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">error</span><span class="nv"> </span><span class="s">out..."</span>
+
+<span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">This</span><span class="nv"> </span><span class="s">one</span><span class="nv"> </span><span class="s">will</span><span class="nv"> </span><span class="s">still</span><span class="nv"> </span><span class="s">run!"</span>
+  <span class="na">action</span><span class="pi">:</span> <span class="s">persistent_notification.create</span>
+  <span class="na">data</span><span class="pi">:</span>
+    <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Hi</span><span class="nv"> </span><span class="s">there!"</span>
+    <span class="na">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">I'm</span><span class="nv"> </span><span class="s">fine..."</span>
+</code></pre></div></div>
+<p>Please note that <code>continue_on_error</code> will not suppress/ignore misconfiguration
+or errors that Home Assistant does not handle.</p>
+<h2>Disabling an action <a class="title-link" name="disabling-an-action" href="index.html#disabling-an-action"></a>
+</h2>
+<p>Every individual <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> in a sequence can be disabled, without removing it.
+To do so, add <code>enabled: false</code> to the <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span>. For example:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Example script with a disabled action</span>
+<span class="na">script</span><span class="pi">:</span>
+  <span class="na">example_script</span><span class="pi">:</span>
+    <span class="na">sequence</span><span class="pi">:</span>
+      <span class="c1"># This action will not run, as it is disabled.</span>
+      <span class="c1"># The message will not be sent.</span>
+      <span class="pi">-</span> <span class="na">enabled</span><span class="pi">:</span> <span class="kc">false</span>
+        <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Notify</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">ceiling</span><span class="nv"> </span><span class="s">light</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">being</span><span class="nv"> </span><span class="s">turned</span><span class="nv"> </span><span class="s">on"</span>
+        <span class="na">action</span><span class="pi">:</span> <span class="s">notify.notify</span>
+        <span class="na">data</span><span class="pi">:</span>
+          <span class="na">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Turning</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">ceiling</span><span class="nv"> </span><span class="s">light!"</span>
+
+      <span class="c1"># This action will run, as it is not disabled</span>
+      <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Turn</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">ceiling</span><span class="nv"> </span><span class="s">light"</span>
+        <span class="na">action</span><span class="pi">:</span> <span class="s">light.turn_on</span>
+        <span class="na">target</span><span class="pi">:</span>
+          <span class="na">entity_id</span><span class="pi">:</span> <span class="s">light.ceiling</span>
+</code></pre></div></div>
+<p>Actions can also be disabled based on limited templates or blueprint inputs.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">blueprint</span><span class="pi">:</span>
+  <span class="na">input</span><span class="pi">:</span>
+    <span class="na">input_boolean</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Boolean</span>
+      <span class="na">selector</span><span class="pi">:</span>
+        <span class="na">boolean</span><span class="pi">:</span>
+
+  <span class="na">actions</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">delay</span><span class="pi">:</span> <span class="s">0:35</span>
+      <span class="na">enabled</span><span class="pi">:</span> <span class="kt">!input</span> <span class="s">input_boolean</span>
+</code></pre></div></div>
+<h2>Respond to a conversation <a class="title-link" name="respond-to-a-conversation" href="index.html#respond-to-a-conversation"></a>
+</h2>
+<p>The <code>set_conversation_response</code> script <span class="terminology">action<span class="terminology-tooltip">Actions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called <em>sequence</em>.<a class="terminology-link" href="../automation/action/index.html"> [Learn more]</a></span></span> allows returning a custom response
+when an <span class="terminology">automation<span class="terminology-tooltip">Automations in Home Assistant allow you to automatically respond to things that happen in and around your home.<a class="terminology-link" href="../automation/index.html"> [Learn more]</a></span></span> is triggered by a conversation engine, for example a voice
+assistant. The conversation response can be templated.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Example of a templated conversation response resulting in "Testing 123"</span>
+<span class="pi">-</span> <span class="na">variables</span><span class="pi">:</span>
+    <span class="na">my_var</span><span class="pi">:</span> <span class="s2">"</span><span class="s">123"</span>
+<span class="pi">-</span> <span class="na">set_conversation_response</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">'Testing</span><span class="nv"> </span><span class="s">'</span><span class="nv"> </span><span class="s">~</span><span class="nv"> </span><span class="s">my_var</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div></div>
+<p>The response is handed to the conversation engine when the <span class="terminology">automation<span class="terminology-tooltip">Automations in Home Assistant allow you to automatically respond to things that happen in and around your home.<a class="terminology-link" href="../automation/index.html"> [Learn more]</a></span></span> finishes. If
+the <code>set_conversation_response</code> is executed multiple times, the most recent
+response will be handed to the conversation engine. To clear the response, set it
+to <code>None</code>:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># Example of a clearing a conversation response</span>
+<span class="na">set_conversation_response</span><span class="pi">:</span> <span class="s">~</span>
+</code></pre></div></div>
+<p>If the <span class="terminology">automation<span class="terminology-tooltip">Automations in Home Assistant allow you to automatically respond to things that happen in and around your home.<a class="terminology-link" href="../automation/index.html"> [Learn more]</a></span></span> was not triggered by a conversation engine, the response
+will not be used by anything.</p>
+
+
+  
+
+
+  
+<div class="material-card text feedback">
+  <h4>
+<iconify-icon inline icon="mdi:feedback" title="Feedback"></iconify-icon> <b> Help us improve our documentation</b><a href="index.html#feedback_section" class="title-link" name="feedback_section"></a>
+</h4>
+  Suggest an edit to this page, or provide/view feedback for this page.
+  <div class="links">
+    <ul aria-label="Page feedback options">
+    <li><a href="https://github.com/home-assistant/home-assistant.io/tree/current/source/_docs/scripts.markdown" target="_blank" title="Edit this page"><iconify-icon inline icon="mdi:edit"></iconify-icon> Edit</a></li>
+    
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues/new?template=feedback.yml&amp;url=https%3A%2F%2Fwww.home-assistant.io%2Fdocs%2Fscripts%2F&amp;version=2026.1.2&amp;labels=current" target="_blank" title="Provide feedback on this page"><iconify-icon inline icon="mdi:comment-edit-outline"></iconify-icon> Provide feedback</a></li>
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues?utf8=%E2%9C%93&amp;q=%22%2Fdocs%2Fscripts%2F%22&amp;in=body" target="_blank" title="View given feedback for this page"><iconify-icon inline icon="mdi:comment-text-multiple-outline"></iconify-icon> View given feedback</a></li>
+    
+  </ul>
+  </div>
+</div>
+
+
+</article>
+
+            
+          </div>
+
+
+          
+            
+              <aside id="sidebar" class="grid__item one-third desk-wide-one-quarter lap-one-whole palm-one-whole">
+            
+            <div class="grid">
+  
+
+
+
+
+  <section class="vertical-nav aside-module grid__item one-whole lap-one-half">
+  <div class="section">
+    <h1 class="title epsilon"><iconify-icon inline icon='mdi:bookshelf' title='Bookshelf'></iconify-icon> Documentation</h1>
+    <ul class="divided sidebar-menu">
+      <li>
+        <a  href='../index.html'>Overview </a>
+        |
+        <a  href='https://www.home-assistant.io/faq/'>FAQ </a>
+        |
+        <a  href='../glossary/index.html'>Glossary </a>
+      </li>
+
+      <li>
+  <iconify-icon icon="mdi:robot-happy"></iconify-icon> <a  href='../automation/index.html'>Automations </a>
+  
+  <ul>
+    <li>
+      <iconify-icon inline icon='mdi:robot-happy' title='Robot happy'></iconify-icon> <a  href='../automation/basics/index.html'>Basic automations </a>
+      
+    </li>
+    <li>
+      <iconify-icon inline icon='mdi:palette' title='Palette'></iconify-icon> <a  href='../scene/index.html'>Scenes </a>
+      
+    </li>
+    <li>
+      <iconify-icon inline icon='mdi:palette-swatch' title='Palette swatch'></iconify-icon> <a  href='../blueprint/index.html'>Blueprints </a>
+      
+    </li>
+    <li>
+      <iconify-icon inline icon='mdi:script-text' title='Script text'></iconify-icon> <a class='active' href='index.html'>Scripts </a>
+      
+      <ul>
+        <li><a  href='perform-actions/index.html'>Actions </a></li>
+        <li><a  href='conditions/index.html'>Conditions </a></li>
+      </ul>
+      
+    </li>
+  </ul>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> <a  href='https://www.home-assistant.io/dashboards'>Dashboards </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:microphone' title='Microphone'></iconify-icon> <a  href='https://www.home-assistant.io/voice_control/'>Voice assistants </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:category' title='Category'></iconify-icon> <a  href='../organizing/index.html'>Organization </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> <a  href='../energy/index.html'>Home energy management </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:update' title='Update'></iconify-icon> <a  href='https://www.home-assistant.io/common-tasks/general/'>Common tasks </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cogs' title='Cogs'></iconify-icon> <a  href='../configuration/index.html'>Advanced configuration </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:account-security' title='Account security'></iconify-icon> <a  href='../authentication/index.html'>Authentication </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:database' title='Database'></iconify-icon> <a  href='../backend/index.html'>Backend </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:palette' title='Palette'></iconify-icon> <a  href='../tools/index.html'>Tools and helpers </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cellphone' title='Cellphone'></iconify-icon> <a href="https://companion.home-assistant.io/docs">iOS and Android apps <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+</li>
+
+<li>
+  <iconify-icon inline icon='simple-icons:mqtt' title='Mqtt'></iconify-icon> <a  href='https://www.home-assistant.io/integrations/mqtt'>MQTT </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='bitcoin-icons:node-hardware-filled' title='Node hardware filled'></iconify-icon> Official hardware
+  <ul>
+    <li><a href="https://support.nabucasa.com/hc/categories/24638797677853">Home Assistant Green <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734620813469">Home Assistant Connect ZBT-1 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/29400540866973">Home Assistant Connect ZBT-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/28669861145885">Home Assistant Connect ZWA-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734575925149">Home Assistant Yellow <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24451727188125">Home Assistant Voice Preview Edition <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+  </ul>
+</li>
+
+    </ul>
+  </div>
+</section>
+
+
+
+  <section id="toc-module" class="aside-module grid__item one-whole lap-one-half">
+        <div class='section'>
+          <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+          <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="index.html#script-syntax">Script syntax</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#perform-an-action">Perform an action</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#activate-a-scene">Activate a scene</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#variables">Variables</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#scope-of-variables">Scope of variables</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#test-a-condition">Test a condition</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#wait-for-time-to-pass-delay">Wait for time to pass (delay)</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#wait">Wait</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#wait-for-a-template">Wait for a template</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#wait-for-a-trigger">Wait for a trigger</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#wait-timeout">Wait timeout</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#wait-variable">Wait variable</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#fire-an-event">Fire an event</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#raise-and-consume-custom-events">Raise and Consume Custom Events</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#repeat-a-group-of-actions">Repeat a group of actions</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#counted-repeat">Counted repeat</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#for-each">For each</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#while-loop">While loop</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#repeat-until">Repeat until</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#repeat-loop-variable">Repeat loop variable</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#if-then">If-then</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#choose-a-group-of-actions">Choose a group of actions</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#grouping-actions">Grouping actions</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#parallelizing-actions">Parallelizing actions</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#stopping-a-script-sequence">Stopping a script sequence</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#continuing-on-error">Continuing on error</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#disabling-an-action">Disabling an action</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#respond-to-a-conversation">Respond to a conversation</a></li>
+</ul>
+        </div>
+      </section></div>
+
+          </aside>
+          
+        </div>
+      </div>
+
+      <footer>
+        <div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item">
+      <div class="skyline grid">
+        <div class="skyline grid__item one-whole">
+          <div class="footer-skyline">
+          </div>
+        </div>
+      </div>
+      <div class="footer-nav grid">
+        <div class="company grid__item one-quarter lap-one-half palm-one-whole">
+          <div class="title">
+            <img
+              src="../../images/footer-logo-text.svg"
+              height="72"
+              alt="Home Assistant"
+            />
+          </div>
+          <p>
+            Home Assistant is a project from the <a href="https://www.openhomefoundation.org/">Open Home Foundation</a>, sponsored by <a href="https://www.nabucasa.com/">Nabu Casa</a>.
+          </p>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Join us and contribute!</h3>
+          <ul>
+            <li><a class="external-link" href="https://github.com/home-assistant/">GitHub repo <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://developers.home-assistant.io">Developers Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://design.home-assistant.io">Design Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://data.home-assistant.io">Data Science Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://community.home-assistant.io">Community Forum <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://creators.home-assistant.io/">Creator Network <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://works-with.home-assistant.io/">Works With Home Assistant <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a href="https://www.home-assistant.io/community">Our community</a></li>
+            <li><a href="https://www.home-assistant.io/help/reporting_issues/">Reporting issues</a></li>
+          </ul>
+          <h3>System status</h3>
+          <ul>
+            <li>
+              <a class="external-link"  href="https://alerts.home-assistant.io">Integration Alerts <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+            <li><a href="https://www.home-assistant.io/security/">Security Alerts</a></li>
+            <li>
+              <a class="external-link" href="https://status.home-assistant.io">System Status <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Companion apps</h3>
+          <ul>
+            <li><a class="external-link" href="https://apps.apple.com/app/id1099568401">iOS and Apple devices</a></li>
+            <li><a class="external-link" href="https://play.google.com/store/apps/details?id=io.homeassistant.companion.android">Android and Wear OS</a></li>
+            <li><a class="external-link" href="https://companion.home-assistant.io/">...and more!</a></li>
+          </ul>
+          <h3>Governance</h3>
+          <ul>
+            <li><a href="https://www.home-assistant.io/privacy/">Privacy Notices</a></li>
+            <li><a href="https://www.home-assistant.io/developers/cla/">Contributor License Agreement</a></li>
+            <li><a href="https://www.home-assistant.io/tos/">Terms of Service</a></li>
+            <li><a href="https://www.home-assistant.io/code_of_conduct/">Code of Conduct</a></li>
+            <li><a href="https://www.home-assistant.io/developers/credits/">Credits</a></li>
+            <li><a href="https://www.home-assistant.io/developers/license/">License</a></li>
+          </ul>
+        </div>
+
+        <div class="socials grid__item one-quarter lap-one-half palm-one-whole">
+
+          <h3>Follow us</h3>
+          <p><a class="external-link" href='https://newsletter.openhomefoundation.org/#/portal'>Sign up for our newsletter <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></p>
+          <div class="icons">
+            <a
+              rel="me"
+              href="https://youtube.com/@home_assistant"
+              title="YouTube"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:youtube"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://reddit.com/r/homeassistant"
+              title="Reddit"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:reddit"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://github.com/home-assistant"
+              title="GitHub"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:github"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://fosstodon.org/@homeassistant"
+              title="Mastodon"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:mastodon"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://bsky.app/profile/home-assistant.io"
+              title="Bluesky"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:bluesky"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://x.com/home_assistant"
+              title="X"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:x"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://www.facebook.com/homeassistantio"
+              title="Facebook"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:facebook"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.instagram.com/homeassistant/"
+              title="Instagram"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:instagram"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.linkedin.com/company/home-assistant"
+              title="LinkedIn"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:linkedin"></iconify-icon></a>
+          </div>
+
+          <div class="web-notice">
+            <p>
+              For partnership inquiries please check out <a href="https://works-with.home-assistant.io/">Works With Home Assistant</a>. For media, get in touch <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#6a070f0e030b2a051a0f040205070f0c051f040e0b1e0305044405180d">here</a>. For other questions, you can contact us <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#a8c0cdc4c4c7e8c0c7c5cd85c9dbdbc1dbdcc9c6dc86c1c7">here</a> (No technical support!)
+            </p>
+            <p>
+              Website powered by <a href="https://jekyllrb.com/">Jekyll</a><br />
+              Originally based on the <a href="https://github.com/coogie/oscailte">Oscailte theme</a>
+            </p>
+            <a href="https://www.netlify.com">
+              <img
+                src="../../images/frontpage/netlify.svg"
+                alt="Deploys by Netlify Badge"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+
+    </div>
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.3.1/lite-youtube.js" integrity="sha384-7o3d1sg8jSS1LMKzzIEucWtWFI1X4lFCC5gu2ylAgH3KmHcJgjTqp6LWfIvbbmf9" crossorigin="anonymous"></script>
+
+<script src="../../javascripts/terminology_tooltip.js@274cec0734bc752f0e5ea3d4e2e59858" type="text/javascript" defer></script>
+
+<script src="../../javascripts/prism.js@5d6619066a1fc5cd819a93c132b539ac" type="text/javascript" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3/dist/umd/index.min.js" integrity="sha384-f/IEhh8fvOc2ALU79emLlUqAYXyqlA/zYhM+g5GlWMk15QBjTXy05TtmfT1TbtV6" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  docsearch({
+    container: '#docsearch',
+    appId: 'FBHBYS3J0U',
+    indexName: 'home-assistant',
+    apiKey: "ba6f7e6d97b3d3d2f778978c742a47c6",
+  });
+  document.querySelector('.site-title').addEventListener('contextmenu', function (ev) {
+    ev.preventDefault();
+    document.location.assign("https://design.home-assistant.io/#brand/logo")
+  });
+</script>
+
+
+
+
+<script type="text/javascript">
+  {
+    const article = document.querySelector("article.post");
+    if (article) {
+      const iframes = article.querySelectorAll("iframe[data-src]");
+      let loaded = false;
+      if (iframes) {
+        document.addEventListener('mousemove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('touchmove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('scroll', loadLazyFrames, { passive: true, once: true });
+  
+        function loadLazyFrames() {
+          if (loaded) return;
+          loaded = true;
+  
+          iframes.forEach((iframe) => {
+            const src = iframe.getAttribute("data-src");
+            if (src) {
+              iframe.setAttribute("src", src);
+              iframe.removeAttribute("data-src");
+            }
+          });
+        }
+      }
+    }
+  }
+</script>
+
+  </body>
+</html>

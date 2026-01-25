@@ -1,0 +1,599 @@
+
+
+
+
+<!doctype html>
+  <!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Integrating your electricity grid - Home Assistant</title>
+    <meta name="author" content="Home Assistant">
+    <meta name="description" content="Learn how to add information about your electricity grid to Home Assistant home energy management.">
+    
+    <meta name="viewport" content="width=device-width">
+    <link rel="canonical" href="index.html">
+
+    <meta property="fb:app_id" content="338291289691179">
+    <meta property="og:title" content="Integrating your electricity grid">
+    <meta property="og:site_name" content="Home Assistant">
+    <meta property="og:url" content="https://www.home-assistant.io/docs/energy/electricity-grid/">
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="Learn how to add information about your electricity grid to Home Assistant home energy management.">
+    <meta property="og:image" content="https://www.home-assistant.io/images/default-social.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@home_assistant">
+    
+    <meta name="twitter:title" content="Integrating your electricity grid">
+    <meta name="twitter:description" content="Learn how to add information about your electricity grid to Home Assistant home energy management.">
+    <meta name="twitter:image" content="https://www.home-assistant.io/images/default-social.png">
+    <link rel="me" href="https://fosstodon.org/@homeassistant">
+
+    <link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3/dist/style.min.css" rel="stylesheet" />
+    <link href="../../../stylesheets/prism.css@8acb84bc0387c9548a63998fcfea0139.css" rel="stylesheet">
+    <link href="../../../stylesheets/screen.css@cef1bc5aeba0a8ce6d170a9aa21e8dd6.css" media="screen, projection, print" rel="stylesheet">
+    <link href="https://www.home-assistant.io/atom.xml" rel="alternate" title="Home Assistant" type="application/atom+xml">
+    <link rel='shortcut icon' href='../../../images/favicon.ico' />
+    <link rel='icon' type='image/png' href='../../../images/favicon-192x192.png' sizes='192x192' />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&amp;family=Instrument+Sans:ital,wdth,wght@0,99,400..700;1,99,400..700&amp;" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" integrity="sha384-GPb5RlngihS9H0z1D137JsvzmeZ7tCpWEF4t5YDoTZyMsPP8S7h7vFDh4XhheU83" crossorigin="anonymous"></script>
+  </head>
+
+  <body  class="documentation-page   ">
+    <header class='site-header '>
+      
+
+
+
+<div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item three-tenths lap-two-sixths palm-one-whole ha-title">
+      <a href="https://www.home-assistant.io/" class="site-title">
+        <div class="logo"></div>
+      </a>
+      <a class="release-date" href="https://www.home-assistant.io/blog/2026/01/07/release-20261/" title="Latest version 2026.1.2 released January 16, 2026">
+        2026.1.2
+      </a>
+    </div>
+
+    <div class="grid__item seven-tenths lap-four-sixths palm-one-whole">
+      <nav>
+        <input type="checkbox" id="toggle" />
+        <label
+          for="toggle"
+          class="toggle"
+          data-open="Main Menu"
+          data-close="⨉"
+        ></label>
+        <ul class="menu pull-right">
+          <li><a  href="https://www.home-assistant.io/installation/">Getting started</a></li>
+          <li>
+            <a class="active" href="../../index.html">Documentation <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/installation/"><iconify-icon inline icon='simple-icons:homeassistant' title='Homeassistant'></iconify-icon> Installation</a></li>
+              <li><a href="../../automation/index.html"><iconify-icon inline icon='mdi:robot-happy' title='Robot happy'></iconify-icon> Automations</a></li>
+              <li><a href="https://www.home-assistant.io/dashboards/"><iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> Dashboards</a></li>
+              <li><a href="https://www.home-assistant.io/voice_control/"><iconify-icon inline icon='mdi:comment-processing-outline' title='Comment processing outline'></iconify-icon> Voice assistants</a></li>
+              <li><a href="../../organizing/index.html"><iconify-icon inline icon='mdi:view-grid' title='View grid'></iconify-icon> Device organization</a></li>
+              <li><a href="../index.html"><iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> Energy management</a></li>
+              <li><a href="../../configuration/index.html"><iconify-icon inline icon='mdi:cog' title='Cog'></iconify-icon> Advanced configuration</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="index.html#">Our hardware <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/green/">Home Assistant Green</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zbt-2/">Connect ZBT-2</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zwa-2/">Connect ZWA-2</a></li>
+              <li><a href="https://www.home-assistant.io/voice-pe/">Voice Preview Edition</a></li>
+            </ul>
+          </li>
+          <li><a  href="https://www.home-assistant.io/integrations/">Integrations</a></li>
+          <li><a  href="https://www.home-assistant.io/blog/">Blog</a></li>
+          <li><a  href="https://www.home-assistant.io/help/">Need help?</a></li>
+          <li>
+            <div class="docsearch" id="docsearch"></div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    </header>
+
+    <div class="page-content">
+
+      
+
+      <div class="grid-wrapper">
+        <div class="grid grid-center">
+
+          <aside id="toc-bar" class="grid__item desk-wide-one-sixth">
+                <section class="aside-module grid__item one-whole">
+                  <div class='section'>
+                    <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+                    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="index.html#tariffs">Tariffs</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#hardware">Hardware</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#connect-to-your-meter">Connect to your meter</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#using-a-ct-clamp-sensor">Using a CT clamp sensor</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#data-provided-by-your-energy-provider">Data provided by your energy provider</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#manual-integration">Manual integration</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+                  </div>
+                </section>
+              </aside> 
+
+          
+          <div class="grid__item two-thirds desk-wide-seven-twelfths lap-one-whole palm-one-whole">
+          
+
+            
+              <article class="page">
+  
+  <header>
+    
+    
+      <div class="breadcrumbs">
+        <a href="https://www.home-assistant.io/">Home</a>
+        
+          
+            
+            ▸ <a href="../../index.html">Documentation</a>
+          
+        
+          
+            
+            ▸ <a href="../index.html">Energy</a>
+          
+        
+          
+            ▸ 
+          
+        
+      </div>
+    
+    <h1 class="title indent">
+      
+        Integrating your electricity grid
+      
+    </h1>
+  </header>
+  
+  
+  <p>Energy management is all about knowing how much energy you’re consuming, where it’s coming from and where it’s going.</p>
+<p>Almost all houses are connected to the electricity grid which provides the energy your home will need. The energy usage is being tracked by your energy meter and is billed to you by your energy provider. Energy prices can differ based on a schedule or change according to market price.</p>
+<img src="../../../images/docs/energy/grid.png" alt="Graphic showing energy flowing from the grid to Home Assistant." style="border: 0;box-shadow: none; display: block; max-height: 400px; margin: 0 auto;">
+<h2>Tariffs <a class="title-link" name="tariffs" href="index.html#tariffs"></a>
+</h2>
+<p>It has become popular for energy utilities to split the price of energy based on time of the day; this is done in order to incentivise consumers to shift their power needs towards times where the grid has lower loads. These periods of time are commonly referred to as Peak and Off Peak, exactly because they match periods of time where everyone is consuming energy (Peak) and periods of time where the energy is abundant but no one is using it (Off Peak). Therefore Peak energy is more expensive then Off Peak energy.</p>
+<p>If you want to split energy usage into multiple tariffs, <a href="../faq/index.html#split-consumption-by-tariffs">read this</a>.</p>
+<h2>Hardware <a class="title-link" name="hardware" href="index.html#hardware"></a>
+</h2>
+<p>Home Assistant will need to know the amount of energy flowing through your meter. This data can be tracked in various ways.</p>
+<h3>Connect to your meter <a class="title-link" name="connect-to-your-meter" href="index.html#connect-to-your-meter"></a>
+</h3>
+<p>The best way to get this data is directly from your electricity meter that sits between your house and the grid. In certain countries these meters contain standardized ways of reading out the information locally.</p>
+<h4>Connect using a P1 port <a class="title-link" name="connect-using-a-p1-port" href="index.html#connect-using-a-p1-port"></a>
+</h4>
+<p>The P1 port is a standardized port in the Netherlands, Belgium and Luxembourg. A P1 reader can connect to this port and receive real-time information.</p>
+<p>We have worked with creator <a href="https://www.zuidwijk.com" rel="external nofollow">Marcel Zuidwijk<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> to develop <a href="https://www.zuidwijk.com/product/slimmelezer-plus/" rel="external nofollow">SlimmeLezer+<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>. It’s an affordable P1 reader powered by <a href="https://esphome.io">ESPHome<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> that will seamlessly integrate this information in Home Assistant. It is being sold on <a href="https://www.zuidwijk.com/product/slimmelezer-plus/" rel="external nofollow">his website<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> and the firmware is open source <a href="https://github.com/zuidwijk/dsmr" rel="external nofollow">on GitHub<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>.</p>
+<p><img src="../../../images/docs/energy/slimmelezer.jpg" alt="Photo of SlimmeLezer attached to a smart electricity meter"></p>
+<h4>Connect via Zigbee Energy Profile <a class="title-link" name="connect-via-zigbee-energy-profile" href="index.html#connect-via-zigbee-energy-profile"></a>
+</h4>
+<p>The Zigbee Energy Profile is a wireless energy standard to provide real-time information about electricity usage. This standard is available in some meters in the US, UK, Canada, and Australia. This is not “normal” Zigbee as implemented by Home Assistant but requires special certified hardware and often requires that the Zigbee connection be provisioned by your utility. As such, your utility, assuming they support this at all, will have a list of currently supported hardware.</p>
+<p>The <a href="https://www.home-assistant.io/integrations/rainforest_eagle">Rainforest Automation Eagle</a> is one such device that implements this which supports a local API and is compatible with Home Assistant.</p>
+<h4>Reading the meter via a pulse counter <a class="title-link" name="reading-the-meter-via-a-pulse-counter" href="index.html#reading-the-meter-via-a-pulse-counter"></a>
+</h4>
+<p>Many meters, including older ones, have an LED that will flash whenever energy passes through it. For example, each flash is a 1/1000th kWh. By monitoring the time between flashes it’s possible to determine the energy consumption.</p>
+<p>We have developed <a href="https://github.com/klaasnicolaas/home-assistant-glow" rel="external nofollow">Home Assistant Glow<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>, an open source solution powered by ESPHome’s <a href="https://esphome.io/components/sensor/pulse_meter/">pulse meter sensor<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>. You put it on top of the activity LED of your electricity meter and it will bring your consumption into Home Assistant.</p>
+<p><img src="../../../images/docs/energy/home-assistant-glow.jpg" alt="Photo of Home Assistant Glow attached to an electricity meter"></p>
+<h4>Reading the meter via a IEC62056-21 <a class="title-link" name="reading-the-meter-via-a-iec62056-21" href="index.html#reading-the-meter-via-a-iec62056-21"></a>
+</h4>
+<p>The IEC62056-21 is a common protocol not only for electric meters. It uses an infrared port to read data.
+<a href="https://github.com/aquaticus" rel="external nofollow">Aquaticus<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> has created an <a href="https://community.home-assistant.io/t/555236">ESPHome component</a> for reading this data. <a href="https://aquaticus.info/meter.html" rel="external nofollow">PiggyMeter<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> is a complete project that allows easy installation.
+<img src="https://aquaticus.info/_images/meter_and_probe.png" alt="Photo of PiggyMeter attached to an electricity meter"></p>
+<h4>Using (Smart Message Language) interface <a class="title-link" name="using-smart-message-language-interface" href="index.html#using-smart-message-language-interface"></a>
+</h4>
+<p>In countries like Germany, SML (Smart Message Language) is used typically. ESPHome’s <a href="https://esphome.io/components/sml/">SML (Smart Message Language)<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> is one way to integrate it. If you prefer to integrate it via MQTT, <a href="https://github.com/spacemanspiff2007/sml2mqtt" rel="external nofollow">sml2mqtt<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> is another open source option.</p>
+<h4>Read the meter using an AI-on-the-edge-device <a class="title-link" name="read-the-meter-using-an-ai-on-the-edge-device" href="index.html#read-the-meter-using-an-ai-on-the-edge-device"></a>
+</h4>
+<p><a href="https://github.com/jomjol/AI-on-the-edge-device" rel="external nofollow">AI-on-the-edge-device<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> is a project running on an ESP32-CAM and can be fully integrated into Home Assistant using the Home Assistant discovery functionality of MQTT. It digitalizes your gas/water/electricity meter display and provides its data in various ways.</p>
+<p><img src="../../../images/docs/energy/ai-on-the-edge-device.jpg" alt="Photo of the AI-on-the-edge-device Workflow"></p>
+<h3>Using a CT clamp sensor <a class="title-link" name="using-a-ct-clamp-sensor" href="index.html#using-a-ct-clamp-sensor"></a>
+</h3>
+<p>Current transformer (CT) clamp sensors measure your energy usage by looking at the current passing through an electrical wire. This makes it possible to calculate the energy usage. In Home Assistant we have support for off-the-shelf CT clamp sensors or you can build your own.</p>
+<ul>
+<li>The off-the-shelf solution that we advise is the <a href="https://www.shelly.com/products/shelly-em-50a-clamp-1?tracking=A7FsiPIfUWsFpnfKHa8SRyUYLXjr2hPq" rel="external nofollow">Shelly EM<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>. The device has a local API, updates are pushed to Home Assistant and it has a high quality <a href="https://www.home-assistant.io/integrations/shelly/">integration</a>.</li>
+<li>You can build your own using ESPHome’s <a href="https://esphome.io/components/sensor/ct_clamp/">CT Clamp Current sensor<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> or energy meter sensors like the <a href="https://esphome.io/components/sensor/atm90e32/">ATM90E32<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>. For the DIY route, check out <a href="https://www.youtube.com/watch?v=n2XZzciz0s4" rel="external nofollow">this video by digiblur<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> to get started.</li>
+<li>Using a Raspberry Pi, you can use a CT clamp HAT from LeChacal called <a href="https://lechacal.com/docs/RPICT/Raspberrypi_Current_and_Temperature_Sensor_Adaptor/" rel="external nofollow">RPICT hats<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>. They can be stacked to expand the number of lines to monitor. They also provide Active, Apparent, and Reactive power and power factor for single-phase and three-phase installations. They integrate with Home Assistant using MQTT.</li>
+</ul>
+<p><em>Attention! Installing CT clamp sensor devices requires opening your electrical cabinet. This work should be done by someone familiar with electrical wiring and may require a licensed professional in some regions. Your qualified installer will know how to do this.</em></p>
+<p><em>Disclaimer: Some links in this section are affiliate links.</em></p>
+<h3>Data provided by your energy provider <a class="title-link" name="data-provided-by-your-energy-provider" href="index.html#data-provided-by-your-energy-provider"></a>
+</h3>
+<p>Some energy providers will provide you real-time information about your usage and have this data integrated into Home Assistant.</p>
+<h3>Manual integration <a class="title-link" name="manual-integration" href="index.html#manual-integration"></a>
+</h3>
+<p>If you manually integrate your sensors, for example, using the <a href="https://www.home-assistant.io/integrations/mqtt">MQTT</a> or <a href="https://www.home-assistant.io/integrations/template">Template</a> integrations: Make sure you set and provide the <code>device_class</code>, <code>state_class</code>, and <code>unit_of_measurement</code> for those sensors.</p>
+<h3>Troubleshooting <a class="title-link" name="troubleshooting" href="index.html#troubleshooting"></a>
+</h3>
+<p>If you are unable to select your energy or power sensor in the grid consumption drop-down, make sure that its value is being recorded in the Recorder settings.</p>
+<p><a href="https://www.home-assistant.io/integrations/#energy">Energy integrations</a></p>
+<p><em>Disclaimer: Some links on this page are affiliate links helping support the Home Assistant project.</em></p>
+
+
+  
+
+
+  
+<div class="material-card text feedback">
+  <h4>
+<iconify-icon inline icon="mdi:feedback" title="Feedback"></iconify-icon> <b> Help us improve our documentation</b><a href="index.html#feedback_section" class="title-link" name="feedback_section"></a>
+</h4>
+  Suggest an edit to this page, or provide/view feedback for this page.
+  <div class="links">
+    <ul aria-label="Page feedback options">
+    <li><a href="https://github.com/home-assistant/home-assistant.io/tree/current/source/_docs/energy/electricity-grid.markdown" target="_blank" title="Edit this page"><iconify-icon inline icon="mdi:edit"></iconify-icon> Edit</a></li>
+    
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues/new?template=feedback.yml&amp;url=https%3A%2F%2Fwww.home-assistant.io%2Fdocs%2Fenergy%2Felectricity-grid%2F&amp;version=2026.1.2&amp;labels=current" target="_blank" title="Provide feedback on this page"><iconify-icon inline icon="mdi:comment-edit-outline"></iconify-icon> Provide feedback</a></li>
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues?utf8=%E2%9C%93&amp;q=%22%2Fdocs%2Fenergy%2Felectricity-grid%2F%22&amp;in=body" target="_blank" title="View given feedback for this page"><iconify-icon inline icon="mdi:comment-text-multiple-outline"></iconify-icon> View given feedback</a></li>
+    
+  </ul>
+  </div>
+</div>
+
+
+</article>
+
+            
+          </div>
+
+
+          
+            
+              <aside id="sidebar" class="grid__item one-third desk-wide-one-quarter lap-one-whole palm-one-whole">
+            
+            <div class="grid">
+  
+
+
+
+
+  <section class="vertical-nav aside-module grid__item one-whole lap-one-half">
+  <div class="section">
+    <h1 class="title epsilon"><iconify-icon inline icon='mdi:bookshelf' title='Bookshelf'></iconify-icon> Documentation</h1>
+    <ul class="divided sidebar-menu">
+      <li>
+        <a  href='../../index.html'>Overview </a>
+        |
+        <a  href='https://www.home-assistant.io/faq/'>FAQ </a>
+        |
+        <a  href='../../glossary/index.html'>Glossary </a>
+      </li>
+
+      <li>
+  <iconify-icon icon="mdi:robot-happy"></iconify-icon> <a  href='../../automation/index.html'>Automations </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> <a  href='https://www.home-assistant.io/dashboards'>Dashboards </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:microphone' title='Microphone'></iconify-icon> <a  href='https://www.home-assistant.io/voice_control/'>Voice assistants </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:category' title='Category'></iconify-icon> <a  href='../../organizing/index.html'>Organization </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> <a  href='../index.html'>Home energy management </a>
+  
+  <ul>
+    <li><a class='active' href='index.html'>Electricity grid </a></li>
+    <li><a  href='../solar-panels/index.html'>Solar panels </a></li>
+    <li><a  href='../individual-devices/index.html'>Individual devices </a></li>
+    <li><a  href='../faq/index.html'>FAQ </a></li>
+  </ul>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:update' title='Update'></iconify-icon> <a  href='https://www.home-assistant.io/common-tasks/general/'>Common tasks </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cogs' title='Cogs'></iconify-icon> <a  href='../../configuration/index.html'>Advanced configuration </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:account-security' title='Account security'></iconify-icon> <a  href='../../authentication/index.html'>Authentication </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:database' title='Database'></iconify-icon> <a  href='../../backend/index.html'>Backend </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:palette' title='Palette'></iconify-icon> <a  href='../../tools/index.html'>Tools and helpers </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cellphone' title='Cellphone'></iconify-icon> <a href="https://companion.home-assistant.io/docs">iOS and Android apps <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+</li>
+
+<li>
+  <iconify-icon inline icon='simple-icons:mqtt' title='Mqtt'></iconify-icon> <a  href='https://www.home-assistant.io/integrations/mqtt'>MQTT </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='bitcoin-icons:node-hardware-filled' title='Node hardware filled'></iconify-icon> Official hardware
+  <ul>
+    <li><a href="https://support.nabucasa.com/hc/categories/24638797677853">Home Assistant Green <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734620813469">Home Assistant Connect ZBT-1 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/29400540866973">Home Assistant Connect ZBT-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/28669861145885">Home Assistant Connect ZWA-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734575925149">Home Assistant Yellow <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24451727188125">Home Assistant Voice Preview Edition <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+  </ul>
+</li>
+
+    </ul>
+  </div>
+</section>
+
+
+
+  <section id="toc-module" class="aside-module grid__item one-whole lap-one-half">
+        <div class='section'>
+          <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+          <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="index.html#tariffs">Tariffs</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#hardware">Hardware</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#connect-to-your-meter">Connect to your meter</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#using-a-ct-clamp-sensor">Using a CT clamp sensor</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#data-provided-by-your-energy-provider">Data provided by your energy provider</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#manual-integration">Manual integration</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+        </div>
+      </section></div>
+
+          </aside>
+          
+        </div>
+      </div>
+
+      <footer>
+        <div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item">
+      <div class="skyline grid">
+        <div class="skyline grid__item one-whole">
+          <div class="footer-skyline">
+          </div>
+        </div>
+      </div>
+      <div class="footer-nav grid">
+        <div class="company grid__item one-quarter lap-one-half palm-one-whole">
+          <div class="title">
+            <img
+              src="../../../images/footer-logo-text.svg"
+              height="72"
+              alt="Home Assistant"
+            />
+          </div>
+          <p>
+            Home Assistant is a project from the <a href="https://www.openhomefoundation.org/">Open Home Foundation</a>, sponsored by <a href="https://www.nabucasa.com/">Nabu Casa</a>.
+          </p>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Join us and contribute!</h3>
+          <ul>
+            <li><a class="external-link" href="https://github.com/home-assistant/">GitHub repo <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://developers.home-assistant.io">Developers Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://design.home-assistant.io">Design Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://data.home-assistant.io">Data Science Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://community.home-assistant.io">Community Forum <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://creators.home-assistant.io/">Creator Network <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://works-with.home-assistant.io/">Works With Home Assistant <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a href="https://www.home-assistant.io/community">Our community</a></li>
+            <li><a href="https://www.home-assistant.io/help/reporting_issues/">Reporting issues</a></li>
+          </ul>
+          <h3>System status</h3>
+          <ul>
+            <li>
+              <a class="external-link"  href="https://alerts.home-assistant.io">Integration Alerts <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+            <li><a href="https://www.home-assistant.io/security/">Security Alerts</a></li>
+            <li>
+              <a class="external-link" href="https://status.home-assistant.io">System Status <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Companion apps</h3>
+          <ul>
+            <li><a class="external-link" href="https://apps.apple.com/app/id1099568401">iOS and Apple devices</a></li>
+            <li><a class="external-link" href="https://play.google.com/store/apps/details?id=io.homeassistant.companion.android">Android and Wear OS</a></li>
+            <li><a class="external-link" href="https://companion.home-assistant.io/">...and more!</a></li>
+          </ul>
+          <h3>Governance</h3>
+          <ul>
+            <li><a href="https://www.home-assistant.io/privacy/">Privacy Notices</a></li>
+            <li><a href="https://www.home-assistant.io/developers/cla/">Contributor License Agreement</a></li>
+            <li><a href="https://www.home-assistant.io/tos/">Terms of Service</a></li>
+            <li><a href="https://www.home-assistant.io/code_of_conduct/">Code of Conduct</a></li>
+            <li><a href="https://www.home-assistant.io/developers/credits/">Credits</a></li>
+            <li><a href="https://www.home-assistant.io/developers/license/">License</a></li>
+          </ul>
+        </div>
+
+        <div class="socials grid__item one-quarter lap-one-half palm-one-whole">
+
+          <h3>Follow us</h3>
+          <p><a class="external-link" href='https://newsletter.openhomefoundation.org/#/portal'>Sign up for our newsletter <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></p>
+          <div class="icons">
+            <a
+              rel="me"
+              href="https://youtube.com/@home_assistant"
+              title="YouTube"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:youtube"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://reddit.com/r/homeassistant"
+              title="Reddit"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:reddit"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://github.com/home-assistant"
+              title="GitHub"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:github"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://fosstodon.org/@homeassistant"
+              title="Mastodon"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:mastodon"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://bsky.app/profile/home-assistant.io"
+              title="Bluesky"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:bluesky"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://x.com/home_assistant"
+              title="X"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:x"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://www.facebook.com/homeassistantio"
+              title="Facebook"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:facebook"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.instagram.com/homeassistant/"
+              title="Instagram"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:instagram"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.linkedin.com/company/home-assistant"
+              title="LinkedIn"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:linkedin"></iconify-icon></a>
+          </div>
+
+          <div class="web-notice">
+            <p>
+              For partnership inquiries please check out <a href="https://works-with.home-assistant.io/">Works With Home Assistant</a>. For media, get in touch <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#543931303d35143b24313a3c3b3931323b213a3035203d3b3a7a3b2633">here</a>. For other questions, you can contact us <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#4d25282121220d25222028602c3e3e243e392c2339632422">here</a> (No technical support!)
+            </p>
+            <p>
+              Website powered by <a href="https://jekyllrb.com/">Jekyll</a><br />
+              Originally based on the <a href="https://github.com/coogie/oscailte">Oscailte theme</a>
+            </p>
+            <a href="https://www.netlify.com">
+              <img
+                src="../../../images/frontpage/netlify.svg"
+                alt="Deploys by Netlify Badge"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+
+    </div>
+    <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.3.1/lite-youtube.js" integrity="sha384-7o3d1sg8jSS1LMKzzIEucWtWFI1X4lFCC5gu2ylAgH3KmHcJgjTqp6LWfIvbbmf9" crossorigin="anonymous"></script>
+
+<script src="../../../javascripts/terminology_tooltip.js@274cec0734bc752f0e5ea3d4e2e59858" type="text/javascript" defer></script>
+
+<script src="../../../javascripts/prism.js@5d6619066a1fc5cd819a93c132b539ac" type="text/javascript" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3/dist/umd/index.min.js" integrity="sha384-f/IEhh8fvOc2ALU79emLlUqAYXyqlA/zYhM+g5GlWMk15QBjTXy05TtmfT1TbtV6" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  docsearch({
+    container: '#docsearch',
+    appId: 'FBHBYS3J0U',
+    indexName: 'home-assistant',
+    apiKey: "ba6f7e6d97b3d3d2f778978c742a47c6",
+  });
+  document.querySelector('.site-title').addEventListener('contextmenu', function (ev) {
+    ev.preventDefault();
+    document.location.assign("https://design.home-assistant.io/#brand/logo")
+  });
+</script>
+
+
+
+
+<script type="text/javascript">
+  {
+    const article = document.querySelector("article.post");
+    if (article) {
+      const iframes = article.querySelectorAll("iframe[data-src]");
+      let loaded = false;
+      if (iframes) {
+        document.addEventListener('mousemove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('touchmove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('scroll', loadLazyFrames, { passive: true, once: true });
+  
+        function loadLazyFrames() {
+          if (loaded) return;
+          loaded = true;
+  
+          iframes.forEach((iframe) => {
+            const src = iframe.getAttribute("data-src");
+            if (src) {
+              iframe.setAttribute("src", src);
+              iframe.removeAttribute("data-src");
+            }
+          });
+        }
+      }
+    }
+  }
+</script>
+
+  </body>
+</html>

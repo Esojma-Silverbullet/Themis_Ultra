@@ -1,0 +1,2235 @@
+
+
+
+
+<!doctype html>
+  <!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Templating - Home Assistant</title>
+    <meta name="author" content="Home Assistant">
+    <meta name="description" content="Instructions on how to use the templating feature of Home Assistant.">
+    
+    <meta name="viewport" content="width=device-width">
+    <link rel="canonical" href="templating/index.html">
+
+    <meta property="fb:app_id" content="338291289691179">
+    <meta property="og:title" content="Templating">
+    <meta property="og:site_name" content="Home Assistant">
+    <meta property="og:url" content="https://www.home-assistant.io/docs/configuration/templating/">
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="Instructions on how to use the templating feature of Home Assistant.">
+    <meta property="og:image" content="https://www.home-assistant.io/images/default-social.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@home_assistant">
+    
+    <meta name="twitter:title" content="Templating">
+    <meta name="twitter:description" content="Instructions on how to use the templating feature of Home Assistant.">
+    <meta name="twitter:image" content="https://www.home-assistant.io/images/default-social.png">
+    <link rel="me" href="https://fosstodon.org/@homeassistant">
+
+    <link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3/dist/style.min.css" rel="stylesheet" />
+    <link href="../../stylesheets/prism.css@8acb84bc0387c9548a63998fcfea0139.css" rel="stylesheet">
+    <link href="../../stylesheets/screen.css@cef1bc5aeba0a8ce6d170a9aa21e8dd6.css" media="screen, projection, print" rel="stylesheet">
+    <link href="https://www.home-assistant.io/atom.xml" rel="alternate" title="Home Assistant" type="application/atom+xml">
+    <link rel='shortcut icon' href='../../images/favicon.ico' />
+    <link rel='icon' type='image/png' href='../../images/favicon-192x192.png' sizes='192x192' />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&amp;family=Instrument+Sans:ital,wdth,wght@0,99,400..700;1,99,400..700&amp;" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" integrity="sha384-GPb5RlngihS9H0z1D137JsvzmeZ7tCpWEF4t5YDoTZyMsPP8S7h7vFDh4XhheU83" crossorigin="anonymous"></script>
+  </head>
+
+  <body  class="documentation-page   ">
+    <header class='site-header '>
+      
+
+
+
+<div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item three-tenths lap-two-sixths palm-one-whole ha-title">
+      <a href="https://www.home-assistant.io/" class="site-title">
+        <div class="logo"></div>
+      </a>
+      <a class="release-date" href="https://www.home-assistant.io/blog/2026/01/07/release-20261/" title="Latest version 2026.1.0 released January  7, 2026">
+        2026.1.0
+      </a>
+    </div>
+
+    <div class="grid__item seven-tenths lap-four-sixths palm-one-whole">
+      <nav>
+        <input type="checkbox" id="toggle" />
+        <label
+          for="toggle"
+          class="toggle"
+          data-open="Main Menu"
+          data-close="⨉"
+        ></label>
+        <ul class="menu pull-right">
+          <li><a  href="https://www.home-assistant.io/installation/">Getting started</a></li>
+          <li>
+            <a class="active" href="../index.html">Documentation <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/installation/"><iconify-icon inline icon='simple-icons:homeassistant' title='Homeassistant'></iconify-icon> Installation</a></li>
+              <li><a href="../automation/index.html"><iconify-icon inline icon='mdi:robot-happy' title='Robot happy'></iconify-icon> Automations</a></li>
+              <li><a href="https://www.home-assistant.io/dashboards/"><iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> Dashboards</a></li>
+              <li><a href="https://www.home-assistant.io/voice_control/"><iconify-icon inline icon='mdi:comment-processing-outline' title='Comment processing outline'></iconify-icon> Voice assistants</a></li>
+              <li><a href="../organizing/index.html"><iconify-icon inline icon='mdi:view-grid' title='View grid'></iconify-icon> Device organization</a></li>
+              <li><a href="../energy/index.html"><iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> Energy management</a></li>
+              <li><a href="index.html"><iconify-icon inline icon='mdi:cog' title='Cog'></iconify-icon> Advanced configuration</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="templating.1.html#">Our hardware <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/green/">Home Assistant Green</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zbt-2/">Connect ZBT-2</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zwa-2/">Connect ZWA-2</a></li>
+              <li><a href="https://www.home-assistant.io/voice-pe/">Voice Preview Edition</a></li>
+            </ul>
+          </li>
+          <li><a  href="https://www.home-assistant.io/integrations/">Integrations</a></li>
+          <li><a  href="https://www.home-assistant.io/blog/">Blog</a></li>
+          <li><a  href="https://www.home-assistant.io/help/">Need help?</a></li>
+          <li>
+            <div class="docsearch" id="docsearch"></div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    </header>
+
+    <div class="page-content">
+
+      
+
+      <div class="grid-wrapper">
+        <div class="grid grid-center">
+
+          <aside id="toc-bar" class="grid__item desk-wide-one-sixth">
+                <section class="aside-module grid__item one-whole">
+                  <div class='section'>
+                    <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+                    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="templating.1.html#building-templates">Building templates</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="templating.1.html#important-template-rules">Important template rules</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#enabled-jinja-extensions">Enabled Jinja extensions</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#reusing-templates">Reusing templates</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="templating.1.html#home-assistant-template-extensions">Home Assistant template extensions</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="templating.1.html#limited-templates">Limited templates</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#this">This</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#states">States</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#attributes">Attributes</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#state-translated">State translated</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#working-with-groups">Working with groups</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#entities">Entities</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#entities-examples">Entities examples</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#devices">Devices</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#config-entries">Config entries</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#floors">Floors</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#areas">Areas</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#entities-for-an-integration">Entities for an integration</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#labels">Labels</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#issues">Issues</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#immediate-if-iif">Immediate if (iif)</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#time">Time</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#tofrom-json">To/From JSON</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#tofrom-json-examples">To/From JSON examples</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#is-defined">Is defined</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#version">Version</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#distance">Distance</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#contains">Contains</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#numeric-functions-and-filters">Numeric functions and filters</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#complex-type-checking">Complex type checking</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#type-conversions">Type conversions</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#iterating-multiple-objects">Iterating multiple objects</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#functions-and-filters-to-process-raw-data">Functions and filters to process raw data</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#string-filters">String filters</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#hashing">Hashing</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#regular-expressions">Regular expressions</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#shuffling">Shuffling</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#flatten-a-list-of-lists">Flatten a list of lists</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#find-common-elements-between-lists">Find common elements between lists</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#find-elements-in-first-list-not-in-second-list">Find elements in first list not in second list</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#find-elements-that-are-in-either-list-but-not-in-both">Find elements that are in either list but not in both</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#combine-all-unique-elements-from-two-lists">Combine all unique elements from two lists</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#combining-dictionaries">Combining dictionaries</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#working-with-macros">Working with macros</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="templating.1.html#merge-action-responses">Merge action responses</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="templating.1.html#example">Example</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#example-how-to-sort">Example how to sort</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#example-merge-calendar-action-response">Example merge calendar action response</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#example-non-list-action-responses">Example non-list action responses</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="templating.1.html#processing-incoming-data">Processing incoming data</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="templating.1.html#using-templates-with-the-mqtt-integration">Using templates with the MQTT integration</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#determining-types">Determining types</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="templating.1.html#some-more-things-to-keep-in-mind">Some more things to keep in mind</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="templating.1.html#entity_id-that-begins-with-a-number">entity_id that begins with a number</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#priority-of-operators">Priority of operators</a></li>
+</ul>
+</li>
+</ul>
+                  </div>
+                </section>
+              </aside> 
+
+          
+          <div class="grid__item two-thirds desk-wide-seven-twelfths lap-one-whole palm-one-whole">
+          
+
+            
+              <article class="page">
+  
+  <header>
+    
+    
+      <div class="breadcrumbs">
+        <a href="https://www.home-assistant.io/">Home</a>
+        
+          
+            
+            ▸ <a href="../index.html">Documentation</a>
+          
+        
+          
+            
+            ▸ <a href="index.html">Configuration</a>
+          
+        
+          
+            ▸ 
+          
+        
+      </div>
+    
+    <h1 class="title indent">
+      
+        Templating
+      
+    </h1>
+  </header>
+  
+  
+  <p>This is an advanced feature of Home Assistant. You’ll need a basic understanding of:</p>
+<ul>
+<li>
+<a href="https://www.home-assistant.io/developers/architecture/">Home Assistant architecture</a>, especially states.</li>
+<li>The <a href="https://www.home-assistant.io/topics/state_object/">State object</a>.</li>
+</ul>
+<p>Templating is a powerful feature that allows you to control information going into and out of the system. It is used for:</p>
+<ul>
+<li>Formatting outgoing messages in, for example, the <a href="https://www.home-assistant.io/integrations/notify/">notify</a> platforms and <a href="https://www.home-assistant.io/integrations/alexa/">Alexa</a> integration.</li>
+<li>Process incoming data from sources that provide raw data, like <a href="templating/index.html#using-templates-with-the-mqtt-integration">MQTT</a>, <a href="https://www.home-assistant.io/integrations/rest/"><code>rest</code> sensor</a> or the <a href="https://www.home-assistant.io/integrations/sensor.command_line/"><code>command_line</code> sensor</a>.</li>
+<li>
+<a href="../automation/templating/index.html">Automation Templating</a>.</li>
+</ul>
+<h2>Building templates <a class="title-link" name="building-templates" href="templating.1.html#building-templates"></a>
+</h2>
+<p>Templating in Home Assistant is powered by the <a href="https://palletsprojects.com/p/jinja" rel="external nofollow">Jinja2<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> templating engine. This means that we are using their syntax and make some custom Home Assistant variables available to templates during rendering. Jinja2 supports a wide variety of operations:</p>
+<ul>
+<li><a href="https://jinja.palletsprojects.com/en/latest/templates/#math" rel="external nofollow">Mathematical operation<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a></li>
+<li><a href="https://jinja.palletsprojects.com/en/latest/templates/#comparisons" rel="external nofollow">Comparisons<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a></li>
+<li><a href="https://jinja.palletsprojects.com/en/latest/templates/#logic" rel="external nofollow">Logic<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a></li>
+</ul>
+<p>We will not go over the basics of the syntax, as Jinja2 does a great job of this in their <a href="https://jinja.palletsprojects.com/en/latest/templates/" rel="external nofollow">templates documentation<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>.</p>
+<p>The frontend has a <a href="https://my.home-assistant.io/redirect/developer_template" class="my" target="_blank">template editor tool</a> to help develop and debug templates. Navigate to <a href="https://my.home-assistant.io/redirect/developer_template" class="my" target="_blank">Developer Tools &gt; Template</a>, create your template in the <em>Template editor</em> and check the results on the right.</p>
+<p>Templates can get big pretty fast. To keep a clear overview, consider using YAML multiline strings to define your templates:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">script</span><span class="pi">:</span>
+  <span class="na">msg_who_is_home</span><span class="pi">:</span>
+    <span class="na">sequence</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">notify.notify</span>
+        <span class="na">data</span><span class="pi">:</span>
+          <span class="na">message</span><span class="pi">:</span> <span class="pi">&gt;</span>
+            <span class="s">{% if is_state('device_tracker.paulus', 'home') %}</span>
+              <span class="s">Ha, Paulus is home!</span>
+            <span class="s">{% else %}</span>
+              <span class="s">Paulus is at {{ states('device_tracker.paulus') }}.</span>
+            <span class="s">{% endif %}</span>
+</code></pre></div></div>
+<h3>Important template rules <a class="title-link" name="important-template-rules" href="templating.1.html#important-template-rules"></a>
+</h3>
+<p>There are a few very important rules to remember when adding templates to YAML:</p>
+<ol>
+<li>You <strong>must</strong> surround single-line templates with double quotes (<code>"</code>) or single quotes (<code>'</code>).</li>
+<li>It is advised that you prepare for undefined variables by using <code>if ... is not none</code> or the <a href="https://jinja.palletsprojects.com/en/latest/templates/#jinja-filters.default" rel="external nofollow"><code>default</code> filter<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>, or both.</li>
+<li>It is advised that when comparing numbers, you convert the number(s) to a <a href="https://jinja.palletsprojects.com/en/latest/templates/#jinja-filters.float" rel="external nofollow"><code>float</code><iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> or an <a href="https://jinja.palletsprojects.com/en/latest/templates/#jinja-filters.int" rel="external nofollow"><code>int</code><iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> by using the respective <a href="https://jinja.palletsprojects.com/en/latest/templates/#list-of-builtin-filters" rel="external nofollow">filter<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>.</li>
+<li>While the <a href="https://jinja.palletsprojects.com/en/latest/templates/#jinja-filters.float" rel="external nofollow"><code>float</code><iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> and <a href="https://jinja.palletsprojects.com/en/latest/templates/#jinja-filters.int" rel="external nofollow"><code>int</code><iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> filters do allow a default fallback value if the conversion is unsuccessful, they do not provide the ability to catch undefined variables.</li>
+</ol>
+<p>Remembering these simple rules will help save you from many headaches and endless hours of frustration when using automation templates.</p>
+<h3>Enabled Jinja extensions <a class="title-link" name="enabled-jinja-extensions" href="templating.1.html#enabled-jinja-extensions"></a>
+</h3>
+<p>Jinja supports a set of language extensions that add new functionality to the language.
+To improve the experience of writing Jinja templates, we have enabled the following
+extensions:</p>
+<ul>
+<li>
+<a href="https://jinja.palletsprojects.com/en/stable/extensions/#loop-controls" rel="external nofollow">Loop Controls<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> (<code>break</code> and <code>continue</code>)</li>
+<li>
+<a href="https://jinja.palletsprojects.com/en/stable/extensions/#expression-statement" rel="external nofollow">Expression Statement<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> (<code>do</code>)</li>
+</ul>
+<h3>Reusing templates <a class="title-link" name="reusing-templates" href="templating.1.html#reusing-templates"></a>
+</h3>
+<p>You can write reusable Jinja templates by adding them to a <code>custom_templates</code> folder under your
+configuration directory. All template files must have the <code>.jinja</code> extension and be less than 5MiB.
+Templates in this folder will be loaded at startup. To reload the templates without
+restarting Home Assistant, invoke the <a href="https://my.home-assistant.io/redirect/developer_call_service?service=homeassistant.reload_custom_templates" class="my" target="_blank"><code>homeassistant.reload_custom_templates</code></a> action.</p>
+<p>Once the templates are loaded, Jinja <a href="https://jinja.palletsprojects.com/en/3.0.x/templates/#include" rel="external nofollow">includes<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> and <a href="https://jinja.palletsprojects.com/en/3.0.x/templates/#import" rel="external nofollow">imports<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> will work
+using <code>config/custom_templates</code> as the base directory.</p>
+<p>For example, you might define a macro in a template in <code>config/custom_templates/formatter.jinja</code>:</p>
+<div class="language-jinja highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="jinja"><span class="cp">{%</span> <span class="k">macro</span> <span class="nv">format_entity</span><span class="p">(</span><span class="nv">entity_id</span><span class="p">)</span> <span class="cp">%}</span>
+<span class="cp">{{</span> <span class="nv">state_attr</span><span class="p">(</span><span class="nv">entity_id</span><span class="p">,</span> <span class="s1">'friendly_name'</span><span class="p">)</span> <span class="cp">}}</span> - <span class="cp">{{</span> <span class="nv">states</span><span class="p">(</span><span class="nv">entity_id</span><span class="p">)</span> <span class="cp">}}</span>
+<span class="cp">{%</span> <span class="k">endmacro</span> <span class="cp">%}</span>
+</code></pre></div></div>
+<p>In your automations, you could then reuse this macro by importing it:</p>
+<div class="language-jinja highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="jinja"><span class="cp">{%</span> <span class="k">from</span> <span class="s1">'formatter.jinja'</span> <span class="k">import</span> <span class="nv">format_entity</span> <span class="cp">%}</span>
+<span class="cp">{{</span> <span class="nv">format_entity</span><span class="p">(</span><span class="s1">'sensor.temperature'</span><span class="p">)</span> <span class="cp">}}</span>
+</code></pre></div></div>
+<p>Home Assistant also allows you to write macros with non-string return values by
+taking a named argument called <code>returns</code> and calling it with a return value.  Once created,
+pass the macro into the <code>as_function</code> filter to use the returned value:</p>
+<div class="language-jinja highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="jinja"><span class="cp">{%</span><span class="o">-</span> <span class="k">macro</span> <span class="nv">macro_is_switch</span><span class="p">(</span><span class="nv">entity_name</span><span class="p">,</span> <span class="nv">returns</span><span class="p">)</span> <span class="o">-</span><span class="cp">%}</span>
+  <span class="cp">{%</span><span class="o">-</span> <span class="k">do</span> <span class="nv">returns</span><span class="p">(</span><span class="nv">entity_name.startswith</span><span class="p">(</span><span class="s1">'switch.'</span><span class="p">))</span> <span class="o">-</span><span class="cp">%}</span>
+<span class="cp">{%</span><span class="o">-</span> <span class="k">endmacro</span> <span class="o">-</span><span class="cp">%}</span>
+<span class="cp">{%</span><span class="o">-</span> <span class="k">set</span> <span class="nv">is_switch</span> <span class="o">=</span> <span class="nv">macro_is_switch</span> <span class="o">| </span><span class="nf">as_function</span> <span class="o">-</span><span class="cp">%}</span>
+<span class="cp">{{</span> <span class="s2">"It's a switch!"</span> <span class="nv">if</span> <span class="nv">is_switch</span><span class="p">(</span><span class="s2">"switch.my_switch"</span><span class="p">)</span> <span class="nv">else</span> <span class="s2">"Not a switch!"</span> <span class="cp">}}</span>
+</code></pre></div></div>
+<p>In this way, you can export utility functions that return scalar or complex values rather than
+just macros that render to strings.</p>
+<h2>Home Assistant template extensions <a class="title-link" name="home-assistant-template-extensions" href="templating.1.html#home-assistant-template-extensions"></a>
+</h2>
+<p>Extensions allow templates to access all of the Home Assistant specific states and adds other convenience functions and filters.</p>
+<h3>Limited templates <a class="title-link" name="limited-templates" href="templating.1.html#limited-templates"></a>
+</h3>
+<p>Templates for some <a href="../automation/trigger/index.html">triggers</a> as well as <code>trigger_variables</code> only support a subset of the Home Assistant template extensions. This subset is referred to as “Limited Templates”.</p>
+<h3>This <a class="title-link" name="this" href="templating.1.html#this"></a>
+</h3>
+<p>State-based and trigger-based template entities have the special template variable <code>this</code> available in their templates and actions. See more details and examples in the <a href="https://www.home-assistant.io/integrations/template">Template integration documentation</a>.</p>
+<h3>States <a class="title-link" name="states" href="templating.1.html#states"></a>
+</h3>
+<p>Not supported in <a href="templating.1.html#limited-templates">limited templates</a>.</p>
+<ul>
+<li>Iterating <code>states</code> will yield each state object.</li>
+<li>Iterating <code>states.domain</code> will yield each state object of that domain.</li>
+<li>
+<code>states.sensor.temperature</code> returns the state object for <code>sensor.temperature</code> (avoid when possible, see note below).</li>
+<li>
+<code>states</code> can also be used as a function, <code>states(entity_id, rounded=False, with_unit=False)</code>, which returns the state string (not the state object) of the given entity, <code>unknown</code> if it doesn’t exist, and <code>unavailable</code> if the object exists but is not available.
+<ul>
+<li>The optional arguments <code>rounded</code> and <code>with_unit</code> control the formatting of sensor state strings, please see the <a href="templating.1.html#formatting-sensor-states">examples</a> below.</li>
+</ul>
+</li>
+<li>
+<code>states.sensor.temperature.state_with_unit</code> formats the state string in the same way as if calling <code>states('sensor.temperature', rounded=True, with_unit=True)</code>.</li>
+<li>
+<code>is_state</code> compares an entity’s state with a specified state or list of states and returns <code>True</code> or <code>False</code>. <code>is_state('device_tracker.paulus', 'home')</code> will test if the given entity is the specified state. <code>is_state('device_tracker.paulus', ['home', 'work'])</code> will test if the given entity is any of the states in the list.</li>
+<li>
+<code>state_attr('device_tracker.paulus', 'battery')</code> will return the value of the attribute or None if it doesn’t exist.</li>
+<li>
+<code>is_state_attr('device_tracker.paulus', 'battery', 40)</code> will test if the given entity attribute is the specified state (in this case, a numeric value). Note that the attribute can be <code>None</code> and you want to check if it is <code>None</code>, you need to use <code>state_attr('sensor.my_sensor', 'attr') is none</code> or <code>state_attr('sensor.my_sensor', 'attr') == None</code> (note the difference in the capitalization of none in both versions).</li>
+<li>
+<code>has_value('sensor.my_sensor')</code> will test if the given entity is not unknown or unavailable. Can be used as a filter or a test.</li>
+</ul>
+<div class="alert alert-warning">
+  <p class="alert-title"><iconify-icon inline icon="mdi:alert-outline"></iconify-icon> Warning</p>
+  <div class="alert-content">
+<p>Avoid using <code>states.sensor.temperature.state</code>, instead use <code>states('sensor.temperature')</code>. It is strongly advised to use the <code>states()</code>, <code>is_state()</code>, <code>state_attr()</code> and <code>is_state_attr()</code> as much as possible, to avoid errors and error message when the entity isn’t ready yet (e.g., during Home Assistant startup).</p>
+  </div>
+</div>
+<h4>States examples <a class="title-link" name="states-examples" href="templating.1.html#states-examples"></a>
+</h4>
+<p>The next two statements result in the same value if the state exists. The second one will result in an error if the state does not exist.</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ states('device_tracker.paulus') }}
+{{ states.device_tracker.paulus.state }}
+</code></pre></div></div>
+<p>Print out a list of all the sensor states:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{% for state in states.sensor %}
+  {{ state.entity_id }}={{ state.state }},
+{% endfor %}
+</code></pre></div></div>
+<p>Print out a list of all the sensor states sorted by <code>entity_id</code>:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{% for state in states.sensor | sort(attribute='entity_id') %}
+  {{ state.entity_id }}={{ state.state }},
+{% endfor %}
+</code></pre></div></div>
+<p>Entities that are on:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ ['light.kitchen', 'light.dining_room'] | select('is_state', 'on') | list }}
+</code></pre></div></div>
+<p>Other state examples:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{% if is_state('device_tracker.paulus', 'home') %}
+  Ha, Paulus is home!
+{% else %}
+  Paulus is at {{ states('device_tracker.paulus') }}.
+{% endif %}
+
+#check sensor.train_departure_time state
+{% if states('sensor.train_departure_time') in ("unavailable", "unknown") %}
+  {{ ... }}
+
+{% if has_value('sensor.train_departure_time') %}
+  {{ ... }}
+
+
+{% set state = states('sensor.temperature') %}{{ state | float + 1 if is_number(state) else "invalid temperature" }}
+
+{% set state = states('sensor.temperature') %}{{ (state | float * 10) | round(2) if is_number(state)}}
+
+{% set state = states('sensor.temperature') %}
+{% if is_number(state) and state | float &gt; 20 %}
+  It is warm!
+{% endif %}
+
+{{ as_timestamp(states.binary_sensor.garage_door.last_changed) }}
+
+{{ as_local(states.binary_sensor.garage_door.last_changed) }}
+
+{{ as_timestamp(now()) - as_timestamp(states.binary_sensor.garage_door.last_changed) }}
+
+{{ as_local(states.sensor.time.last_changed) }}
+
+{{ states('sensor.expires') | as_datetime }}
+
+# Make a list of states
+{{ ['light.kitchen', 'light.dining_room'] | map('states') | list }}
+</code></pre></div></div>
+<h4>Formatting sensor states <a class="title-link" name="formatting-sensor-states" href="templating.1.html#formatting-sensor-states"></a>
+</h4>
+<p>The examples below show the output of a temperature sensor with state <code>20.001</code>, unit <code>°C</code> and user configured presentation rounding set to 1 decimal.</p>
+<p>The following example results in the number <code>20.001</code>:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ states('sensor.temperature') }}
+</code></pre></div></div>
+<p>The following example results in the string <code>"20.0 °C"</code>:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ states('sensor.temperature', with_unit=True) }}
+</code></pre></div></div>
+<p>The following example result in the string <code>"20.001 °C"</code>:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ states('sensor.temperature', with_unit=True, rounded=False) }}
+</code></pre></div></div>
+<p>The following example results in the number <code>20.0</code>:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ states('sensor.temperature', rounded=True) }}
+</code></pre></div></div>
+<p>The following example results in the number <code>20.001</code>:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ states.sensor.temperature.state }}
+</code></pre></div></div>
+<p>The following example results in the string <code>"20.0 °C"</code>:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ states.sensor.temperature.state_with_unit }}
+</code></pre></div></div>
+<h3>Attributes <a class="title-link" name="attributes" href="templating.1.html#attributes"></a>
+</h3>
+<p>Not supported in <a href="templating.1.html#limited-templates">limited templates</a>.</p>
+<p>You can print an attribute with <code>state_attr</code> if state is defined.</p>
+<h4>Attributes examples <a class="title-link" name="attributes-examples" href="templating.1.html#attributes-examples"></a>
+</h4>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{% if states.device_tracker.paulus %}
+  {{ state_attr('device_tracker.paulus', 'battery') }}
+{% else %}
+  ??
+{% endif %}
+</code></pre></div></div>
+<p>With strings:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{% set tracker_name = "paulus"%}
+
+{% if states("device_tracker." + tracker_name) != "unknown" %}
+  {{ state_attr("device_tracker." + tracker_name, "battery")}}
+{% else %}
+  ??
+{% endif %}
+</code></pre></div></div>
+<p>List of friendly names:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ ['binary_sensor.garage_door', 'binary_sensor.front_door'] | map('state_attr', 'friendly_name') | list }}
+</code></pre></div></div>
+<p>List of lights that are on with a brightness of 255:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ ['light.kitchen', 'light.dining_room'] | select('is_state', 'on') | select('is_state_attr', 'brightness', 255) | list }}
+</code></pre></div></div>
+<h3>State translated <a class="title-link" name="state-translated" href="templating.1.html#state-translated"></a>
+</h3>
+<p>Not supported in <a href="templating.1.html#limited-templates">limited templates</a>.</p>
+<p>The <code>state_translated</code> function returns a translated state of an entity using a language that is currently configured in the <a href="https://my.home-assistant.io/redirect/general/">general settings</a>.</p>
+<h4>State translated examples <a class="title-link" name="state-translated-examples" href="templating.1.html#state-translated-examples"></a>
+</h4>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ states("sun.sun") }}             # below_horizon
+{{ state_translated("sun.sun") }}   # Below horizon
+{{ "sun.sun" | state_translated }}  # Below horizon
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ states("binary_sensor.movement_backyard") }}             # on
+{{ state_translated("binary_sensor.movement_backyard") }}   # Detected
+{{ "binary_sensor.movement_backyard" | state_translated }}  # Detected
+</code></pre></div></div>
+<h3>Working with groups <a class="title-link" name="working-with-groups" href="templating.1.html#working-with-groups"></a>
+</h3>
+<p>Not supported in <a href="templating.1.html#limited-templates">limited templates</a>.</p>
+<p>The <code>expand</code> function and filter can be used to sort entities and expand groups. It outputs a sorted array of entities with no duplicates.</p>
+<h4>Expand examples <a class="title-link" name="expand-examples" href="templating.1.html#expand-examples"></a>
+</h4>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{% for tracker in expand('device_tracker.paulus', 'group.child_trackers') %}
+  {{ state_attr(tracker.entity_id, 'battery') }}
+  {%- if not loop.last %}, {% endif -%}
+{% endfor %}
+</code></pre></div></div>
+<p>The same thing can also be expressed as a filter:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ expand(['device_tracker.paulus', 'group.child_trackers'])
+  | selectattr("attributes.battery", 'defined')
+  | join(', ', attribute="attributes.battery") }}
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{% for energy in expand('group.energy_sensors') if is_number(energy.state) %}
+  {{ energy.state }}
+  {%- if not loop.last %}, {% endif -%}
+{% endfor %}
+</code></pre></div></div>
+<p>The same thing can also be expressed as a test:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ expand('group.energy_sensors')
+  | selectattr("state", 'is_number') | join(', ') }}
+</code></pre></div></div>
+<h3>Entities <a class="title-link" name="entities" href="templating.1.html#entities"></a>
+</h3>
+<ul>
+<li>
+<code>is_hidden_entity(entity_id)</code> returns whether an entity has been hidden. Can also be used as a test.</li>
+</ul>
+<h3>Entities examples <a class="title-link" name="entities-examples" href="templating.1.html#entities-examples"></a>
+</h3>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ area_entities('kitchen') | reject('is_hidden_entity') }} # Gets a list of visible entities in the kitchen area
+</code></pre></div></div>
+<h3>Devices <a class="title-link" name="devices" href="templating.1.html#devices"></a>
+</h3>
+<ul>
+<li>
+<code>device_entities(device_id)</code> returns a list of entities that are associated with a given device ID. Can also be used as a filter.</li>
+<li>
+<code>device_attr(device_or_entity_id, attr_name)</code> returns the value of <code>attr_name</code> for the given device or entity ID. Can also be used as a filter. Not supported in <a href="templating.1.html#limited-templates">limited templates</a>.</li>
+<li>
+<code>is_device_attr(device_or_entity_id, attr_name, attr_value)</code> returns whether the value of <code>attr_name</code> for the given device or entity ID matches <code>attr_value</code>. Can also be used as a test. Not supported in <a href="templating.1.html#limited-templates">limited templates</a>.</li>
+<li>
+<code>device_id(entity_id)</code> returns the device ID for a given entity ID or device name. Can also be used as a filter.</li>
+<li>
+<code>device_name(lookup_value)</code> returns the device name for a given device ID or entity ID. Can also be used as a filter.</li>
+</ul>
+<h4>Devices examples <a class="title-link" name="devices-examples" href="templating.1.html#devices-examples"></a>
+</h4>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ device_attr('deadbeefdeadbeefdeadbeefdeadbeef', 'manufacturer') }}  # Sony
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ is_device_attr('deadbeefdeadbeefdeadbeefdeadbeef', 'manufacturer', 'Sony') }}  # true
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ device_id('sensor.sony') }}  # deadbeefdeadbeefdeadbeefdeadbeef
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ device_name('deadbeefdeadbeefdeadbeefdeadbeef') }}  # Sony speaker
+{{ device_name('sensor.sony') }}  # Sony speaker
+</code></pre></div></div>
+<h3>Config entries <a class="title-link" name="config-entries" href="templating.1.html#config-entries"></a>
+</h3>
+<ul>
+<li>
+<code>config_entry_id(entity_id)</code> returns the config entry ID for a given entity ID. Can also be used as a filter.</li>
+<li>
+<code>config_entry_attr(config_entry_id, attr)</code> returns the value of <code>attr</code> for the config entry of the given entity ID. Can also be used as a filter. The following attributes are allowed: <code>domain</code>, <code>title</code>, <code>state</code>, <code>source</code>, <code>disabled_by</code>. Not supported in <a href="templating.1.html#limited-templates">limited templates</a>.</li>
+</ul>
+<h4>Config entries examples <a class="title-link" name="config-entries-examples" href="templating.1.html#config-entries-examples"></a>
+</h4>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ config_entry_id('sensor.sony') }}  # deadbeefdeadbeefdeadbeefdeadbeef
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ config_entry_attr(config_entry_id('sensor.sony'), 'title') }}  # Sony Bravia TV
+</code></pre></div></div>
+<h3>Floors <a class="title-link" name="floors" href="templating.1.html#floors"></a>
+</h3>
+<ul>
+<li>
+<code>floors()</code> returns the full list of floor IDs.</li>
+<li>
+<code>floor_id(lookup_value)</code> returns the floor ID for a given floor name or alias, area name or alias, entity ID or device ID. Can also be used as a filter.</li>
+<li>
+<code>floor_name(lookup_value)</code> returns the floor name for a given device ID, entity ID, area ID, or floor ID. Can also be used as a filter.</li>
+<li>
+<code>floor_areas(floor_name_or_id)</code> returns the list of area IDs tied to a given floor ID or name. Can also be used as a filter.</li>
+<li>
+<code>floor_entities(floor_name_or_id)</code> returns the list of entity IDs tied to a given floor ID or name. Can also be used as a filter.</li>
+</ul>
+<h4>Floors examples <a class="title-link" name="floors-examples" href="templating.1.html#floors-examples"></a>
+</h4>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ floors() }}  # ['floor_id']
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ floor_id('First floor') }}  # 'first_floor'
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ floor_id('First floor alias') }}  # 'first_floor'
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ floor_id('my_device_id') }}  # 'second_floor'
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ floor_id('sensor.sony') }}  # 'first_floor'
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ floor_name('first_floor') }}  # 'First floor'
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ floor_name('my_device_id') }}  # 'Second floor'
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ floor_name('sensor.sony') }}  # 'First floor'
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ floor_areas('first_floor') }}  # ['living_room', 'kitchen']
+</code></pre></div></div>
+<h3>Areas <a class="title-link" name="areas" href="templating.1.html#areas"></a>
+</h3>
+<ul>
+<li>
+<code>areas()</code> returns the full list of area IDs</li>
+<li>
+<code>area_id(lookup_value)</code> returns the area ID for a given area name or alias, entity ID or device ID. Can also be used as a filter.</li>
+<li>
+<code>area_name(lookup_value)</code> returns the area name for a given device ID, entity ID, or area ID. Can also be used as a filter.</li>
+<li>
+<code>area_entities(area_name_or_id)</code> returns the list of entity IDs tied to a given area ID or name. Can also be used as a filter.</li>
+<li>
+<code>area_devices(area_name_or_id)</code> returns the list of device IDs tied to a given area ID or name. Can also be used as a filter.</li>
+</ul>
+<h4>Areas examples <a class="title-link" name="areas-examples" href="templating.1.html#areas-examples"></a>
+</h4>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ areas() }}  # ['area_id']
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ area_id('Living Room') }}  # 'deadbeefdeadbeefdeadbeefdeadbeef'
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ area_id('Living Room Alias') }}  # 'deadbeefdeadbeefdeadbeefdeadbeef'
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ area_id('my_device_id') }}  # 'deadbeefdeadbeefdeadbeefdeadbeef'
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ area_id('sensor.sony') }}  # 'deadbeefdeadbeefdeadbeefdeadbeef'
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ area_name('deadbeefdeadbeefdeadbeefdeadbeef') }}  # 'Living Room'
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ area_name('my_device_id') }}  # 'Living Room'
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ area_name('sensor.sony') }}  # 'Living Room'
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ area_entities('deadbeefdeadbeefdeadbeefdeadbeef') }}  # ['sensor.sony']
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ area_devices('Living Room') }}  # ['my_device_id']
+</code></pre></div></div>
+<h3>Entities for an integration <a class="title-link" name="entities-for-an-integration" href="templating.1.html#entities-for-an-integration"></a>
+</h3>
+<ul>
+<li>
+<code>integration_entities(integration)</code> returns a list of entities that are associated with a given integration, such as <code>hue</code> or <code>zwave_js</code>.</li>
+<li>
+<code>integration_entities(config_entry_title)</code> if you have multiple entries set-up for an integration, you can also use the title you’ve set for the integration in case you only want to target a specific entry.</li>
+</ul>
+<p>If there is more than one entry with the same title, the entities for all the matching entries will be returned, even if the entries are for different integrations. It’s not possible to search for entities of an untitled integration.</p>
+<h4>Integrations examples <a class="title-link" name="integrations-examples" href="templating.1.html#integrations-examples"></a>
+</h4>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ integration_entities('hue') }}  # ['light.hue_light_upstairs', 'light.hue_light_downstairs']
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ integration_entities('Hue bridge downstairs') }}  # ['light.hue_light_downstairs']
+</code></pre></div></div>
+<h3>Labels <a class="title-link" name="labels" href="templating.1.html#labels"></a>
+</h3>
+<ul>
+<li>
+<code>labels()</code> returns the full list of label IDs, or those for a given area ID, device ID, or entity ID.</li>
+<li>
+<code>label_id(lookup_value)</code> returns the label ID for a given label name.</li>
+<li>
+<code>label_name(lookup_value)</code> returns the label name for a given label ID.</li>
+<li>
+<code>label_description(lookup_value)</code> returns the label description for a given label ID.</li>
+<li>
+<code>label_areas(label_name_or_id)</code> returns the list of area IDs tied to a given label ID or name.</li>
+<li>
+<code>label_devices(label_name_or_id)</code> returns the list of device IDs tied to a given label ID or name.</li>
+<li>
+<code>label_entities(label_name_or_id)</code> returns the list of entity IDs tied to a given label ID or name.</li>
+</ul>
+<p>Each of the label template functions can also be used as a filter.</p>
+<h4>Labels examples <a class="title-link" name="labels-examples" href="templating.1.html#labels-examples"></a>
+</h4>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ labels() }}  # ['christmas_decorations', 'energy_saver', 'security']
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ labels("living_room") }}  # ['christmas_decorations', 'energy_saver']
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ labels("my_device_id") }}  # ['security']
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ labels("light.christmas_tree") }}  # ['christmas_decorations']
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ label_id('Energy saver') }}  # 'energy_saver'
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ label_name('energy_saver') }}  # 'Energy saver'
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ label_areas('security') }}  # ['driveway', 'garden', 'porch']
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ label_devices('energy_saver') }}  # ['deadbeefdeadbeefdeadbeefdeadbeef']
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ label_entities('security') }}  # ['camera.driveway', 'binary_sensor.motion_garden', 'camera.porch']
+</code></pre></div></div>
+<h3>Issues <a class="title-link" name="issues" href="templating.1.html#issues"></a>
+</h3>
+<ul>
+<li>
+<code>issues()</code> returns all open issues as a mapping of (domain, issue_id) tuples to the issue object.</li>
+<li>
+<code>issue(domain, issue_id)</code> returns a specific issue for the provided domain and issue_id.</li>
+</ul>
+<h4>Issues examples <a class="title-link" name="issues-examples" href="templating.1.html#issues-examples"></a>
+</h4>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ issues() }}  # { ("homeassistant", "deprecated_yaml_ping"): {...}, ("cloud", "legacy_subscription"): {...} }
+</code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ issue('homeassistant', 'python_version') }}  # {"breaks_in_ha_version": "2024.4", "domain": "homeassistant", "issue_id": "python_version", "is_persistent": False, ...}
+</code></pre></div></div>
+<h3>Immediate if (iif) <a class="title-link" name="immediate-if-iif" href="templating.1.html#immediate-if-iif"></a>
+</h3>
+<p>A common case is to conditionally return a value based on another value.
+For example, return a “Yes” or “No” when the light is on or off.</p>
+<p>This can be written as:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{% if is_state('light.kitchen', 'on') %}
+  Yes
+{% else %}
+  No
+{% endif %}
+</code></pre></div></div>
+<p>Or using a shorter syntax:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ 'Yes' if is_state('light.kitchen', 'on') else 'No' }}
+</code></pre></div></div>
+<p>Additionally, to the above, you can use the <code>iif</code> function/filter, which is
+an immediate if.</p>
+<p>Syntax: <code>iif(condition, if_true, if_false, if_none)</code></p>
+<p><code>iif</code> returns the value of <code>if_true</code> if the condition is truthy, the value of <code>if_false</code> if it’s <code>falsy</code> and the value of <code>if_none</code> if it’s <code>None</code>.
+An empty string, an empty mapping or an an empty list, are all falsy, refer to <a href="https://docs.python.org/3/library/stdtypes.html#truth-value-testing" rel="external nofollow">the Python documentation<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> for an in depth explanation.</p>
+<p><code>if_true</code> is optional, if it’s omitted <code>True</code> is returned if the condition is truthy.
+<code>if_false</code> is optional, if it’s omitted <code>False</code> is returned if the condition is falsy.
+<code>if_none</code> is optional, if it’s omitted the value of <code>if_false</code> is returned if the condition is <code>None</code>.</p>
+<p>Examples using <code>iif</code>:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ iif(is_state('light.kitchen', 'on'), 'Yes', 'No') }}
+
+{{ is_state('light.kitchen', 'on') | iif('Yes', 'No') }}
+
+{{ (states('light.kitchen') == 'on') | iif('Yes', 'No') }}
+</code></pre></div></div>
+<div class="alert alert-warning">
+  <p class="alert-title"><iconify-icon inline icon="mdi:alert-outline"></iconify-icon> Warning</p>
+  <div class="alert-content">
+<p>The immediate if filter does not short-circuit like you might expect with a typical conditional statement. The <code>if_true</code>, <code>if_false</code> and <code>if_none</code> expressions will all be evaluated and the filter will simply return one of the resulting values. This means you cannot use this filter to prevent executing an expression which would result in an error.</p>
+<p>For example, if you wanted to select a field from <code>trigger</code> in an automation based on the platform you might go to make this template: <code>trigger.platform == 'event' | iif(trigger.event.data.message, trigger.to_state.state)</code>. This won’t work because both expressions will be evaluated and one will fail since the field doesn’t exist. Instead you have to do this <code>trigger.event.data.message if trigger.platform == 'event' else trigger.to_state.state</code>. This form of the expression short-circuits so if the platform is <code>event</code> the expression <code>trigger.to_state.state</code> will never be evaluated and won’t cause an error.</p>
+  </div>
+</div>
+<h3>Time <a class="title-link" name="time" href="templating.1.html#time"></a>
+</h3>
+<p><code>now()</code>, <code>time_since()</code>, <code>time_until()</code>, <code>today_at()</code>, and <code>utcnow()</code> are not supported in <a href="templating.1.html#limited-templates">limited templates</a>.</p>
+<ul>
+<li>
+<p><code>now()</code> returns a datetime object that represents the current time in your time zone.</p>
+<ul>
+<li>You can also use: <code>now().second</code>, <code>now().minute</code>, <code>now().hour</code>, <code>now().day</code>, <code>now().month</code>, <code>now().year</code>, <code>now().weekday()</code> and <code>now().isoweekday()</code> and other <a href="https://docs.python.org/3/library/datetime.html#datetime.datetime" rel="external nofollow"><code>datetime</code><iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> attributes and functions.</li>
+<li>Using <code>now()</code> will cause templates to be refreshed at the start of every new minute.</li>
+</ul>
+</li>
+<li>
+<p><code>utcnow()</code> returns a datetime object of the current time in the UTC timezone.</p>
+<ul>
+<li>For specific values: <code>utcnow().second</code>, <code>utcnow().minute</code>, <code>utcnow().hour</code>, <code>utcnow().day</code>, <code>utcnow().month</code>, <code>utcnow().year</code>, <code>utcnow().weekday()</code> and <code>utcnow().isoweekday()</code>.</li>
+<li>Using <code>utcnow()</code> will cause templates to be refreshed at the start of every new minute.</li>
+</ul>
+</li>
+<li>
+<p><code>today_at(value)</code> converts a string containing a 24-hour time format to a datetime object with today’s date in your time zone. Defaults to midnight (<code>00:00</code>).</p>
+<ul>
+<li>Using <code>today_at()</code> will cause templates to be refreshed at the start of every new minute.</li>
+</ul>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text"># Is the current time past 10:15?
+{{ now() &gt; today_at("10:15") }}
+</code></pre></div></div>
+</li>
+<li>
+<p><code>as_datetime(value, default)</code> converts a string containing a timestamp or a valid UNIX timestamp to a datetime object. If conversion fails, the function returns the <code>default</code> value. If no <code>default</code> is provided and the input is a string that cannot be converted to a datetime, it returns <code>None</code>. For other invalid inputs (e.g., a list, dictionary, or a numeric value too large to convert), it raises an error when no <code>default</code> is supplied. In case the input is already a datetime object, it is returned unchanged. If the input is a <code>datetime.date</code> object, midnight is added as the time. This function can also be used as a filter.</p>
+</li>
+<li>
+<p><code>as_timestamp(value, default)</code> converts a datetime object or string to UNIX timestamp. If that fails, returns the <code>default</code> value, or if omitted raises an error. This function can also be used as a filter.</p>
+</li>
+<li>
+<p><code>as_local()</code> converts a datetime object to local time. This function can also be used as a filter.</p>
+</li>
+<li>
+<p><code>strptime(string, format, default)</code> parses a string based on a <a href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior" rel="external nofollow">format<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> and returns a datetime object. If that fails, it returns the <code>default</code> value or, if omitted, raises an error.</p>
+</li>
+<li>
+<p><code>relative_time</code> converts a datetime object to its human-friendly “age” string. The age can be in seconds, minutes, hours, days, months, or years (but only the biggest unit is considered. For example, if it’s 2 days and 3 hours, “2 days” will be returned). Note that it only works for dates <em>in the past</em>.</p>
+<ul>
+<li>Using <code>relative_time()</code> will cause templates to be refreshed at the start of every new minute.</li>
+</ul>
+</li>
+<li>
+<p><code>time_since(datetime, precision)</code> converts a datetime object into its human-readable time string. The time string can be in seconds, minutes, hours, days, months, and years. <code>precision</code> takes an integer (full number) and indicates the number of units returned.  The last unit is rounded. For example: <code>precision = 1</code> could return “2 years” while <code>precision = 2</code> could return “1 year 11 months”. This function can also be used as a filter.
+If the datetime is in the future, returns 0 seconds.
+A precision of 0 returns all available units, default is 1.</p>
+</li>
+<li>
+<p><code>time_until(datetime, precision)</code> converts a datetime object into a human-readable time string. The time string can be in seconds, minutes, hours, days, months, and years. <code>precision</code> takes an integer (full number) and indicates the number of units returned.  The last unit is rounded. For example: <code>precision = 1</code> could return “2 years” while <code>precision = 2</code> could return “1 year 11 months”. This function can also be used as a filter.
+If the datetime is in the past, returns 0 seconds.
+A precision of 0 returns all available units, default is 1.</p>
+</li>
+<li>
+<p><code>timedelta</code> returns a timedelta object, which represents a duration (an amount of time between two datetimes). It accepts the same arguments as the Python <code>datetime.timedelta</code> function – days, seconds, microseconds, milliseconds, minutes, hours, weeks.</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text"># 77 minutes before current time.
+{{ now() - timedelta( hours = 1, minutes = 17 ) }}
+</code></pre></div></div>
+</li>
+<li>
+<p><code>as_timedelta(string)</code> converts a string to a timedelta object, which represents a duration (an amount of time between two datetimes). Expects data in the format <code>DD HH:MM:SS.uuuuuu</code>, <code>DD HH:MM:SS,uuuuuu</code>, or as specified by ISO 8601 (e.g. <code>P4DT1H15M20S</code> which is equivalent to <code>4 1:15:20</code>) or PostgreSQL’s day-time interval format (e.g. <code>3 days 04:05:06</code>). This function can also be used as a filter.</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text"># Renders to "00:10:00"
+{{ as_timedelta("PT10M") }}
+</code></pre></div></div>
+</li>
+<li>
+<p>Filter <code>timestamp_local(default)</code> converts a UNIX timestamp to the ISO format string representation as date/time in your local timezone. If that fails, returns the <code>default</code> value, or if omitted raises an error. If a custom string format is needed in the string, use <code>timestamp_custom</code> instead.</p>
+</li>
+<li>
+<p>Filter <code>timestamp_utc(default)</code> converts a UNIX timestamp to the ISO format string representation representation as date/time in UTC timezone. If that fails, returns the <code>default</code> value, or if omitted raises an error. If a custom string format is needed in the string, use <code>timestamp_custom</code> instead.</p>
+</li>
+<li>
+<p>Filter <code>timestamp_custom(format_string, local=True, default)</code> converts an UNIX timestamp to its string representation based on a custom format, the use of a local timezone is the default. If that fails, returns the <code>default</code> value, or if omitted raises an error. Supports the standard <a href="https://docs.python.org/3/library/time.html#time.strftime" rel="external nofollow">Python time formatting options<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>.</p>
+</li>
+</ul>
+<div class="alert alert-tip">
+  <p class="alert-title"><iconify-icon inline icon="mdi:lightbulb-outline"></iconify-icon> Tip</p>
+  <div class="alert-content">
+<p><a href="https://en.wikipedia.org/wiki/Unix_time" rel="external nofollow">UNIX timestamp<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> is the number of seconds that have elapsed since 00:00:00 UTC on 1 January 1970. Therefore, if used as a function’s argument, it can be substituted with a numeric value (<code>int</code> or <code>float</code>).</p>
+  </div>
+</div>
+<div class="alert alert-important">
+  <p class="alert-title"><iconify-icon inline icon="mdi:message-alert-outline"></iconify-icon> Important</p>
+  <div class="alert-content">
+<p>If your template is returning a timestamp that should be displayed in the frontend (e.g., as a sensor entity with <code>device_class: timestamp</code>), you have to ensure that it is the ISO 8601 format (meaning it has the “T” separator between the date and time portion). Otherwise, frontend rendering on macOS and iOS devices will show an error. The following value template would result in such an error:</p>
+<p><code>{{ states.sun.sun.last_changed }}</code> =&gt; <code>2023-07-30 20:03:49.253717+00:00</code> (missing “T” separator)</p>
+<p>To fix it, enforce the ISO conversion via <code>isoformat()</code>:</p>
+<p><code>{{ states.sun.sun.last_changed.isoformat() }}</code> =&gt; <code>2023-07-30T20:03:49.253717+00:00</code> (contains “T” separator)</p>
+  </div>
+</div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ 120 | timestamp_local }}
+</code></pre></div></div>
+<h3>To/From JSON <a class="title-link" name="tofrom-json" href="templating.1.html#tofrom-json"></a>
+</h3>
+<p>The <code>to_json</code> filter serializes an object to a JSON string. In some cases, it may be necessary to format a JSON string for use with a webhook, as a parameter for command-line utilities or any number of other applications. This can be complicated in a template, especially when dealing with escaping special characters. Using the <code>to_json</code> filter, this is handled automatically.</p>
+<p><code>to_json</code> also accepts boolean arguments for <code>pretty_print</code>, which will pretty print the JSON with a 2-space indent to make it more human-readable, and <code>sort_keys</code>, which will sort the keys of the JSON object, ensuring that the resulting string is consistent for the same input.</p>
+<p>If you need to generate JSON that will be used by a parser that lacks support for Unicode characters, you can add  <code>ensure_ascii=True</code> to have <code>to_json</code> generate Unicode escape sequences in strings.</p>
+<p>The <code>from_json</code> filter operates similarly, but in the other direction, de-serializing a JSON string back into an object.</p>
+<h3>To/From JSON examples <a class="title-link" name="tofrom-json-examples" href="templating.1.html#tofrom-json-examples"></a>
+</h3>
+<h4>Template <a class="title-link" name="template" href="templating.1.html#template"></a>
+</h4>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{% set temp = {'temperature': 25, 'unit': '°C'} %}
+stringified object: {{ temp }}
+object|to_json: {{ temp|to_json(sort_keys=True) }}
+</code></pre></div></div>
+<h4>Output <a class="title-link" name="output" href="templating.1.html#output"></a>
+</h4>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">stringified object: {'temperature': 25, 'unit': '°C'}
+object|to_json: {"temperature": 25, "unit": "°C"}
+</code></pre></div></div>
+<p>Conversely, <code>from_json</code> can be used to de-serialize a JSON string back into an object to make it possible to easily extract usable data.</p>
+<h4>Template <a class="title-link" name="template-1" href="templating.1.html#template-1"></a>
+</h4>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{% set temp = '{"temperature": 25, "unit": "°C"}'|from_json %}
+The temperature is {{ temp.temperature }}{{ temp.unit }}
+</code></pre></div></div>
+<h4>Output <a class="title-link" name="output-1" href="templating.1.html#output-1"></a>
+</h4>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">The temperature is 25°C
+</code></pre></div></div>
+<p><code>from_json(default)</code> function will attempt to convert the input to <code>json</code>. If that fails, returns the <code>default</code> value, or if omitted raises an error.</p>
+<h4>Template <a class="title-link" name="template-2" href="templating.1.html#template-2"></a>
+</h4>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{% set result = 'not json'|from_json('not json') %}
+The value is {{ result }}
+</code></pre></div></div>
+<h4>Output <a class="title-link" name="output-2" href="templating.1.html#output-2"></a>
+</h4>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">The value is not json
+</code></pre></div></div>
+<h3>Is defined <a class="title-link" name="is-defined" href="templating.1.html#is-defined"></a>
+</h3>
+<p>Sometimes a template should only return if a value or object is defined, if not, the supplied default value should be returned. This can be useful to validate a JSON payload.
+The <code>is_defined</code> filter allows to throw an error if a value or object is not defined.</p>
+<p>Example using <code>is_defined</code> to parse a JSON payload:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ value_json.val | is_defined }}
+</code></pre></div></div>
+<p>This will throw an error <code>UndefinedError: 'value_json' is undefined</code> if the JSON payload has no <code>val</code> attribute.</p>
+<h3>Version <a class="title-link" name="version" href="templating.1.html#version"></a>
+</h3>
+<ul>
+<li>
+<code>version()</code> Returns a <a href="https://github.com/ludeeus/awesomeversion" rel="external nofollow">AwesomeVersion object<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> for the value given inside the brackets.
+<ul>
+<li>This is also available as a filter (<code>| version</code>).</li>
+</ul>
+</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>
+<code>{{ version("2099.9.9") &gt; "2000.0.0" }}</code> Will return <code>True</code>
+</li>
+<li>
+<code>{{ version("2099.9.9") &lt; "2099.10" }}</code> Will return <code>True</code>
+</li>
+<li>
+<code>{{ "2099.9.9" | version &lt; "2099.10" }}</code> Will return <code>True</code>
+</li>
+<li>
+<code>{{ (version("2099.9.9") - "2100.9.10").major }}</code> Will return <code>True</code>
+</li>
+<li>
+<code>{{ (version("2099.9.9") - "2099.10.9").minor }}</code> Will return <code>True</code>
+</li>
+<li>
+<code>{{ (version("2099.9.9") - "2099.9.10").patch }}</code> Will return <code>True</code>
+</li>
+</ul>
+<h3>Distance <a class="title-link" name="distance" href="templating.1.html#distance"></a>
+</h3>
+<p>Not supported in <a href="templating.1.html#limited-templates">limited templates</a>.</p>
+<ul>
+<li>
+<code>distance()</code> measures the distance between home, an entity, or coordinates. The unit of measurement (kilometers or miles) depends on the system’s configuration settings.</li>
+<li>
+<code>closest()</code> will find the closest entity.</li>
+</ul>
+<h4>Distance examples <a class="title-link" name="distance-examples" href="templating.1.html#distance-examples"></a>
+</h4>
+<p>If only one location is passed in, Home Assistant will measure the distance from home.</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">
+Using Lat Lng coordinates: {{ distance(123.45, 123.45) }}
+
+Using State: {{ distance(states.device_tracker.paulus) }}
+
+These can also be combined in any combination:
+{{ distance(123.45, 123.45, 'device_tracker.paulus') }}
+{{ distance('device_tracker.anne_therese', 'device_tracker.paulus') }}
+</code></pre></div></div>
+<h4>Closest examples <a class="title-link" name="closest-examples" href="templating.1.html#closest-examples"></a>
+</h4>
+<p>The closest function and filter will find the closest entity to the Home Assistant location:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">Query all entities: {{ closest(states) }}
+Query all entities of a specific domain: {{ closest(states.device_tracker) }}
+Query all entities in group.children: {{ closest('group.children') }}
+Query all entities in group.children: {{ closest(states.group.children) }}
+</code></pre></div></div>
+<p>Find entities closest to a coordinate or another entity. All previous arguments still apply for second argument.</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">Closest to a coordinate: {{ closest(23.456, 23.456, 'group.children') }}
+Closest to an entity: {{ closest('zone.school', 'group.children') }}
+Closest to an entity: {{ closest(states.zone.school, 'group.children') }}
+</code></pre></div></div>
+<p>Since closest returns a state, we can combine it with distance too.</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ closest(states).name }} is {{ distance(closest(states)) }} kilometers away.
+</code></pre></div></div>
+<p>The last argument of the closest function has an implicit <code>expand</code>, and can take any iterable sequence of states or entity IDs, and will expand groups:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">Closest out of given entities:
+    {{ closest(['group.children', states.device_tracker]) }}
+Closest to a coordinate:
+    {{ closest(23.456, 23.456, ['group.children', states.device_tracker]) }}
+Closest to some entity:
+    {{ closest(states.zone.school, ['group.children', states.device_tracker]) }}
+</code></pre></div></div>
+<p>It will also work as a filter over an iterable group of entities or groups:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">Closest out of given entities:
+    {{ ['group.children', states.device_tracker] | closest }}
+Closest to a coordinate:
+    {{ ['group.children', states.device_tracker] | closest(23.456, 23.456) }}
+Closest to some entity:
+    {{ ['group.children', states.device_tracker] | closest(states.zone.school) }}
+</code></pre></div></div>
+<h3>Contains <a class="title-link" name="contains" href="templating.1.html#contains"></a>
+</h3>
+<p>Jinja provides by default a <a href="https://jinja.palletsprojects.com/en/latest/templates/#other-operators" rel="external nofollow"><code>in</code> operator<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> how return <code>True</code> when one element is <code>in</code> a provided list.
+The <code>contains</code> test and filter allow you to do the exact opposite and test for a list containing an element. This is particularly useful in <code>select</code> or <code>selectattr</code> filter, as well as to check if a device has a specific attribute, a <code>supported_color_modes</code>, a specific light effect.</p>
+<p>Some examples:</p>
+<ul>
+<li>
+<code>{{ state_attr('light.dining_room', 'effect_list') | contains('rainbow') }}</code> will return <code>true</code> if the light has a <code>rainbow</code> effect.</li>
+<li>
+<code>{{ expand('light.office') | selectattr("attributes.supported_color_modes", 'contains', 'color_temp') | list }}</code> will return all light that support color_temp in the office group.</li>
+<li>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">  {% set current_month = now().month %}
+  {% set extra_ambiance = [
+    {'name':'Halloween', 'month': [10,11]},
+    {'name':'Noel', 'month': [1,11,12]}
+  ]%}
+  {% set to_add = extra_ambiance | selectattr('month', 'contains', current_month ) | map(attribute='name') | list  %}
+  {% set to_remove = extra_ambiance | map(attribute='name') | reject('in', to_add) | list %}
+  {{ (state_attr('input_select.light_theme', 'options') + to_add ) | unique | reject('in', to_remove) | list }}
+</code></pre></div></div>
+This more complex example uses the <code>contains</code> filter to match the current month with a list. In this case, it’s used to generate a list of light theme to give to the <code>Input select: Set options</code> action.</li>
+</ul>
+<h3>Numeric functions and filters <a class="title-link" name="numeric-functions-and-filters" href="templating.1.html#numeric-functions-and-filters"></a>
+</h3>
+<p>Some of these functions can also be used in a <a href="https://jinja.palletsprojects.com/en/latest/templates/#id11" rel="external nofollow">filter<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>. This means they can act as a normal function like this <code>sqrt(2)</code>, or as part of a filter like this <code>2|sqrt</code>.</p>
+<div class="alert alert-note">
+  <p class="alert-title"><iconify-icon inline icon="mdi:information-outline"></iconify-icon> Note</p>
+  <div class="alert-content">
+<p>The numeric functions and filters raise an error if the input is not a valid number, optionally a default value can be specified which will be returned instead. The <code>is_number</code> function and filter can be used to check if a value is a valid number. Errors can be caught by the <code>default</code> filter.</p>
+<ul>
+<li>
+<p><code>{{ float("not_a_number") }}</code> - the template will fail to render</p>
+</li>
+<li>
+<p><code>{{ "not_a_number" | sin }}</code> - the template will fail to render</p>
+</li>
+<li>
+<p><code>{{ float("not_a_number", default="Invalid number!") }}</code> - renders as <code>"Invalid number!"</code></p>
+</li>
+<li>
+<p><code>{{ "not_a_number" | sin(default="Invalid number!") }}</code> - renders as <code>"Invalid number!"</code></p>
+</li>
+</ul>
+</div>
+
+
+</div>
+<ul>
+<li>
+<p><code>float(value, default)</code> function will attempt to convert the input to a <code>float</code>. If that fails, returns the <code>default</code> value, or if omitted raises an error.</p>
+</li>
+<li>
+<p><code>float(default)</code> filter will attempt to convert the input to a <code>float</code>. If that fails, returns the <code>default</code> value, or if omitted raises an error.</p>
+</li>
+<li>
+<p><code>is_number</code> will return <code>True</code> if the input can be parsed by Python’s <code>float</code> function and the parsed input is not <code>inf</code> or <code>nan</code>, in all other cases returns <code>False</code>. Note that a Python <code>bool</code> will return <code>True</code> but the strings <code>"True"</code> and <code>"False"</code> will both return <code>False</code>. Can be used as a filter.</p>
+</li>
+<li>
+<p><code>int(value, default)</code> function is similar to <code>float</code>, but converts to an <code>int</code> instead. Like <code>float</code>, it has a filter form, and an error is raised if the <code>default</code> value is omitted. Fractional part is discarded: <code>int("1.5")</code> is <code>1</code>.</p>
+</li>
+<li>
+<p><code>bool(value, default)</code> function converts the value to either <code>true</code> or <code>false</code>.
+The following values are considered to be <code>true</code>: boolean <code>true</code>, non-zero <code>int</code>s and <code>float</code>s, and the strings <code>"true"</code>, <code>"yes"</code>, <code>"on"</code>, <code>"enable"</code>, and <code>"1"</code> (case-insensitive). <code>false</code> is returned for the opposite values: boolean <code>false</code>, integer or floating-point <code>0</code>, and the strings <code>"false"</code>, <code>"no"</code>, <code>"off"</code>, <code>"disable"</code>, and <code>"0"</code> (also case-insensitive).
+If the value is not listed here, the function returns the <code>default</code> value, or if omitted raises an error.
+This function is intended to be used on states of <a href="https://www.home-assistant.io/integrations/binary_sensor/">binary sensors</a>, <a href="https://www.home-assistant.io/integrations/switch/">switches</a>, or similar entities, so its behavior is different from Python’s built-in <code>bool</code> conversion, which would consider e.g. <code>"on"</code>, <code>"off"</code>, and <code>"unknown"</code> all to be <code>true</code>, but <code>""</code> to be <code>false</code>; if that is desired, use <code>not not value</code> or a similar construct instead.
+Like <code>float</code> and <code>int</code>, <code>bool</code> has a filter form. Using <code>none</code> as the default value is particularly useful in combination with the <a href="templating.1.html#immediate-if-iif">immediate if filter</a>: it can handle all three possible cases in a single line.</p>
+</li>
+<li>
+<p><code>log(value, base, default)</code> will take the logarithm of the input. When the base is omitted, it defaults to <code>e</code> - the natural logarithm. If <code>value</code> or <code>base</code> can’t be converted to a <code>float</code>, returns the <code>default</code> value, or if omitted raises an error. Can also be used as a filter.</p>
+</li>
+<li>
+<p><code>sin(value, default)</code> will return the sine of the input. The input value is in radians. If <code>value</code> can’t be converted to a <code>float</code>, returns the <code>default</code> value, or if omitted raises an error. Can be used as a filter.</p>
+</li>
+<li>
+<p><code>cos(value, default)</code> will return the cosine of the input. The input value is in radians. If <code>value</code> can’t be converted to a <code>float</code>, returns the <code>default</code> value, or if omitted raises an error. Can be used as a filter.</p>
+</li>
+<li>
+<p><code>tan(value, default)</code> will return the tangent of the input. The input value is in radians. If <code>value</code> can’t be converted to a <code>float</code>, returns the <code>default</code> value, or if omitted raises an error. Can be used as a filter.</p>
+</li>
+<li>
+<p><code>asin(value, default)</code> will return the arcus sine of the input. The return value is in radians. If <code>value</code> can’t be converted to a <code>float</code>, returns the <code>default</code> value, or if omitted raises an error. Can be used as a filter.</p>
+</li>
+<li>
+<p><code>acos(value, default)</code> will return the arcus cosine of the input. The return value is in radians. If <code>value</code> can’t be converted to a <code>float</code>, returns the <code>default</code> value, or if omitted raises an error. Can be used as a filter.</p>
+</li>
+<li>
+<p><code>atan(value, default)</code> will return the arcus tangent of the input. The return value is in radians. If <code>value</code> can’t be converted to a <code>float</code>, returns the <code>default</code> value, or if omitted raises an error. Can be used as a filter.</p>
+</li>
+<li>
+<p><code>atan2(y, x, default)</code> will return the four quadrant arcus tangent of y / x. The return value is in radians. If <code>y</code> or <code>x</code> can’t be converted to a <code>float</code>, returns the <code>default</code> value, or if omitted raises an error. Can be used as a filter.</p>
+</li>
+<li>
+<p><code>sqrt(value, default)</code> will return the square root of the input. If <code>value</code> can’t be converted to a <code>float</code>, returns the <code>default</code> value, or if omitted raises an error. Can be used as a filter.</p>
+</li>
+<li>
+<p><code>max([x, y, ...])</code> will obtain the largest item in a sequence. Uses the same parameters as the built-in <a href="https://jinja.palletsprojects.com/en/latest/templates/#jinja-filters.max" rel="external nofollow">max<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> filter.</p>
+</li>
+<li>
+<p><code>min([x, y, ...])</code> will obtain the smallest item in a sequence. Uses the same parameters as the built-in <a href="https://jinja.palletsprojects.com/en/latest/templates/#jinja-filters.min" rel="external nofollow">min<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a> filter.</p>
+</li>
+<li>
+<p><code>average([x, y, ...], default)</code> will return the average value of the sequence. If list is empty or contains non-numeric value, returns the <code>default</code> value, or if omitted raises an error. Can be used as a filter.</p>
+</li>
+<li>
+<p><code>median([x, y, ...], default)</code> will return the median value of the sequence. If list is empty or contains non-numeric value, returns the <code>default</code> value, or if omitted raises an error. Can be used as a filter.</p>
+</li>
+<li>
+<p><code>statistical_mode([x, y, ...], default)</code> will return the statistical mode value (most frequent occurrence) of the sequence. If the list is empty, it returns the <code>default</code> value, or if omitted raises an error. It can be used as a filter.</p>
+</li>
+<li>
+<p><code>clamp(v, min, max)</code> limits the value <code>v</code> to be between <code>min</code> and <code>max</code>, <a href="https://en.wikipedia.org/wiki/Clamp_(function)" rel="external nofollow">clamping at the edges<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>. If any of the arguments cannot be converted to a float, an error is raised. Can be used as a filter.</p>
+</li>
+<li>
+<p><code>wrap(v, min, max)</code> limits the value to be between min and max, wrapping the value at the edges. In mathematical terms, this is <a href="https://en.wikipedia.org/wiki/Modular_arithmetic" rel="external nofollow">modular arithmetic<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>, sometimes called “clock face math”. If <code>v</code>, <code>min</code>, or <code>max</code> cannot be converted to numbers, an error is raised. Can be used as a filter.</p>
+</li>
+<li>
+<p><code>remap(v, in_min, in_max, out_min, out_max, *, [steps], [edges])</code> remaps a value <code>v</code> from the range <code>in_min</code>..<code>in_max</code> to the range <code>out_min</code>..<code>out_max</code>.
+If any of the values <code>v</code>, <code>in_min</code>, <code>in_max</code>, <code>out_min</code>, <code>out_max</code> cannot be converted to numbers, an error is raised. Can be used as a filter.</p>
+<ul>
+<li>You can optionally set the <code>edges</code> parameter to control how out-of-bounds input values are handled:
+<ul>
+<li>
+<code>edges='clamp'</code> (the default) will clamp the output to the min/max output range.</li>
+<li>
+<code>edges='wrap'</code> will wrap the input value around the input range before remapping.</li>
+<li>
+<code>edges='mirror'</code> will bounce the input value back and forth within the input range before remapping.</li>
+</ul>
+</li>
+<li>You can optionally set the <code>steps</code> parameter to a positive integer to quantize the output to a number of discrete steps.</li>
+</ul>
+</li>
+<li>
+<p><code>e</code> mathematical constant, approximately 2.71828.</p>
+</li>
+<li>
+<p><code>pi</code> mathematical constant, approximately 3.14159.</p>
+</li>
+<li>
+<p><code>tau</code> mathematical constant, approximately 6.28318.</p>
+</li>
+<li>
+<p>Filter <code>round(precision, method, default)</code> will convert the input to a number and round it to <code>precision</code> decimals. Round has four modes and the default mode (with no mode specified) will <a href="https://en.wikipedia.org/wiki/Rounding#Roundhalfto_even" rel="external nofollow">round-to-even<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>. If the input value can’t be converted to a <code>float</code>, returns the <code>default</code> value, or if omitted raises an error.</p>
+<ul>
+<li>
+<code>round(precision, "floor", default)</code> will always round down to <code>precision</code> decimals</li>
+<li>
+<code>round(precision, "ceil", default)</code> will always round up to <code>precision</code> decimals</li>
+<li>
+<code>round(1, "half", default)</code> will always round to the nearest .5 value. <code>precision</code> should be 1 for this mode</li>
+</ul>
+</li>
+<li>
+<p>Filter <code>value_one|bitwise_and(value_two)</code> perform a bitwise and(&amp;) operation with two values.</p>
+</li>
+<li>
+<p>Filter <code>value_one|bitwise_or(value_two)</code> perform a bitwise or(|) operation with two values.</p>
+</li>
+<li>
+<p>Filter <code>value_one|bitwise_xor(value_two)</code> perform a bitwise xor(^) operation with two values.</p>
+</li>
+<li>
+<p>Filter <code>ord</code> will return for a string of length one an integer representing the Unicode code point of the character when the argument is a Unicode object, or the value of the byte when the argument is an 8-bit string.</p>
+</li>
+<li>
+<p>Filter <code>multiply(arg)</code> will convert the input to a number and multiply it by <code>arg</code>. Useful in list operations in conjunction with <code>map</code>.</p>
+</li>
+<li>
+<p>Filter <code>add(arg)</code> will convert the input to a number and add it to <code>arg</code>. Useful in list operations in conjunction with <code>map</code>.</p>
+</li>
+</ul>
+<h3>Complex type checking <a class="title-link" name="complex-type-checking" href="templating.1.html#complex-type-checking"></a>
+</h3>
+<p>In addition to strings and numbers, Python (and Jinja) supports lists, sets, and dictionaries. To help you with testing these types, you can use the following tests:</p>
+<ul>
+<li>
+<code>x is list</code> will return whether <code>x</code> is a <code>list</code> or not (e.g. <code>[1, 2] is list</code> will return <code>True</code>).</li>
+<li>
+<code>x is set</code> will return whether <code>x</code> is a <code>set</code> or not (e.g. <code>{1, 2} is set</code> will return <code>True</code>).</li>
+<li>
+<code>x is tuple</code> will return whether <code>x</code> is a <code>tuple</code> or not (e.g. <code>(1, 2) is tuple</code> will return <code>True</code>).</li>
+<li>
+<code>x is datetime</code> will return whether <code>x</code> is a <code>datetime</code> or not (e.g. <code>datetime(2020, 1, 1, 0, 0, 0) is datetime</code> will return <code>True</code>).</li>
+<li>
+<code>x is string_like</code> will return whether <code>x</code> is a string, bytes, or bytearray object.</li>
+</ul>
+<p>Note that, in Home Assistant, Jinja has built-in tests for <code>boolean</code> (<code>True</code>/<code>False</code>), <code>callable</code> (any function), <code>float</code> (a number with a decimal), <code>integer</code> (a number without a decimal), <code>iterable</code> (a value that can be iterated over such as a <code>list</code>, <code>set</code>, <code>string</code>, or generator), <code>mapping</code> (mainly <code>dict</code> but also supports other dictionary like types), <code>number</code> (<code>float</code> or <code>int</code>), <code>sequence</code> (a value that can be iterated over and indexed such as <code>list</code> and <code>string</code>), and <code>string</code>.</p>
+<h3>Type conversions <a class="title-link" name="type-conversions" href="templating.1.html#type-conversions"></a>
+</h3>
+<p>While Jinja natively supports the conversion of an iterable to a <code>list</code>, it does not support conversion to a <code>tuple</code> or <code>set</code>. To help you with using these types, you can use the following functions:</p>
+<ul>
+<li>
+<code>set(x)</code> will convert any iterable <code>x</code> to a <code>set</code> (e.g. <code>set([1, 2]) == {1, 2}</code>)</li>
+<li>
+<code>tuple(x)</code> will convert any iterable <code>x</code> to a <code>tuple</code> (e.g. <code>tuple("abc") == ("a", "b", "c")</code>)</li>
+</ul>
+<p>Note that, in Home Assistant, to convert a value to a <code>list</code>, a <code>string</code>, an <code>int</code>, or a <code>float</code>, Jinja has built-in functions with names that correspond to each type.</p>
+<h3>Iterating multiple objects <a class="title-link" name="iterating-multiple-objects" href="templating.1.html#iterating-multiple-objects"></a>
+</h3>
+<p>The <code>zip()</code> function can be used to iterate over multiple collections in one operation.</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{% set names = ['Living Room', 'Dining Room'] %}
+{% set entities = ['sensor.living_room_temperature', 'sensor.dining_room_temperature'] %}
+{% for name, entity in zip(names, entities) %}
+  The {{ name }} temperature is {{ states(entity) }}
+{% endfor %}
+</code></pre></div></div>
+<p><code>zip()</code> can also unzip lists.</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{% set information = [
+  ('Living Room', 'sensor.living_room_temperature'),
+  ('Dining Room', 'sensor.dining_room_temperature')
+] %}
+{% set names, entities = zip(*information) %}
+The names are {{ names | join(', ') }}
+The entities are {{ entities | join(', ') }}
+</code></pre></div></div>
+<h3>Functions and filters to process raw data <a class="title-link" name="functions-and-filters-to-process-raw-data" href="templating.1.html#functions-and-filters-to-process-raw-data"></a>
+</h3>
+<p>These functions are used to process raw value’s in a <code>bytes</code> format to values in a native Python type or vice-versa.
+The <code>pack</code> and <code>unpack</code> functions can also be used as a filter. They make use of the Python 3 <code>struct</code> library.
+See: <a href="https://docs.python.org/3/library/struct.html" rel="external nofollow">Python struct library documentation<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a></p>
+<ul>
+<li>Filter <code>value | pack(format_string)</code> will convert a native type to a <code>bytes</code> type object. This will call function <code>struct.pack(format_string, value)</code>. Returns <code>None</code> if an error occurs or when <code>format_string</code> is invalid.</li>
+<li>Function <code>pack(value, format_string)</code> will convert a native type to a <code>bytes</code> type object. This will call function <code>struct.pack(format_string, value)</code>. Returns <code>None</code> if an error occurs or when <code>format_string</code> is invalid.</li>
+<li>Filter <code>value | unpack(format_string, offset=0)</code> will try to convert a <code>bytes</code> object into a native Python object. The <code>offset</code> parameter defines the offset position in bytes from the start of the input <code>bytes</code> based buffer. This will call function <code>struct.unpack_from(format_string, value, offset=offset)</code>. Returns <code>None</code> if an error occurs or when <code>format_string</code> is invalid. Note that the filter <code>unpack</code> will only return the first <code>bytes</code> object, despite the function <code>struct.unpack_from</code> supporting to return multiple objects (e.g. with <code>format_string</code> being <code>"&gt;hh"</code>.</li>
+<li>Function <code>unpack(value, format_string, offset=0)</code> will try to convert a <code>bytes</code> object into a native Python object. The <code>offset</code> parameter defines the offset position in bytes from the start of the input <code>bytes</code> based buffer. This will call function <code>struct.unpack_from(format_string, value, offset=offset)</code>. Returns <code>None</code> if an error occurs or when <code>format_string</code> is invalid. Note that the function <code>unpack</code> will only return the first <code>bytes</code> object, despite the function <code>struct.unpack_from</code> supporting to return multiple objects (e.g. with <code>format_string</code> being <code>"&gt;hh"</code>.</li>
+</ul>
+<div class="alert alert-note">
+  <p class="alert-title"><iconify-icon inline icon="mdi:information-outline"></iconify-icon> Note</p>
+  <div class="alert-content">
+<p>Some examples:</p>
+<ul>
+<li>
+<p><code>{{ 0xDEADBEEF | pack("&gt;I") }}</code> - renders as <code>b"\xde\xad\xbe\xef"</code></p>
+</li>
+<li>
+<p><code>{{ pack(0xDEADBEEF, "&gt;I") }}</code> - renders as <code>b"\xde\xad\xbe\xef"</code></p>
+</li>
+<li>
+<p><code>{{ "0x%X" % 0xDEADBEEF | pack("&gt;I") | unpack("&gt;I") }}</code> - renders as <code>0xDEADBEEF</code></p>
+</li>
+<li>
+<p><code>{{ "0x%X" % 0xDEADBEEF | pack("&gt;I") | unpack("&gt;H", offset=2) }}</code> - renders as <code>0xBEEF</code></p>
+</li>
+</ul>
+</div>
+
+
+</div>
+<h3>String filters <a class="title-link" name="string-filters" href="templating.1.html#string-filters"></a>
+</h3>
+<ul>
+<li>Filter <code>urlencode</code> will convert an object to a percent-encoded ASCII text string (e.g., for HTTP requests using <code>application/x-www-form-urlencoded</code>).</li>
+<li>Filter <code>slugify(separator="_")</code> will convert a given string into a “slug”.</li>
+<li>Filter <code>ordinal</code> will convert an integer into a number defining a position in a series (e.g., <code>1st</code>, <code>2nd</code>, <code>3rd</code>, <code>4th</code>, etc).</li>
+<li>Filter <code>value | from_hex</code> Decodes a hex string to raw bytes.</li>
+<li>Filter <code>value | base64_encode</code> Encodes a string or bytes to a base 64 string.</li>
+<li>Filter <code>value | base64_decode</code> Decodes a base 64 string to a string, by default utf-8 encoding is used.</li>
+<li>Filter <code>value | base64_decode("ascii")</code> Decodes a base 64 string to a string, using ascii encoding.</li>
+<li>Filter <code>value | base64_decode(None)</code> Decodes a base 64 string to raw bytes.</li>
+</ul>
+<div class="note">
+<p>Some examples:</p>
+<ul>
+<li>
+<code>{{ "homeassistant" | base64_encode }}</code> - renders as <code>aG9tZWFzc2lzdGFudA==</code>
+</li>
+<li>
+<code>{{ "aG9tZWFzc2lzdGFudA==" | base64_decode }}</code> - renders as <code>homeassistant</code>
+</li>
+<li>
+<code>{{ "aG9tZWFzc2lzdGFudA==" | base64_decode(None) }}</code> - renders as <code>b'homeassistant'</code>
+</li>
+<li>
+<code>{{ "0F010003" | from_hex }}</code> - renders as <code>b'\x0f\x01\x00\x03'</code>
+</li>
+<li>
+<code>{{ "0F010003" | from_hex | base64_encode }}</code> - renders as <code>DwEAAw==</code>
+</li>
+</ul>
+</div>
+<h3>Hashing <a class="title-link" name="hashing" href="templating.1.html#hashing"></a>
+</h3>
+<p>The template engine contains a few filters and functions to hash a string of
+data. A few very common hashing algorithms are supported: <code>md5</code>, <code>sha1</code>,
+<code>sha256</code>, and <code>sha512</code>.</p>
+<p>Some examples:</p>
+<ul>
+<li>
+<p><code>{{ md5("Home Assistant") }}</code> - renders as <code>f3f2b8b3b40084aa87e92b7ffb02ed13885fea2d07</code></p>
+</li>
+<li>
+<p><code>{{ "Home Assistant" | md5 }}</code> - renders as <code>f3f2b8b3b40084aa87e92b7ffb02ed13885fea2d07</code></p>
+</li>
+<li>
+<p><code>{{ sha1("Home Assistant") }}</code> - renders as <code>14bffd017c73917bfda2372aaf287570597b8e82</code></p>
+</li>
+<li>
+<p><code>{{ "Home Assistant" | sha1 }}</code> - renders as <code>14bffd017c73917bfda2372aaf287570597b8e82</code></p>
+</li>
+<li>
+<p><code>{{ sha256("Home Assistant") }}</code> - renders as <code>a18f473c9d3ed968a598f996dcf0b9de84de4ee04c950d041b61297a25bcea49</code></p>
+</li>
+<li>
+<p><code>{{ "Home Assistant" | sha256 }}</code> - renders as <code>a18f473c9d3ed968a598f996dcf0b9de84de4ee04c950d041b61297a25bcea49</code></p>
+</li>
+<li>
+<p><code>{{ sha512("Home Assistant") }}</code> - renders as <code>f251e06eb7d3439e1a86d6497d6a4531c3e8c809f538be62f89babf147d7d63aca4e77ae475b94c654fd38d8f543f778ce80007d6afef379d8a0e5d3ddf7349d</code></p>
+</li>
+<li>
+<p><code>{{ "Home Assistant" | sha512 }}</code> - renders as <code>f251e06eb7d3439e1a86d6497d6a4531c3e8c809f538be62f89babf147d7d63aca4e77ae475b94c654fd38d8f543f778ce80007d6afef379d8a0e5d3ddf7349d</code></p>
+</li>
+</ul>
+<h3>Regular expressions <a class="title-link" name="regular-expressions" href="templating.1.html#regular-expressions"></a>
+</h3>
+<p>For more information on regular expressions
+See: <a href="https://docs.python.org/3/library/re.html" rel="external nofollow">Python regular expression operations<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a></p>
+<ul>
+<li>Test <code>string is match(find, ignorecase=False)</code> will match the find expression at the beginning of the string using regex.</li>
+<li>Test <code>string is search(find, ignorecase=False)</code> will match the find expression anywhere in the string using regex.</li>
+<li>Filter <code>string|regex_replace(find='', replace='', ignorecase=False)</code> will replace the find expression with the replace string using regex. Access to the matched groups in <code>replace</code> is possible with <code>'\\1'</code>, <code>'\\2'</code>, etc.</li>
+<li>Filter <code>value | regex_findall(find='', ignorecase=False)</code> will find all regex matches of the find expression in <code>value</code> and return the array of matches.</li>
+<li>Filter <code>value | regex_findall_index(find='', index=0, ignorecase=False)</code> will do the same as <code>regex_findall</code> and return the match at index.</li>
+</ul>
+<h3>Shuffling <a class="title-link" name="shuffling" href="templating.1.html#shuffling"></a>
+</h3>
+<p>The template engine contains a filter and function to shuffle a list.</p>
+<p>Shuffling can happen randomly or reproducibly using a seed. When using a seed
+it will always return the same shuffled list for the same seed.</p>
+<p>Some examples:</p>
+<ul>
+<li>
+<p><code>{{ [1, 2, 3] | shuffle }}</code> - renders as <code>[3, 1, 2]</code> (<em>random</em>)</p>
+</li>
+<li>
+<p><code>{{ shuffle([1, 2, 3]) }}</code> - renders as <code>[3, 1, 2]</code> (<em>random</em>)</p>
+</li>
+<li>
+<p><code>{{ shuffle(1, 2, 3) }}</code> - renders as <code>[3, 1, 2]</code> (<em>random</em>)</p>
+</li>
+<li>
+<p><code>{{ [1, 2, 3] | shuffle("random seed") }}</code> - renders as `[2, 3, 1] (<em>reproducible</em>)</p>
+</li>
+<li>
+<p><code>{{ shuffle([1, 2, 3], seed="random seed") }}</code> - renders as `[2, 3, 1] (<em>reproducible</em>)</p>
+</li>
+<li>
+<p><code>{{ shuffle([1, 2, 3], "random seed") }}</code>- renders as `[2, 3, 1] (<em>reproducible</em>)</p>
+</li>
+<li>
+<p><code>{{ shuffle(1, 2, 3, seed="random seed") }}</code> - renders as `[2, 3, 1] (<em>reproducible</em>)</p>
+</li>
+</ul>
+<h3>Flatten a list of lists <a class="title-link" name="flatten-a-list-of-lists" href="templating.1.html#flatten-a-list-of-lists"></a>
+</h3>
+<p>The template engine provides a filter to flatten a list of lists: <code>flatten</code>.</p>
+<p>It will take a list of lists and return a single list with all the elements.
+The depth of the flattening can be controlled using the <code>levels</code> parameter.
+The flattening process is recursive, so it will flatten all nested lists, until
+the number of levels (if specified) is reached.</p>
+<p>Some examples:</p>
+<ul>
+<li>
+<p><code>{{ flatten([1, [2, [3]], 4, [5 , 6]]) }}</code> - renders as <code>[1, 2, 3, 4, 5, 6]</code></p>
+</li>
+<li>
+<p><code>{{ [1, [2, [3]], 4, [5 , 6]] | flatten }}</code> - renders as <code>[1, 2, 3, 4, 5, 6]</code></p>
+</li>
+<li>
+<p><code>{{ flatten([1, [2, [3]]], levels=1) }}</code> - renders as <code>[1, 2, [3]]</code></p>
+</li>
+<li>
+<p><code>{{ [1, [2, [3]]], flatten(levels=1) }}</code> - renders as <code>[1, 2, [3]]</code></p>
+</li>
+<li>
+<p><code>{{ flatten([1, [2, [3]]], 1) }}</code> - renders as <code>[1, 2, [3]]</code></p>
+</li>
+<li>
+<p><code>{{ [1, [2, [3]]], flatten(1) }}</code> - renders as <code>[1, 2, [3]]</code></p>
+</li>
+</ul>
+<h3>Find common elements between lists <a class="title-link" name="find-common-elements-between-lists" href="templating.1.html#find-common-elements-between-lists"></a>
+</h3>
+<p>The template engine provides a filter to find common elements between two lists: <code>intersect</code>.</p>
+<p>This function returns a list containing all elements that are present in both input lists.</p>
+<p>Some examples:</p>
+<ul>
+<li>
+<code>{{ intersect([1, 2, 5, 3, 4, 10], [1, 2, 3, 4, 5, 11, 99]) }}</code> - renders as <code>[1, 2, 3, 4, 5]</code>
+</li>
+<li>
+<code>{{ [1, 2, 5, 3, 4, 10] | intersect([1, 2, 3, 4, 5, 11, 99]) }}</code> - renders as <code>[1, 2, 3, 4, 5]</code>
+</li>
+<li>
+<code>{{ intersect(['a', 'b', 'c'], ['b', 'c', 'd']) }}</code> - renders as <code>['b', 'c']</code>
+</li>
+<li>
+<code>{{ ['a', 'b', 'c'] | intersect(['b', 'c', 'd']) }}</code> - renders as <code>['b', 'c']</code>
+</li>
+</ul>
+<h3>Find elements in first list not in second list <a class="title-link" name="find-elements-in-first-list-not-in-second-list" href="templating.1.html#find-elements-in-first-list-not-in-second-list"></a>
+</h3>
+<p>The template engine provides a filter to find elements that are in the first list but not in the second list: <code>difference</code>.
+This function returns a list containing all elements that are present in the first list but absent from the second list.</p>
+<p>Some examples:</p>
+<ul>
+<li>
+<code>{{ difference([1, 2, 5, 3, 4, 10], [1, 2, 3, 4, 5, 11, 99]) }}</code> - renders as <code>[10]</code>
+</li>
+<li>
+<code>{{ [1, 2, 5, 3, 4, 10] | difference([1, 2, 3, 4, 5, 11, 99]) }}</code> - renders as <code>[10]</code>
+</li>
+<li>
+<code>{{ difference(['a', 'b', 'c'], ['b', 'c', 'd']) }}</code> - renders as <code>['a']</code>
+</li>
+<li>
+<code>{{ ['a', 'b', 'c'] | difference(['b', 'c', 'd']) }}</code> - renders as <code>['a']</code>
+</li>
+</ul>
+<h3>Find elements that are in either list but not in both <a class="title-link" name="find-elements-that-are-in-either-list-but-not-in-both" href="templating.1.html#find-elements-that-are-in-either-list-but-not-in-both"></a>
+</h3>
+<p>The template engine provides a filter to find elements that are in either of the input lists but not in both: <code>symmetric_difference</code>.
+This function returns a list containing all elements that are present in either the first list or the second list, but not in both.</p>
+<p>Some examples:</p>
+<ul>
+<li>
+<code>{{ symmetric_difference([1, 2, 5, 3, 4, 10], [1, 2, 3, 4, 5, 11, 99]) }}</code> - renders as <code>[10, 11, 99]</code>
+</li>
+<li>
+<code>{{ [1, 2, 5, 3, 4, 10] | symmetric_difference([1, 2, 3, 4, 5, 11, 99]) }}</code> - renders as <code>[10, 11, 99]</code>
+</li>
+<li>
+<code>{{ symmetric_difference(['a', 'b', 'c'], ['b', 'c', 'd']) }}</code> - renders as <code>['a', 'd']</code>
+</li>
+<li>
+<code>{{ ['a', 'b', 'c'] | symmetric_difference(['b', 'c', 'd']) }}</code> - renders as <code>['a', 'd']</code>
+</li>
+</ul>
+<h3>Combine all unique elements from two lists <a class="title-link" name="combine-all-unique-elements-from-two-lists" href="templating.1.html#combine-all-unique-elements-from-two-lists"></a>
+</h3>
+<p>The template engine provides a filter to combine all unique elements from two lists: <code>union</code>.
+This function returns a list containing all unique elements that are present in either the first list or the second list.</p>
+<p>Some examples:</p>
+<ul>
+<li>
+<code>{{ union([1, 2, 5, 3, 4, 10], [1, 2, 3, 4, 5, 11, 99]) }}</code> - renders as <code>[1, 2, 3, 4, 5, 10, 11, 99]</code>
+</li>
+<li>
+<code>{{ [1, 2, 5, 3, 4, 10] | union([1, 2, 3, 4, 5, 11, 99]) }}</code> - renders as <code>[1, 2, 3, 4, 5, 10, 11, 99]</code>
+</li>
+<li>
+<code>{{ union(['a', 'b', 'c'], ['b', 'c', 'd']) }}</code> - renders as <code>['a', 'b', 'c', 'd']</code>
+</li>
+<li>
+<code>{{ ['a', 'b', 'c'] | union(['b', 'c', 'd']) }}</code> - renders as <code>['a', 'b', 'c', 'd']</code>
+</li>
+</ul>
+<h3>Combining dictionaries <a class="title-link" name="combining-dictionaries" href="templating.1.html#combining-dictionaries"></a>
+</h3>
+<p>The template engine provides a function and filter to merge multiple dictionaries: <code>combine</code>.</p>
+<p>It will take multiple dictionaries and merge them into a single dictionary. When used as a filter,
+the filter value is used as the first dictionary. The optional <code>recursive</code> parameter determines
+whether nested dictionaries should be merged (defaults to <code>False</code>).</p>
+<p>Some examples:</p>
+<ul>
+<li>
+<p><code>{{ {'a': 1, 'b': 2} | combine({'b': 3, 'c': 4}) }}</code> - renders as <code>{'a': 1, 'b': 3, 'c': 4}</code></p>
+</li>
+<li>
+<p><code>{{ combine({'a': 1, 'b': 2}, {'b': 3, 'c': 4}) }}</code> - renders as <code>{'a': 1, 'b': 3, 'c': 4}</code></p>
+</li>
+<li>
+<p><code>{{ combine({'a': 1, 'b': {'x': 1}}, {'b': {'y': 2}, 'c': 4}, recursive=True) }}</code> - renders as <code>{'a': 1, 'b': {'x': 1, 'y': 2}, 'c': 4}</code></p>
+</li>
+<li>
+<p><code>{{ combine({'a': 1, 'b': {'x': 1}}, {'b': {'y': 2}, 'c': 4}) }}</code> - renders as <code>{'a': 1, 'b': {'y': 2}, 'c': 4}</code></p>
+</li>
+</ul>
+<h3>Working with macros <a class="title-link" name="working-with-macros" href="templating.1.html#working-with-macros"></a>
+</h3>
+<p>Home Assistant provides two additional functions that make macros much more powerful.</p>
+<ul>
+<li>
+<code>apply</code> is both a filter and a test that allows you to use any callable (macros or functions) wherever
+you can use other filters and tests. <code>apply</code> also passes along any additional parameters to the function.
+For example, if you had a function called <code>double</code>, you could call
+<code>{{ [1, 2, 3, 4] | map('apply', double) | list }}</code>, which would render as <code>[2, 4, 6, 8]</code>.<br>
+Alternatively, if you had a function called <code>is_multiple_of</code>, you could call
+<code>{{ [1, 2, 3, 4] | select('apply', is_multiple_of, 2) | list }}</code>, which would render as <code>[2, 4]</code>.</li>
+<li>
+<code>as_function</code> is a filter that takes a macro that has a named parameter called <code>returns</code>. The macro can
+then call <code>{%- do returns(return_value) -%}</code>. After passing this macro into <code>as_function</code>, the resulting
+function returns your return value directly, preserving the underlying data type rather than rendering
+a string. You can return dictionaries, numbers, <code>True</code>/<code>False</code> (allowing you to write your own tests when
+used with <code>apply</code>), or any other value your code might produce.</li>
+</ul>
+<h2>Merge action responses <a class="title-link" name="merge-action-responses" href="templating.1.html#merge-action-responses"></a>
+</h2>
+<p>Using action responses we can collect information from various entities at the same time.
+Using the <code>merge_response</code> template we can merge several responses into one list.</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td>The incoming value (must be an action response).</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>entity_id</code> key is appended to each dictionary within the template output list as a reference of origin. If the input dictionary already contains an <code>entity_id</code> key, the template will fail.</p>
+<p>The <code>value_key</code> key is appended to each dictionary within the template output list as a reference of origin if the original service call was providing a list of dictionaries, for example, <code>calendar.get_events</code> or <code>weather.get_forecasts</code>.</p>
+<p>Examples of these two keys can be seen in <a href="templating.1.html#example-merge-calendar-action-response">example merge calendar action response</a> template output.</p>
+<h3>Example <a class="title-link" name="example" href="templating.1.html#example"></a>
+</h3>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml">
+
+<span class="pi">{</span><span class="err">%</span> <span class="nv">set combined_forecast = merge_response(response) %</span><span class="pi">}</span>
+<span class="pi">{{</span> <span class="nv">combined_forecast</span><span class="pi">[</span><span class="nv">0</span><span class="pi">]</span><span class="nv">.precipitation | float(0) | round(1)</span> <span class="pi">}}</span>
+
+
+</code></pre></div></div>
+<h3>Example how to sort <a class="title-link" name="example-how-to-sort" href="templating.1.html#example-how-to-sort"></a>
+</h3>
+<p>Sorting the dictionaries within the list based on a specific key can be done directly by using Jinja’s <code>sort</code> filter.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml">
+
+<span class="pi">{{</span> <span class="nv">merge_response(calendar_response) | sort(attribute='start') | ...</span> <span class="pi">}}</span>
+
+
+</code></pre></div></div>
+<h3>Example merge calendar action response <a class="title-link" name="example-merge-calendar-action-response" href="templating.1.html#example-merge-calendar-action-response"></a>
+</h3>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nl">"calendar.sports"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T17:00:00-06:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T18:00:00-06:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Basketball vs. Rockets"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"calendar.local_furry_events"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[]},</span><span class="w">
+  </span><span class="nl">"calendar.yap_house_schedules"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-26T08:00:00-06:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-26T09:00:00-06:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr. Appt"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-28T20:00:00-06:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-28T21:00:00-06:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bake a cake"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"something good"</span><span class="p">,</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml">
+<span class="pi">{{</span> <span class="nv">merge_response(response_variable)</span> <span class="pi">}}</span>
+
+</code></pre></div></div>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="json"><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T18:00:00-06:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calendar.sports"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T17:00:00-06:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Basketball vs. Rockets"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"events"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-26T09:00:00-06:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calendar.yap_house_schedules"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-26T08:00:00-06:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr. Appt"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"events"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"something good"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-28T21:00:00-06:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calendar.yap_house_schedules"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-28T20:00:00-06:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bake a cake"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"events"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+<h3>Example non-list action responses <a class="title-link" name="example-non-list-action-responses" href="templating.1.html#example-non-list-action-responses"></a>
+</h3>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nl">"vacuum.deebot_n8_plus_1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"header"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"ver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.1"</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"payloadType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"j"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"vacuum.deebot_n8_plus_2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"header"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"ver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.1"</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"payloadType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"j"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml">
+<span class="pi">{{</span> <span class="nv">merge_response(response_variable)</span> <span class="pi">}}</span>
+
+</code></pre></div></div>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="json"><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vacuum.deebot_n8_plus_1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"header"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"ver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.1"</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"payloadType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"j"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vacuum.deebot_n8_plus_2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"header"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"ver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.1"</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"payloadType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"j"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+<h2>Processing incoming data <a class="title-link" name="processing-incoming-data" href="templating.1.html#processing-incoming-data"></a>
+</h2>
+<p>The other part of templating is processing incoming data. It allows you to modify incoming data and extract only the data you care about. This will only work for platforms and integrations that mention support for this in their documentation.</p>
+<p>It depends per integration or platform, but it is common to be able to define a template using the <code>value_template</code> configuration key. When a new value arrives, your template will be rendered while having access to the following values on top of the usual Home Assistant extensions:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td>The incoming value.</td>
+</tr>
+<tr>
+<td><code>value_json</code></td>
+<td>The incoming value parsed as JSON.</td>
+</tr>
+</tbody>
+</table>
+<p>This means that if the incoming values looks like the sample below:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nl">"on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"temp"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<p>The template for <code>on</code> would be:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="s2">"</span><span class="s">{{value_json.on}}"</span>
+</code></pre></div></div>
+<p>Nested JSON in a response is supported as well:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nl">"sensor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"air"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"values"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"temp"</span><span class="p">:</span><span class="w"> </span><span class="mf">26.09</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hum"</span><span class="p">:</span><span class="w"> </span><span class="mf">56.73</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<p>Just use the “Square bracket notation” to get the value.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">value_json['values']['temp']</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div></div>
+<p>The following overview contains a couple of options to get the needed values:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text"># Incoming value:
+{"primes": [2, 3, 5, 7, 11, 13]}
+
+# Extract first prime number
+{{ value_json.primes[0] }}
+
+# Format output
+{{ "%+.1f" | value_json }}
+
+# Math
+{{ value_json | float * 1024 if is_number(value_json) }}
+{{ float(value_json) * (2**10) if is_number(value_json) }}
+{{ value_json | log if is_number(value_json) }}
+{{ log(1000, 10) }}
+{{ sin(pi / 2) }}
+{{ cos(tau) }}
+{{ tan(pi) }}
+{{ sqrt(e) }}
+
+# Timestamps
+{{ value_json.tst | timestamp_local }}
+{{ value_json.tst | timestamp_utc }}
+{{ value_json.tst | timestamp_custom('%Y', True) }}
+</code></pre></div></div>
+<p>To evaluate a response, go to <strong><a href="https://my.home-assistant.io/redirect/developer_template" class="my" target="_blank">Developer Tools &gt; Template</a></strong>, create your output in “Template editor”, and check the result.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">{</span><span class="err">%</span> <span class="nv">set value_json=</span>
+    <span class="pi">{</span><span class="s2">"</span><span class="s">name"</span><span class="pi">:</span><span class="s2">"</span><span class="s">Outside"</span><span class="pi">,</span>
+     <span class="s2">"</span><span class="s">device"</span><span class="pi">:</span><span class="s2">"</span><span class="s">weather-ha"</span><span class="pi">,</span>
+     <span class="s2">"</span><span class="s">data"</span><span class="pi">:</span>
+        <span class="pi">{</span><span class="s2">"</span><span class="s">temp"</span><span class="pi">:</span><span class="s2">"</span><span class="s">24C"</span><span class="pi">,</span>
+         <span class="s2">"</span><span class="s">hum"</span><span class="pi">:</span><span class="s2">"</span><span class="s">35%"</span>
+         <span class="pi">}</span> <span class="pi">}</span><span class="err">%</span><span class="pi">}</span>
+
+<span class="pi">{{</span><span class="nv">value_json.data.hum</span><span class="pi">[:</span><span class="nv">-1</span><span class="pi">]}}</span>
+</code></pre></div></div>
+<h3>Using templates with the MQTT integration <a class="title-link" name="using-templates-with-the-mqtt-integration" href="templating.1.html#using-templates-with-the-mqtt-integration"></a>
+</h3>
+<p>The <a href="https://www.home-assistant.io/integrations/mqtt/">MQTT integration</a> relies heavily on templates. Templates are used to transform incoming payloads (value templates) to state updates or incoming actions (command templates) to payloads that configure the MQTT device.</p>
+<h4>Using value templates with MQTT <a class="title-link" name="using-value-templates-with-mqtt" href="templating.1.html#using-value-templates-with-mqtt"></a>
+</h4>
+<p>Value templates translate received MQTT payload to a valid state or attribute.
+The received MQTT is available in the <code>value</code> template variable, and in the <code>value_json</code> template variable if the received MQTT payload is valid JSON.</p>
+<p>In addition, the template variables <code>entity_id</code>, <code>name</code> and <code>this</code> are available for MQTT entity value templates. The <code>this</code> attribute refers to the <a href="state_object.1.html">entity state</a> of the MQTT item.</p>
+<div class="alert alert-note">
+  <p class="alert-title"><iconify-icon inline icon="mdi:information-outline"></iconify-icon> Note</p>
+  <div class="alert-content">
+<p>Example value template:</p>
+<p>With given payload:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="json"><span class="p">{</span><span class="w"> </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="p">,</span><span class="w"> </span><span class="nl">"temperature"</span><span class="p">:</span><span class="w"> </span><span class="mf">21.902</span><span class="p">,</span><span class="w"> </span><span class="nl">"humidity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<p>Template <code>{{ value_json.temperature | round(1) }}</code> renders to <code>21.9</code>.</p>
+<p>Template <code>{{ value_json.humidity }}</code> renders to <code>None</code>.</p>
+  </div>
+</div>
+<h4>Using command templates with MQTT <a class="title-link" name="using-command-templates-with-mqtt" href="templating.1.html#using-command-templates-with-mqtt"></a>
+</h4>
+<p>For actions, command templates are defined to format the outgoing MQTT payload to a format supported by the remote device. When an action is executed, the template variable <code>value</code> has the action data in most cases unless otherwise specified in the documentation.</p>
+<p>In addition, the template variables <code>entity_id</code>, <code>name</code> and <code>this</code> are available for MQTT entity command templates. The <code>this</code> attribute refers to the <a href="state_object.1.html">entity state</a> of the MQTT item.</p>
+<div class="alert alert-note">
+  <p class="alert-title"><iconify-icon inline icon="mdi:information-outline"></iconify-icon> Note</p>
+  <div class="alert-content">
+<p><strong>Example command template with JSON data:</strong></p>
+<p>With given value <code>21.9</code> template <code>{"temperature": {{ value }} }</code> renders to:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nl">"temperature"</span><span class="p">:</span><span class="w"> </span><span class="mf">21.9</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+  </div>
+</div>
+<p><strong>Example command template with raw data:</strong></p>
+<p>When a command template renders to a valid <code>bytes</code> literal, then MQTT will publish this data as raw data. In other cases, a string representation will be published. So:</p>
+<ul>
+<li>Template <code>{{ "16" }}</code> renders to payload encoded string <code>"16"</code>.</li>
+<li>Template <code>{{ 16 }}</code> renders to payload encoded string <code>"16"</code>.</li>
+<li>Template <code>{{ pack(0x10, "&gt;B") }}</code> renders to a raw 1 byte payload <code>0x10</code>.</li>
+</ul>
+<h3>Determining types <a class="title-link" name="determining-types" href="templating.1.html#determining-types"></a>
+</h3>
+<p>When working with templates, it can be useful to determine the type of
+the returned value from a method or the type of a variable at times.</p>
+<p>For this, Home Assistant provides the <code>typeof()</code> template function and filter,
+which is inspired by the <a href="https://en.wikipedia.org/wiki/JavaScript" rel="external nofollow">JavaScript<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>
+<code>typeof</code> operator. It reveals the type of the given value.</p>
+<p>This is mostly useful when you are debugging or playing with templates in
+the developer tools of Home Assistant. However, it might be useful in some
+other cases as well.</p>
+<p>Some examples:</p>
+<ul>
+<li>
+<p><code>{{ typeof(42) }}</code> - renders as <code>int</code></p>
+</li>
+<li>
+<p><code>{{ typeof(42.0) }}</code> - renders as <code>float</code></p>
+</li>
+<li>
+<p><code>{{ typeof("42") }}</code> - renders as <code>str</code></p>
+</li>
+<li>
+<p><code>{{ typeof([1, 2, 3]) }}</code> - renders as <code>list</code></p>
+</li>
+<li>
+<p><code>{{ typeof({"key": "value"}) }}</code> - renders as <code>dict</code></p>
+</li>
+<li>
+<p><code>{{ typeof(True) }}</code> - renders as <code>bool</code></p>
+</li>
+<li>
+<p><code>{{ typeof(None) }}</code> - renders as <code>NoneType</code></p>
+</li>
+<li>
+<p><code>{{ 42 | typeof }}</code> - renders as <code>int</code></p>
+</li>
+<li>
+<p><code>{{ 42.0 | typeof }}</code> - renders as <code>float</code></p>
+</li>
+<li>
+<p><code>{{ "42" | typeof }}</code> - renders as <code>str</code></p>
+</li>
+<li>
+<p><code>{{ [1, 2, 3] | typeof }}</code> - renders as <code>list</code></p>
+</li>
+<li>
+<p><code>{{ {"key": "value"} | typeof }}</code> - renders as <code>dict</code></p>
+</li>
+<li>
+<p><code>{{ True | typeof }}</code> - renders as <code>bool</code></p>
+</li>
+<li>
+<p><code>{{ None | typeof }}</code> - renders as <code>NoneType</code></p>
+</li>
+<li>
+<p><code>{{ some_variable | typeof }}</code> - renders the type of <code>some_variable</code></p>
+</li>
+<li>
+<p><code>{{ states("sensor.living_room") | typeof }}</code> - renders the type of the result of <code>states()</code> function</p>
+</li>
+</ul>
+<h2>Some more things to keep in mind <a class="title-link" name="some-more-things-to-keep-in-mind" href="templating.1.html#some-more-things-to-keep-in-mind"></a>
+</h2>
+<h3>entity_id that begins with a number <a class="title-link" name="entity_id-that-begins-with-a-number" href="templating.1.html#entity_id-that-begins-with-a-number"></a>
+</h3>
+<p>If your template uses an <code>entity_id</code> that begins with a number (example: <code>states.device_tracker.2008_gmc</code>) you must use a bracket syntax to avoid errors caused by rendering the <code>entity_id</code> improperly. In the example given, the correct syntax for the device tracker would be: <code>states.device_tracker['2008_gmc']</code></p>
+<h3>Priority of operators <a class="title-link" name="priority-of-operators" href="templating.1.html#priority-of-operators"></a>
+</h3>
+<p>The default priority of operators is that the filter (<code>|</code>) has priority over everything except brackets. This means that:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="text">{{ states('sensor.temperature') | float / 10 | round(2) }}
+</code></pre></div></div>
+<p>Would round <code>10</code> to 2 decimal places, then divide <code>states('sensor.temperature')</code> by <code>10</code> (rounded to 2 decimal places so 10.00). This behavior is maybe not the one expected, but priority rules imply that.</p>
+
+
+  
+
+
+  
+<div class="material-card text feedback">
+  <h4>
+<iconify-icon inline icon="mdi:feedback" title="Feedback"></iconify-icon> <b> Help us improve our documentation</b><a href="templating.1.html#feedback_section" class="title-link" name="feedback_section"></a>
+</h4>
+  Suggest an edit to this page, or provide/view feedback for this page.
+  <div class="links">
+    <ul aria-label="Page feedback options">
+    <li><a href="https://github.com/home-assistant/home-assistant.io/tree/current/source/_docs/configuration/templating.markdown" target="_blank" title="Edit this page"><iconify-icon inline icon="mdi:edit"></iconify-icon> Edit</a></li>
+    
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues/new?template=feedback.yml&amp;url=https%3A%2F%2Fwww.home-assistant.io%2Fdocs%2Fconfiguration%2Ftemplating%2F&amp;version=2026.1.0&amp;labels=current" target="_blank" title="Provide feedback on this page"><iconify-icon inline icon="mdi:comment-edit-outline"></iconify-icon> Provide feedback</a></li>
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues?utf8=%E2%9C%93&amp;q=%22%2Fdocs%2Fconfiguration%2Ftemplating%2F%22&amp;in=body" target="_blank" title="View given feedback for this page"><iconify-icon inline icon="mdi:comment-text-multiple-outline"></iconify-icon> View given feedback</a></li>
+    
+  </ul>
+  </div>
+</div>
+
+
+</article>
+
+            
+          </div>
+
+
+          
+            
+              <aside id="sidebar" class="grid__item one-third desk-wide-one-quarter lap-one-whole palm-one-whole">
+            
+            <div class="grid">
+  
+
+
+
+
+  <section class="vertical-nav aside-module grid__item one-whole lap-one-half">
+  <div class="section">
+    <h1 class="title epsilon"><iconify-icon inline icon='mdi:bookshelf' title='Bookshelf'></iconify-icon> Documentation</h1>
+    <ul class="divided sidebar-menu">
+      <li>
+        <a  href='../index.html'>Overview </a>
+        |
+        <a  href='https://www.home-assistant.io/faq/'>FAQ </a>
+        |
+        <a  href='../glossary/index.html'>Glossary </a>
+      </li>
+
+      <li>
+  <iconify-icon icon="mdi:robot-happy"></iconify-icon> <a  href='../automation/index.html'>Automations </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> <a  href='https://www.home-assistant.io/dashboards'>Dashboards </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:microphone' title='Microphone'></iconify-icon> <a  href='https://www.home-assistant.io/voice_control/'>Voice assistants </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:category' title='Category'></iconify-icon> <a  href='../organizing/index.html'>Organization </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> <a  href='../energy/index.html'>Home energy management </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:update' title='Update'></iconify-icon> <a  href='https://www.home-assistant.io/common-tasks/general/'>Common tasks </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cogs' title='Cogs'></iconify-icon> <a  href='index.html'>Advanced configuration </a>
+  
+  <ul>
+    <li><a  href='yaml/index.html'>YAML syntax </a></li>
+    <li><a  href='basic/index.html'>Basic information </a></li>
+    <li><a  href='customizing-devices/index.html'>Customizing entities </a></li>
+    <li><a  href='troubleshooting/index.html'>Troubleshooting configuration </a></li>
+    <li><a  href='securing/index.html'>Security check points </a></li>
+    <li><a  href='remote/index.html'>Remote access </a></li>
+    <li><a  href='splitting_configuration/index.html'>Splitting up the configuration </a></li>
+    <li><a  href='packages/index.html'>Packages </a></li>
+    <li><a  href='secrets/index.html'>Storing secrets </a></li>
+    <li><a  href='events/index.html'>Events </a></li>
+    <li><a  href='state_object/index.html'>State and state object </a></li>
+    <li><a  href='entities_domains/index.html'>Entities and domains </a></li>
+    <li><a class='active' href='templating/index.html'>Templating </a></li>
+    <li><a  href='platform_options/index.html'>Entity component platform options </a></li>
+  </ul>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:account-security' title='Account security'></iconify-icon> <a  href='../authentication/index.html'>Authentication </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:database' title='Database'></iconify-icon> <a  href='../backend/index.html'>Backend </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:palette' title='Palette'></iconify-icon> <a  href='../tools/index.html'>Tools and helpers </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cellphone' title='Cellphone'></iconify-icon> <a href="https://companion.home-assistant.io/docs">iOS and Android apps <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+</li>
+
+<li>
+  <iconify-icon inline icon='simple-icons:mqtt' title='Mqtt'></iconify-icon> <a  href='https://www.home-assistant.io/integrations/mqtt'>MQTT </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='bitcoin-icons:node-hardware-filled' title='Node hardware filled'></iconify-icon> Official hardware
+  <ul>
+    <li><a href="https://support.nabucasa.com/hc/categories/24638797677853">Home Assistant Green <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734620813469">Home Assistant Connect ZBT-1 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/29400540866973">Home Assistant Connect ZBT-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/28669861145885">Home Assistant Connect ZWA-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734575925149">Home Assistant Yellow <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24451727188125">Home Assistant Voice Preview Edition <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+  </ul>
+</li>
+
+    </ul>
+  </div>
+</section>
+
+
+
+  <section id="toc-module" class="aside-module grid__item one-whole lap-one-half">
+        <div class='section'>
+          <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+          <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="templating.1.html#building-templates">Building templates</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="templating.1.html#important-template-rules">Important template rules</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#enabled-jinja-extensions">Enabled Jinja extensions</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#reusing-templates">Reusing templates</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="templating.1.html#home-assistant-template-extensions">Home Assistant template extensions</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="templating.1.html#limited-templates">Limited templates</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#this">This</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#states">States</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#attributes">Attributes</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#state-translated">State translated</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#working-with-groups">Working with groups</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#entities">Entities</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#entities-examples">Entities examples</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#devices">Devices</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#config-entries">Config entries</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#floors">Floors</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#areas">Areas</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#entities-for-an-integration">Entities for an integration</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#labels">Labels</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#issues">Issues</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#immediate-if-iif">Immediate if (iif)</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#time">Time</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#tofrom-json">To/From JSON</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#tofrom-json-examples">To/From JSON examples</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#is-defined">Is defined</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#version">Version</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#distance">Distance</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#contains">Contains</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#numeric-functions-and-filters">Numeric functions and filters</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#complex-type-checking">Complex type checking</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#type-conversions">Type conversions</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#iterating-multiple-objects">Iterating multiple objects</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#functions-and-filters-to-process-raw-data">Functions and filters to process raw data</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#string-filters">String filters</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#hashing">Hashing</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#regular-expressions">Regular expressions</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#shuffling">Shuffling</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#flatten-a-list-of-lists">Flatten a list of lists</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#find-common-elements-between-lists">Find common elements between lists</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#find-elements-in-first-list-not-in-second-list">Find elements in first list not in second list</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#find-elements-that-are-in-either-list-but-not-in-both">Find elements that are in either list but not in both</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#combine-all-unique-elements-from-two-lists">Combine all unique elements from two lists</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#combining-dictionaries">Combining dictionaries</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#working-with-macros">Working with macros</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="templating.1.html#merge-action-responses">Merge action responses</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="templating.1.html#example">Example</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#example-how-to-sort">Example how to sort</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#example-merge-calendar-action-response">Example merge calendar action response</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#example-non-list-action-responses">Example non-list action responses</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="templating.1.html#processing-incoming-data">Processing incoming data</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="templating.1.html#using-templates-with-the-mqtt-integration">Using templates with the MQTT integration</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#determining-types">Determining types</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="templating.1.html#some-more-things-to-keep-in-mind">Some more things to keep in mind</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="templating.1.html#entity_id-that-begins-with-a-number">entity_id that begins with a number</a></li>
+<li class="toc-entry toc-h3"><a href="templating.1.html#priority-of-operators">Priority of operators</a></li>
+</ul>
+</li>
+</ul>
+        </div>
+      </section></div>
+
+          </aside>
+          
+        </div>
+      </div>
+
+      <footer>
+        <div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item">
+      <div class="skyline grid">
+        <div class="skyline grid__item one-whole">
+          <div class="footer-skyline">
+          </div>
+        </div>
+      </div>
+      <div class="footer-nav grid">
+        <div class="company grid__item one-quarter lap-one-half palm-one-whole">
+          <div class="title">
+            <img
+              src="../../images/footer-logo-text.svg"
+              height="72"
+              alt="Home Assistant"
+            />
+          </div>
+          <p>
+            Home Assistant is a project from the <a href="https://www.openhomefoundation.org/">Open Home Foundation</a>, sponsored by <a href="https://www.nabucasa.com/">Nabu Casa</a>.
+          </p>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Join us and contribute!</h3>
+          <ul>
+            <li><a class="external-link" href="https://github.com/home-assistant/">GitHub repo <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://developers.home-assistant.io">Developers Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://design.home-assistant.io">Design Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://data.home-assistant.io">Data Science Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://community.home-assistant.io">Community Forum <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://creators.home-assistant.io/">Creator Network <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://works-with.home-assistant.io/">Works With Home Assistant <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a href="https://www.home-assistant.io/community">Our community</a></li>
+            <li><a href="https://www.home-assistant.io/help/reporting_issues/">Reporting issues</a></li>
+          </ul>
+          <h3>System status</h3>
+          <ul>
+            <li>
+              <a class="external-link"  href="https://alerts.home-assistant.io">Integration Alerts <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+            <li><a href="https://www.home-assistant.io/security/">Security Alerts</a></li>
+            <li>
+              <a class="external-link" href="https://status.home-assistant.io">System Status <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Companion apps</h3>
+          <ul>
+            <li><a class="external-link" href="https://apps.apple.com/app/id1099568401">iOS and Apple devices</a></li>
+            <li><a class="external-link" href="https://play.google.com/store/apps/details?id=io.homeassistant.companion.android">Android and Wear OS</a></li>
+            <li><a class="external-link" href="https://companion.home-assistant.io/">...and more!</a></li>
+          </ul>
+          <h3>Governance</h3>
+          <ul>
+            <li><a href="https://www.home-assistant.io/privacy/">Privacy Notices</a></li>
+            <li><a href="https://www.home-assistant.io/developers/cla/">Contributor License Agreement</a></li>
+            <li><a href="https://www.home-assistant.io/tos/">Terms of Service</a></li>
+            <li><a href="https://www.home-assistant.io/code_of_conduct/">Code of Conduct</a></li>
+            <li><a href="https://www.home-assistant.io/developers/credits/">Credits</a></li>
+            <li><a href="https://www.home-assistant.io/developers/license/">License</a></li>
+          </ul>
+        </div>
+
+        <div class="socials grid__item one-quarter lap-one-half palm-one-whole">
+
+          <h3>Follow us</h3>
+          <p><a class="external-link" href='https://newsletter.openhomefoundation.org/#/portal'>Sign up for our newsletter <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></p>
+          <div class="icons">
+            <a
+              rel="me"
+              href="https://youtube.com/@home_assistant"
+              title="YouTube"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:youtube"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://reddit.com/r/homeassistant"
+              title="Reddit"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:reddit"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://github.com/home-assistant"
+              title="GitHub"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:github"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://fosstodon.org/@homeassistant"
+              title="Mastodon"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:mastodon"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://bsky.app/profile/home-assistant.io"
+              title="Bluesky"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:bluesky"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://x.com/home_assistant"
+              title="X"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:x"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://www.facebook.com/homeassistantio"
+              title="Facebook"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:facebook"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.instagram.com/homeassistant/"
+              title="Instagram"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:instagram"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.linkedin.com/company/home-assistant"
+              title="LinkedIn"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:linkedin"></iconify-icon></a>
+          </div>
+
+          <div class="web-notice">
+            <p>
+              For partnership inquiries please check out <a href="https://works-with.home-assistant.io/">Works With Home Assistant</a>. For media, get in touch <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#c6aba3a2afa786a9b6a3a8aea9aba3a0a9b3a8a2a7b2afa9a8e8a9b4a1">here</a>. For other questions, you can contact us <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#39515c555556795156545c14584a4a504a4d58574d175056">here</a> (No technical support!)
+            </p>
+            <p>
+              Website powered by <a href="https://jekyllrb.com/">Jekyll</a><br />
+              Originally based on the <a href="https://github.com/coogie/oscailte">Oscailte theme</a>
+            </p>
+            <a href="https://www.netlify.com">
+              <img
+                src="../../images/frontpage/netlify.svg"
+                alt="Deploys by Netlify Badge"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+
+    </div>
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.3.1/lite-youtube.js" integrity="sha384-7o3d1sg8jSS1LMKzzIEucWtWFI1X4lFCC5gu2ylAgH3KmHcJgjTqp6LWfIvbbmf9" crossorigin="anonymous"></script>
+
+<script src="../../javascripts/terminology_tooltip.js@274cec0734bc752f0e5ea3d4e2e59858" type="text/javascript" defer></script>
+
+<script src="../../javascripts/prism.js@5d6619066a1fc5cd819a93c132b539ac" type="text/javascript" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3/dist/umd/index.min.js" integrity="sha384-f/IEhh8fvOc2ALU79emLlUqAYXyqlA/zYhM+g5GlWMk15QBjTXy05TtmfT1TbtV6" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  docsearch({
+    container: '#docsearch',
+    appId: 'FBHBYS3J0U',
+    indexName: 'home-assistant',
+    apiKey: "ba6f7e6d97b3d3d2f778978c742a47c6",
+  });
+  document.querySelector('.site-title').addEventListener('contextmenu', function (ev) {
+    ev.preventDefault();
+    document.location.assign("https://design.home-assistant.io/#brand/logo")
+  });
+</script>
+
+
+
+
+<script type="text/javascript">
+  {
+    const article = document.querySelector("article.post");
+    if (article) {
+      const iframes = article.querySelectorAll("iframe[data-src]");
+      let loaded = false;
+      if (iframes) {
+        document.addEventListener('mousemove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('touchmove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('scroll', loadLazyFrames, { passive: true, once: true });
+  
+        function loadLazyFrames() {
+          if (loaded) return;
+          loaded = true;
+  
+          iframes.forEach((iframe) => {
+            const src = iframe.getAttribute("data-src");
+            if (src) {
+              iframe.setAttribute("src", src);
+              iframe.removeAttribute("data-src");
+            }
+          });
+        }
+      }
+    }
+  }
+</script>
+
+  </body>
+</html>
