@@ -71,6 +71,7 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
 
         if self._client and self._client.is_connected:
             self._sync_scale_client(self._client)
+            await self._scale.attach_client(self._client, setup_tasks=False)
             self._ensure_process_queue_task()
             return
 
@@ -82,6 +83,7 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
 
         await self._async_establish_link(ble_device)
         if self._client and self._client.is_connected:
+            await self._scale.attach_client(self._client, setup_tasks=False)
             self._ensure_process_queue_task()
 
     async def _async_establish_link(self, ble_device: BLEDevice) -> None:
@@ -89,15 +91,14 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
         try:
             try:
                 self._client = await establish_connection(
+                    BleakClientWithServiceCache,
                     ble_device,
                     disconnected_callback=self._async_handle_link_loss,
                     name="bookoo",
                     timeout=20.0,
                 )
             except TypeError:
-                client = BleakClientWithServiceCache(ble_device)
                 self._client = await establish_connection(
-                    client,
                     ble_device,
                     disconnected_callback=self._async_handle_link_loss,
                     name="bookoo",

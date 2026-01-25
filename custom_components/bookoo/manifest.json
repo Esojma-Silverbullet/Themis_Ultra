@@ -17,6 +17,6 @@
   "integration_type": "device",
   "iot_class": "local_push",
   "loggers": ["aiobookoo_ultra"],
-  "requirements": ["aiobookoo-ultra @ https://github.com/Esojma-Silverbullet/aiobookoo-Ultra/archive/refs/tags/0.1.4.zip"],
-  "version": "0.0.31"
+  "requirements": [],
+  "version": "0.0.50"
 }
