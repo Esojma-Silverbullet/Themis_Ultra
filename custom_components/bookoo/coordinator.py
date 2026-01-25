@@ -3,12 +3,12 @@
 from __future__ import annotations
 
 from datetime import timedelta
-import inspect
 import logging
-from typing import Any
 
 from aiobookoo_ultra.bookooscale import BookooScale
 from aiobookoo_ultra.exceptions import BookooDeviceNotFound, BookooError
+from bleak.backends.device import BLEDevice
+from bleak_retry_connector import BleakClientWithServiceCache, establish_connection
 
 from homeassistant.components.bluetooth import async_ble_device_from_address
 try:
@@ -54,6 +54,7 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
             is_valid_scale=entry.data[CONF_IS_VALID_SCALE],
             notify_callback=self.async_update_listeners,
         )
+        self._client: BleakClientWithServiceCache | None = None
         self._async_register_bleak_connector(entry)
 
     @property
@@ -68,35 +69,76 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
         if self._scale.connected:
             return
 
-        if ble_device := async_ble_device_from_address(
+        if self._client and self._client.is_connected:
+            self._sync_scale_client(self._client)
+            self._ensure_process_queue_task()
+            return
+
+        if not (ble_device := async_ble_device_from_address(
             self.hass, self._address, connectable=True
-        ):
-            self._scale.address_or_ble_device = ble_device
+        )):
+            _LOGGER.debug("No BLE device available for %s", self._address)
+            return
 
-        # scale is not connected, try to connect
-        connect_kwargs: dict[str, Any] = {"setup_tasks": False}
-        parameters = inspect.signature(self._scale.connect).parameters
+        await self._async_establish_link(ble_device)
+        if self._client and self._client.is_connected:
+            self._ensure_process_queue_task()
 
-        if "ble_device" in parameters and ble_device:
-            connect_kwargs["ble_device"] = ble_device
-        if "use_bleak_retry_connector" in parameters:
-            connect_kwargs["use_bleak_retry_connector"] = True
-        if "disconnected_callback" in parameters:
-            connect_kwargs["disconnected_callback"] = self._async_handle_disconnect
-
+    async def _async_establish_link(self, ble_device: BLEDevice) -> None:
+        """Establish the BLE link via the retry connector."""
         try:
-            await self._scale.connect(**connect_kwargs)
+            try:
+                self._client = await establish_connection(
+                    ble_device,
+                    disconnected_callback=self._async_handle_link_loss,
+                    name="bookoo",
+                    timeout=20.0,
+                )
+            except TypeError:
+                client = BleakClientWithServiceCache(ble_device)
+                self._client = await establish_connection(
+                    client,
+                    ble_device,
+                    disconnected_callback=self._async_handle_link_loss,
+                    name="bookoo",
+                    timeout=20.0,
+                )
         except (BookooDeviceNotFound, BookooError, TimeoutError) as ex:
             _LOGGER.debug(
-                "Could not connect to scale: %s, Error: %s",
+                "Could not establish BLE link to scale: %s, Error: %s",
                 self.config_entry.data[CONF_ADDRESS],
                 ex,
             )
             self._scale.device_disconnected_handler(notify=False)
+            self._client = None
             return
 
-        # connected, set up background tasks
+        self._scale.address_or_ble_device = ble_device
+        self._sync_scale_client(self._client)
 
+    def _sync_scale_client(self, client: BleakClientWithServiceCache | None) -> None:
+        """Ensure the scale uses the established BLE client."""
+        if client is None:
+            return
+
+        for attr_name in ("client", "_client", "bleak_client", "_bleak_client"):
+            if hasattr(self._scale, attr_name):
+                setattr(self._scale, attr_name, client)
+        if ble_device := async_ble_device_from_address(
+            self.hass, self._address, connectable=True
+        ):
+            for attr_name in ("device", "_device", "ble_device", "_ble_device"):
+                if hasattr(self._scale, attr_name):
+                    setattr(self._scale, attr_name, ble_device)
+
+    @callback
+    def _async_handle_link_loss(self) -> None:
+        """Handle link losses triggered by the retry connector."""
+        self._scale.device_disconnected_handler(notify=False)
+        self._client = None
+
+    def _ensure_process_queue_task(self) -> None:
+        """Ensure the processing queue task is running."""
         if not self._scale.process_queue_task or self._scale.process_queue_task.done():
             self._scale.process_queue_task = (
                 self.config_entry.async_create_background_task(
@@ -105,11 +147,6 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
                     name="bookoo_process_queue_task",
                 )
             )
-
-    @callback
-    def _async_handle_disconnect(self) -> None:
-        """Handle disconnects triggered by the retry connector."""
-        self._scale.device_disconnected_handler(notify=False)
 
     def _async_register_bleak_connector(self, entry: BookooConfigEntry) -> None:
         """Ensure bleak connections are routed through the retry connector."""
@@ -125,7 +162,7 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
                     self.hass,
                     entry,
                     self._address,
-                    self._async_handle_disconnect,
+                    self._async_handle_link_loss,
                     connectable=True,
                 )
             )
@@ -135,6 +172,6 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
                     self.hass,
                     entry,
                     self._address,
-                    self._async_handle_disconnect,
+                    self._async_handle_link_loss,
                 )
             )
