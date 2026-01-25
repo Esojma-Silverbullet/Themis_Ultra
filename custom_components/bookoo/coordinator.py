@@ -71,6 +71,7 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
 
         if self._client and self._client.is_connected:
             self._sync_scale_client(self._client)
+            await self._scale.attach_client(self._client, setup_tasks=False)
             self._ensure_process_queue_task()
             return
 
@@ -82,6 +83,7 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
 
         await self._async_establish_link(ble_device)
         if self._client and self._client.is_connected:
+            await self._scale.attach_client(self._client, setup_tasks=False)
             self._ensure_process_queue_task()
 
     async def _async_establish_link(self, ble_device: BLEDevice) -> None:
