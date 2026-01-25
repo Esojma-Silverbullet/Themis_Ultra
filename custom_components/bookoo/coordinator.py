@@ -87,12 +87,22 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
     async def _async_establish_link(self, ble_device: BLEDevice) -> None:
         """Establish the BLE link via the retry connector."""
         try:
-            self._client = await establish_connection(
-                ble_device,
-                disconnected_callback=self._async_handle_link_loss,
-                name="bookoo",
-                timeout=20.0,
-            )
+            try:
+                self._client = await establish_connection(
+                    ble_device,
+                    disconnected_callback=self._async_handle_link_loss,
+                    name="bookoo",
+                    timeout=20.0,
+                )
+            except TypeError:
+                client = BleakClientWithServiceCache(ble_device)
+                self._client = await establish_connection(
+                    client,
+                    ble_device,
+                    disconnected_callback=self._async_handle_link_loss,
+                    name="bookoo",
+                    timeout=20.0,
+                )
         except (BookooDeviceNotFound, BookooError, TimeoutError) as ex:
             _LOGGER.debug(
                 "Could not establish BLE link to scale: %s, Error: %s",
