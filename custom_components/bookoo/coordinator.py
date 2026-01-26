@@ -139,7 +139,9 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
                     setattr(self._scale, attr_name, ble_device)
 
     @callback
-    def _async_handle_link_loss(self) -> None:
+    def _async_handle_link_loss(
+        self, _client: BleakClientWithServiceCache | None = None
+    ) -> None:
         """Handle link losses triggered by the retry connector."""
         self._scale.device_disconnected_handler(notify=False)
         self._client = None
