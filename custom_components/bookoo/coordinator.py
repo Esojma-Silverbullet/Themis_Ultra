@@ -8,7 +8,9 @@ import logging
 from aiobookoo_ultra.bookooscale import BookooScale
 from aiobookoo_ultra.exceptions import BookooDeviceNotFound, BookooError
 from bleak.backends.device import BLEDevice
+from bleak.exc import BleakError
 from bleak_retry_connector import BleakClientWithServiceCache, establish_connection
+from bleak_retry_connector import BleakNotFoundError, BleakOutOfConnectionSlotsError
 
 from homeassistant.components.bluetooth import async_ble_device_from_address
 try:
@@ -71,6 +73,10 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
 
         if self._client and self._client.is_connected:
             self._sync_scale_client(self._client)
+            if hasattr(self._scale, "attach_client"):
+                await self._scale.attach_client(self._client, setup_tasks=False)
+            else:
+                await self._scale.connect(setup_tasks=False)
             self._ensure_process_queue_task()
             return
 
@@ -82,6 +88,10 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
 
         await self._async_establish_link(ble_device)
         if self._client and self._client.is_connected:
+            if hasattr(self._scale, "attach_client"):
+                await self._scale.attach_client(self._client, setup_tasks=False)
+            else:
+                await self._scale.connect(setup_tasks=False)
             self._ensure_process_queue_task()
 
     async def _async_establish_link(self, ble_device: BLEDevice) -> None:
@@ -89,21 +99,27 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
         try:
             try:
                 self._client = await establish_connection(
+                    BleakClientWithServiceCache,
                     ble_device,
                     disconnected_callback=self._async_handle_link_loss,
                     name="bookoo",
                     timeout=20.0,
                 )
             except TypeError:
-                client = BleakClientWithServiceCache(ble_device)
                 self._client = await establish_connection(
-                    client,
                     ble_device,
                     disconnected_callback=self._async_handle_link_loss,
                     name="bookoo",
                     timeout=20.0,
                 )
-        except (BookooDeviceNotFound, BookooError, TimeoutError) as ex:
+        except (
+            BleakError,
+            BleakNotFoundError,
+            BleakOutOfConnectionSlotsError,
+            BookooDeviceNotFound,
+            BookooError,
+            TimeoutError,
+        ) as ex:
             _LOGGER.debug(
                 "Could not establish BLE link to scale: %s, Error: %s",
                 self.config_entry.data[CONF_ADDRESS],
@@ -132,7 +148,9 @@ class BookooCoordinator(DataUpdateCoordinator[None]):
                     setattr(self._scale, attr_name, ble_device)
 
     @callback
-    def _async_handle_link_loss(self) -> None:
+    def _async_handle_link_loss(
+        self, _client: BleakClientWithServiceCache | None = None
+    ) -> None:
         """Handle link losses triggered by the retry connector."""
         self._scale.device_disconnected_handler(notify=False)
         self._client = None
