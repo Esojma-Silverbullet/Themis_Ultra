@@ -71,9 +71,14 @@ SWITCHES: tuple[BookooSwitchEntityDescription, ...] = (
         translation_key="flow_smoothing_enabled",
         entity_category=EntityCategory.CONFIG,
         is_on_fn=lambda scale: _get_first_available_bool(
-            scale, ("flow_smoothing_enabled", "flow_smoothing")
+            scale,
+            ("flow_smoothing_enabled", "flow_smoothing", "flow_rate_smoothing"),
         ),
-        setter_methods=("set_flow_smoothing_enabled", "set_flow_smoothing"),
+        setter_methods=(
+            "set_flow_rate_smoothing",
+            "set_flow_smoothing_enabled",
+            "set_flow_smoothing",
+        ),
     ),
 )
 
