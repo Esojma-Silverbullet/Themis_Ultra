@@ -1,0 +1,27 @@
+{
+  "entity": {
+    "binary_sensor": {
+      "timer_running": {
+        "default": "mdi:timer",
+        "state": {
+          "on": "mdi:timer-play",
+          "off": "mdi:timer-off"
+        }
+      }
+    },
+    "button": {
+      "tare": {
+        "default": "mdi:scale-balance"
+      },
+      "reset_timer": {
+        "default": "mdi:timer-refresh"
+      },
+      "start": {
+        "default": "mdi:timer-play"
+      },
+      "stop": {
+        "default": "mdi:timer-stop"
+      }
+    }
+  }
+}

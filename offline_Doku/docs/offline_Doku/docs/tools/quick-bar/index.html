@@ -1,0 +1,731 @@
+
+
+
+
+<!doctype html>
+  <!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Quick bar - Home Assistant</title>
+    <meta name="author" content="Home Assistant">
+    <meta name="description" content="Dialog for quickly accessing entities or running commands.">
+    
+    <meta name="viewport" content="width=device-width">
+    <link rel="canonical" href="index.html">
+
+    <meta property="fb:app_id" content="338291289691179">
+    <meta property="og:title" content="Quick bar">
+    <meta property="og:site_name" content="Home Assistant">
+    <meta property="og:url" content="https://www.home-assistant.io/docs/tools/quick-bar/">
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="Dialog for quickly accessing entities or running commands.">
+    <meta property="og:image" content="https://www.home-assistant.io/images/default-social.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@home_assistant">
+    
+    <meta name="twitter:title" content="Quick bar">
+    <meta name="twitter:description" content="Dialog for quickly accessing entities or running commands.">
+    <meta name="twitter:image" content="https://www.home-assistant.io/images/default-social.png">
+    <link rel="me" href="https://fosstodon.org/@homeassistant">
+
+    <link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3/dist/style.min.css" rel="stylesheet" />
+    <link href="../../../stylesheets/prism.css@8acb84bc0387c9548a63998fcfea0139.css" rel="stylesheet">
+    <link href="../../../stylesheets/screen.css@cef1bc5aeba0a8ce6d170a9aa21e8dd6.css" media="screen, projection, print" rel="stylesheet">
+    <link href="https://www.home-assistant.io/atom.xml" rel="alternate" title="Home Assistant" type="application/atom+xml">
+    <link rel='shortcut icon' href='../../../images/favicon.ico' />
+    <link rel='icon' type='image/png' href='../../../images/favicon-192x192.png' sizes='192x192' />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&amp;family=Instrument+Sans:ital,wdth,wght@0,99,400..700;1,99,400..700&amp;" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" integrity="sha384-GPb5RlngihS9H0z1D137JsvzmeZ7tCpWEF4t5YDoTZyMsPP8S7h7vFDh4XhheU83" crossorigin="anonymous"></script>
+  </head>
+
+  <body  class="documentation-page   ">
+    <header class='site-header '>
+      
+
+
+
+<div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item three-tenths lap-two-sixths palm-one-whole ha-title">
+      <a href="https://www.home-assistant.io/" class="site-title">
+        <div class="logo"></div>
+      </a>
+      <a class="release-date" href="https://www.home-assistant.io/blog/2026/01/07/release-20261/" title="Latest version 2026.1.0 released January  7, 2026">
+        2026.1.0
+      </a>
+    </div>
+
+    <div class="grid__item seven-tenths lap-four-sixths palm-one-whole">
+      <nav>
+        <input type="checkbox" id="toggle" />
+        <label
+          for="toggle"
+          class="toggle"
+          data-open="Main Menu"
+          data-close="⨉"
+        ></label>
+        <ul class="menu pull-right">
+          <li><a  href="https://www.home-assistant.io/installation/">Getting started</a></li>
+          <li>
+            <a class="active" href="../../index.html">Documentation <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/installation/"><iconify-icon inline icon='simple-icons:homeassistant' title='Homeassistant'></iconify-icon> Installation</a></li>
+              <li><a href="../../automation/index.html"><iconify-icon inline icon='mdi:robot-happy' title='Robot happy'></iconify-icon> Automations</a></li>
+              <li><a href="https://www.home-assistant.io/dashboards/"><iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> Dashboards</a></li>
+              <li><a href="https://www.home-assistant.io/voice_control/"><iconify-icon inline icon='mdi:comment-processing-outline' title='Comment processing outline'></iconify-icon> Voice assistants</a></li>
+              <li><a href="../../organizing/index.html"><iconify-icon inline icon='mdi:view-grid' title='View grid'></iconify-icon> Device organization</a></li>
+              <li><a href="../../energy/index.html"><iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> Energy management</a></li>
+              <li><a href="../../configuration/index.html"><iconify-icon inline icon='mdi:cog' title='Cog'></iconify-icon> Advanced configuration</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="index.html#">Our hardware <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/green/">Home Assistant Green</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zbt-2/">Connect ZBT-2</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zwa-2/">Connect ZWA-2</a></li>
+              <li><a href="https://www.home-assistant.io/voice-pe/">Voice Preview Edition</a></li>
+            </ul>
+          </li>
+          <li><a  href="https://www.home-assistant.io/integrations/">Integrations</a></li>
+          <li><a  href="https://www.home-assistant.io/blog/">Blog</a></li>
+          <li><a  href="https://www.home-assistant.io/help/">Need help?</a></li>
+          <li>
+            <div class="docsearch" id="docsearch"></div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    </header>
+
+    <div class="page-content">
+
+      
+
+      <div class="grid-wrapper">
+        <div class="grid grid-center">
+
+          <aside id="toc-bar" class="grid__item desk-wide-one-sixth">
+                <section class="aside-module grid__item one-whole">
+                  <div class='section'>
+                    <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+                    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="index.html#hotkeys">Hotkeys</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#entity-filter">Entity filter</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#device-filter">Device filter</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#command-palette">Command palette</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#currently-supported-commands">Currently-supported commands</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#my-links">My links</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#assist">Assist</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#disabling-shortcuts">Disabling shortcuts</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#tips">Tips</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#search-by-bits-and-pieces-rather-than-an-exact-substring">Search by “bits and pieces” rather than an exact substring</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#filters-work-against-friendly-name-too">Filters work against friendly name too</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#use-the-enter-key-any-time-to-open-the-top-result-in-the-list">Use the enter key any time to open the top result in the list</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#use-arrow-keys-to-move-around-the-list">Use arrow keys to move around the list</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#typing-more-letters-will-always-add-to-your-filter-string">Typing more letters will always add to your filter string</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#troubleshooting">Troubleshooting</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#dialog-doesnt-launch-using-hotkeys">Dialog doesn’t launch using hotkeys</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#a-command-is-missing">A command is missing</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#shortcuts-interfere-with-accessibility-tools-browser-extensions-or-are-otherwise-annoying">Shortcuts interfere with accessibility tools, browser extensions, or are otherwise annoying</a></li>
+</ul>
+</li>
+</ul>
+                  </div>
+                </section>
+              </aside> 
+
+          
+          <div class="grid__item two-thirds desk-wide-seven-twelfths lap-one-whole palm-one-whole">
+          
+
+            
+              <article class="page">
+  
+  <header>
+    
+    
+      <div class="breadcrumbs">
+        <a href="https://www.home-assistant.io/">Home</a>
+        
+          
+            
+            ▸ <a href="../../index.html">Documentation</a>
+          
+        
+          
+            
+            ▸ <a href="../index.html">Tools</a>
+          
+        
+          
+            ▸ 
+          
+        
+      </div>
+    
+    <h1 class="title indent">
+      
+        Quick bar
+      
+    </h1>
+  </header>
+  
+  
+  <p>The <strong>Quick bar</strong> allows you to quickly look up entities or run commands without needing to navigate away from your current view (Similar to the “quick open” feature in VS Code, Chrome Developer Tools, etc).</p>
+<p>It can be launched from anywhere in the frontend using <a href="index.html#hotkeys">hotkeys</a>.</p>
+<p class="img">
+  <img src="../../../images/docs/quick-bar/quick-bar-demo.gif" alt="Quick Bar">
+  Quick Bar for accessing entities and running commands
+</p>
+<h2>Hotkeys <a class="title-link" name="hotkeys" href="index.html#hotkeys"></a>
+</h2>
+<p>Type these from anywhere in the application to launch the dialog.</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Hotkey</th>
+<th>Switch Modes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Entity Filter</td>
+<td><code>e</code></td>
+<td>Type <code>&gt;</code> at start of input to switch to command palette. Type <code>#</code> at start of input to switch to device filter.</td>
+</tr>
+<tr>
+<td>Command Palette</td>
+<td><code>c</code></td>
+<td>Remove <code>&gt;</code> from start of input to switch to entity filter.</td>
+</tr>
+<tr>
+<td>Device Filter</td>
+<td><code>d</code></td>
+<td>Remove <code>#</code> from start of input to switch to entity filter.</td>
+</tr>
+<tr>
+<td>Create <a href="https://www.home-assistant.io/integrations/my"><code>my</code></a> link</td>
+<td><code>m</code></td>
+<td>Open a new tab to create a my link to the page you are on.</td>
+</tr>
+<tr>
+<td>Assist</td>
+<td><code>a</code></td>
+<td>Open the Home Assistant Assist dialog.</td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-important">
+  <p class="alert-title"><iconify-icon inline icon="mdi:message-alert-outline"></iconify-icon> Important</p>
+  <div class="alert-content">
+<p>The application must have focus for the hotkey to register. If the dialog doesn’t launch, try clicking into an empty part of the main content area of Home Assistant and type it again.</p>
+  </div>
+</div>
+<h2>Entity filter <a class="title-link" name="entity-filter" href="index.html#entity-filter"></a>
+</h2>
+<p><em>Hotkey: <code>e</code></em></p>
+<p>Similar to <a href="https://my.home-assistant.io/redirect/entities" class="my" target="_blank"><strong>Settings</strong> &gt; <strong>Devices &amp; services</strong> &gt; <strong>Entities</strong></a>, but more lightweight and accessible from anywhere in the frontend.</p>
+<p class="img">
+  <img src="../../../images/docs/quick-bar/quick-bar-entity-filter.gif" alt="Quick Bar">
+  Filter for entities in Quick Bar's entity filter mode
+</p>
+<p>Once launched, start typing your entity id (or <a href="index.html#search-by-bits-and-pieces-rather-than-an-exact-substring">“bits and pieces” of your entity id</a>) to get back a filtered list of entities. Clicking on an entity (or hitting <code>enter</code> when the desired entity is highlighted) will open the “More Info” dialog for that entity.</p>
+<p>This is helpful when, say, you are in the middle of writing an automation and need some quick insight about an entity but don’t want to navigate away to Developer Tools.</p>
+<h2>Device filter <a class="title-link" name="device-filter" href="index.html#device-filter"></a>
+</h2>
+<p><em>Hotkey: <code>d</code></em></p>
+<p>Similar to <a href="https://my.home-assistant.io/redirect/entities" class="my" target="_blank"><strong>Settings</strong> &gt; <strong>Devices &amp; services</strong> &gt; <strong>Devices</strong></a>, but accessible from anywhere in the frontend.</p>
+<p>Once launched, start typing your device name to get back a filtered list of your devices. Clicking on a device (or hitting <code>enter</code> when the desired device is highlighted) will open the selected device detail page.</p>
+<p>This is helpful when you need to quickly access a device’s detail page without navigating your way through the menu.</p>
+<h2>Command palette <a class="title-link" name="command-palette" href="index.html#command-palette"></a>
+</h2>
+<p><em>Hotkey: <code>c</code></em></p>
+<p>Run various commands from anywhere without having to navigate to another view.</p>
+<p class="img">
+  <img src="../../../images/docs/quick-bar/quick-bar-command-mode.gif" alt="Quick Bar">
+  Run commands in Quick Bar's "command palette"
+</p>
+<h3>Currently-supported commands <a class="title-link" name="currently-supported-commands" href="index.html#currently-supported-commands"></a>
+</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Available</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Navigate</td>
+<td>All entries in the sidebar and settings</td>
+</tr>
+<tr>
+<td>Reload</td>
+<td>All currently-supported “Reload {domain}” actions.<br><em>(E.g., “Reload Scripts”)</em>
+</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>Restart/Stop</td>
+</tr>
+</tbody>
+</table>
+<h2>My links <a class="title-link" name="my-links" href="index.html#my-links"></a>
+</h2>
+<p><em>Hotkey: <code>m</code></em></p>
+<p>Create <a href="https://www.home-assistant.io/integrations/my"><code>my</code></a> links from any supported page in the user interface, when invoked on a supported page it will open a new tab that will allow you to share the link in different formats.</p>
+<h2>Assist <a class="title-link" name="assist" href="index.html#assist"></a>
+</h2>
+<p><em>Hotkey: <code>a</code></em></p>
+<p>Opens the Assist dialog to interact with Home Assistant using your voice or by text.
+This feature is only available if you have set up a voice assistant.</p>
+<p>Learn more about <a href="https://www.home-assistant.io/voice_control">voice assistants</a>.</p>
+<h2>Disabling shortcuts <a class="title-link" name="disabling-shortcuts" href="index.html#disabling-shortcuts"></a>
+</h2>
+<p>You can enable or disable all of Home Assistant’s keyboard shortcuts by going to your User Profile and clicking the “Keyboard Shortcuts” toggle button.</p>
+<p class="img">
+  <img src="../../../images/docs/quick-bar/disable-shortcuts-toggle.png" alt="Toggle for enabling or disabling keyboard shortcuts">
+  Toggle button for enabling/disabling keyboard shortcuts added by Home Assistant.
+</p>
+<h2>Tips <a class="title-link" name="tips" href="index.html#tips"></a>
+</h2>
+<h3>Search by “bits and pieces” rather than an exact substring <a class="title-link" name="search-by-bits-and-pieces-rather-than-an-exact-substring" href="index.html#search-by-bits-and-pieces-rather-than-an-exact-substring"></a>
+</h3>
+<p>We know something like “<strong>light.ch</strong>” should match “<strong>light.ch</strong>andelier”. Similarly, “<strong>telev</strong>” should match “media_player.<strong>telev</strong>ision”.</p>
+<p>But with Quick Bar, “<strong>lich</strong>” would also match “<strong>li</strong>ght.<strong>ch</strong>andelier”, and “<strong>plyrtv</strong>” would also match “media_<strong>pl</strong>a<strong>y</strong>e<strong>r</strong>.<strong>t</strong>ele<strong>v</strong>ision”. It checks letter <em>sequences</em> rather than exact substrings.</p>
+<p>One nice use-case for this is that you can quickly filter out an entire domain of entities with just a couple letters and a period. For example, “<strong>li.</strong>” will match any “<strong>light.</strong>*” entities. Continuing with “li.ch” would bring up the chandelier right away.</p>
+<h3>Filters work against friendly name too <a class="title-link" name="filters-work-against-friendly-name-too" href="index.html#filters-work-against-friendly-name-too"></a>
+</h3>
+<p>If “light.hue_ceiling_light” has been named “Chandelier”, you can type either “hue_ceil” or “chand” to find it.</p>
+<h3>Use the enter key any time to open the top result in the list <a class="title-link" name="use-the-enter-key-any-time-to-open-the-top-result-in-the-list" href="index.html#use-the-enter-key-any-time-to-open-the-top-result-in-the-list"></a>
+</h3>
+<p>As soon as the item you wanted shows up at the top of your filtered results, just hit “enter” to activate it – no need to arrow down to the item, or click with your mouse.</p>
+<h3>Use arrow keys to move around the list <a class="title-link" name="use-arrow-keys-to-move-around-the-list" href="index.html#use-arrow-keys-to-move-around-the-list"></a>
+</h3>
+<p>When in the text field, use the down arrow <code>↓</code> to navigate down the item list. Hit <code>enter</code> to activate the currently-highlighted row.</p>
+<p>When in the item list, use the up arrow <code>↑</code> to navigate up the item list, and to get back into the text field.</p>
+<h3>Typing more letters will always add to your filter string <a class="title-link" name="typing-more-letters-will-always-add-to-your-filter-string" href="index.html#typing-more-letters-will-always-add-to-your-filter-string"></a>
+</h3>
+<p>Say you’ve just used arrow keys to navigate half-way down the list, and want to add more text to your filter. You don’t need to click back into the text field, just start typing new letters and they’ll append to your filter.</p>
+<h2>Troubleshooting <a class="title-link" name="troubleshooting" href="index.html#troubleshooting"></a>
+</h2>
+<h3>Dialog doesn’t launch using hotkeys <a class="title-link" name="dialog-doesnt-launch-using-hotkeys" href="index.html#dialog-doesnt-launch-using-hotkeys"></a>
+</h3>
+<p>There are a few possible reasons why the quick bar dialog won’t launch:</p>
+<ol>
+<li>Your user is not an admin.</li>
+<li>The application lost focus. Try clicking into the main content area of the application and typing the shortcut again.</li>
+<li>You have disabled Keyboard Shortcuts in your User Profile settings.</li>
+<li>Shortcut is marked by browser as non-overridable. Firefox does this with some shortcuts, for example. But this shouldn’t be a problem with single-key shortcuts currently used by the Quick Bar.</li>
+<li>Some other application or browser extension is using or overriding the shortcut. Try disabling the extension.</li>
+</ol>
+<h3>A command is missing <a class="title-link" name="a-command-is-missing" href="index.html#a-command-is-missing"></a>
+</h3>
+<p>The command list only shows commands that are available to you based on your user settings, and loaded integrations.</p>
+<p>For example, if you don’t have <code>automations:</code> in your config, then you won’t see the “Reload Automations” command.</p>
+<p>If “Advanced Mode” is turned off in User Settings, then any command related to advanced mode will not appear in the list.</p>
+<p>If a command is missing that you feel is in error, please create an issue on GitHub.</p>
+<h3>Shortcuts interfere with accessibility tools, browser extensions, or are otherwise annoying <a class="title-link" name="shortcuts-interfere-with-accessibility-tools-browser-extensions-or-are-otherwise-annoying" href="index.html#shortcuts-interfere-with-accessibility-tools-browser-extensions-or-are-otherwise-annoying"></a>
+</h3>
+<p>You can <a href="index.html#disabling-shortcuts">disable shortcuts</a> in your User settings.</p>
+<p>Please consider submitting an issue explaining why the shortcut was disruptive to you. Keyboard shortcuts are new to Home Assistant, and getting them right is a challenge for any Web application. We rely on user feedback to ensure the experience is minimally-disruptive.</p>
+
+
+  
+
+
+  
+<div class="material-card text feedback">
+  <h4>
+<iconify-icon inline icon="mdi:feedback" title="Feedback"></iconify-icon> <b> Help us improve our documentation</b><a href="index.html#feedback_section" class="title-link" name="feedback_section"></a>
+</h4>
+  Suggest an edit to this page, or provide/view feedback for this page.
+  <div class="links">
+    <ul aria-label="Page feedback options">
+    <li><a href="https://github.com/home-assistant/home-assistant.io/tree/current/source/_docs/tools/quick-bar.markdown" target="_blank" title="Edit this page"><iconify-icon inline icon="mdi:edit"></iconify-icon> Edit</a></li>
+    
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues/new?template=feedback.yml&amp;url=https%3A%2F%2Fwww.home-assistant.io%2Fdocs%2Ftools%2Fquick-bar%2F&amp;version=2026.1.0&amp;labels=current" target="_blank" title="Provide feedback on this page"><iconify-icon inline icon="mdi:comment-edit-outline"></iconify-icon> Provide feedback</a></li>
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues?utf8=%E2%9C%93&amp;q=%22%2Fdocs%2Ftools%2Fquick-bar%2F%22&amp;in=body" target="_blank" title="View given feedback for this page"><iconify-icon inline icon="mdi:comment-text-multiple-outline"></iconify-icon> View given feedback</a></li>
+    
+  </ul>
+  </div>
+</div>
+
+
+</article>
+
+            
+          </div>
+
+
+          
+            
+              <aside id="sidebar" class="grid__item one-third desk-wide-one-quarter lap-one-whole palm-one-whole">
+            
+            <div class="grid">
+  
+
+
+
+
+  <section class="vertical-nav aside-module grid__item one-whole lap-one-half">
+  <div class="section">
+    <h1 class="title epsilon"><iconify-icon inline icon='mdi:bookshelf' title='Bookshelf'></iconify-icon> Documentation</h1>
+    <ul class="divided sidebar-menu">
+      <li>
+        <a  href='../../index.html'>Overview </a>
+        |
+        <a  href='https://www.home-assistant.io/faq/'>FAQ </a>
+        |
+        <a  href='../../glossary/index.html'>Glossary </a>
+      </li>
+
+      <li>
+  <iconify-icon icon="mdi:robot-happy"></iconify-icon> <a  href='../../automation/index.html'>Automations </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> <a  href='https://www.home-assistant.io/dashboards'>Dashboards </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:microphone' title='Microphone'></iconify-icon> <a  href='https://www.home-assistant.io/voice_control/'>Voice assistants </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:category' title='Category'></iconify-icon> <a  href='../../organizing/index.html'>Organization </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> <a  href='../../energy/index.html'>Home energy management </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:update' title='Update'></iconify-icon> <a  href='https://www.home-assistant.io/common-tasks/general/'>Common tasks </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cogs' title='Cogs'></iconify-icon> <a  href='../../configuration/index.html'>Advanced configuration </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:account-security' title='Account security'></iconify-icon> <a  href='../../authentication/index.html'>Authentication </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:database' title='Database'></iconify-icon> <a  href='../../backend/index.html'>Backend </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:palette' title='Palette'></iconify-icon> <a  href='../index.html'>Tools and helpers </a>
+  
+  <ul>
+    <li><a  href='../dev-tools/index.html'>Developer tools </a></li>
+    <li><a class='active' href='index.html'>Quick bar </a></li>
+    <li><a  href='../check_config/index.html'>check_config </a></li>
+  </ul>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cellphone' title='Cellphone'></iconify-icon> <a href="https://companion.home-assistant.io/docs">iOS and Android apps <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+</li>
+
+<li>
+  <iconify-icon inline icon='simple-icons:mqtt' title='Mqtt'></iconify-icon> <a  href='https://www.home-assistant.io/integrations/mqtt'>MQTT </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='bitcoin-icons:node-hardware-filled' title='Node hardware filled'></iconify-icon> Official hardware
+  <ul>
+    <li><a href="https://support.nabucasa.com/hc/categories/24638797677853">Home Assistant Green <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734620813469">Home Assistant Connect ZBT-1 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/29400540866973">Home Assistant Connect ZBT-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/28669861145885">Home Assistant Connect ZWA-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734575925149">Home Assistant Yellow <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24451727188125">Home Assistant Voice Preview Edition <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+  </ul>
+</li>
+
+    </ul>
+  </div>
+</section>
+
+
+
+  <section id="toc-module" class="aside-module grid__item one-whole lap-one-half">
+        <div class='section'>
+          <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+          <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="index.html#hotkeys">Hotkeys</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#entity-filter">Entity filter</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#device-filter">Device filter</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#command-palette">Command palette</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#currently-supported-commands">Currently-supported commands</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#my-links">My links</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#assist">Assist</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#disabling-shortcuts">Disabling shortcuts</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#tips">Tips</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#search-by-bits-and-pieces-rather-than-an-exact-substring">Search by “bits and pieces” rather than an exact substring</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#filters-work-against-friendly-name-too">Filters work against friendly name too</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#use-the-enter-key-any-time-to-open-the-top-result-in-the-list">Use the enter key any time to open the top result in the list</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#use-arrow-keys-to-move-around-the-list">Use arrow keys to move around the list</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#typing-more-letters-will-always-add-to-your-filter-string">Typing more letters will always add to your filter string</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#troubleshooting">Troubleshooting</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#dialog-doesnt-launch-using-hotkeys">Dialog doesn’t launch using hotkeys</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#a-command-is-missing">A command is missing</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#shortcuts-interfere-with-accessibility-tools-browser-extensions-or-are-otherwise-annoying">Shortcuts interfere with accessibility tools, browser extensions, or are otherwise annoying</a></li>
+</ul>
+</li>
+</ul>
+        </div>
+      </section></div>
+
+          </aside>
+          
+        </div>
+      </div>
+
+      <footer>
+        <div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item">
+      <div class="skyline grid">
+        <div class="skyline grid__item one-whole">
+          <div class="footer-skyline">
+          </div>
+        </div>
+      </div>
+      <div class="footer-nav grid">
+        <div class="company grid__item one-quarter lap-one-half palm-one-whole">
+          <div class="title">
+            <img
+              src="../../../images/footer-logo-text.svg"
+              height="72"
+              alt="Home Assistant"
+            />
+          </div>
+          <p>
+            Home Assistant is a project from the <a href="https://www.openhomefoundation.org/">Open Home Foundation</a>, sponsored by <a href="https://www.nabucasa.com/">Nabu Casa</a>.
+          </p>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Join us and contribute!</h3>
+          <ul>
+            <li><a class="external-link" href="https://github.com/home-assistant/">GitHub repo <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://developers.home-assistant.io">Developers Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://design.home-assistant.io">Design Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://data.home-assistant.io">Data Science Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://community.home-assistant.io">Community Forum <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://creators.home-assistant.io/">Creator Network <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://works-with.home-assistant.io/">Works With Home Assistant <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a href="https://www.home-assistant.io/community">Our community</a></li>
+            <li><a href="https://www.home-assistant.io/help/reporting_issues/">Reporting issues</a></li>
+          </ul>
+          <h3>System status</h3>
+          <ul>
+            <li>
+              <a class="external-link"  href="https://alerts.home-assistant.io">Integration Alerts <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+            <li><a href="https://www.home-assistant.io/security/">Security Alerts</a></li>
+            <li>
+              <a class="external-link" href="https://status.home-assistant.io">System Status <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Companion apps</h3>
+          <ul>
+            <li><a class="external-link" href="https://apps.apple.com/app/id1099568401">iOS and Apple devices</a></li>
+            <li><a class="external-link" href="https://play.google.com/store/apps/details?id=io.homeassistant.companion.android">Android and Wear OS</a></li>
+            <li><a class="external-link" href="https://companion.home-assistant.io/">...and more!</a></li>
+          </ul>
+          <h3>Governance</h3>
+          <ul>
+            <li><a href="https://www.home-assistant.io/privacy/">Privacy Notices</a></li>
+            <li><a href="https://www.home-assistant.io/developers/cla/">Contributor License Agreement</a></li>
+            <li><a href="https://www.home-assistant.io/tos/">Terms of Service</a></li>
+            <li><a href="https://www.home-assistant.io/code_of_conduct/">Code of Conduct</a></li>
+            <li><a href="https://www.home-assistant.io/developers/credits/">Credits</a></li>
+            <li><a href="https://www.home-assistant.io/developers/license/">License</a></li>
+          </ul>
+        </div>
+
+        <div class="socials grid__item one-quarter lap-one-half palm-one-whole">
+
+          <h3>Follow us</h3>
+          <p><a class="external-link" href='https://newsletter.openhomefoundation.org/#/portal'>Sign up for our newsletter <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></p>
+          <div class="icons">
+            <a
+              rel="me"
+              href="https://youtube.com/@home_assistant"
+              title="YouTube"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:youtube"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://reddit.com/r/homeassistant"
+              title="Reddit"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:reddit"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://github.com/home-assistant"
+              title="GitHub"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:github"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://fosstodon.org/@homeassistant"
+              title="Mastodon"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:mastodon"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://bsky.app/profile/home-assistant.io"
+              title="Bluesky"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:bluesky"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://x.com/home_assistant"
+              title="X"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:x"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://www.facebook.com/homeassistantio"
+              title="Facebook"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:facebook"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.instagram.com/homeassistant/"
+              title="Instagram"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:instagram"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.linkedin.com/company/home-assistant"
+              title="LinkedIn"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:linkedin"></iconify-icon></a>
+          </div>
+
+          <div class="web-notice">
+            <p>
+              For partnership inquiries please check out <a href="https://works-with.home-assistant.io/">Works With Home Assistant</a>. For media, get in touch <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#2f424a4b464e6f405f4a414740424a49405a414b4e5b46404101405d48">here</a>. For other questions, you can contact us <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#9ff7faf3f3f0dff7f0f2fab2feececf6ecebfef1ebb1f6f0">here</a> (No technical support!)
+            </p>
+            <p>
+              Website powered by <a href="https://jekyllrb.com/">Jekyll</a><br />
+              Originally based on the <a href="https://github.com/coogie/oscailte">Oscailte theme</a>
+            </p>
+            <a href="https://www.netlify.com">
+              <img
+                src="../../../images/frontpage/netlify.svg"
+                alt="Deploys by Netlify Badge"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+
+    </div>
+    <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.3.1/lite-youtube.js" integrity="sha384-7o3d1sg8jSS1LMKzzIEucWtWFI1X4lFCC5gu2ylAgH3KmHcJgjTqp6LWfIvbbmf9" crossorigin="anonymous"></script>
+
+<script src="../../../javascripts/terminology_tooltip.js@274cec0734bc752f0e5ea3d4e2e59858" type="text/javascript" defer></script>
+
+<script src="../../../javascripts/prism.js@5d6619066a1fc5cd819a93c132b539ac" type="text/javascript" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3/dist/umd/index.min.js" integrity="sha384-f/IEhh8fvOc2ALU79emLlUqAYXyqlA/zYhM+g5GlWMk15QBjTXy05TtmfT1TbtV6" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  docsearch({
+    container: '#docsearch',
+    appId: 'FBHBYS3J0U',
+    indexName: 'home-assistant',
+    apiKey: "ba6f7e6d97b3d3d2f778978c742a47c6",
+  });
+  document.querySelector('.site-title').addEventListener('contextmenu', function (ev) {
+    ev.preventDefault();
+    document.location.assign("https://design.home-assistant.io/#brand/logo")
+  });
+</script>
+
+
+
+
+<script type="text/javascript">
+  {
+    const article = document.querySelector("article.post");
+    if (article) {
+      const iframes = article.querySelectorAll("iframe[data-src]");
+      let loaded = false;
+      if (iframes) {
+        document.addEventListener('mousemove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('touchmove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('scroll', loadLazyFrames, { passive: true, once: true });
+  
+        function loadLazyFrames() {
+          if (loaded) return;
+          loaded = true;
+  
+          iframes.forEach((iframe) => {
+            const src = iframe.getAttribute("data-src");
+            if (src) {
+              iframe.setAttribute("src", src);
+              iframe.removeAttribute("data-src");
+            }
+          });
+        }
+      }
+    }
+  }
+</script>
+
+  </body>
+</html>

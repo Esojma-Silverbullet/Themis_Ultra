@@ -1,0 +1,1149 @@
+
+
+
+
+<!doctype html>
+  <!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Conditions - Home Assistant</title>
+    <meta name="author" content="Home Assistant">
+    <meta name="description" content="Documentation about all available conditions.">
+    
+    <meta name="viewport" content="width=device-width">
+    <link rel="canonical" href="index.html">
+
+    <meta property="fb:app_id" content="338291289691179">
+    <meta property="og:title" content="Conditions">
+    <meta property="og:site_name" content="Home Assistant">
+    <meta property="og:url" content="https://www.home-assistant.io/docs/scripts/conditions/">
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="Documentation about all available conditions.">
+    <meta property="og:image" content="https://www.home-assistant.io/images/default-social.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@home_assistant">
+    
+    <meta name="twitter:title" content="Conditions">
+    <meta name="twitter:description" content="Documentation about all available conditions.">
+    <meta name="twitter:image" content="https://www.home-assistant.io/images/default-social.png">
+    <link rel="me" href="https://fosstodon.org/@homeassistant">
+
+    <link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3/dist/style.min.css" rel="stylesheet" />
+    <link href="../../../stylesheets/prism.css@8acb84bc0387c9548a63998fcfea0139.css" rel="stylesheet">
+    <link href="../../../stylesheets/screen.css@cef1bc5aeba0a8ce6d170a9aa21e8dd6.css" media="screen, projection, print" rel="stylesheet">
+    <link href="https://www.home-assistant.io/atom.xml" rel="alternate" title="Home Assistant" type="application/atom+xml">
+    <link rel='shortcut icon' href='../../../images/favicon.ico' />
+    <link rel='icon' type='image/png' href='../../../images/favicon-192x192.png' sizes='192x192' />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&amp;family=Instrument+Sans:ital,wdth,wght@0,99,400..700;1,99,400..700&amp;" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" integrity="sha384-GPb5RlngihS9H0z1D137JsvzmeZ7tCpWEF4t5YDoTZyMsPP8S7h7vFDh4XhheU83" crossorigin="anonymous"></script>
+  </head>
+
+  <body  class="documentation-page   ">
+    <header class='site-header '>
+      
+
+
+
+<div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item three-tenths lap-two-sixths palm-one-whole ha-title">
+      <a href="https://www.home-assistant.io/" class="site-title">
+        <div class="logo"></div>
+      </a>
+      <a class="release-date" href="https://www.home-assistant.io/blog/2026/01/07/release-20261/" title="Latest version 2026.1.0 released January  7, 2026">
+        2026.1.0
+      </a>
+    </div>
+
+    <div class="grid__item seven-tenths lap-four-sixths palm-one-whole">
+      <nav>
+        <input type="checkbox" id="toggle" />
+        <label
+          for="toggle"
+          class="toggle"
+          data-open="Main Menu"
+          data-close="⨉"
+        ></label>
+        <ul class="menu pull-right">
+          <li><a  href="https://www.home-assistant.io/installation/">Getting started</a></li>
+          <li>
+            <a class="active" href="../../index.html">Documentation <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/installation/"><iconify-icon inline icon='simple-icons:homeassistant' title='Homeassistant'></iconify-icon> Installation</a></li>
+              <li><a href="../../automation/index.html"><iconify-icon inline icon='mdi:robot-happy' title='Robot happy'></iconify-icon> Automations</a></li>
+              <li><a href="https://www.home-assistant.io/dashboards/"><iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> Dashboards</a></li>
+              <li><a href="https://www.home-assistant.io/voice_control/"><iconify-icon inline icon='mdi:comment-processing-outline' title='Comment processing outline'></iconify-icon> Voice assistants</a></li>
+              <li><a href="../../organizing/index.html"><iconify-icon inline icon='mdi:view-grid' title='View grid'></iconify-icon> Device organization</a></li>
+              <li><a href="../../energy/index.html"><iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> Energy management</a></li>
+              <li><a href="../../configuration/index.html"><iconify-icon inline icon='mdi:cog' title='Cog'></iconify-icon> Advanced configuration</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="index.html#">Our hardware <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/green/">Home Assistant Green</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zbt-2/">Connect ZBT-2</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zwa-2/">Connect ZWA-2</a></li>
+              <li><a href="https://www.home-assistant.io/voice-pe/">Voice Preview Edition</a></li>
+            </ul>
+          </li>
+          <li><a  href="https://www.home-assistant.io/integrations/">Integrations</a></li>
+          <li><a  href="https://www.home-assistant.io/blog/">Blog</a></li>
+          <li><a  href="https://www.home-assistant.io/help/">Need help?</a></li>
+          <li>
+            <div class="docsearch" id="docsearch"></div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    </header>
+
+    <div class="page-content">
+
+      
+
+      <div class="grid-wrapper">
+        <div class="grid grid-center">
+
+          <aside id="toc-bar" class="grid__item desk-wide-one-sixth">
+                <section class="aside-module grid__item one-whole">
+                  <div class='section'>
+                    <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+                    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="index.html#logical-conditions">Logical conditions</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#and-condition">AND condition</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#or-condition">OR condition</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#mixed-and-and-or-conditions">Mixed AND and OR conditions</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#not-condition">NOT condition</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#numeric-state-condition">Numeric state condition</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#state-condition">State condition</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#sun-condition">Sun condition</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#sun-elevation-condition">Sun elevation condition</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#sunsetsunrise-condition">Sunset/sunrise condition</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#template-condition">Template condition</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#template-condition-shorthand-notation">Template condition shorthand notation</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#time-condition">Time condition</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#trigger-condition">Trigger condition</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#zone-condition">Zone condition</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#examples">Examples</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#disabling-a-condition">Disabling a condition</a></li>
+</ul>
+                  </div>
+                </section>
+              </aside> 
+
+          
+          <div class="grid__item two-thirds desk-wide-seven-twelfths lap-one-whole palm-one-whole">
+          
+
+            
+              <article class="page">
+  
+  <header>
+    
+    
+      <div class="breadcrumbs">
+        <a href="https://www.home-assistant.io/">Home</a>
+        
+          
+            
+            ▸ <a href="../../index.html">Documentation</a>
+          
+        
+          
+            
+            ▸ <a href="../index.html">Scripts</a>
+          
+        
+          
+            ▸ 
+          
+        
+      </div>
+    
+    <h1 class="title indent">
+      
+        Conditions
+      
+    </h1>
+  </header>
+  
+  
+  <p>Conditions can be used within a <span class="terminology">script<span class="terminology-tooltip">Scripts are components that allow users to specify a sequence of actions to be executed by Home Assistant when turned on.<a class="terminology-link" href="../index.html"> [Learn more]</a></span></span> or <span class="terminology">automation<span class="terminology-tooltip">Automations in Home Assistant allow you to automatically respond to things that happen in and around your home.<a class="terminology-link" href="../../automation/index.html"> [Learn more]</a></span></span> to prevent further execution. When a condition evaluates true, the script or automation will be executed. If any other value is returned, the script or automation stops executing. A condition will look at the system at that moment. For example, a condition can test if a switch is currently turned on or off.</p>
+<p>Unlike a <span class="terminology">trigger<span class="terminology-tooltip">A trigger is a set of values or conditions of a platform that are defined to cause an automation to run.<a class="terminology-link" href="../../automation/trigger/index.html"> [Learn more]</a></span></span>, which is always <code>or</code>, conditions are <code>and</code> by default - all conditions have to be true.</p>
+<p>All conditions support an optional <code>alias</code>.</p>
+<ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2">
+<a href="index.html#logical-conditions">Logical conditions</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#and-condition">AND condition</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#or-condition">OR condition</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#mixed-and-and-or-conditions">Mixed AND and OR conditions</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#not-condition">NOT condition</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#numeric-state-condition">Numeric state condition</a></li>
+<li class="toc-entry toc-h2">
+<a href="index.html#state-condition">State condition</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#sun-condition">Sun condition</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#sun-elevation-condition">Sun elevation condition</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#sunsetsunrise-condition">Sunset/sunrise condition</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2">
+<a href="index.html#template-condition">Template condition</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#template-condition-shorthand-notation">Template condition shorthand notation</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#time-condition">Time condition</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#trigger-condition">Trigger condition</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#zone-condition">Zone condition</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#examples">Examples</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#disabling-a-condition">Disabling a condition</a></li>
+</ul>
+<h2>Logical conditions <a class="title-link" name="logical-conditions" href="index.html#logical-conditions"></a>
+</h2>
+<h3>AND condition <a class="title-link" name="and-condition" href="index.html#and-condition"></a>
+</h3>
+<p>Test multiple conditions in one condition statement. Passes if all embedded conditions are true.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Paulus</span><span class="nv"> </span><span class="s">home</span><span class="nv"> </span><span class="s">AND</span><span class="nv"> </span><span class="s">temperature</span><span class="nv"> </span><span class="s">below</span><span class="nv"> </span><span class="s">20"</span>
+    <span class="na">condition</span><span class="pi">:</span> <span class="s">and</span>
+    <span class="na">conditions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">device_tracker.paulus"</span>
+        <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home"</span>
+      <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">numeric_state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">sensor.temperature"</span>
+        <span class="na">below</span><span class="pi">:</span> <span class="m">20</span>
+</code></pre></div></div>
+<p>If you do not want to combine AND and OR conditions, you can list them sequentially.</p>
+<p>The following configuration works the same as the one listed above:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">device_tracker.paulus"</span>
+    <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home"</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">numeric_state</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">sensor.temperature"</span>
+    <span class="na">below</span><span class="pi">:</span> <span class="m">20</span>
+</code></pre></div></div>
+<p>Currently you need to format your conditions like this to be able to edit them using the <a href="../../automation/editor/index.html">automations editor</a>.</p>
+<p>The AND condition also has a shorthand form. The following configuration works the same as the ones listed above:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Paulus</span><span class="nv"> </span><span class="s">home</span><span class="nv"> </span><span class="s">AND</span><span class="nv"> </span><span class="s">temperature</span><span class="nv"> </span><span class="s">below</span><span class="nv"> </span><span class="s">20"</span>
+  <span class="pi">-</span> <span class="na">and</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">device_tracker.paulus"</span>
+      <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home"</span>
+    <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">numeric_state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">sensor.temperature"</span>
+      <span class="na">below</span><span class="pi">:</span> <span class="m">20</span>
+</code></pre></div></div>
+<h3>OR condition <a class="title-link" name="or-condition" href="index.html#or-condition"></a>
+</h3>
+<p>Test multiple conditions in one condition statement. Passes if any embedded condition is true.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Paulus</span><span class="nv"> </span><span class="s">home</span><span class="nv"> </span><span class="s">OR</span><span class="nv"> </span><span class="s">temperature</span><span class="nv"> </span><span class="s">below</span><span class="nv"> </span><span class="s">20"</span>
+    <span class="na">condition</span><span class="pi">:</span> <span class="s">or</span>
+    <span class="na">conditions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">device_tracker.paulus"</span>
+        <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home"</span>
+      <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">numeric_state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">sensor.temperature"</span>
+        <span class="na">below</span><span class="pi">:</span> <span class="m">20</span>
+</code></pre></div></div>
+<p>The OR condition also has a shorthand form. The following configuration works the same as the one listed above:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Paulus</span><span class="nv"> </span><span class="s">home</span><span class="nv"> </span><span class="s">OR</span><span class="nv"> </span><span class="s">temperature</span><span class="nv"> </span><span class="s">below</span><span class="nv"> </span><span class="s">20"</span>
+    <span class="na">or</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">device_tracker.paulus"</span>
+        <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home"</span>
+      <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">numeric_state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">sensor.temperature"</span>
+        <span class="na">below</span><span class="pi">:</span> <span class="m">20</span>
+</code></pre></div></div>
+<h3>Mixed AND and OR conditions <a class="title-link" name="mixed-and-and-or-conditions" href="index.html#mixed-and-and-or-conditions"></a>
+</h3>
+<p>Test multiple AND and OR conditions in one condition statement. Passes if any embedded condition is true.
+This allows you to mix several AND and OR conditions together.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">and</span>
+    <span class="na">conditions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">device_tracker.paulus"</span>
+        <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home"</span>
+      <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">or</span>
+        <span class="na">conditions</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+            <span class="na">entity_id</span><span class="pi">:</span> <span class="s">sensor.weather_precip</span>
+            <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">rain"</span>
+          <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">numeric_state</span>
+            <span class="na">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">sensor.temperature"</span>
+            <span class="na">below</span><span class="pi">:</span> <span class="m">20</span>
+</code></pre></div></div>
+<p>Or in shorthand form:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">and</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">device_tracker.paulus"</span>
+      <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home"</span>
+    <span class="pi">-</span> <span class="na">or</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s">sensor.weather_precip</span>
+        <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">rain"</span>
+      <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">numeric_state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">sensor.temperature"</span>
+        <span class="na">below</span><span class="pi">:</span> <span class="m">20</span>
+</code></pre></div></div>
+<h3>NOT condition <a class="title-link" name="not-condition" href="index.html#not-condition"></a>
+</h3>
+<p>Test multiple conditions in one condition statement. Passes if all embedded conditions are <strong>not</strong> true.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Paulus</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">home</span><span class="nv"> </span><span class="s">AND</span><span class="nv"> </span><span class="s">alarm</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">disarmed"</span>
+    <span class="na">condition</span><span class="pi">:</span> <span class="s">not</span>
+    <span class="na">conditions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s">device_tracker.paulus</span>
+        <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home"</span>
+      <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s">alarm_control_panel.home_alarm</span>
+        <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">disarmed"</span>
+</code></pre></div></div>
+<p>The NOT condition also has a shorthand form. The following configuration works the same as the one listed above:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Paulus</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">home</span><span class="nv"> </span><span class="s">AND</span><span class="nv"> </span><span class="s">alarm</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">disarmed"</span>
+  <span class="na">not</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">device_tracker.paulus</span>
+      <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home"</span>
+    <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">alarm_control_panel.home_alarm</span>
+      <span class="na">state</span><span class="pi">:</span> <span class="s">disarmed</span>
+</code></pre></div></div>
+<h2>Numeric state condition <a class="title-link" name="numeric-state-condition" href="index.html#numeric-state-condition"></a>
+</h2>
+<p>This type of condition attempts to parse the state of the specified entity or the attribute of an entity as a number, and triggers if the value matches the thresholds (strictly below/above, so equal excluded).</p>
+<p>If both <code>below</code> and <code>above</code> are specified, both tests have to pass.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Temperature</span><span class="nv"> </span><span class="s">between</span><span class="nv"> </span><span class="s">17</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">25</span><span class="nv"> </span><span class="s">degrees"</span>
+    <span class="na">condition</span><span class="pi">:</span> <span class="s">numeric_state</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">sensor.temperature</span>
+    <span class="na">above</span><span class="pi">:</span> <span class="m">17</span>
+    <span class="na">below</span><span class="pi">:</span> <span class="m">25</span>
+</code></pre></div></div>
+<p>You can optionally use a <code>value_template</code> to process the value of the state before testing it.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">numeric_state</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">sensor.temperature</span>
+    <span class="na">above</span><span class="pi">:</span> <span class="m">17</span>
+    <span class="na">below</span><span class="pi">:</span> <span class="m">25</span>
+    <span class="c1"># If your sensor value needs to be adjusted</span>
+    <span class="na">value_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">float(state.state)</span><span class="nv"> </span><span class="s">+</span><span class="nv"> </span><span class="s">2</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div></div>
+<p>It is also possible to test the condition against multiple entities at once.
+The condition will pass if <strong>all</strong> entities match the thresholds.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">numeric_state</span>
+    <span class="na">entity_id</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">sensor.kitchen_temperature</span>
+      <span class="pi">-</span> <span class="s">sensor.living_room_temperature</span>
+    <span class="na">below</span><span class="pi">:</span> <span class="m">18</span>
+</code></pre></div></div>
+<p>Alternatively, the condition can test against a state attribute.
+The condition will pass if the attribute value of the entity matches the thresholds.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">numeric_state</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">climate.living_room_thermostat</span>
+    <span class="na">attribute</span><span class="pi">:</span> <span class="s">temperature</span>
+    <span class="na">above</span><span class="pi">:</span> <span class="m">17</span>
+    <span class="na">below</span><span class="pi">:</span> <span class="m">25</span>
+</code></pre></div></div>
+<p>Number helpers (<code>input_number</code> entities), <code>number</code>, <code>sensor</code>, and <code>zone</code> entities
+that contain a numeric value, can be used in the <code>above</code> and <code>below</code>
+options to make the condition more dynamic.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">numeric_state</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">climate.living_room_thermostat</span>
+    <span class="na">attribute</span><span class="pi">:</span> <span class="s">temperature</span>
+    <span class="na">above</span><span class="pi">:</span> <span class="s">input_number.temperature_threshold_low</span>
+    <span class="na">below</span><span class="pi">:</span> <span class="s">input_number.temperature_threshold_high</span>
+</code></pre></div></div>
+<h2>State condition <a class="title-link" name="state-condition" href="index.html#state-condition"></a>
+</h2>
+<p>Tests if an entity has a specified state.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Paulus</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">home</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">hour</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">bit"</span>
+    <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">device_tracker.paulus</span>
+    <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">not_home"</span>
+    <span class="c1"># optional: Evaluates to true only if state was this for last X time.</span>
+    <span class="na">for</span><span class="pi">:</span>
+      <span class="na">hours</span><span class="pi">:</span> <span class="m">1</span>
+      <span class="na">minutes</span><span class="pi">:</span> <span class="m">10</span>
+      <span class="na">seconds</span><span class="pi">:</span> <span class="m">5</span>
+</code></pre></div></div>
+<p>It is also possible to test the condition against multiple entities at once.
+The condition will pass if <strong>all</strong> entities match the state.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+    <span class="na">entity_id</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">light.kitchen</span>
+      <span class="pi">-</span> <span class="s">light.living_room</span>
+    <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">on"</span>
+</code></pre></div></div>
+<p>Instead of matching all, it is also possible if one of the entities matches.
+In the following example the condition will pass if <strong>any</strong> entity matches the state.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+    <span class="na">entity_id</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">binary_sensor.motion_sensor_left</span>
+      <span class="pi">-</span> <span class="s">binary_sensor.motion_sensor_right</span>
+    <span class="na">match</span><span class="pi">:</span> <span class="s">any</span>
+    <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">on"</span>
+</code></pre></div></div>
+<p>Testing if an entity is matching a set of possible conditions;
+The condition will pass if the entity matches one of the states given.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">alarm_control_panel.home</span>
+    <span class="na">state</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">armed_away"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">armed_home"</span>
+</code></pre></div></div>
+<p>Or, combine multiple entities with multiple states. In the following example,
+both media players need to be either paused or playing for the condition to pass.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+    <span class="na">entity_id</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">media_player.living_room</span>
+      <span class="pi">-</span> <span class="s">media_player.kitchen</span>
+    <span class="na">state</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">playing"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">paused"</span>
+</code></pre></div></div>
+<p>Alternatively, the condition can test against a state attribute.
+The condition will pass if the attribute matches the given state.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">climate.living_room_thermostat</span>
+    <span class="na">attribute</span><span class="pi">:</span> <span class="s">fan_mode</span>
+    <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">auto"</span>
+</code></pre></div></div>
+<p>Finally, the <code>state</code> option accepts helper entities (also known as <code>input_*</code>
+entities). The condition will pass if the state of the entity matches the state
+of the given helper entity.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">alarm_control_panel.home</span>
+    <span class="na">state</span><span class="pi">:</span> <span class="s">input_select.guest_mode</span>
+</code></pre></div></div>
+<p>You can also use templates in the <code>for</code> option.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">device_tracker.paulus</span>
+    <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">home"</span>
+    <span class="na">for</span><span class="pi">:</span>
+      <span class="na">minutes</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">states('input_number.lock_min')|int</span><span class="nv"> </span><span class="s">}}"</span>
+      <span class="na">seconds</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">states('input_number.lock_sec')|int</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div></div>
+<p>The <code>for</code> template(s) will be evaluated when the condition is tested.</p>
+<h3>Sun condition <a class="title-link" name="sun-condition" href="index.html#sun-condition"></a>
+</h3>
+<h4>Sun state condition <a class="title-link" name="sun-state-condition" href="index.html#sun-state-condition"></a>
+</h4>
+<p>The sun state can be used to test if the sun has set or risen.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Sun</span><span class="nv"> </span><span class="s">up"</span>
+    <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>  <span class="c1"># 'day' condition: from sunrise until sunset</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">sun.sun</span>
+    <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">above_horizon"</span>
+</code></pre></div></div>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Sun</span><span class="nv"> </span><span class="s">down"</span>
+    <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>  <span class="c1"># from sunset until sunrise</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">sun.sun</span>
+    <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">below_horizon"</span>
+</code></pre></div></div>
+<h3>Sun elevation condition <a class="title-link" name="sun-elevation-condition" href="index.html#sun-elevation-condition"></a>
+</h3>
+<p>The sun elevation can be used to test if the sun has set or risen, it is dusk, it is night, etc. when a trigger occurs.
+For an in-depth explanation of sun elevation, see <a href="../../automation/trigger/index.html#sun-elevation-trigger">sun elevation trigger</a>.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">and</span>  <span class="c1"># 'twilight' condition: dusk and dawn, in typical locations</span>
+    <span class="na">conditions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">template</span>
+        <span class="na">value_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">state_attr('sun.sun',</span><span class="nv"> </span><span class="s">'elevation')</span><span class="nv"> </span><span class="s">&lt;</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">}}"</span>
+      <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">template</span>
+        <span class="na">value_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">state_attr('sun.sun',</span><span class="nv"> </span><span class="s">'elevation')</span><span class="nv"> </span><span class="s">&gt;</span><span class="nv"> </span><span class="s">-6</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div></div>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="na">condition</span><span class="pi">:</span> <span class="s">template</span>  <span class="c1"># 'night' condition: from dusk to dawn, in typical locations</span>
+  <span class="na">value_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">state_attr('sun.sun',</span><span class="nv"> </span><span class="s">'elevation')</span><span class="nv"> </span><span class="s">&lt;</span><span class="nv"> </span><span class="s">-6</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div></div>
+<h3>Sunset/sunrise condition <a class="title-link" name="sunsetsunrise-condition" href="index.html#sunsetsunrise-condition"></a>
+</h3>
+<p>The sun condition can also test if the sun has already set or risen when a trigger occurs. The <code>before</code> and <code>after</code> keys can only be set to <code>sunset</code> or <code>sunrise</code>. They have a corresponding optional offset value (<code>before_offset</code>, <code>after_offset</code>) that can be added, similar to the <a href="../../automation/trigger/index.html#sun-trigger">sun trigger</a>.</p>
+<p>Note that if only <code>before</code> key is used, the condition will be true <em>from midnight</em> until sunrise/sunset. If only <code>after</code> key is used, the condition will be true from sunset/sunrise <em>until midnight</em>. If both <code>before: sunrise</code> and <code>after: sunset</code> keys are used, the condition will be true <em>from midnight</em> until sunrise <strong>and</strong> from sunset <em>until midnight</em>. If both <code>after: sunrise</code> and <code>before: sunset</code> keys are used, the condition will be true from sunrise until sunset.</p>
+<div class="alert alert-tip">
+  <p class="alert-title"><iconify-icon inline icon="mdi:lightbulb-outline"></iconify-icon> Tip</p>
+  <div class="alert-content">
+<p>The sunset/sunrise conditions do not work in locations inside the polar circles, and also not in locations with a highly skewed local time zone. In those cases it is advised to use conditions evaluating the solar elevation instead of the before/after sunset/sunrise conditions.</p>
+  </div>
+</div>
+<p>This is an example of 1 hour offset before sunset:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">sun</span>
+    <span class="na">after</span><span class="pi">:</span> <span class="s">sunset</span>
+    <span class="na">after_offset</span><span class="pi">:</span> <span class="s2">"</span><span class="s">-01:00:00"</span>
+</code></pre></div></div>
+<p>This is ‘when dark’ - equivalent to a state condition on <code>sun.sun</code> of <code>below_horizon</code>:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">sun</span>
+    <span class="na">after</span><span class="pi">:</span> <span class="s">sunset</span>
+    <span class="na">before</span><span class="pi">:</span> <span class="s">sunrise</span>
+</code></pre></div></div>
+<p>This is ‘when light’ - equivalent to a state condition on <code>sun.sun</code> of <code>above_horizon</code>:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">sun</span>
+    <span class="na">after</span><span class="pi">:</span> <span class="s">sunrise</span>
+    <span class="na">before</span><span class="pi">:</span> <span class="s">sunset</span>
+</code></pre></div></div>
+<p>A visual timeline is provided below, showing an example of when these conditions are true. In this chart, sunrise is at 6:00, and sunset is at 18:00 (6:00 PM). The green areas of the chart indicate when the specified conditions are true.</p>
+<p><img src="../../../images/docs/scripts/sun-conditions.svg" alt="Graphic showing an example of sun conditions"></p>
+<h2>Template condition <a class="title-link" name="template-condition" href="index.html#template-condition"></a>
+</h2>
+<p>The template condition tests if the <a href="../../configuration/templating/index.html">given template</a> renders a value equal to true. This is achieved by having the template result in a true boolean expression or by having the template render <code>True</code>.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Iphone</span><span class="nv"> </span><span class="s">battery</span><span class="nv"> </span><span class="s">above</span><span class="nv"> </span><span class="s">50%"</span>
+    <span class="na">condition</span><span class="pi">:</span> <span class="s">template</span>
+    <span class="na">value_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">(state_attr('device_tracker.iphone',</span><span class="nv"> </span><span class="s">'battery_level')|int)</span><span class="nv"> </span><span class="s">&gt;</span><span class="nv"> </span><span class="s">50</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div></div>
+<p>Within an automation, template conditions also have access to the <code>trigger</code> variable as <a href="https://www.home-assistant.io/getting-started/automation-templating/">described here</a>.</p>
+<h3>Template condition shorthand notation <a class="title-link" name="template-condition-shorthand-notation" href="index.html#template-condition-shorthand-notation"></a>
+</h3>
+<p>The template condition has a shorthand notation that can be used to make your scripts and automations shorter.</p>
+<p>For example:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">(state_attr('device_tracker.iphone',</span><span class="nv"> </span><span class="s">'battery_level')|int)</span><span class="nv"> </span><span class="s">&gt;</span><span class="nv"> </span><span class="s">50</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div></div>
+<p>Or in a list of conditions, allowing to use existing conditions as described in this
+chapter and one or more shorthand template conditions</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">(state_attr('device_tracker.iphone',</span><span class="nv"> </span><span class="s">'battery_level')|int)</span><span class="nv"> </span><span class="s">&gt;</span><span class="nv"> </span><span class="s">50</span><span class="nv"> </span><span class="s">}}"</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">alarm_control_panel.home</span>
+    <span class="na">state</span><span class="pi">:</span> <span class="s">armed_away</span>
+  <span class="pi">-</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">is_state('device_tracker.iphone',</span><span class="nv"> </span><span class="s">'away')</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div></div>
+<p>This shorthand notation can be used everywhere in Home Assistant where
+conditions are accepted. For example, in <a href="index.html#and-condition"><code>and</code></a>, <a href="index.html#or-condition"><code>or</code></a>
+and <a href="index.html#not-condition"><code>not</code></a> conditions:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">or</span>
+    <span class="na">conditions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">is_state('device_tracker.iphone',</span><span class="nv"> </span><span class="s">'away')</span><span class="nv"> </span><span class="s">}}"</span>
+      <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">numeric_state</span>
+        <span class="na">entity_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">sensor.temperature"</span>
+        <span class="na">below</span><span class="pi">:</span> <span class="m">20</span>
+</code></pre></div></div>
+<p>It’s also supported in the <code>repeat</code> action’s <code>while</code> or <code>until</code> option, or in a <code>choose</code> action’s <code>conditions</code> option:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">while</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">is_state('sensor.mode',</span><span class="nv"> </span><span class="s">'Home')</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">repeat.index</span><span class="nv"> </span><span class="s">&lt;</span><span class="nv"> </span><span class="s">10</span><span class="nv"> </span><span class="s">}}"</span>
+  <span class="na">sequence</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">...</span>
+</code></pre></div></div>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">choose</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">conditions</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">is_state('sensor.mode',</span><span class="nv"> </span><span class="s">'Home')</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">repeat.index</span><span class="nv"> </span><span class="s">&lt;</span><span class="nv"> </span><span class="s">10</span><span class="nv"> </span><span class="s">}}"</span>
+      <span class="na">sequence</span><span class="pi">:</span>
+       <span class="pi">-</span> <span class="s">...</span>
+</code></pre></div></div>
+<p>It’s also supported in script or automation <code>condition</code> actions:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">is_state('device_tracker.iphone',</span><span class="nv"> </span><span class="s">'away')</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div></div>
+<h2>Time condition <a class="title-link" name="time-condition" href="index.html#time-condition"></a>
+</h2>
+<p>The time condition can test if it is after a specified time, before a specified time or if it is a certain day of the week.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Time</span><span class="nv"> </span><span class="s">15~02"</span>
+    <span class="na">condition</span><span class="pi">:</span> <span class="s">time</span>
+    <span class="c1"># At least one of the following is required.</span>
+    <span class="na">after</span><span class="pi">:</span> <span class="s2">"</span><span class="s">15:00:00"</span>
+    <span class="na">before</span><span class="pi">:</span> <span class="s2">"</span><span class="s">02:00:00"</span>
+    <span class="na">weekday</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">mon</span>
+      <span class="pi">-</span> <span class="s">wed</span>
+      <span class="pi">-</span> <span class="s">fri</span>
+</code></pre></div></div>
+<p>Valid values for <code>weekday</code> are <code>mon</code>, <code>tue</code>, <code>wed</code>, <code>thu</code>, <code>fri</code>, <code>sat</code>, <code>sun</code>.
+Note that if only <code>before</code> key is used, the condition will be <code>true</code> <em>from midnight</em> until the specified time.
+If only <code>after</code> key is used, the condition will be <code>true</code> from the specified time <em>until midnight</em>.</p>
+<p>Time condition windows can span across the midnight threshold if <strong>both</strong> <code>after</code> and <code>before</code> keys are used. In the example above, the condition window is from 3pm to 2am.</p>
+<p>The after times are inclusive while before are exclusive. In the example above, if the time was at 3pm (15:00:00) then it meets the after time condition. If the time was at 2am (2:00:00), it would fail the condition because it will only be valid up to 1:59:59.</p>
+<div class="alert alert-tip">
+  <p class="alert-title"><iconify-icon inline icon="mdi:lightbulb-outline"></iconify-icon> Tip</p>
+  <div class="alert-content">
+<p>A better weekday condition could be by using the <a href="https://www.home-assistant.io/integrations/workday/">Workday Binary Sensor</a>.</p>
+  </div>
+</div>
+<p>For the <code>after</code> and <code>before</code> options a time helper (<code>input_datetime</code> entity), a <code>time</code> entity,
+or another <code>sensor</code> entity containing a timestamp with the “timestamp” device
+class, can be used instead.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Example</span><span class="nv"> </span><span class="s">referencing</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">time</span><span class="nv"> </span><span class="s">helper"</span>
+    <span class="na">condition</span><span class="pi">:</span> <span class="s">time</span>
+    <span class="na">after</span><span class="pi">:</span> <span class="s">input_datetime.house_silent_hours_start</span>
+    <span class="na">before</span><span class="pi">:</span> <span class="s">input_datetime.house_silent_hours_end</span>
+
+  <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Example</span><span class="nv"> </span><span class="s">referencing</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">time</span><span class="nv"> </span><span class="s">entity"</span>
+    <span class="na">before</span><span class="pi">:</span> <span class="s">time.dnd_start</span>
+
+  <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Example</span><span class="nv"> </span><span class="s">referencing</span><span class="nv"> </span><span class="s">another</span><span class="nv"> </span><span class="s">sensor"</span>
+    <span class="na">after</span><span class="pi">:</span> <span class="s">sensor.groceries_delivery_time</span>
+</code></pre></div></div>
+<div class="alert alert-note">
+  <p class="alert-title"><iconify-icon inline icon="mdi:information-outline"></iconify-icon> Note</p>
+  <div class="alert-content">
+<p>Note that the time condition only takes the time into account. If
+a referenced sensor or helper entity contains a timestamp with a date, the
+date part is fully ignored.</p>
+  </div>
+</div>
+<h2>Trigger condition <a class="title-link" name="trigger-condition" href="index.html#trigger-condition"></a>
+</h2>
+<p>The trigger condition can test if an automation was triggered by a certain trigger, identified by the trigger’s <code>id</code>.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">trigger</span>
+    <span class="na">id</span><span class="pi">:</span> <span class="s">event_trigger</span>
+</code></pre></div></div>
+<p>For a trigger identified by its index, both a string and integer is allowed:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">trigger</span>
+    <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">0"</span>
+</code></pre></div></div>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">trigger</span>
+    <span class="na">id</span><span class="pi">:</span> <span class="m">0</span>
+</code></pre></div></div>
+<p>It is possible to give a list of triggers:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">trigger</span>
+    <span class="na">id</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">event_1_trigger</span>
+      <span class="pi">-</span> <span class="s">event_2_trigger</span>
+</code></pre></div></div>
+<h2>Zone condition <a class="title-link" name="zone-condition" href="index.html#zone-condition"></a>
+</h2>
+<p>Zone conditions test if an entity is in a certain zone. For zone automation to work, you need to have set up a device tracker platform that supports reporting GPS coordinates.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Paulus</span><span class="nv"> </span><span class="s">at</span><span class="nv"> </span><span class="s">home"</span>
+    <span class="na">condition</span><span class="pi">:</span> <span class="s">zone</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">device_tracker.paulus</span>
+    <span class="na">zone</span><span class="pi">:</span> <span class="s">zone.home</span>
+</code></pre></div></div>
+<p>It is also possible to test the condition against multiple entities at once.
+The condition will pass if all entities are in the specified zone.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">zone</span>
+    <span class="na">entity_id</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">device_tracker.frenck</span>
+      <span class="pi">-</span> <span class="s">device_tracker.daphne</span>
+    <span class="na">zone</span><span class="pi">:</span> <span class="s">zone.home</span>
+</code></pre></div></div>
+<p>Testing if an entity is matching a set of possible zones;
+The condition will pass if the entity is in one of the zones.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">zone</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">device_tracker.paulus</span>
+    <span class="na">state</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">zone.home</span>
+      <span class="pi">-</span> <span class="s">zone.work</span>
+</code></pre></div></div>
+<p>Or, combine multiple entities with multiple zones. In the following example,
+both entities need to be either in the home or the work zone for the condition
+to pass.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="na">condition</span><span class="pi">:</span> <span class="s">zone</span>
+  <span class="na">entity_id</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">device_tracker.frenck</span>
+    <span class="pi">-</span> <span class="s">device_tracker.daphne</span>
+  <span class="na">state</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">zone.home</span>
+    <span class="pi">-</span> <span class="s">zone.work</span>
+</code></pre></div></div>
+<h2>Examples <a class="title-link" name="examples" href="index.html#examples"></a>
+</h2>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">numeric_state</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">sun.sun</span>
+    <span class="na">value_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">state.attributes.elevation</span><span class="nv"> </span><span class="s">}}"</span>
+    <span class="na">below</span><span class="pi">:</span> <span class="m">1</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">light.living_room</span>
+    <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">off"</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">time</span>
+    <span class="na">before</span><span class="pi">:</span> <span class="s2">"</span><span class="s">23:00:00"</span>
+    <span class="na">after</span><span class="pi">:</span> <span class="s2">"</span><span class="s">14:00:00"</span>
+  <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">script.light_turned_off_5min</span>
+    <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">off"</span>
+</code></pre></div></div>
+<h2>Disabling a condition <a class="title-link" name="disabling-a-condition" href="index.html#disabling-a-condition"></a>
+</h2>
+<p>Every individual condition can be disabled, without removing it.
+To do so, add <code>enabled: false</code> to the condition configuration.</p>
+<p>This can be useful if you want to temporarily disable a condition, for example,
+for testing. A disabled condition will behave as if it were removed.</p>
+<p>For example:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="c1"># This condition will always pass, as it is disabled.</span>
+<span class="na">conditions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">enabled</span><span class="pi">:</span> <span class="kc">false</span>
+    <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+    <span class="na">entity_id</span><span class="pi">:</span> <span class="s">sun.sun</span>
+    <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">above_horizon"</span>
+</code></pre></div></div>
+<p>Conditions can also be disabled based on limited templates or blueprint inputs.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">blueprint</span><span class="pi">:</span>
+  <span class="na">input</span><span class="pi">:</span>
+    <span class="na">input_boolean</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Boolean</span>
+      <span class="na">selector</span><span class="pi">:</span> 
+        <span class="na">boolean</span><span class="pi">:</span>
+    <span class="na">input_number</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Number</span>
+      <span class="na">selector</span><span class="pi">:</span>
+        <span class="na">number</span><span class="pi">:</span>
+          <span class="na">min</span><span class="pi">:</span> <span class="m">0</span>
+          <span class="na">max</span><span class="pi">:</span> <span class="m">100</span>
+
+  <span class="na">trigger_variables</span><span class="pi">:</span>
+    <span class="na">_enable_number</span><span class="pi">:</span> <span class="kt">!input</span> <span class="s">input_number</span>
+
+  <span class="na">conditions</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">sun.sun</span>
+      <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">above_horizon"</span>
+      <span class="na">enabled</span><span class="pi">:</span> <span class="kt">!input</span> <span class="s">input_boolean</span>
+    <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span> <span class="s">state</span>
+      <span class="na">entity_id</span><span class="pi">:</span> <span class="s">sun.sun</span>
+      <span class="na">state</span><span class="pi">:</span> <span class="s2">"</span><span class="s">below_horizon"</span>
+      <span class="na">enabled</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">_enable_number</span><span class="nv"> </span><span class="s">&lt;</span><span class="nv"> </span><span class="s">50</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div></div>
+
+
+  
+
+
+  
+<div class="material-card text feedback">
+  <h4>
+<iconify-icon inline icon="mdi:feedback" title="Feedback"></iconify-icon> <b> Help us improve our documentation</b><a href="index.html#feedback_section" class="title-link" name="feedback_section"></a>
+</h4>
+  Suggest an edit to this page, or provide/view feedback for this page.
+  <div class="links">
+    <ul aria-label="Page feedback options">
+    <li><a href="https://github.com/home-assistant/home-assistant.io/tree/current/source/_docs/scripts/conditions.markdown" target="_blank" title="Edit this page"><iconify-icon inline icon="mdi:edit"></iconify-icon> Edit</a></li>
+    
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues/new?template=feedback.yml&amp;url=https%3A%2F%2Fwww.home-assistant.io%2Fdocs%2Fscripts%2Fconditions%2F&amp;version=2026.1.0&amp;labels=current" target="_blank" title="Provide feedback on this page"><iconify-icon inline icon="mdi:comment-edit-outline"></iconify-icon> Provide feedback</a></li>
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues?utf8=%E2%9C%93&amp;q=%22%2Fdocs%2Fscripts%2Fconditions%2F%22&amp;in=body" target="_blank" title="View given feedback for this page"><iconify-icon inline icon="mdi:comment-text-multiple-outline"></iconify-icon> View given feedback</a></li>
+    
+  </ul>
+  </div>
+</div>
+
+
+</article>
+
+            
+          </div>
+
+
+          
+            
+              <aside id="sidebar" class="grid__item one-third desk-wide-one-quarter lap-one-whole palm-one-whole">
+            
+            <div class="grid">
+  
+
+
+
+
+  <section class="vertical-nav aside-module grid__item one-whole lap-one-half">
+  <div class="section">
+    <h1 class="title epsilon"><iconify-icon inline icon='mdi:bookshelf' title='Bookshelf'></iconify-icon> Documentation</h1>
+    <ul class="divided sidebar-menu">
+      <li>
+        <a  href='../../index.html'>Overview </a>
+        |
+        <a  href='https://www.home-assistant.io/faq/'>FAQ </a>
+        |
+        <a  href='../../glossary/index.html'>Glossary </a>
+      </li>
+
+      <li>
+  <iconify-icon icon="mdi:robot-happy"></iconify-icon> <a  href='../../automation/index.html'>Automations </a>
+  
+  <ul>
+    <li>
+      <iconify-icon inline icon='mdi:robot-happy' title='Robot happy'></iconify-icon> <a  href='../../automation/basics/index.html'>Basic automations </a>
+      
+    </li>
+    <li>
+      <iconify-icon inline icon='mdi:palette' title='Palette'></iconify-icon> <a  href='../../scene/index.html'>Scenes </a>
+      
+    </li>
+    <li>
+      <iconify-icon inline icon='mdi:palette-swatch' title='Palette swatch'></iconify-icon> <a  href='../../blueprint/index.html'>Blueprints </a>
+      
+    </li>
+    <li>
+      <iconify-icon inline icon='mdi:script-text' title='Script text'></iconify-icon> <a  href='../index.html'>Scripts </a>
+      
+      <ul>
+        <li><a  href='../perform-actions/index.html'>Actions </a></li>
+        <li><a class='active' href='index.html'>Conditions </a></li>
+      </ul>
+      
+    </li>
+  </ul>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> <a  href='https://www.home-assistant.io/dashboards'>Dashboards </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:microphone' title='Microphone'></iconify-icon> <a  href='https://www.home-assistant.io/voice_control/'>Voice assistants </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:category' title='Category'></iconify-icon> <a  href='../../organizing/index.html'>Organization </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> <a  href='../../energy/index.html'>Home energy management </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:update' title='Update'></iconify-icon> <a  href='https://www.home-assistant.io/common-tasks/general/'>Common tasks </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cogs' title='Cogs'></iconify-icon> <a  href='../../configuration/index.html'>Advanced configuration </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:account-security' title='Account security'></iconify-icon> <a  href='../../authentication/index.html'>Authentication </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:database' title='Database'></iconify-icon> <a  href='../../backend/index.html'>Backend </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:palette' title='Palette'></iconify-icon> <a  href='../../tools/index.html'>Tools and helpers </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cellphone' title='Cellphone'></iconify-icon> <a href="https://companion.home-assistant.io/docs">iOS and Android apps <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+</li>
+
+<li>
+  <iconify-icon inline icon='simple-icons:mqtt' title='Mqtt'></iconify-icon> <a  href='https://www.home-assistant.io/integrations/mqtt'>MQTT </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='bitcoin-icons:node-hardware-filled' title='Node hardware filled'></iconify-icon> Official hardware
+  <ul>
+    <li><a href="https://support.nabucasa.com/hc/categories/24638797677853">Home Assistant Green <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734620813469">Home Assistant Connect ZBT-1 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/29400540866973">Home Assistant Connect ZBT-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/28669861145885">Home Assistant Connect ZWA-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734575925149">Home Assistant Yellow <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24451727188125">Home Assistant Voice Preview Edition <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+  </ul>
+</li>
+
+    </ul>
+  </div>
+</section>
+
+
+
+  <section id="toc-module" class="aside-module grid__item one-whole lap-one-half">
+        <div class='section'>
+          <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+          <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="index.html#logical-conditions">Logical conditions</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#and-condition">AND condition</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#or-condition">OR condition</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#mixed-and-and-or-conditions">Mixed AND and OR conditions</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#not-condition">NOT condition</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#numeric-state-condition">Numeric state condition</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#state-condition">State condition</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#sun-condition">Sun condition</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#sun-elevation-condition">Sun elevation condition</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#sunsetsunrise-condition">Sunset/sunrise condition</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#template-condition">Template condition</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#template-condition-shorthand-notation">Template condition shorthand notation</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#time-condition">Time condition</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#trigger-condition">Trigger condition</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#zone-condition">Zone condition</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#examples">Examples</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#disabling-a-condition">Disabling a condition</a></li>
+</ul>
+        </div>
+      </section></div>
+
+          </aside>
+          
+        </div>
+      </div>
+
+      <footer>
+        <div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item">
+      <div class="skyline grid">
+        <div class="skyline grid__item one-whole">
+          <div class="footer-skyline">
+          </div>
+        </div>
+      </div>
+      <div class="footer-nav grid">
+        <div class="company grid__item one-quarter lap-one-half palm-one-whole">
+          <div class="title">
+            <img
+              src="../../../images/footer-logo-text.svg"
+              height="72"
+              alt="Home Assistant"
+            />
+          </div>
+          <p>
+            Home Assistant is a project from the <a href="https://www.openhomefoundation.org/">Open Home Foundation</a>, sponsored by <a href="https://www.nabucasa.com/">Nabu Casa</a>.
+          </p>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Join us and contribute!</h3>
+          <ul>
+            <li><a class="external-link" href="https://github.com/home-assistant/">GitHub repo <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://developers.home-assistant.io">Developers Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://design.home-assistant.io">Design Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://data.home-assistant.io">Data Science Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://community.home-assistant.io">Community Forum <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://creators.home-assistant.io/">Creator Network <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://works-with.home-assistant.io/">Works With Home Assistant <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a href="https://www.home-assistant.io/community">Our community</a></li>
+            <li><a href="https://www.home-assistant.io/help/reporting_issues/">Reporting issues</a></li>
+          </ul>
+          <h3>System status</h3>
+          <ul>
+            <li>
+              <a class="external-link"  href="https://alerts.home-assistant.io">Integration Alerts <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+            <li><a href="https://www.home-assistant.io/security/">Security Alerts</a></li>
+            <li>
+              <a class="external-link" href="https://status.home-assistant.io">System Status <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Companion apps</h3>
+          <ul>
+            <li><a class="external-link" href="https://apps.apple.com/app/id1099568401">iOS and Apple devices</a></li>
+            <li><a class="external-link" href="https://play.google.com/store/apps/details?id=io.homeassistant.companion.android">Android and Wear OS</a></li>
+            <li><a class="external-link" href="https://companion.home-assistant.io/">...and more!</a></li>
+          </ul>
+          <h3>Governance</h3>
+          <ul>
+            <li><a href="https://www.home-assistant.io/privacy/">Privacy Notices</a></li>
+            <li><a href="https://www.home-assistant.io/developers/cla/">Contributor License Agreement</a></li>
+            <li><a href="https://www.home-assistant.io/tos/">Terms of Service</a></li>
+            <li><a href="https://www.home-assistant.io/code_of_conduct/">Code of Conduct</a></li>
+            <li><a href="https://www.home-assistant.io/developers/credits/">Credits</a></li>
+            <li><a href="https://www.home-assistant.io/developers/license/">License</a></li>
+          </ul>
+        </div>
+
+        <div class="socials grid__item one-quarter lap-one-half palm-one-whole">
+
+          <h3>Follow us</h3>
+          <p><a class="external-link" href='https://newsletter.openhomefoundation.org/#/portal'>Sign up for our newsletter <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></p>
+          <div class="icons">
+            <a
+              rel="me"
+              href="https://youtube.com/@home_assistant"
+              title="YouTube"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:youtube"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://reddit.com/r/homeassistant"
+              title="Reddit"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:reddit"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://github.com/home-assistant"
+              title="GitHub"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:github"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://fosstodon.org/@homeassistant"
+              title="Mastodon"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:mastodon"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://bsky.app/profile/home-assistant.io"
+              title="Bluesky"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:bluesky"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://x.com/home_assistant"
+              title="X"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:x"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://www.facebook.com/homeassistantio"
+              title="Facebook"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:facebook"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.instagram.com/homeassistant/"
+              title="Instagram"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:instagram"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.linkedin.com/company/home-assistant"
+              title="LinkedIn"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:linkedin"></iconify-icon></a>
+          </div>
+
+          <div class="web-notice">
+            <p>
+              For partnership inquiries please check out <a href="https://works-with.home-assistant.io/">Works With Home Assistant</a>. For media, get in touch <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#0e636b6a676f4e617e6b606661636b68617b606a6f7a67616020617c69">here</a>. For other questions, you can contact us <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#b1d9d4dddddef1d9dedcd49cd0c2c2d8c2c5d0dfc59fd8de">here</a> (No technical support!)
+            </p>
+            <p>
+              Website powered by <a href="https://jekyllrb.com/">Jekyll</a><br />
+              Originally based on the <a href="https://github.com/coogie/oscailte">Oscailte theme</a>
+            </p>
+            <a href="https://www.netlify.com">
+              <img
+                src="../../../images/frontpage/netlify.svg"
+                alt="Deploys by Netlify Badge"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+
+    </div>
+    <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.3.1/lite-youtube.js" integrity="sha384-7o3d1sg8jSS1LMKzzIEucWtWFI1X4lFCC5gu2ylAgH3KmHcJgjTqp6LWfIvbbmf9" crossorigin="anonymous"></script>
+
+<script src="../../../javascripts/terminology_tooltip.js@274cec0734bc752f0e5ea3d4e2e59858" type="text/javascript" defer></script>
+
+<script src="../../../javascripts/prism.js@5d6619066a1fc5cd819a93c132b539ac" type="text/javascript" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3/dist/umd/index.min.js" integrity="sha384-f/IEhh8fvOc2ALU79emLlUqAYXyqlA/zYhM+g5GlWMk15QBjTXy05TtmfT1TbtV6" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  docsearch({
+    container: '#docsearch',
+    appId: 'FBHBYS3J0U',
+    indexName: 'home-assistant',
+    apiKey: "ba6f7e6d97b3d3d2f778978c742a47c6",
+  });
+  document.querySelector('.site-title').addEventListener('contextmenu', function (ev) {
+    ev.preventDefault();
+    document.location.assign("https://design.home-assistant.io/#brand/logo")
+  });
+</script>
+
+
+
+
+<script type="text/javascript">
+  {
+    const article = document.querySelector("article.post");
+    if (article) {
+      const iframes = article.querySelectorAll("iframe[data-src]");
+      let loaded = false;
+      if (iframes) {
+        document.addEventListener('mousemove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('touchmove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('scroll', loadLazyFrames, { passive: true, once: true });
+  
+        function loadLazyFrames() {
+          if (loaded) return;
+          loaded = true;
+  
+          iframes.forEach((iframe) => {
+            const src = iframe.getAttribute("data-src");
+            if (src) {
+              iframe.setAttribute("src", src);
+              iframe.removeAttribute("data-src");
+            }
+          });
+        }
+      }
+    }
+  }
+</script>
+
+  </body>
+</html>

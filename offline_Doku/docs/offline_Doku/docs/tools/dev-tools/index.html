@@ -1,0 +1,719 @@
+
+
+
+
+<!doctype html>
+  <!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Developer tools - Home Assistant</title>
+    <meta name="author" content="Home Assistant">
+    <meta name="description" content="Description of the developer tools.">
+    
+    <meta name="viewport" content="width=device-width">
+    <link rel="canonical" href="index.html">
+
+    <meta property="fb:app_id" content="338291289691179">
+    <meta property="og:title" content="Developer tools">
+    <meta property="og:site_name" content="Home Assistant">
+    <meta property="og:url" content="https://www.home-assistant.io/docs/tools/dev-tools/">
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="Description of the developer tools.">
+    <meta property="og:image" content="https://www.home-assistant.io/images/default-social.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@home_assistant">
+    
+    <meta name="twitter:title" content="Developer tools">
+    <meta name="twitter:description" content="Description of the developer tools.">
+    <meta name="twitter:image" content="https://www.home-assistant.io/images/default-social.png">
+    <link rel="me" href="https://fosstodon.org/@homeassistant">
+
+    <link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3/dist/style.min.css" rel="stylesheet" />
+    <link href="../../../stylesheets/prism.css@8acb84bc0387c9548a63998fcfea0139.css" rel="stylesheet">
+    <link href="../../../stylesheets/screen.css@cef1bc5aeba0a8ce6d170a9aa21e8dd6.css" media="screen, projection, print" rel="stylesheet">
+    <link href="https://www.home-assistant.io/atom.xml" rel="alternate" title="Home Assistant" type="application/atom+xml">
+    <link rel='shortcut icon' href='../../../images/favicon.ico' />
+    <link rel='icon' type='image/png' href='../../../images/favicon-192x192.png' sizes='192x192' />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&amp;family=Instrument+Sans:ital,wdth,wght@0,99,400..700;1,99,400..700&amp;" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" integrity="sha384-GPb5RlngihS9H0z1D137JsvzmeZ7tCpWEF4t5YDoTZyMsPP8S7h7vFDh4XhheU83" crossorigin="anonymous"></script>
+  </head>
+
+  <body  class="documentation-page   ">
+    <header class='site-header '>
+      
+
+
+
+<div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item three-tenths lap-two-sixths palm-one-whole ha-title">
+      <a href="https://www.home-assistant.io/" class="site-title">
+        <div class="logo"></div>
+      </a>
+      <a class="release-date" href="https://www.home-assistant.io/blog/2026/01/07/release-20261/" title="Latest version 2026.1.0 released January  7, 2026">
+        2026.1.0
+      </a>
+    </div>
+
+    <div class="grid__item seven-tenths lap-four-sixths palm-one-whole">
+      <nav>
+        <input type="checkbox" id="toggle" />
+        <label
+          for="toggle"
+          class="toggle"
+          data-open="Main Menu"
+          data-close="⨉"
+        ></label>
+        <ul class="menu pull-right">
+          <li><a  href="https://www.home-assistant.io/installation/">Getting started</a></li>
+          <li>
+            <a class="active" href="../../index.html">Documentation <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/installation/"><iconify-icon inline icon='simple-icons:homeassistant' title='Homeassistant'></iconify-icon> Installation</a></li>
+              <li><a href="../../automation/index.html"><iconify-icon inline icon='mdi:robot-happy' title='Robot happy'></iconify-icon> Automations</a></li>
+              <li><a href="https://www.home-assistant.io/dashboards/"><iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> Dashboards</a></li>
+              <li><a href="https://www.home-assistant.io/voice_control/"><iconify-icon inline icon='mdi:comment-processing-outline' title='Comment processing outline'></iconify-icon> Voice assistants</a></li>
+              <li><a href="../../organizing/index.html"><iconify-icon inline icon='mdi:view-grid' title='View grid'></iconify-icon> Device organization</a></li>
+              <li><a href="../../energy/index.html"><iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> Energy management</a></li>
+              <li><a href="../../configuration/index.html"><iconify-icon inline icon='mdi:cog' title='Cog'></iconify-icon> Advanced configuration</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="index.html#">Our hardware <iconify-icon inline icon='mdi:chevron-down' title='Chevron down'></iconify-icon></a>
+            <ul>
+              <li><a href="https://www.home-assistant.io/green/">Home Assistant Green</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zbt-2/">Connect ZBT-2</a></li>
+              <li><a href="https://www.home-assistant.io/connect/zwa-2/">Connect ZWA-2</a></li>
+              <li><a href="https://www.home-assistant.io/voice-pe/">Voice Preview Edition</a></li>
+            </ul>
+          </li>
+          <li><a  href="https://www.home-assistant.io/integrations/">Integrations</a></li>
+          <li><a  href="https://www.home-assistant.io/blog/">Blog</a></li>
+          <li><a  href="https://www.home-assistant.io/help/">Need help?</a></li>
+          <li>
+            <div class="docsearch" id="docsearch"></div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    </header>
+
+    <div class="page-content">
+
+      
+
+      <div class="grid-wrapper">
+        <div class="grid grid-center">
+
+          <aside id="toc-bar" class="grid__item desk-wide-one-sixth">
+                <section class="aside-module grid__item one-whole">
+                  <div class='section'>
+                    <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+                    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="index.html#what-can-i-do-with-developer-tools">What can I do with Developer Tools?</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#yaml-tab">YAML tab</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#reloading-the-yaml-configuration">Reloading the YAML configuration</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#states-tab">States tab</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#actions-tab">Actions tab</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#template-editor-tab">Template editor tab</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#events-tab">Events tab</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#fire-an-event">Fire an event</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#subscribe-to-an-event">Subscribe to an event</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#statistics-tab">Statistics tab</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#assist-tab">Assist tab</a></li>
+</ul>
+                  </div>
+                </section>
+              </aside> 
+
+          
+          <div class="grid__item two-thirds desk-wide-seven-twelfths lap-one-whole palm-one-whole">
+          
+
+            
+              <article class="page">
+  
+  <header>
+    
+    
+      <div class="breadcrumbs">
+        <a href="https://www.home-assistant.io/">Home</a>
+        
+          
+            
+            ▸ <a href="../../index.html">Documentation</a>
+          
+        
+          
+            
+            ▸ <a href="../index.html">Tools</a>
+          
+        
+          
+            ▸ 
+          
+        
+      </div>
+    
+    <h1 class="title indent">
+      
+        Developer tools
+      
+    </h1>
+  </header>
+  
+  
+  <p>The dashboard contains a section called <strong>Developer tools</strong>.</p>
+<p class="img">
+<img src="../../../images/screenshots/developer-tools.png">
+Screenshot of Home Assistant's developer tools.
+</p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>YAML</td>
+<td>Lets you validate the configuration and trigger a reload or restart</td>
+</tr>
+<tr>
+<td>States</td>
+<td>Sets the representation of an entity</td>
+</tr>
+<tr>
+<td>Actions</td>
+<td>Performs actions from integrations</td>
+</tr>
+<tr>
+<td>Template</td>
+<td>Renders templates</td>
+</tr>
+<tr>
+<td>Events</td>
+<td>Fires events</td>
+</tr>
+<tr>
+<td>Statistics</td>
+<td>Shows a list of long-term statistic entities</td>
+</tr>
+<tr>
+<td>Assist</td>
+<td>Lets you see how Home Assistant Assist processes a sentence</td>
+</tr>
+</tbody>
+</table>
+<h2>What can I do with Developer Tools? <a class="title-link" name="what-can-i-do-with-developer-tools" href="index.html#what-can-i-do-with-developer-tools"></a>
+</h2>
+<p>The Developer Tools is meant for <strong>all</strong> (not just for the developers) to quickly try out things - like performing actions, updating states, raising events, and publishing messages in MQTT). It is also a necessary tool for those who write custom automations and scripts by hand. The following describes each of the sections in detail.</p>
+<h2>YAML tab <a class="title-link" name="yaml-tab" href="index.html#yaml-tab"></a>
+</h2>
+<p>The YAML tab provides buttons to trigger a check of configuration files and to reload the configuration. Reloading is needed to apply changes that you’ve made to the configuration.</p>
+<p>It is almost the same as the option under <strong>Settings</strong> &gt; three dots <iconify-icon inline icon="mdi:dots-vertical" title="Dots vertical"></iconify-icon> menu (top right) &gt; <strong>Restart Home Assistant</strong> &gt; <strong>Quick reload</strong>. The only difference is that <strong>Quick reload</strong> reloads all the configuration, whereas this YAML tab allows you to only reload one specific configuration at a time.</p>
+<h3>Reloading the YAML configuration <a class="title-link" name="reloading-the-yaml-configuration" href="index.html#reloading-the-yaml-configuration"></a>
+</h3>
+<p>For configuration changes to become effective, the configuration must be reloaded. Most integrations in Home Assistant (that do not interact with <span class="terminology">devices<span class="terminology-tooltip">A device is a model representing a physical or logical unit that contains entities.</span></span> or <span class="terminology">services<span class="terminology-tooltip">The term “service” in Home Assistant is used in the sense of an <strong>information
+service</strong>. For example, the municipal waste management service that provides
+entities for organic, paper, and packaging waste. In terms of functionality,
+the information service is like a device. It is called <em>service</em> to avoid
+confusion, as it does not come with a piece of hardware.</span></span>) can reload changes made to their configuration in <span class="terminology"><code>configuration.yaml</code><span class="terminology-tooltip">The configuration.yaml file is the main configuration file for Home Assistant. It lists the integrations to be loaded and their specific configurations. In some cases, the configuration needs to be edited manually directly in the configuration.yaml file. Most integrations can be configured in the UI.<a class="terminology-link" href="../../configuration/index.html"> [Learn more]</a></span></span> without needing to restart Home Assistant.</p>
+<ol>
+<li>
+<p>Go to <a href="https://my.home-assistant.io/redirect/server_controls" class="my" target="_blank"><strong>Developer Tools</strong> &gt; <strong>YAML</strong></a> and scroll down to the YAML configuration reloading section (alternatively, hit <a href="../quick-bar/index.html">“c”</a> anywhere in the UI and search for “reload”).</p>
+<ul>
+<li>You are presented with a list of integrations, such as <strong>Automations</strong> or <strong>Conversation</strong>.</li>
+</ul>
+<p><img src="../../../images/docs/configuration/reloading_config.png" alt="Reload configuration changes"></p>
+</li>
+<li>
+<p>Depending on what you find in the list, you can proceed with either reloading or you need to restart Home Assistant:</p>
+<ul>
+<li>If the integration is listed, select it to reload the settings.
+<ul>
+<li>For example, if you’ve changed the <a href="../../configuration/basic/index.html">General settings</a>, you can select <strong>Location &amp; customizations</strong> to apply those changes.</li>
+</ul>
+</li>
+<li>If the integration is not listed, you need to <strong>Restart</strong> Home Assistant for changes to take effect.</li>
+</ul>
+</li>
+</ol>
+<h2>States tab <a class="title-link" name="states-tab" href="index.html#states-tab"></a>
+</h2>
+<p>This section shows all the available entities, their corresponding state and the attribute values. The state and the attribute information is what Home Assistant sees at run time. To update the entity with a new state, or a new attribute value, click on the entity, scroll to the top, and modify the values, and click on “SET STATE” button.</p>
+<p>Note that this is the state representation of a device within Home Assistant. That means, it is what Home Assistant sees, and it does not communicate with the actual device in any manner. The updated information can still be used to trigger events, and state changes. To communicate with the actual device, it is recommended to perform actions in the <strong>Actions</strong> section above, instead of updating state.</p>
+<p>For example, changing the <code>light.bedroom</code> state from <code>off</code> to <code>on</code> does not turn on the light. If there is an automation that triggers on the <code>state</code> change of the <code>light.bedroom</code>, it will be triggered – even though the actual bulb has not turned on. Also, when the bulb state changes – the state information will be overridden (the refresh icon can be used to retrieve the latest information that Home Assistant has). In other words, the changes that are made through the “States” section are temporary, and are recommended to use for testing purposes only.</p>
+<p>The table containing all entities can be filtered for each column. The used search is a wildcard search meaning that if you input “office” in the entity column filter, every entity whose ID matches “*office*” will be shown. You can also add your own wildcards in the search input (e.g., “office*light”).
+The attribute filter supports separate filters for attribute names and values, separated by a colon “:”. So the filter “location:3” will result in the table showing all entities that have an attribute name that contains “location” and whose attribute value contains “3”.</p>
+<h2>Actions tab <a class="title-link" name="actions-tab" href="index.html#actions-tab"></a>
+</h2>
+<p>This section is used to perform actions that are available in Home Assistant.</p>
+<p>The list of actions in the <strong>Actions</strong> dropdown are automatically populated based on the integrations that are found in the configuration, automation and script files. If a desired action does not exist, it means either the integration is not configured properly or not defined in the configuration, automation or script files.</p>
+<p>When an action is selected, and if that action requires an <code>entity_id</code> to be passed, the <strong>Entity</strong> dropdown will automatically be populated with corresponding entities.</p>
+<p>An action may also require additional input to be passed. It is commonly referred to as “action data”. The action data is accepted in YAML format, and it may be optional depending on the action.</p>
+<p>When an entity is selected from the Entity dropdown, it automatically populates action data with the corresponding <code>entity_id</code>. The action data YAML can then be modified to pass additional [optional] parameters. The following is an illustration on how to perform a <code>light.turn_on</code> action.</p>
+<p>To turn on a light bulb, use the following steps:</p>
+<ol>
+<li>Select <code>light.turn_on</code> from the <strong>Action</strong> dropdown.</li>
+<li>Select the entity (typically the light bulb) from the Entity dropdown (if no entity_id is selected, it turns on ALL lights)</li>
+<li>If an entity is selected, the action data is populated with basic YAML that will be passed to the action. Additional data can also be passed by updating the YAML as below.</li>
+</ol>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">entity_id</span><span class="pi">:</span> <span class="s">light.bedroom</span>
+<span class="na">brightness</span><span class="pi">:</span> <span class="m">255</span>
+<span class="na">rgb_color</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">255</span><span class="pi">,</span> <span class="nv">0</span><span class="pi">,</span> <span class="nv">0</span><span class="pi">]</span>
+</code></pre></div></div>
+<h2>Template editor tab <a class="title-link" name="template-editor-tab" href="index.html#template-editor-tab"></a>
+</h2>
+<p>The template editor provides a way to quickly test templates prior to placing them into automations and scripts. A code editor is on the left side and your real-time output is displayed in the preview on the right side.</p>
+<p>By default, this will contain sample code that illustrates how templates can be written and tested. This sample code can be removed and replaced with your own. You can restore the default example by pressing the “Reset to Demo Template” button beneath the code editor.</p>
+<p>For more information about Jinja2, visit <a href="https://jinja.palletsprojects.com/en/latest/templates/" rel="external nofollow">Jinja2 documentation<iconify-icon inline="true" icon="tabler:external-link" class="external-link"></iconify-icon></a>, and also read templating document <a href="../../configuration/templating.1.html">here</a>.</p>
+<h2>Events tab <a class="title-link" name="events-tab" href="index.html#events-tab"></a>
+</h2>
+<p>In the Events section, you can either fire an event on the event bus or subscribe to an event type in order to view the event data JSON.</p>
+<h3>Fire an event <a class="title-link" name="fire-an-event" href="index.html#fire-an-event"></a>
+</h3>
+<p>To fire an event, simply type the name of the event, and pass the event data in JSON format.
+For example, to fire a custom event, enter the <code>event_type</code> as <code>event_light_state_changed</code> and the event data JSON as</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="na">state</span><span class="pi">:</span> <span class="s">on</span>
+</code></pre></div></div>
+<p>If there is an automation that handles that event, it will be automatically triggered. See below:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">alias</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Capture</span><span class="nv"> </span><span class="s">Event"</span>
+  <span class="na">triggers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">trigger</span><span class="pi">:</span> <span class="s">event</span>
+      <span class="na">event_type</span><span class="pi">:</span> <span class="s">event_light_state_changed</span>
+  <span class="na">actions</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">action</span><span class="pi">:</span> <span class="s">notify.notify</span>
+      <span class="na">data</span><span class="pi">:</span>
+        <span class="na">message</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Light</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">turned</span><span class="nv"> </span><span class="s">"</span>
+</code></pre></div></div>
+<h3>Subscribe to an event <a class="title-link" name="subscribe-to-an-event" href="index.html#subscribe-to-an-event"></a>
+</h3>
+<p>To subscribe to an event, enter the event event type under “Listen to events” and click “Start listening”. Some events types are listed in the Events section under “Active listeners”. You can usually find information about event types for a particular integration in its documentation. You can then examine the event data JSON to find the correct parameters for your automations.</p>
+<p>For example, subscribing to the event type <code>shelly.click</code> of the Shelly integration, returns event data JSON similar to the following on a button press.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="json"><span class="err">Event</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="err">fired</span><span class="w"> </span><span class="mi">9</span><span class="err">:</span><span class="mi">53</span><span class="w"> </span><span class="err">AM:</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"event_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shelly.click"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e09c64a22553484d804353ef97f6fcd6"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"device"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shellybutton1-A4C12A45174"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"click_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCAL"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"time_fired"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-04-28T08:53:12.755729+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e0f379706563aaa0c2c1fda5174b5a0e"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<h2>Statistics tab <a class="title-link" name="statistics-tab" href="index.html#statistics-tab"></a>
+</h2>
+<p>The <strong>Statistics</strong> tab shows a list of long-term statistic entities. If the long term statistics is not working for an entity, a <strong>Fix Issue</strong> link is shown. Select it to view a description of the issue. There might also be an option to fix the issue.</p>
+<p><img src="../../../images/docs/developer-tools/statistics_issue.png" alt="Statistics issue message"></p>
+<p>Another use of the <a href="https://my.home-assistant.io/redirect/developer_statistics" class="my" target="_blank">statistics developer tool</a> is to correct any measurements. Select the
+<svg width="24" height="24" viewbox="0 0 24 24"><path d="M22,13V22H2V19L22,13M21.68,7.06L16.86,4.46L17.7,7.24L7.58,10.24C6.63,8.95 4.82,8.67 3.53,9.62C2.24,10.57 1.96,12.38 2.91,13.67C3.85,14.97 5.67,15.24 6.96,14.29C7.67,13.78 8.1,12.97 8.14,12.09L18.26,9.09L19.1,11.87L21.68,7.06Z"></path></svg>
+icon. Use date &amp; time to search for the incorrect data point and adjust the value.</p>
+<p><img src="../../../images/docs/developer-tools/adjust-statistics.png" alt="Screenshot showing adjusting the long-term statistic history value"></p>
+<h2>Assist tab <a class="title-link" name="assist-tab" href="index.html#assist-tab"></a>
+</h2>
+<p>The <strong>Assist</strong> tab lets you see how Home Assistant’s Assist processes a sentence.</p>
+<p>If no matching intent is found, then Assist is unable to interpret the sentence. If a matching intent was found, information is provided on the action that will be performed on which entities. The example below shows how the following sentence was parsed: <em>what lights are on in the office</em>.</p>
+<ul>
+<li>Assist found a matching intent: <em>HassGetState</em>.</li>
+<li>It found entities matching the domain: <em>lights</em>.</li>
+<li>The lights have the state <em>on</em>.</li>
+<li>The lights are in the area <em>office</em>.</li>
+<li>The targets are the narrowed-down entities in scope.</li>
+</ul>
+<p><img src="../../../images/docs/developer-tools/Assist.png" alt="Example use of assist developer tools"></p>
+
+
+  
+
+
+  
+<div class="material-card text feedback">
+  <h4>
+<iconify-icon inline icon="mdi:feedback" title="Feedback"></iconify-icon> <b> Help us improve our documentation</b><a href="index.html#feedback_section" class="title-link" name="feedback_section"></a>
+</h4>
+  Suggest an edit to this page, or provide/view feedback for this page.
+  <div class="links">
+    <ul aria-label="Page feedback options">
+    <li><a href="https://github.com/home-assistant/home-assistant.io/tree/current/source/_docs/tools/dev-tools.markdown" target="_blank" title="Edit this page"><iconify-icon inline icon="mdi:edit"></iconify-icon> Edit</a></li>
+    
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues/new?template=feedback.yml&amp;url=https%3A%2F%2Fwww.home-assistant.io%2Fdocs%2Ftools%2Fdev-tools%2F&amp;version=2026.1.0&amp;labels=current" target="_blank" title="Provide feedback on this page"><iconify-icon inline icon="mdi:comment-edit-outline"></iconify-icon> Provide feedback</a></li>
+    <li><a href="https://github.com/home-assistant/home-assistant.io/issues?utf8=%E2%9C%93&amp;q=%22%2Fdocs%2Ftools%2Fdev-tools%2F%22&amp;in=body" target="_blank" title="View given feedback for this page"><iconify-icon inline icon="mdi:comment-text-multiple-outline"></iconify-icon> View given feedback</a></li>
+    
+  </ul>
+  </div>
+</div>
+
+
+</article>
+
+            
+          </div>
+
+
+          
+            
+              <aside id="sidebar" class="grid__item one-third desk-wide-one-quarter lap-one-whole palm-one-whole">
+            
+            <div class="grid">
+  
+
+
+
+
+  <section class="vertical-nav aside-module grid__item one-whole lap-one-half">
+  <div class="section">
+    <h1 class="title epsilon"><iconify-icon inline icon='mdi:bookshelf' title='Bookshelf'></iconify-icon> Documentation</h1>
+    <ul class="divided sidebar-menu">
+      <li>
+        <a  href='../../index.html'>Overview </a>
+        |
+        <a  href='https://www.home-assistant.io/faq/'>FAQ </a>
+        |
+        <a  href='../../glossary/index.html'>Glossary </a>
+      </li>
+
+      <li>
+  <iconify-icon icon="mdi:robot-happy"></iconify-icon> <a  href='../../automation/index.html'>Automations </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:gauge' title='Gauge'></iconify-icon> <a  href='https://www.home-assistant.io/dashboards'>Dashboards </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:microphone' title='Microphone'></iconify-icon> <a  href='https://www.home-assistant.io/voice_control/'>Voice assistants </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:category' title='Category'></iconify-icon> <a  href='../../organizing/index.html'>Organization </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:solar-power-variant' title='Solar power variant'></iconify-icon> <a  href='../../energy/index.html'>Home energy management </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:update' title='Update'></iconify-icon> <a  href='https://www.home-assistant.io/common-tasks/general/'>Common tasks </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cogs' title='Cogs'></iconify-icon> <a  href='../../configuration/index.html'>Advanced configuration </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:account-security' title='Account security'></iconify-icon> <a  href='../../authentication/index.html'>Authentication </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:database' title='Database'></iconify-icon> <a  href='../../backend/index.html'>Backend </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:palette' title='Palette'></iconify-icon> <a  href='../index.html'>Tools and helpers </a>
+  
+  <ul>
+    <li><a class='active' href='index.html'>Developer tools </a></li>
+    <li><a  href='../quick-bar/index.html'>Quick bar </a></li>
+    <li><a  href='../check_config/index.html'>check_config </a></li>
+  </ul>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='mdi:cellphone' title='Cellphone'></iconify-icon> <a href="https://companion.home-assistant.io/docs">iOS and Android apps <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+</li>
+
+<li>
+  <iconify-icon inline icon='simple-icons:mqtt' title='Mqtt'></iconify-icon> <a  href='https://www.home-assistant.io/integrations/mqtt'>MQTT </a>
+  
+</li>
+
+<li>
+  <iconify-icon inline icon='bitcoin-icons:node-hardware-filled' title='Node hardware filled'></iconify-icon> Official hardware
+  <ul>
+    <li><a href="https://support.nabucasa.com/hc/categories/24638797677853">Home Assistant Green <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734620813469">Home Assistant Connect ZBT-1 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/29400540866973">Home Assistant Connect ZBT-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/28669861145885">Home Assistant Connect ZWA-2 <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24734575925149">Home Assistant Yellow <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+    <li><a href="https://support.nabucasa.com/hc/categories/24451727188125">Home Assistant Voice Preview Edition <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+  </ul>
+</li>
+
+    </ul>
+  </div>
+</section>
+
+
+
+  <section id="toc-module" class="aside-module grid__item one-whole lap-one-half">
+        <div class='section'>
+          <h1 class="title epsilon"><iconify-icon inline icon='mdi:toc' title='Toc'></iconify-icon> On this page</h1>
+          <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="index.html#what-can-i-do-with-developer-tools">What can I do with Developer Tools?</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#yaml-tab">YAML tab</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#reloading-the-yaml-configuration">Reloading the YAML configuration</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#states-tab">States tab</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#actions-tab">Actions tab</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#template-editor-tab">Template editor tab</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#events-tab">Events tab</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="index.html#fire-an-event">Fire an event</a></li>
+<li class="toc-entry toc-h3"><a href="index.html#subscribe-to-an-event">Subscribe to an event</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="index.html#statistics-tab">Statistics tab</a></li>
+<li class="toc-entry toc-h2"><a href="index.html#assist-tab">Assist tab</a></li>
+</ul>
+        </div>
+      </section></div>
+
+          </aside>
+          
+        </div>
+      </div>
+
+      <footer>
+        <div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item">
+      <div class="skyline grid">
+        <div class="skyline grid__item one-whole">
+          <div class="footer-skyline">
+          </div>
+        </div>
+      </div>
+      <div class="footer-nav grid">
+        <div class="company grid__item one-quarter lap-one-half palm-one-whole">
+          <div class="title">
+            <img
+              src="../../../images/footer-logo-text.svg"
+              height="72"
+              alt="Home Assistant"
+            />
+          </div>
+          <p>
+            Home Assistant is a project from the <a href="https://www.openhomefoundation.org/">Open Home Foundation</a>, sponsored by <a href="https://www.nabucasa.com/">Nabu Casa</a>.
+          </p>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Join us and contribute!</h3>
+          <ul>
+            <li><a class="external-link" href="https://github.com/home-assistant/">GitHub repo <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://developers.home-assistant.io">Developers Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://design.home-assistant.io">Design Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://data.home-assistant.io">Data Science Portal <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://community.home-assistant.io">Community Forum <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://creators.home-assistant.io/">Creator Network <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a class="external-link" href="https://works-with.home-assistant.io/">Works With Home Assistant <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></li>
+            <li><a href="https://www.home-assistant.io/community">Our community</a></li>
+            <li><a href="https://www.home-assistant.io/help/reporting_issues/">Reporting issues</a></li>
+          </ul>
+          <h3>System status</h3>
+          <ul>
+            <li>
+              <a class="external-link"  href="https://alerts.home-assistant.io">Integration Alerts <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+            <li><a href="https://www.home-assistant.io/security/">Security Alerts</a></li>
+            <li>
+              <a class="external-link" href="https://status.home-assistant.io">System Status <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Companion apps</h3>
+          <ul>
+            <li><a class="external-link" href="https://apps.apple.com/app/id1099568401">iOS and Apple devices</a></li>
+            <li><a class="external-link" href="https://play.google.com/store/apps/details?id=io.homeassistant.companion.android">Android and Wear OS</a></li>
+            <li><a class="external-link" href="https://companion.home-assistant.io/">...and more!</a></li>
+          </ul>
+          <h3>Governance</h3>
+          <ul>
+            <li><a href="https://www.home-assistant.io/privacy/">Privacy Notices</a></li>
+            <li><a href="https://www.home-assistant.io/developers/cla/">Contributor License Agreement</a></li>
+            <li><a href="https://www.home-assistant.io/tos/">Terms of Service</a></li>
+            <li><a href="https://www.home-assistant.io/code_of_conduct/">Code of Conduct</a></li>
+            <li><a href="https://www.home-assistant.io/developers/credits/">Credits</a></li>
+            <li><a href="https://www.home-assistant.io/developers/license/">License</a></li>
+          </ul>
+        </div>
+
+        <div class="socials grid__item one-quarter lap-one-half palm-one-whole">
+
+          <h3>Follow us</h3>
+          <p><a class="external-link" href='https://newsletter.openhomefoundation.org/#/portal'>Sign up for our newsletter <iconify-icon inline icon='tabler:external-link' title='External link'></iconify-icon></a></p>
+          <div class="icons">
+            <a
+              rel="me"
+              href="https://youtube.com/@home_assistant"
+              title="YouTube"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:youtube"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://reddit.com/r/homeassistant"
+              title="Reddit"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:reddit"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://github.com/home-assistant"
+              title="GitHub"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:github"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://fosstodon.org/@homeassistant"
+              title="Mastodon"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:mastodon"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://bsky.app/profile/home-assistant.io"
+              title="Bluesky"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:bluesky"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://x.com/home_assistant"
+              title="X"
+              target="_blank"
+             ><iconify-icon icon="simple-icons:x"></iconify-icon></a>
+            <br />
+            <a
+              rel="me"
+              href="https://www.facebook.com/homeassistantio"
+              title="Facebook"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:facebook"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.instagram.com/homeassistant/"
+              title="Instagram"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:instagram"></iconify-icon></a>
+            <a
+              rel="me"
+              href="https://www.linkedin.com/company/home-assistant"
+              title="LinkedIn"
+              target="_blank"
+              ><iconify-icon icon="simple-icons:linkedin"></iconify-icon></a>
+          </div>
+
+          <div class="web-notice">
+            <p>
+              For partnership inquiries please check out <a href="https://works-with.home-assistant.io/">Works With Home Assistant</a>. For media, get in touch <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#83eee6e7eae2c3ecf3e6edebeceee6e5ecf6ede7e2f7eaecedadecf1e4">here</a>. For other questions, you can contact us <a href="https://www.home-assistant.io/cdn-cgi/l/email-protection#7c14191010133c14131119511d0f0f150f081d1208521513">here</a> (No technical support!)
+            </p>
+            <p>
+              Website powered by <a href="https://jekyllrb.com/">Jekyll</a><br />
+              Originally based on the <a href="https://github.com/coogie/oscailte">Oscailte theme</a>
+            </p>
+            <a href="https://www.netlify.com">
+              <img
+                src="../../../images/frontpage/netlify.svg"
+                alt="Deploys by Netlify Badge"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+
+    </div>
+    <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.3.1/lite-youtube.js" integrity="sha384-7o3d1sg8jSS1LMKzzIEucWtWFI1X4lFCC5gu2ylAgH3KmHcJgjTqp6LWfIvbbmf9" crossorigin="anonymous"></script>
+
+<script src="../../../javascripts/terminology_tooltip.js@274cec0734bc752f0e5ea3d4e2e59858" type="text/javascript" defer></script>
+
+<script src="../../../javascripts/prism.js@5d6619066a1fc5cd819a93c132b539ac" type="text/javascript" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3/dist/umd/index.min.js" integrity="sha384-f/IEhh8fvOc2ALU79emLlUqAYXyqlA/zYhM+g5GlWMk15QBjTXy05TtmfT1TbtV6" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  docsearch({
+    container: '#docsearch',
+    appId: 'FBHBYS3J0U',
+    indexName: 'home-assistant',
+    apiKey: "ba6f7e6d97b3d3d2f778978c742a47c6",
+  });
+  document.querySelector('.site-title').addEventListener('contextmenu', function (ev) {
+    ev.preventDefault();
+    document.location.assign("https://design.home-assistant.io/#brand/logo")
+  });
+</script>
+
+
+
+
+<script type="text/javascript">
+  {
+    const article = document.querySelector("article.post");
+    if (article) {
+      const iframes = article.querySelectorAll("iframe[data-src]");
+      let loaded = false;
+      if (iframes) {
+        document.addEventListener('mousemove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('touchmove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('scroll', loadLazyFrames, { passive: true, once: true });
+  
+        function loadLazyFrames() {
+          if (loaded) return;
+          loaded = true;
+  
+          iframes.forEach((iframe) => {
+            const src = iframe.getAttribute("data-src");
+            if (src) {
+              iframe.setAttribute("src", src);
+              iframe.removeAttribute("data-src");
+            }
+          });
+        }
+      }
+    }
+  }
+</script>
+
+  </body>
+</html>
