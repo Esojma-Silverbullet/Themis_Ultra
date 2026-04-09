@@ -58,6 +58,7 @@ automatisch genutzt.
 ## Credits & Attribution
 
 This project is based on earlier work by:
+- **Esojma-Silverbullet** and contributors (current maintained fork)
 - **makerwolf** and contributors (original Bookoo integration)
 - The Home Assistant community
 
