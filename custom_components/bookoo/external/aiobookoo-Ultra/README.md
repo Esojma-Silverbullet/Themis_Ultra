@@ -21,8 +21,24 @@ Paket.
 ## Installation
 
 * Veröffentlichung (PyPI): `pip install aiobookoo-ultra`
-* Aus Git-Tag (z. B. 0.1.3):\
-  `pip install git+https://github.com/Esojma-Silverbullet/aiobookoo-Ultra.git@0.1.3`
+* Aus Git-Tag (z. B. 0.2.0):\
+  `pip install git+https://github.com/Esojma-Silverbullet/aiobookoo-Ultra.git@0.2.0`
 
 Nach der Installation steht das Modul ohne weitere Anpassungen zur Verfügung;
 weitere Framework-spezifische Logik ist bewusst nicht enthalten.
+
+## Firmware-Kompatibilität
+
+Version 0.2.0 unterstützt das von Bookoo am 12. August 2026 veröffentlichte
+Protokoll für die Release-Firmware 4.0.0. Zusätzlich zu den laufenden Daten für
+Gewicht, Timer, Flow und Batterie werden folgende Firmware-4-Funktionen
+unterstützt:
+
+* Pulvergewicht lesen und einstellen (`0.1` bis `999.0 g`)
+* Ereignis- und Abschlussdaten des Automatikmodus lesen
+* Waage ausschalten (nicht während des Ladens)
+
+Die laufenden Gewichtswerte werden laut Herstellerprotokoll immer in Gramm
+übertragen. Das Einheit-Byte beschreibt lediglich die Anzeigeeinheit der Waage.
+Kalibrierung und automatische Stop-Bedingung werden nicht als
+Home-Assistant-Bedienelemente vorgesehen.

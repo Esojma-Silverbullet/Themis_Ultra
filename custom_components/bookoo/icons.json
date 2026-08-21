@@ -21,6 +21,30 @@
       },
       "stop": {
         "default": "mdi:timer-stop"
+      },
+      "shutdown": {
+        "default": "mdi:power"
+      }
+    },
+    "event": {
+      "automatic_mode": {
+        "default": "mdi:coffee-maker"
+      }
+    },
+    "number": {
+      "powder_weight": {
+        "default": "mdi:scale"
+      }
+    },
+    "sensor": {
+      "automatic_mode_result": {
+        "default": "mdi:chart-line"
+      },
+      "automatic_mode_time": {
+        "default": "mdi:timer-outline"
+      },
+      "automatic_mode_weight": {
+        "default": "mdi:scale"
       }
     }
   }

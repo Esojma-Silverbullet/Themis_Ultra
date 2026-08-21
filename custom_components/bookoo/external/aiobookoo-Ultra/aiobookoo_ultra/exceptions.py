@@ -23,7 +23,7 @@ class BookooMessageError(Exception):
     """Exception für Nachrichtenfehler."""
 
     def __init__(self, bytes_recvd: bytearray, message: str) -> None:
-        super().__init__()
+        super().__init__(message)
         self.message = message
         self.bytes_recvd = bytes_recvd
 
@@ -43,11 +43,11 @@ class BookooMessageTooLong(BookooMessageError):
 
 
 __all__ = [
-    "BookooScaleException",
     "BookooDeviceNotFound",
     "BookooError",
-    "BookooUnknownDevice",
     "BookooMessageError",
-    "BookooMessageTooShort",
     "BookooMessageTooLong",
+    "BookooMessageTooShort",
+    "BookooScaleException",
+    "BookooUnknownDevice",
 ]

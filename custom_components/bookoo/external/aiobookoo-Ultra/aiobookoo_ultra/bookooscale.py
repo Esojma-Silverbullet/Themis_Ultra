@@ -19,6 +19,7 @@ from .const import (
     CHARACTERISTIC_UUID_COMMAND,
     CMD_BYTE1_PRODUCT_NUMBER,
     CMD_BYTE2_TYPE,
+    AutomaticModeEvent,
     UnitMass,
 )
 from .exceptions import (
@@ -28,7 +29,12 @@ from .exceptions import (
     BookooMessageTooLong,
     BookooMessageTooShort,
 )
-from .decode import BookooMessage, decode
+from .decode import (
+    BookooAutomaticModeMessage,
+    BookooMessage,
+    BookooPowderWeightMessage,
+    decode,
+)
 
 _LOGGER = logging.getLogger("aiobookoo_ultra")
 
@@ -40,14 +46,23 @@ class BookooDeviceState:
     battery_level: int
     units: UnitMass
     buzzer_gear: int = 0
-    auto_off_time: int = 0
+    auto_off_time: float = 0
     flow_rate_smoothing: int = 0
-    stop_condition: int = 0
 
     @property
     def weight_unit(self) -> UnitMass:
         """Compatibility alias for integrations expecting `weight_unit`."""
         return self.units
+
+
+@dataclass(kw_only=True, frozen=True)
+class BookooAutomaticModeState:
+    """Letzte Ereignis- und Abschlussdaten des Automatikmodus."""
+
+    event: AutomaticModeEvent
+    timer: float
+    weight: float
+    result: float
 
 
 class BookooScale:
@@ -85,7 +100,9 @@ class BookooScale:
         self._timer: float | None = None
         self._flow_rate: float | None = None
         self._flow_rate_smoothing: int | None = None
-        self._stop_condition: int | None = None
+        self._powder_weight: float | None = None
+        self._automatic_mode_state: BookooAutomaticModeState | None = None
+        self._automatic_mode_event_sequence = 0
 
         # queue
         self._queue: asyncio.Queue = asyncio.Queue()
@@ -132,6 +149,21 @@ class BookooScale:
         """Calculate the current flow rate."""
 
         return self._flow_rate
+
+    @property
+    def powder_weight(self) -> float | None:
+        """Return the powder weight reported by firmware 4.0.0 or later."""
+        return self._powder_weight
+
+    @property
+    def automatic_mode_state(self) -> BookooAutomaticModeState | None:
+        """Return the latest automatic-mode event and settlement data."""
+        return self._automatic_mode_state
+
+    @property
+    def automatic_mode_event_sequence(self) -> int:
+        """Return a sequence number incremented for every automatic-mode packet."""
+        return self._automatic_mode_event_sequence
 
     def device_disconnected_handler(
         self,
@@ -454,6 +486,37 @@ class BookooScale:
                 )
             )
 
+    async def set_powder_weight(self, grams: float) -> None:
+        """Set the powder weight used by ratio mode (firmware 4.0.0+)."""
+        if not 0.1 <= grams <= 999.0:
+            raise ValueError("Powder weight must be between 0.1 and 999.0 grams")
+
+        if not self.connected:
+            await self.connect()
+
+        scaled_weight = round(grams * 10)
+        _LOGGER.debug("Setting powder weight to %.1f grams", scaled_weight / 10)
+
+        async with self._add_to_queue_lock:
+            await self._queue.put(
+                (
+                    self._command_char_id,
+                    self._build_command(
+                        0x0D, (scaled_weight >> 8) & 0xFF, scaled_weight & 0xFF
+                    ),
+                )
+            )
+
+    async def shutdown(self) -> None:
+        """Shut down the scale (firmware 4.0.0+, unavailable while charging)."""
+        if not self.connected:
+            await self.connect()
+
+        _LOGGER.debug("Sending shutdown message")
+
+        async with self._add_to_queue_lock:
+            await self._queue.put((self._command_char_id, self._build_command(0x15)))
+
     async def calibrate(self) -> None:
         """Start calibration."""
 
@@ -510,18 +573,26 @@ class BookooScale:
             self._timer = msg.timer
             self._flow_rate = msg.flow_rate
             self._flow_rate_smoothing = msg.flow_rate_smoothing
-            self._stop_condition = msg.stop_condition
             self._device_state = BookooDeviceState(
                 battery_level=msg.battery,
                 units=msg.unit,
                 buzzer_gear=msg.buzzer_gear,
                 auto_off_time=msg.standby_time,
                 flow_rate_smoothing=msg.flow_rate_smoothing,
-                stop_condition=msg.stop_condition,
             )
+        elif isinstance(msg, BookooPowderWeightMessage):
+            self._powder_weight = msg.powder_weight
+        elif isinstance(msg, BookooAutomaticModeMessage):
+            self._automatic_mode_state = BookooAutomaticModeState(
+                event=msg.event,
+                timer=msg.timer,
+                weight=msg.weight,
+                result=msg.result,
+            )
+            self._automatic_mode_event_sequence += 1
 
         if self._notify_callback is not None:
             self._notify_callback()
 
 
-__all__ = ["BookooDeviceState", "BookooScale"]
+__all__ = ["BookooAutomaticModeState", "BookooDeviceState", "BookooScale"]

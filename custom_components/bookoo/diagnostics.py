@@ -28,4 +28,11 @@ async def async_get_config_entry_diagnostics(
         "last_disconnect_time": scale.last_disconnect_time,
         "timer": scale.timer,
         "weight": scale.weight,
+        "flow_rate": scale.flow_rate,
+        "powder_weight": scale.powder_weight,
+        "automatic_mode_state": (
+            asdict(scale.automatic_mode_state)
+            if scale.automatic_mode_state is not None
+            else ""
+        ),
     }

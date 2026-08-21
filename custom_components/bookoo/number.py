@@ -12,7 +12,7 @@ from homeassistant.components.number import (
     NumberEntity,
     NumberEntityDescription,
 )
-from homeassistant.const import UnitOfTime
+from homeassistant.const import UnitOfMass, UnitOfTime
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.entity import EntityCategory
@@ -25,19 +25,17 @@ PARALLEL_UPDATES = 0
 
 
 async def _async_call_first_available(
-    scale: BookooScale, method_names: tuple[str, ...], value: float
+    scale: BookooScale,
+    method_names: tuple[str, ...],
+    value: float,
+    value_fn: Callable[[str, float], object],
 ) -> bool:
     """Call the first available setter on the scale."""
     for method_name in method_names:
         method = getattr(scale, method_name, None)
         if method is None:
             continue
-        adjusted_value = (
-            int(value * 60)
-            if "seconds" in method_name
-            else int(value)
-        )
-        result = method(adjusted_value)
+        result = method(value_fn(method_name, value))
         if inspect.isawaitable(result):
             await result
         return True
@@ -49,7 +47,12 @@ def _get_auto_off_minutes(scale: BookooScale) -> float | None:
     for source in (scale, scale.device_state):
         if source is None:
             continue
-        for name in ("auto_off_time", "auto_off_duration", "auto_off", "auto_off_seconds"):
+        for name in (
+            "auto_off_time",
+            "auto_off_duration",
+            "auto_off",
+            "auto_off_seconds",
+        ):
             if not hasattr(source, name):
                 continue
             value = getattr(source, name)
@@ -71,6 +74,7 @@ class BookooNumberEntityDescription(NumberEntityDescription):
 
     value_fn: Callable[[BookooScale], float | None]
     setter_methods: tuple[str, ...]
+    setter_value_fn: Callable[[str, float], object] = lambda _method, value: value
 
 
 NUMBERS: tuple[BookooNumberEntityDescription, ...] = (
@@ -90,6 +94,22 @@ NUMBERS: tuple[BookooNumberEntityDescription, ...] = (
             "set_auto_off",
             "set_auto_off_seconds",
         ),
+        setter_value_fn=lambda method, value: (
+            int(value * 60) if "seconds" in method else int(value)
+        ),
+    ),
+    BookooNumberEntityDescription(
+        key="powder_weight",
+        translation_key="powder_weight",
+        device_class=NumberDeviceClass.WEIGHT,
+        native_unit_of_measurement=UnitOfMass.GRAMS,
+        native_step=0.1,
+        native_min_value=0.1,
+        native_max_value=999.0,
+        entity_category=EntityCategory.CONFIG,
+        value_fn=lambda scale: scale.powder_weight,
+        setter_methods=("set_powder_weight",),
+        setter_value_fn=lambda _method, value: round(value, 1),
     ),
 )
 
@@ -120,7 +140,10 @@ class BookooNumber(BookooEntity, NumberEntity):
     async def async_set_native_value(self, value: float) -> None:
         """Set a new value."""
         success = await _async_call_first_available(
-            self._scale, self.entity_description.setter_methods, value
+            self._scale,
+            self.entity_description.setter_methods,
+            value,
+            self.entity_description.setter_value_fn,
         )
         if not success:
             raise HomeAssistantError("Dieses Gerät unterstützt die Einstellung nicht.")

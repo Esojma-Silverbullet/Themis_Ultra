@@ -1,6 +1,6 @@
 """Konstanten des Themis-Ultra-Protokolls."""
 
-from enum import StrEnum
+from enum import IntEnum, StrEnum
 from typing import Final
 
 SCALE_START_NAMES: Final = ["BOOKOO"]
@@ -11,6 +11,9 @@ CMD_BYTE1_PRODUCT_NUMBER = 0x03  # Command Data BYTE1
 CMD_BYTE2_TYPE = 0x0A  # Command Data BYTE2
 WEIGHT_BYTE1 = 0x03
 WEIGHT_BYTE2 = 0x0B
+AUTOMATIC_MODE_BYTE2 = 0x0D
+POWDER_WEIGHT_BYTE2 = 0x0F
+MESSAGE_LENGTH = 20
 
 
 class UnitMass(StrEnum):
@@ -20,14 +23,28 @@ class UnitMass(StrEnum):
     OUNCES = "ounces"
 
 
+class AutomaticModeEvent(IntEnum):
+    """Von der Waage gemeldete Zustände des Automatikmodus."""
+
+    STOPPED = 0x00
+    STARTED = 0x01
+    READY = 0x02
+    EXIT_READY = 0x03
+    EXIT_DONE = 0x04
+
+
 __all__ = [
-    "SCALE_START_NAMES",
-    "SERVICE_UUID",
-    "CHARACTERISTIC_UUID_WEIGHT",
+    "AUTOMATIC_MODE_BYTE2",
     "CHARACTERISTIC_UUID_COMMAND",
+    "CHARACTERISTIC_UUID_WEIGHT",
     "CMD_BYTE1_PRODUCT_NUMBER",
     "CMD_BYTE2_TYPE",
+    "MESSAGE_LENGTH",
+    "POWDER_WEIGHT_BYTE2",
+    "SCALE_START_NAMES",
+    "SERVICE_UUID",
     "WEIGHT_BYTE1",
     "WEIGHT_BYTE2",
+    "AutomaticModeEvent",
     "UnitMass",
 ]

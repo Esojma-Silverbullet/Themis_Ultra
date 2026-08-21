@@ -1,0 +1,92 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "Gerät ist bereits konfiguriert",
+      "no_devices_found": "Keine Geräte gefunden",
+      "unsupported_device": "Dieses Gerät wird nicht unterstützt."
+    },
+    "error": {
+      "device_not_found": "Gerät konnte nicht gefunden werden.",
+      "unknown": "Unerwarteter Fehler"
+    },
+    "flow_title": "{name}",
+    "step": {
+      "bluetooth_confirm": {
+        "description": "Möchtest du {name} einrichten?"
+      },
+      "user": {
+        "data": {
+          "address": "Gerät"
+        },
+        "data_description": {
+          "address": "Wähle die einzurichtende Bookoo-Waage aus"
+        },
+        "description": "Wähle ein Gerät zur Einrichtung aus"
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "connected": {
+        "name": "Verbunden"
+      }
+    },
+    "button": {
+      "reset_timer": {
+        "name": "Timer zurücksetzen"
+      },
+      "shutdown": {
+        "name": "Ausschalten"
+      },
+      "start": {
+        "name": "Timer starten"
+      },
+      "stop": {
+        "name": "Timer stoppen"
+      },
+      "tare": {
+        "name": "Tarieren"
+      },
+      "tare_and_start": {
+        "name": "Tarieren und Timer starten"
+      }
+    },
+    "event": {
+      "automatic_mode": {
+        "name": "Automatikmodus"
+      }
+    },
+    "number": {
+      "auto_off_seconds": {
+        "name": "Automatisches Ausschalten"
+      },
+      "powder_weight": {
+        "name": "Pulvergewicht"
+      }
+    },
+    "select": {
+      "beeper_level": {
+        "name": "Signalton-Lautstärke"
+      },
+      "flow_smoothing": {
+        "name": "Flow-Glättung"
+      }
+    },
+    "sensor": {
+      "automatic_mode_result": {
+        "name": "Ergebnis des Automatikmodus"
+      },
+      "automatic_mode_time": {
+        "name": "Zeit des Automatikmodus"
+      },
+      "automatic_mode_weight": {
+        "name": "Gewicht des Automatikmodus"
+      }
+    },
+    "switch": {
+      "flow_smoothing_enabled": {
+        "name": "Flow-Glättung (Schalter)"
+      }
+    }
+  }
+}

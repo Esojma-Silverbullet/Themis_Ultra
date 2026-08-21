@@ -18,9 +18,9 @@ rules:
   docs-installation-instructions: done
   docs-removal-instructions: done
   entity-event-setup:
-    status: exempt
+    status: done
     comment: |
-      No explicit event subscriptions.
+      Automatic-mode events use the CoordinatorEntity lifecycle.
   entity-unique-id: done
   has-entity-name: done
   runtime-data: done

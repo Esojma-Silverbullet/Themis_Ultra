@@ -5,7 +5,6 @@ from dataclasses import dataclass
 from typing import Any
 
 from aiobookoo_ultra.bookooscale import BookooScale
-
 from homeassistant.components.button import ButtonEntity, ButtonEntityDescription
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
@@ -48,6 +47,11 @@ BUTTONS: tuple[BookooButtonEntityDescription, ...] = (
         key="tare_and_start",
         translation_key="tare_and_start",
         press_fn=lambda scale: scale.tare_and_start_timer(),
+    ),
+    BookooButtonEntityDescription(
+        key="shutdown",
+        translation_key="shutdown",
+        press_fn=lambda scale: scale.shutdown(),
     ),
 )
 
