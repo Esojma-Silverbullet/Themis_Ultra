@@ -9,10 +9,10 @@ license = { text = "MIT" }
 description = "Async BLE client for the Bookoo Themis Ultra scale"
 readme = "README.md"
 authors = [
-    { name = "Makerwolf", email = "160181889+makerwolf@users.noreply.github.com" },
+    { name = "Esojma-Silverbullet", email = "115893979+Esojma-Silverbullet@users.noreply.github.com" },
 ]
 maintainers = [
-    { name = "Makerwolf", email = "160181889+makerwolf@users.noreply.github.com" },
+    { name = "Esojma-Silverbullet", email = "115893979+Esojma-Silverbullet@users.noreply.github.com" },
 ]
 keywords = ["Bookoo", "Bluetooth", "api", "async", "client", "themis"]
 classifiers = [
