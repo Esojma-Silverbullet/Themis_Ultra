@@ -45,7 +45,7 @@ Requirements:
 
 ## Firmware 4.0.0 compatibility
 
-Version 0.1.0 implements the Bookoo Ultra protocol published on
+Version 0.1.1 implements the Bookoo Ultra protocol published on
 12 August 2026. It corrects the unit-byte mapping and standby-time scaling and
 adds powder-weight packets, automatic-mode settlement packets and the shutdown
 command. The live numeric weight transmitted by the scale is always interpreted
@@ -63,7 +63,7 @@ Protocol source:
 ## Deutsche Dokumentation
 
 Diese benutzerdefinierte Home-Assistant-Integration bindet die
-**Bookoo Themis Ultra** lokal über Bluetooth ein. Ab Version 0.1.0 wird die
+**Bookoo Themis Ultra** lokal über Bluetooth ein. Ab Version 0.1.1 wird die
 Firmware 4.0.0 einschließlich Pulvergewicht, Automatikereignissen,
 Abschlussdaten und Ausschaltbefehl unterstützt.
 
