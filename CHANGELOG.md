@@ -2,10 +2,10 @@
 
 All notable changes to this project are documented in this file.
 
-## 0.1.1
+## 0.1.2
 
 - Publish the firmware 4 update under an unused release version after the
-  pre-existing `0.1.0` tag was found to reference legacy code.
+  pre-existing `0.1.0` and `0.1.1` tags were found to reference legacy code.
 - Add Bookoo Themis Ultra firmware 4.0.0 protocol support.
 - Correct unit-byte handling and standby-time scaling for live packets.
 - Add powder-weight read/write support.
