@@ -1,11 +1,9 @@
 """Initialize the Bookoo component."""
 
-from pathlib import Path
 import sys
+from pathlib import Path
 
-_EXTERNAL_LIB_DIR = (
-    Path(__file__).resolve().parent / "external" / "aiobookoo-Ultra"
-)
+_EXTERNAL_LIB_DIR = Path(__file__).resolve().parent / "external" / "aiobookoo-Ultra"
 if _EXTERNAL_LIB_DIR.exists() and str(_EXTERNAL_LIB_DIR) not in sys.path:
     sys.path.insert(0, str(_EXTERNAL_LIB_DIR))
 
@@ -17,6 +15,7 @@ from .coordinator import BookooConfigEntry, BookooCoordinator
 PLATFORMS = [
     Platform.BINARY_SENSOR,
     Platform.BUTTON,
+    Platform.EVENT,
     Platform.NUMBER,
     Platform.SELECT,
     Platform.SENSOR,

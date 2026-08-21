@@ -46,11 +46,22 @@
       },
       "tare_and_start": {
         "name": "Tare and start timer"
+      },
+      "shutdown": {
+        "name": "Shut down"
+      }
+    },
+    "event": {
+      "automatic_mode": {
+        "name": "Automatic mode"
       }
     },
     "number": {
       "auto_off_seconds": {
         "name": "Auto-off"
+      },
+      "powder_weight": {
+        "name": "Powder weight"
       }
     },
     "select": {
@@ -59,6 +70,17 @@
       },
       "flow_smoothing": {
         "name": "Flow smoothing"
+      }
+    },
+    "sensor": {
+      "automatic_mode_result": {
+        "name": "Automatic mode result"
+      },
+      "automatic_mode_time": {
+        "name": "Automatic mode time"
+      },
+      "automatic_mode_weight": {
+        "name": "Automatic mode weight"
       }
     },
     "switch": {
